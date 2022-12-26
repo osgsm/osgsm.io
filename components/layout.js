@@ -15,7 +15,7 @@ const Layout = ({ children, home }) => {
         <meta name="description" content="osgsm's personal website" />
         <meta property="og:image" content="/images/osgsm-banner.png" />
         <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content={siteTitle} />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header className={styles.header}>
         {home ? (
