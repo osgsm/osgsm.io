@@ -13,7 +13,10 @@ const Layout = ({ children, home }) => {
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content="osgsm's personal website" />
-        <meta property="og:image" content="/images/osgsm-banner.png" />
+        <meta
+          property="og:image"
+          content="https://osgsm.vercel.app/assets/osgsm-banner.png"
+        />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
@@ -22,7 +25,7 @@ const Layout = ({ children, home }) => {
           <>
             <Image
               priority
-              src="/images/profile.png"
+              src="/assets/profile.png"
               className={utilStyles.borderCircle}
               height={144}
               width={144}
@@ -34,7 +37,7 @@ const Layout = ({ children, home }) => {
           <>
             <Image
               priority
-              src="/images/profile.png"
+              src="/assets/profile.png"
               className={utilStyles.borderCircle}
               height={108}
               width={108}
