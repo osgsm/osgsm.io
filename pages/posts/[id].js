@@ -27,7 +27,7 @@ const Post = ({ postData }) => {
       <Head>
         <title>{postData.title}</title>
       </Head>
-      <article className="prose prose-a:text-blue-500 hover:prose-a:text-blue-600 prose-img:border prose-img:rounded-md">
+      <article className="break-words prose prose-h1:text-3xl prose-a:text-blue-500 hover:prose-a:text-blue-600 prose-img:border prose-img:rounded-md">
         <h1 className={utilStyles.headingXl}>{postData.title}</h1>
         <div className={utilStyles.lightText}>
           <Date dateString={postData.date} />
