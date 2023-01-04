@@ -75,7 +75,7 @@ yarn dev
 
 これで、 Tailwind utility class が使用できるようになるので、実際に使用してみます。
 
-ここでは `Post` コンポーネントの `h1` に `text-5xl` という class を追加しています。
+ここでは `Post` コンポーネントの `h1` に `text-4xl` という class を追加しています。
 
 ```jsx
 const Post = ({ postData }) => {
