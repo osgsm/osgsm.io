@@ -19,10 +19,10 @@ module.exports = {
               fontWeight: 'normal',
             },
             'code::before': {
-              content: '""',
+              content: 'none',
             },
             'code::after': {
-              content: '""',
+              content: 'none',
             },
           },
         },
