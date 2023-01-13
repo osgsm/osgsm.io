@@ -10,7 +10,7 @@ module.exports = {
         DEFAULT: {
           css: {
             code: {
-              backgroundColor: theme('colors.slate.100'),
+              backgroundColor: theme('colors.gray.200/90'),
               borderRadius: theme('borderRadius.DEFAULT'),
               paddingTop: theme('spacing.[0.5]'),
               paddingBottom: theme('spacing.[0.5]'),
