@@ -2,7 +2,6 @@ import Date from '../../components/date';
 import Layout from '../../components/layout';
 import Head from 'next/head';
 import { getAllPostIds, getPostData } from '../../lib/posts';
-import utilStyles from '../../styles/utils.module.css';
 
 export const getStaticPaths = async () => {
   const paths = getAllPostIds();
@@ -27,12 +26,23 @@ const Post = ({ postData }) => {
       <Head>
         <title>{postData.title}</title>
       </Head>
-      <article className="break-words prose prose-h1:text-3xl prose-a:text-blue-500 hover:prose-a:text-blue-600 prose-img:border prose-img:rounded-md">
-        <h1 className={utilStyles.headingXl}>{postData.title}</h1>
-        <div className={utilStyles.lightText}>
+      <article
+        className="prose mt-12 max-w-none break-words
+          prose-headings:font-normal
+         prose-a:text-blue-500 prose-a:decoration-blue-200
+          prose-a:decoration-2 prose-a:underline-offset-4
+         hover:prose-a:decoration-blue-300 prose-img:rounded-md prose-img:border"
+      >
+        <h1 className="text-2xl font-normal leading-normal">
+          {postData.title}
+        </h1>
+        <div className="text-base text-gray-400">
           <Date dateString={postData.date} />
         </div>
-        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+        <div
+          className="mt-8"
+          dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+        />
       </article>
     </Layout>
   );
