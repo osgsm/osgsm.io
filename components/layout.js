@@ -15,7 +15,7 @@ const Layout = ({ children, home }) => {
           property="og:image"
           content="https://osgsm.io/assets/osgsm-banner.png"
         />
-        <meta name="og:title" content={siteTitle} />
+        <meta name="og:title" content={siteTitle} key="og-title" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header className="flex flex-col items-center">
