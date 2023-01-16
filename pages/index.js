@@ -24,7 +24,8 @@ const Home = ({ allPostsData }) => {
         <ul className="mt-8">
           {allPostsData.map(({ id, date, title }) => (
             <Link
-              className="mt-6 block rounded-lg border p-6 hover:bg-gray-200/50"
+              className="mt-6 block rounded-lg border border-gray-300 p-6
+              hover:bg-gray-200/50"
               href={`/posts/${id}`}
               key={id}
             >

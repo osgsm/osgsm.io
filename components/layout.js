@@ -49,7 +49,7 @@ const Layout = ({ children, home }) => {
       </header>
       <main>{children}</main>
       {!home && (
-        <div className="text-blue-500">
+        <div className="mt-16 text-blue-500">
           <Link href="/">← Back to home</Link>
         </div>
       )}

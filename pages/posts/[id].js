@@ -29,11 +29,14 @@ const Post = ({ postData }) => {
       <article
         className="prose mt-12 max-w-none break-words
           prose-headings:font-normal
-         prose-a:text-blue-500 prose-a:decoration-blue-200
+          prose-a:font-normal prose-a:text-blue-500
+          prose-a:decoration-blue-300
           prose-a:decoration-2 prose-a:underline-offset-4
-         hover:prose-a:decoration-blue-300 prose-img:rounded-md prose-img:border"
+        hover:prose-a:text-blue-600
+        hover:prose-a:decoration-blue-400
+          prose-img:rounded-md prose-img:border"
       >
-        <h1 className="text-2xl font-normal leading-normal">
+        <h1 className="mb-3 text-2xl font-normal leading-normal">
           {postData.title}
         </h1>
         <div className="text-base text-gray-400">
