@@ -7,7 +7,7 @@ export const siteTitle = "osgsm's personal website";
 
 const Layout = ({ children, home }) => {
   return (
-    <div className="mx-auto my-12 max-w-2xl px-6">
+    <div className="mx-auto my-12 max-w-2xl px-4 md:px-6">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content="osgsm's personal website" />

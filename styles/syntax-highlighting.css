@@ -27,7 +27,7 @@ div[data-rehype-pretty-code-fragment] .line {
 }
 
 div[data-rehype-pretty-code-fragment] .line.highlighted {
-  @apply border-teal-400 bg-teal-600/10;
+  @apply border-teal-400 bg-teal-400/20;
 }
 
 code[data-line-numbers] {
