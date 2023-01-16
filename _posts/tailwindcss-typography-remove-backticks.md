@@ -41,7 +41,7 @@ module.exports = {
 
 `tailwind.config.js` の `theme` セクションに次のように追記します。
 
-```js
+```js title="tailwind.config.js" showLineNumbers
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
