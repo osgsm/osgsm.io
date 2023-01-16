@@ -11,13 +11,13 @@ date: '2022-12-27'
 
 まずは必要なパッケージをインストールします。
 
-```shell
+```shell title="Terminal"
 yarn add -D tailwindcss postcss autoprefixer
 ```
 
 次に `tailwind.config.js` を作成するために `tailwindcss init` を実行します。 `postcss.config.js` も一緒に作成するために `-p` オプションも付けています。
 
-```shell
+```shell title="Terminal"
 yarn tailwindcss init -p
 ```
 
@@ -27,7 +27,7 @@ Tailwind class name を使用するファイルを `tailwind.config.js` の `con
 
 今回は、 `./pages/` 以下と `./components/` 以下の `js`, `ts`, `jsx`, `tsx` ファイルを追加しています。
 
-```js
+```js title="tailwind.config.js" {3-6}
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -45,7 +45,7 @@ module.exports = {
 
 次に、グローバル CSS ファイル （e.g. `./styles/global.css`）に Tailwind directive を追加します。
 
-```css
+```css title="styles/global.css"
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -55,7 +55,7 @@ module.exports = {
 
 ちなみにグローバル CSS ファイルは、`pages/_app.js` から読み込みます。
 
-```jsx
+```jsx title="pages/_app.js" {1}
 import '../styles/global.css';
 
 const App = ({ Component, pageProps }) => {
@@ -69,7 +69,7 @@ export default App;
 
 Tailwind utility class を追加する前に、開発サーバーを起動します。
 
-```shell
+```shell title="Terminal"
 yarn dev
 ```
 
@@ -77,7 +77,7 @@ yarn dev
 
 ここでは `Post` コンポーネントの `h1` に `text-4xl` という class を追加しています。
 
-```jsx
+```jsx {5}
 const Post = ({ postData }) => {
   return (
     <Layout>

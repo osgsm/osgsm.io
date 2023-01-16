@@ -5,21 +5,23 @@ date: "2023-01-13"
 
 [以前紹介](./tailwindcss-typography)した `@tailwindcss/typography` を使うと、タイポグラフィが一括で設定されて、瞬時に読みやすいスタイリングを適用できます。
 
-ただ、個人的に気になるのが、インラインコードの前後に挿入されるバッククォート（バックティック）。わかりやすいっちゃわかりやすいんですが、下図のようにダブルクォートで囲ったりすると 、なんか煩わしさがあります。
+そして、そのタイポグラフィ設定の中には、インラインコードの前後にバッククォート（バックティック）を追加するというものがあります。
+
+バッククォートが付くと、わかりやすいっちゃわかりやすいんですが、 `` `"foo"` `` のようにダブルクォートを使ったりすると、煩わしくなることもあります。下図参照。
 
 ![バッククォート除去前のスクリーンショット](/assets/blog/tailwindcss-typography-remove-backticks/image1.png)
 
 なので、今回はこのバッククォートを除去し、インラインコード部分には薄く背景色を敷くように変更していきます。
 
-## バッククォートはどこから来たのか？
+## バッククォートはどこで設定されているのか？
 
-そもそもこのバッククォートはどこで設定されているのでしょうか？
+そもそもこのバッククォートは、どこで、どのように設定されているのでしょうか？
 
 答えは、 [tailwindcss-typography/styles.js](https://github.com/tailwindlabs/tailwindcss-typography/blob/master/src/styles.js)  にあります。ここには`@tailwindcss/typography` のデフォルトスタイルが定義されています。
 
 このコードを見てみると、次のような記述があります。
 
-```js
+```js title=" tailwindcss-typography/styles.js" {6-11}
 module.exports = {
  DEFAULT: {
   css: [
@@ -41,7 +43,7 @@ module.exports = {
 
 `tailwind.config.js` の `theme` セクションに次のように追記します。
 
-```js title="tailwind.config.js" showLineNumbers
+```js title="tailwind.config.js" {9-29}
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
