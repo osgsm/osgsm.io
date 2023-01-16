@@ -41,7 +41,56 @@ module.exports = {
 
 `tailwind.config.js` の `theme` セクションに次のように追記します。
 
-```js
+```js title="add.js" {3} showLineNumbers
+const add = (a, b) => a + b
+
+add(2, 3) // 5
+```
+
+```css title="styles/syntax-highlighting.css"
+div[data-rehype-pretty-code-fragment] {
+  @apply my-5 rounded-lg border border-gray-600 bg-gray-900;
+}
+
+div[data-rehype-pretty-code-fragment] code {
+  @apply grid;
+}
+
+div[data-rehype-pretty-code-fragment] > pre {
+  @apply m-0 rounded-lg bg-gray-900 px-0;
+}
+
+div[data-rehype-pretty-code-fragment]
+  > div[data-rehype-pretty-code-title]
+  + pre {
+  @apply -mt-[1px] rounded-t-none border-t border-gray-600;
+}
+
+div[data-rehype-pretty-code-title] {
+  @apply relative z-10 mx-2 mt-2 block w-fit
+    rounded-t border-x border-t border-gray-600
+    bg-inherit px-2 py-1.5 text-sm leading-none text-gray-400;
+}
+
+div[data-rehype-pretty-code-fragment] .line {
+  @apply border-l-[3px] border-transparent px-4;
+}
+
+div[data-rehype-pretty-code-fragment] .line.highlighted {
+  @apply border-teal-400 bg-teal-600/10;
+}
+
+code[data-line-numbers] {
+  @apply [counter-reset:lineNumber];
+}
+
+code[data-line-numbers] > .line::before {
+  @apply mr-3 inline-block w-4 text-right text-gray-600
+    content-[counter(lineNumber)] [counter-increment:lineNumber];
+}
+```
+
+```js title="tailwind.config.js" {7,10} showLineNumbers
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
