@@ -13,7 +13,7 @@ const Layout = ({ children, home }) => {
         <meta name="description" content="osgsm's personal website" />
         <meta
           property="og:image"
-          content="https://osgsm.vercel.app/assets/osgsm-banner.png"
+          content="https://osgsm.io/assets/osgsm-banner.png"
         />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />

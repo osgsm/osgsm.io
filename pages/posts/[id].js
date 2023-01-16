@@ -25,6 +25,7 @@ const Post = ({ postData }) => {
     <Layout>
       <Head>
         <title>{postData.title}</title>
+        <meta name="og:title" content={postData.title} />
       </Head>
       <article
         className="prose mt-12
