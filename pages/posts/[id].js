@@ -33,10 +33,10 @@ const Post = ({ postData }) => {
           break-words
           prose-headings:font-normal
           prose-a:font-normal
-          prose-a:text-blue-500 prose-a:decoration-blue-300
+          prose-a:text-blue-500 prose-a:decoration-blue-200
           prose-a:decoration-2
           prose-a:underline-offset-4 hover:prose-a:text-blue-600
-        hover:prose-a:decoration-blue-400
+        hover:prose-a:decoration-blue-300
           prose-img:rounded-md
           prose-img:border
           [&>*]:[grid-column:1/-1]"
