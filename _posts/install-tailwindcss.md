@@ -92,3 +92,9 @@ const Post = ({ postData }) => {
 これで、下図のように、 `h1` に Tailwind utility class が適用されます。
 
 ![Tailwind utility class を適用した結果](/assets/blog/install-tailwind/image1.png)
+
+---
+
+参照
+
+- [Install Tailwind CSS with Next.js - Tailwind CSS](https://tailwindcss.com/docs/guides/nextjs)

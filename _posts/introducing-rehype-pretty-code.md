@@ -1,5 +1,5 @@
 ---
-title: "Next.js: Rehype Pretty Code を使って、美しきシンタックスハイライトを手に入れる"
+title: "Rehype Pretty Code を使って、美しきシンタックスハイライトを手に入れる"
 date: "2023-01-16"
 ---
 
@@ -147,7 +147,7 @@ const fileContents = fs.readFileSync(fullPath, 'utf8');
 
 ## テーマを変更してみる
 
-個人的には、 One Dark Pro が好みなので、テーマを変更してみます。
+シンタックスハイライトのテーマは、個人的に One Dark Pro が好みなので、それに変更してみます。
 
 テーマの変更は簡単で、プラグイン使用時にオプションとして指定するだけです。 Shiki に含まれるテーマであれば文字列を渡すだけで OK です。
 
