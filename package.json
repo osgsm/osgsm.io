@@ -20,7 +20,8 @@
     "rehype-stringify": "^9.0.3",
     "remark": "^14.0.2",
     "remark-rehype": "^10.1.0",
-    "shiki": "^0.12.1"
+    "shiki": "^0.12.1",
+    "vercel": "^28.12.4"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.8",
