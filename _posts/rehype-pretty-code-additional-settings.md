@@ -89,7 +89,7 @@ div[data-rehype-pretty-code-fragment] > pre {
 
 ![コードブロック全体のスタイリング後の状態](/assets/blog/rehype-pretty-code-additional-settings/image2.png)
 
-`px-0` で横川の `padding` を `0` にしているのは、行のハイライトをコードブロック全体に行き渡らせるためです。次の工程で行ごとに `padding` を当てていきます。
+`px-0` で横側の `padding` を `0` にしているのは、行のハイライトをコードブロック全体に行き渡らせるためです。次の工程で行ごとに `padding` を当てていきます。
 
 では、次にコードブロックの行をスタイリングしていきます。
 
@@ -117,7 +117,7 @@ div[data-rehype-pretty-code-fragment] .line {
 
 Rehype Pretty Code で行をハイライトするには、マークダウンのコードブロックで `{3}` のように記述します。
 
-範囲を指定する場合は `{1-2}` 、複数行を指定する場合は `{1,3}` のように書きます。
+範囲を指定する場合は `{1-3}` 、複数行を指定する場合は `{1,3}` のように書きます。
 
 ```` none title="sample-post.md" {1}
 ```js title="add.js" {3}
