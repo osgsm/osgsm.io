@@ -37,8 +37,10 @@ const Post = ({ postData }) => {
           prose-a:decoration-2
           prose-a:underline-offset-4 hover:prose-a:text-blue-600
         hover:prose-a:decoration-blue-300
-          prose-img:rounded-md
+          prose-img:my-6
+          prose-img:rounded-lg
           prose-img:border
+          prose-img:border-gray-300
           [&>*]:[grid-column:1/-1]"
       >
         <h1 className="mb-3 text-2xl font-normal leading-normal">
