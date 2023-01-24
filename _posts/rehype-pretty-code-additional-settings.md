@@ -77,7 +77,7 @@ div[data-rehype-pretty-code-fragment] {
 
 ```css title="styles/syntax-highlighting.css"
 div[data-rehype-pretty-code-fragment] {
-  @apply my-5 rounded-lg border border-gray-600 bg-gray-900;
+  @apply my-5 overflow-hidden rounded-lg border border-gray-600 bg-gray-900;
 }
 
 div[data-rehype-pretty-code-fragment] > pre {
@@ -275,6 +275,7 @@ CSS については、デフォルトで用意されているものがないの�
 ```css title="styles/syntax-highlighting.css" showLineNumbers
 div[data-rehype-pretty-code-fragment] {
   @apply my-5 rounded-lg border border-gray-600 bg-gray-900;
+  
 }
 
 div[data-rehype-pretty-code-fragment] code {
