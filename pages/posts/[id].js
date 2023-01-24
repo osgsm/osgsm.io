@@ -29,19 +29,25 @@ const Post = ({ postData }) => {
       </Head>
       <article
         className="prose mt-12
-          grid max-w-none grid-cols-[repeat(auto-fill,1em)] place-content-center
+          grid max-w-none grid-cols-[repeat(auto-fill,1em)]
+          place-content-center
           break-words
+          [font-kerning:none]
+          [hanging-punctuation:allow-end]
+          [line-break:strict]
           prose-headings:font-normal
-          prose-a:font-normal
-          prose-a:text-blue-500 prose-a:decoration-blue-200
-          prose-a:decoration-2
-          prose-a:underline-offset-4 hover:prose-a:text-blue-600
+          prose-a:font-normal prose-a:text-blue-500
+        prose-a:decoration-blue-200
+          prose-a:decoration-2 prose-a:underline-offset-4
+        hover:prose-a:text-blue-600
         hover:prose-a:decoration-blue-300
-          prose-img:my-6
+          prose-img:my-5
           prose-img:rounded-lg
           prose-img:border
-          prose-img:border-gray-300
-          [&>*]:[grid-column:1/-1]"
+        prose-img:border-gray-300
+          [&>*]:[grid-column:1/-1]
+          [&_p>img+*]:-mt-4 [&_p>img+*]:block
+          [&_p>img+*]:text-sm [&_p>img+*]:opacity-90"
       >
         <h1 className="mb-3 text-2xl font-normal leading-normal">
           {postData.title}
