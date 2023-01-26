@@ -8,9 +8,8 @@ date: "2023-01-24"
 [公式ドキュメント](https://nextjs.org/learn/seo/crawling-and-indexing/xml-sitemaps)では、 `getServerSideProps`を使う例が紹介されていますが、今回はもっと簡単な方法を使います。
 
 [`next-sitemap`](https://github.com/iamvishnusankar/next-sitemap) というパッケージを使うと、簡単に、しかも自動でサイトマップを生成することができます。
-
-ちなみに、 Next.js 用のサイトマップ生成関連のパッケージでメジャーなものは、[`next-sitemap`](https://github.com/iamvishnusankar/next-sitemap)  と [`nextjs-sitemap-generator`](https://github.com/IlusionDev/nextjs-sitemap-generator) がありますが、 npm trends で両者を比べると次のようになります（2023年1月24日時点）。
-
+[ちなみに、 Next.js 用のサイトマップ生成関連のパッケージでメジャーなものは、[`next-sitemap`](https://github.com/iamvishnusankar/next-sitemap)  と [`nextjs-sitemap-generator`](https://github.com/IlusionDev/nextjs-sitemap-generator) がありますが、 npm trends で両者を比べると次のようになります（2023年1月24日時点）。
+]()
 ![npm trends でのダウンロード数の推移](/assets/blog/next-sitemap/image1.png)
 *[next-sitemap vs nextjs-sitemap-generator | npm trends](https://npmtrends.com/next-sitemap-vs-nextjs-sitemap-generator)*
 
@@ -58,7 +57,7 @@ yarn build
 
 ビルドが終わったら `yarn next-sitemap` を実行します。すると、次のようにターミナル上に表示されます。
 
-```shell
+```shell title="Terminal"
 % yarn next-sitemap
 # ...
 ✅ [next-sitemap] Generation completed
@@ -105,7 +104,7 @@ module.exports = {
 };
 ```
 
-`<lastmod>` を無効にしている理由は次の通りです。デフォルトでは、 すべての `<lastmod>` にサイトマップ生成時の時間が追加されてしまいます。本来このタグは、該当のファイルの更新日を示すものです。正しい設定値にするためには `getServerSideSitemap` という API を使って、投稿データから動的にサイトマップを生成する必要がありますが、[`<lastmod>` は必須のものではない](https://www.sitemaps.org/ja/protocol.html)ので、今回は簡略化のため `<lastmod>` 自体を追加しないようにしています。
+`<lastmod>` を無効にしている理由は次の通りです。デフォルトでは、 すべての `<lastmod>` ににサイトマップ生成時の時間が追加されてしまいますが、本来このタグは、該当のファイルの更新日を示すものです。正しい値にするためには `getServerSideSitemap` という API を使って、投稿データから動的にサイトマップを生成する必要がありますが、[`<lastmod>` は必須のものではない](https://www.sitemaps.org/ja/protocol.html)ので、今回は簡略化のため `<lastmod>` 自体を追加しないようにしています。
 
 これで、 `yarn build`→ `yarn next-sitemap` で、 次のような `sitemap.xml` と `robots.txt` が生成されます。
 
