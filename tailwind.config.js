@@ -9,6 +9,23 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
+            'h1, h2, h3, h4, h5, h6': {
+              fontWeight: 'normal',
+            },
+            p: {
+              hangingPunctuation: 'allow-end',
+            },
+            a: {
+              color: theme('colors.blue.500'),
+              fontWeight: 'normal',
+              textDecorationColor: theme('colors.blue.200'),
+              textDecorationThickness: theme('spacing.[0.5]'),
+              textUnderlineOffset: theme('spacing.1'),
+              '&:hover': {
+                color: theme('colors.blue.600'),
+                textDecorationColor: theme('colors.blue.300'),
+              },
+            },
             code: {
               backgroundColor: theme('colors.gray.200/90'),
               borderRadius: theme('borderRadius.DEFAULT'),
