@@ -48,7 +48,7 @@ const TimelineSeparator = ({ connector = true }) => {
       ></span>
       {connector && (
         <span
-          className="mt-2 inline-block h-full w-[1px]
+          className="mt-2 inline-block w-[1px] grow
             bg-blue-400 sm:mt-[9px]"
         ></span>
       )}
