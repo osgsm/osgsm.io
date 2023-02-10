@@ -7,7 +7,7 @@ export const siteTitle = "osgsm's personal website";
 
 const Layout = ({ children, home }) => {
   return (
-    <div className="mx-auto my-12 max-w-2xl px-4 md:px-6">
+    <div className="mx-auto mt-12 mb-16 max-w-2xl px-4 md:px-6">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content="osgsm's personal website" />
@@ -25,11 +25,11 @@ const Layout = ({ children, home }) => {
               priority
               src="/assets/profile.png"
               className="rounded-full"
-              height={144}
-              width={144}
+              height={108}
+              width={108}
               alt=""
             />
-            <h1 className="mt-2 text-2xl">{name}</h1>
+            <h1 className="mt-2 text-xl">{name}</h1>
           </>
         ) : (
           <>
@@ -37,11 +37,11 @@ const Layout = ({ children, home }) => {
               priority
               src="/assets/profile.png"
               className="rounded-full"
-              height={108}
-              width={108}
+              height={80}
+              width={80}
               alt=""
             />
-            <h2 className="mt-1 text-xl">
+            <h2 className="mt-1 text-lg">
               <Link href="/">{name}</Link>
             </h2>
           </>
@@ -49,8 +49,15 @@ const Layout = ({ children, home }) => {
       </header>
       <main>{children}</main>
       {!home && (
-        <div className="mt-16 text-blue-500">
-          <Link href="/">← Back to home</Link>
+        <div className="mt-12">
+          <Link
+            className="inline-block rounded-md border border-gray-200
+              bg-gray-100 p-3 text-sm text-gray-600
+              hover:border-gray-300 hover:bg-gray-200 hover:text-gray-700"
+            href="/"
+          >
+            ← ホームにもどる
+          </Link>
         </div>
       )}
     </div>
