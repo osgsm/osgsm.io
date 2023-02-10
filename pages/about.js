@@ -1,27 +1,26 @@
 import Layout from '../components/layout';
 import Timeline from '../components/timeline';
-import aboutContents from '../content/aboutContents';
+import timelineContents from '../content/aboutTimelineContents';
 
 const About = () => {
   return (
     <Layout>
       <div className="prose mt-16">
-        <h1>About</h1>
-        <p>大島翔吾と申します。</p>
+        <h1 className="text-3xl">About</h1>
         <p>
-          仕事では、ウェブデザインしたり、コーディングしたり、写真を撮ったりしています。ウェブサイトを制作する上で目指していることは「使いやすく魅力的なサイトを作る」こと。ちなみに、1990年10月11日生まれの32歳、既婚です。
+          大島翔吾と申します。ウェブ制作をしています。モットーは、使いやすく魅力的なサイトを作ること。コーディングだけでなく、デザイン、写真撮影もやります。
         </p>
         <p>
-          以下は僕の半生です。輝かしいものはないですが、自分自身の思考や行動の変遷を辿っています。興味のある方は読んでみてください。
+          以下は自身の半生で、思考や行動の変遷を辿っています。輝かしい経歴はないですが、興味のある方は読んでみてください。
         </p>
       </div>
       <div className="mt-16">
-        {aboutContents.map((aboutContent) => {
+        {timelineContents.map((content) => {
           return (
             <Timeline
-              content={aboutContent}
-              year={aboutContent.header}
-              key={aboutContent.header}
+              content={content}
+              year={content.header}
+              key={content.header}
             />
           );
         })}
