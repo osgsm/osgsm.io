@@ -1,10 +1,19 @@
-import Layout from '../components/layout';
+import Head from 'next/head';
+import Layout, { siteTitle } from '../components/layout';
 import Timeline from '../components/timeline';
 import timelineContents from '../content/aboutTimelineContents';
 
 const About = () => {
   return (
     <Layout>
+      <Head>
+        <title>私について｜{siteTitle}</title>
+        <meta
+          name="og:title"
+          content={`私について｜${siteTitle}`}
+          key="og-title"
+        />
+      </Head>
       <div className="prose mt-16">
         <h1 className="text-3xl">About</h1>
         <p>
