@@ -1,6 +1,6 @@
 const timelineContents = [
   {
-    header: '2022 — 2021',
+    header: '2022 – 2021',
     body: [
       {
         heading: 'Next.js を使ってこのサイトを制作',
@@ -24,7 +24,7 @@ const timelineContents = [
     ],
   },
   {
-    header: '2020 — 2018',
+    header: '2020 – 2018',
     body: [
       {
         heading: '自社関連のサイトで試行錯誤し WordPress を学ぶ',
@@ -60,7 +60,7 @@ const timelineContents = [
     ],
   },
   {
-    header: '2017 — 2015',
+    header: '2017 – 2015',
     body: [
       {
         heading: 'グラフィックデザインに目覚める',
@@ -90,7 +90,7 @@ const timelineContents = [
     ],
   },
   {
-    header: '2014 — 2009',
+    header: '2014 – 2009',
     body: [
       {
         heading: '写真に取り憑かれる',
