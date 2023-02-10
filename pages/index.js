@@ -19,7 +19,17 @@ const Home = ({ allPostsData }) => {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className="mt-8">
+      <section>
+        <div className="prose mt-16">
+          <p className="mb-2">
+            大島翔吾と申します。ウェブ制作をしています。
+            <br />
+            モットーは、使いやすく魅力的なサイトを作ること。
+          </p>
+          <Link href="/about">もっと詳しく→</Link>
+        </div>
+      </section>
+      <section className="mt-12">
         <h2 className="text-3xl">Blog</h2>
         <ul className="mt-8">
           {allPostsData.map(({ id, date, title }) => (
