@@ -51,9 +51,9 @@ const Layout = ({ children, home }) => {
       {!home && (
         <div className="mt-12">
           <Link
-            className="inline-block rounded-md border border-gray-200
-              bg-gray-100 p-3 text-sm text-gray-600
-              hover:border-gray-300 hover:bg-gray-200 hover:text-gray-700"
+            className="inline-block rounded-md border border-gray-300
+              bg-gray-100 p-3 text-sm text-gray-700
+              hover:border-gray-300 hover:bg-gray-200 hover:text-gray-800"
             href="/"
           >
             ← ホームにもどる
