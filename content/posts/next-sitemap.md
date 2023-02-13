@@ -8,7 +8,7 @@ date: "2023-01-24"
 [公式ドキュメント](https://nextjs.org/learn/seo/crawling-and-indexing/xml-sitemaps)では、 `getServerSideProps`を使う例が紹介されていますが、今回はもっと簡単な方法を使います。
 
 [`next-sitemap`](https://github.com/iamvishnusankar/next-sitemap) というパッケージを使うと、簡単に、しかも自動でサイトマップを生成することができます。
-[ちなみに、 Next.js 用のサイトマップ生成関連のパッケージでメジャーなものは、[`next-sitemap`](https://github.com/iamvishnusankar/next-sitemap)  と [`nextjs-sitemap-generator`](https://github.com/IlusionDev/nextjs-sitemap-generator) がありますが、 npm trends で両者を比べると次のようになります（2023年1月24日時点）。
+ちなみに、 Next.js 用のサイトマップ生成関連のパッケージでメジャーなものは、[`next-sitemap`](https://github.com/iamvishnusankar/next-sitemap)  と [`nextjs-sitemap-generator`](https://github.com/IlusionDev/nextjs-sitemap-generator) がありますが、 npm trends で両者を比べると次のようになります（2023年1月24日時点）。
 
 ![npm trends でのダウンロード数の推移](/assets/blog/next-sitemap/image1.png)
 *[next-sitemap vs nextjs-sitemap-generator | npm trends](https://npmtrends.com/next-sitemap-vs-nextjs-sitemap-generator)*
