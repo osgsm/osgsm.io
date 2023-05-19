@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import { AiFillGithub, AiOutlineTwitter } from 'react-icons/ai';
 import { HiArrowUpRight } from 'react-icons/hi2';
 import Timeline from '../../components/timeline';
@@ -75,6 +76,16 @@ const About = () => {
             />
           );
         })}
+      </div>
+      <div className="mt-10">
+        <Link
+          className="inline-block rounded-md border border-gray-300
+              bg-gray-100 p-3 text-sm text-gray-700
+              hover:border-gray-300 hover:bg-gray-200 hover:text-gray-800"
+          href="/"
+        >
+          ← ホームにもどる
+        </Link>
       </div>
     </>
   );

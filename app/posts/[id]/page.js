@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Date from '../../../components/date';
 import { getAllPostIds, getPostData } from '../../../lib/posts';
 
@@ -55,6 +56,16 @@ const Post = async ({ params }) => {
           dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
         />
       </article>
+      <div className="mt-10">
+        <Link
+          className="inline-block rounded-md border border-gray-300
+              bg-gray-100 p-3 text-sm text-gray-700
+              hover:border-gray-300 hover:bg-gray-200 hover:text-gray-800"
+          href="/"
+        >
+          ← ホームにもどる
+        </Link>
+      </div>
     </>
   );
 };
