@@ -49,7 +49,7 @@ const Post = async ({ params }) => {
           [&_p>img+*]:text-sm [&_p>img+*]:opacity-90"
       >
         <h1 className="mb-3 text-2xl font-normal leading-normal">
-          {postData.titl}
+          {postData.title}
         </h1>
         <div className="text-base text-gray-400">
           <Date dateString={postData.date} />
