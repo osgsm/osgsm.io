@@ -1,20 +1,28 @@
 import Head from 'next/head';
 import { AiFillGithub, AiOutlineTwitter } from 'react-icons/ai';
 import { HiArrowUpRight } from 'react-icons/hi2';
-import Layout, { siteTitle } from '../components/layout';
-import Timeline from '../components/timeline';
-import timelineContents from '../content/aboutTimelineContents';
+import Timeline from '../../components/timeline';
+import timelineContents from '../../content/aboutTimelineContents';
+
+export const metadata = {
+  title: 'About',
+  openGraph: {
+    title: "About — osgsm's personal website",
+    url: 'https://osgsm.io/about',
+    type: 'website',
+  },
+  twitter: {
+    title: "About — osgsm's personal website",
+    card: 'summary_large_image',
+  },
+};
 
 const About = () => {
   return (
-    <Layout>
+    <>
       <Head>
-        <title>私について｜{siteTitle}</title>
-        <meta
-          name="og:title"
-          content={`私について｜${siteTitle}`}
-          key="og-title"
-        />
+        <title>私について</title>
+        <meta name="og:title" content="私について" key="og-title" />
       </Head>
       <div className="prose mt-16">
         <h1 className="text-3xl">About</h1>
@@ -68,7 +76,7 @@ const About = () => {
           );
         })}
       </div>
-    </Layout>
+    </>
   );
 };
 

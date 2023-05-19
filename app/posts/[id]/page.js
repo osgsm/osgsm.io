@@ -1,32 +1,34 @@
-import Date from '../../components/date';
-import Layout from '../../components/layout';
-import Head from 'next/head';
-import { getAllPostIds, getPostData } from '../../lib/posts';
+import Date from '../../../components/date';
+import { getAllPostIds, getPostData } from '../../../lib/posts';
 
-export const getStaticPaths = async () => {
-  const paths = getAllPostIds();
-  return {
-    paths,
-    fallback: false,
-  };
-};
-
-export const getStaticProps = async ({ params }) => {
+export const generateMetadata = async ({ params }) => {
   const postData = await getPostData(params.id);
+  const { id, title } = postData;
+
   return {
-    props: {
-      postData,
+    title,
+    openGraph: {
+      title,
+      type: 'article',
+      url: `http://osgsm.io/posts/${id}`,
+    },
+    twitter: {
+      title,
+      card: 'summary_large_image',
     },
   };
 };
 
-const Post = ({ postData }) => {
+export const dynamicParams = false;
+
+export const generateStaticParams = async () => {
+  return getAllPostIds();
+};
+
+const Post = async ({ params }) => {
+  const postData = await getPostData(params.id);
   return (
-    <Layout>
-      <Head>
-        <title>{postData.title}</title>
-        <meta name="og:title" content={postData.title} key="og-title" />
-      </Head>
+    <>
       <article
         className="prose mt-12
           grid max-w-none
@@ -53,7 +55,7 @@ const Post = ({ postData }) => {
           dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
         />
       </article>
-    </Layout>
+    </>
   );
 };
 
