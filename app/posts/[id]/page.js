@@ -10,8 +10,9 @@ export const generateMetadata = async ({ params }) => {
     title,
     openGraph: {
       title,
-      type: 'article',
       url: `http://osgsm.io/posts/${id}`,
+      images: '/assets/osgsm-banner.png',
+      type: 'article',
     },
     twitter: {
       title,

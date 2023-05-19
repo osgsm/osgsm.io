@@ -10,6 +10,7 @@ export const metadata = {
   openGraph: {
     title: "About — osgsm's personal website",
     url: 'https://osgsm.io/about',
+    images: '/assets/osgsm-banner.png',
     type: 'website',
   },
   twitter: {
