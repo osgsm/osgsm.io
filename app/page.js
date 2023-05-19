@@ -1,24 +1,11 @@
-import Head from 'next/head';
 import Link from 'next/link';
 import Date from '../components/date';
-import Layout, { siteTitle } from '../components/layout';
 import { getSortedPostsData } from '../lib/posts';
 
-export const getStaticProps = async () => {
+const Home = () => {
   const allPostsData = getSortedPostsData();
-  return {
-    props: {
-      allPostsData,
-    },
-  };
-};
-
-const Home = ({ allPostsData }) => {
   return (
-    <Layout home>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
+    <>
       <section>
         <div className="prose mt-16">
           <p className="mb-2">
@@ -50,7 +37,7 @@ const Home = ({ allPostsData }) => {
           ))}
         </ul>
       </section>
-    </Layout>
+    </>
   );
 };
 
