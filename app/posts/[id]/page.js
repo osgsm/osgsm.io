@@ -29,10 +29,6 @@ const Post = async ({ params }) => {
   const postData = await getPostData(params.id);
   return (
     <>
-      {/* <Head>
-        <title{postData.title}/title>
-        <meta name="og:title content={postData.title}key="og-title" />
-      </Head> */}
       <article
         className="prose mt-12
           grid max-w-none
