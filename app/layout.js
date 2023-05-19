@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Header from '../components/header';
 
 import '../styles/global.css';
 
@@ -24,19 +24,7 @@ const RootLayout = ({ children }) => {
     <html lang="ja">
       <body>
         <div className="mx-auto mt-12 mb-16 max-w-2xl px-4 md:px-6">
-          <header className="flex flex-col items-center">
-            <>
-              <Image
-                priority
-                src="/assets/profile.png"
-                className="rounded-full"
-                height={108}
-                width={108}
-                alt=""
-              />
-              <h1 className="mt-2 text-xl">osgsm</h1>
-            </>
-          </header>
+          <Header />
           <main>{children}</main>
         </div>
       </body>
