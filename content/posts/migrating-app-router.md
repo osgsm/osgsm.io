@@ -590,7 +590,7 @@ export default NotFound;
 
 移行作業をしてみて、 App Router は、開発の際にも恩恵があると感じました。特に、以前は `getStaticProps` を使ってデータの取得を行っていた部分が、シンプルに直接行えるのがいいですね。あと、メタデータも簡単に設定できるのもよいです。
 
-今回は触れませんでしたが、 App Router には、 Parallel Routes や Parallel Routes のような複雑な routing を簡単に実現する仕組みも用意されていたりして、この辺りもとても魅力的です。
+今回は触れませんでしたが、 App Router には、 Parallel Routes や Intercepting Routes のような複雑な routing を簡単に実現する仕組みも用意されていたりして、この辺りもとても魅力的です。
 
 とは言え、 App Router は新しいものなので、不具合もあります。例えば、 `not-found.js` に、ホームにもどるためのリンクを配置しても、それが機能しません。ただ、この挙動の修正は現在行われているようです。→ [Reset not-found and error boundary when navigating by timneutkens · Pull Request #49855 · vercel/next.js](https://github.com/vercel/next.js/pull/49855) 参照。このように不具合があっても、すぐに対応されるのがすごいですね。
 
