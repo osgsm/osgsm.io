@@ -22,10 +22,12 @@ export const metadata = {
 const RootLayout = ({ children }) => {
   return (
     <html lang="ja">
-      <body>
-        <div className="mx-auto mt-12 mb-16 max-w-2xl px-4 md:px-6">
+      <body className="bg-background text-foreground">
+        <div>
           <Header />
-          <main>{children}</main>
+          <main className="px-4 md:px-6">
+            <div className="mx-auto max-w-2xl">{children}</div>
+          </main>
         </div>
       </body>
     </html>
