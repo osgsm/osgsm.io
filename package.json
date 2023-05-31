@@ -18,6 +18,7 @@
   },
   "devDependencies": {
     "@heroicons/react": "^2.0.18",
+    "@ianvs/prettier-plugin-sort-imports": "^4.0.1",
     "@radix-ui/react-popover": "^1.0.6",
     "@tailwindcss/typography": "^0.5.8",
     "autoprefixer": "^10.4.13",
@@ -36,6 +37,7 @@
     "remark": "^14.0.2",
     "remark-rehype": "^10.1.0",
     "shiki": "^0.12.1",
+    "tailwind-merge": "^1.12.0",
     "tailwindcss": "^3.2.4"
   }
 }
