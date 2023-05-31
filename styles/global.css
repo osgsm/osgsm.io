@@ -6,69 +6,32 @@
 
 @layer base {
   :root {
-    --foreground: theme('colors.misty-slate.900');
-    --background: theme('colors.misty-slate.50');
+    --foreground: 240 15% 20%;
+    --background: 240 15% 98%;
 
-    --muted-foreground: theme('colors.misty-slate.500');
-    --muted-background: theme('colors.misty-slate.100');
+    --muted-foreground: 240 15% 60%;
+    --muted-background: 240 15% 94%;
 
-    --button-primary-foreground: theme('colors.twilight-indigo.50');
-    --button-primary-background: theme('colors.twilight-indigo.900');
-    --button-primary-border: theme('colors.twilight-indigo.700');
-    --button-primary-hover-border: theme('colors.twilight-indigo.600');
-    --button-primary-hover-background: theme('colors.twilight-indigo.800');
+    --button-primary-foreground: 240 90% 98%;
+    --button-primary-background: 240 30% 25%;
+    --button-primary-border: 240 35% 40%;
+    --button-primary-hover-background: 240 35% 30%;
+    --button-primary-hover-border: 240 40% 50%;
 
-    --button-secondary-foreground: theme('colors.misty-slate.900');
-    --button-secondary-background: theme('colors.misty-slate.100');
-    --button-secondary-border: theme('colors.misty-slate.200');
-    --button-secondary-hover-border: theme('colors.misty-slate.300');
-    --button-secondary-hover-background: theme('colors.misty-slate.200');
+    --button-secondary-foreground: 240 15% 20%;
+    --button-secondary-background: 240 15% 94%;
+    --button-secondary-border: 240 15% 90%;
+    --button-secondary-hover-background: 240 15% 90%;
+    --button-secondary-hover-border: 240 15% 80%;
 
-    --button-accent-background: theme('colors.twilight-indigo.100');
-    --button-accent-foreground: theme('colors.twilight-indigo.500');
+    --link-foreground: 240 40% 50%;
+    --link-decoration: 240 80% 90%;
+    --link-hover-foreground: 240 35% 40%;
+    --link-hover-decoration: 240 70% 80%;
 
-    --footer-foreground: theme('colors.twilight-indigo.600');
-    --footer-background: theme('colors.twilight-indigo.100');
-
-    --link-foreground: theme('colors.twilight-indigo.600');
-    --link-decoration: theme('colors.twilight-indigo.200');
-
-    --border: theme('colors.misty-slate.200');
+    --border: 240 15% 90%;
 
     --ring: theme('colors.twilight-indigo.200');
-  }
-
-  .dark {
-    --foreground: theme('colors.misty-slate.400');
-    --background: theme('colors.misty-slate.950');
-
-    --muted-foreground: theme('colors.misty-slate.600');
-    --muted-background: theme('colors.misty-slate.900');
-
-    --button-accent-background: theme('colors.twilight-indigo.900');
-    --button-accent-foreground: theme('colors.twilight-indigo.300');
-
-    --button-primary-foreground: theme('colors.misty-slate.900');
-    --button-primary-background: theme('colors.misty-slate.300');
-    --button-primary-border: theme('colors.misty-slate.400');
-    --button-primary-hover-border: theme('colors.misty-slate.300');
-    --button-primary-hover-background: theme('colors.misty-slate.800');
-
-    --button-secondary-foreground: theme('colors.misty-slate.200');
-    --button-secondary-background: theme('colors.misty-slate.800');
-    --button-secondary-border: theme('colors.misty-slate.800');
-    --button-secondary-hover-border: theme('colors.misty-slate.700');
-    --button-secondary-hover-background: theme('colors.misty-slate.800');
-
-    --footer-foreground: theme('colors.twilight-indigo.950');
-    --footer-background: theme('colors.twilight-indigo.950');
-
-    --link-foreground: theme('colors.twilight-indigo.500');
-    --link-decoration: theme('colors.twilight-indigo.800');
-
-    --border: theme('colors.misty-slate.900');
-
-    --ring: theme('colors.twilight-indigo.700');
   }
 }
 

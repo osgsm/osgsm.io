@@ -25,8 +25,8 @@ const RootLayout = ({ children }) => {
       <body className="bg-background text-foreground">
         <div>
           <Header />
-          <main className="px-4 md:px-6">
-            <div className="mx-auto max-w-2xl">{children}</div>
+          <main>
+            <div>{children}</div>
           </main>
         </div>
       </body>

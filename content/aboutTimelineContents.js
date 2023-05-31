@@ -6,7 +6,7 @@ const timelineContents = [
         heading: 'Next.js を使ってこのサイトを制作',
         date: '2022-12',
         description:
-          'JavaScript の学習を進める中で、Next.js や React などのモダンなフロントエンド開発に興味を持つ。ちょうどブログを始めたかったので、 Next.js のチュートリアルに沿って本サイトを制作。現在も機能やコンテンツを追加中で、その過程はブログで公開中。',
+          'JavaScript の学習を進める中で、Next.js や React などのモダンなフロントエンド開発に興味を持つ。ちょうどブログを始めたかったので、 Next.js のチュートリアルに沿って本サイトを制作。現在も機能やコンテンツを追加中で、その過程は<a href="/posts">ブログ</a>で公開中。',
       },
       {
         heading: 'JavaScript を集中的に学習する',

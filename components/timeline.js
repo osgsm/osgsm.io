@@ -13,7 +13,7 @@ const TimelineHeader = ({ headerContent }) => {
   return (
     <header
       className="top-4 mr-3 h-fit min-w-[6ch] basis-16
-        text-xl text-gray-700 sm:sticky sm:pb-10"
+        text-xl text-muted-foreground font-semibold sm:sticky sm:pb-10"
     >
       {headerContent}
     </header>
@@ -42,14 +42,11 @@ const TimelineItem = ({ children }) => {
 const TimelineSeparator = ({ connector = true }) => {
   return (
     <div className="flex flex-col items-center pt-2 sm:mt-[1px]">
-      <span
-        className="inline-block h-[7px] w-[7px] rounded-full
-        bg-blue-400 content-['']"
-      ></span>
+      <span className="inline-block h-[7px] w-[7px] rounded-full bg-twilight-indigo-500 content-['']"></span>
       {connector && (
         <span
           className="mt-2 inline-block w-[1px] grow
-            bg-blue-400 sm:mt-[9px]"
+            bg-twilight-indigo-500 sm:mt-[9px]"
         ></span>
       )}
     </div>
@@ -58,11 +55,11 @@ const TimelineSeparator = ({ connector = true }) => {
 
 const TimelineContent = ({ item }) => {
   return (
-    <div className="ml-4 sm:ml-6">
-      <div className="mt-[1px] text-sm text-gray-400">
+    <div className="ml-4 text-foreground sm:ml-6">
+      <div className="mt-[1px] text-sm text-muted-foreground">
         <Date dateString={item.date} hideDays />
       </div>
-      <h2 className="mb-2 mt-1 text-lg font-normal sm:text-xl">
+      <h2 className="mb-2 mt-1 text-foreground text-base font-semibold sm:text-lg">
         {item.heading}
       </h2>
       <p

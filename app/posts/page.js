@@ -1,35 +1,14 @@
 import Link from 'next/link';
 import { clsx } from 'clsx';
 
-import Date from '../components/date';
-import { getSortedPostsData } from '../lib/posts';
+import Date from '../../components/date';
+import { getSortedPostsData } from '../../lib/posts';
 
 const Home = () => {
   const allPostsData = getSortedPostsData();
   return (
     <>
-      <section className="py-32 px-4 md:px-6">
-        <div className="mx-auto max-w-2xl">
-          <div className="font-bold text-md md:text-lg">
-            <p className="mb-2">
-              おおしましょうごと申します。
-              <br />
-              ウェブサイトを作ってます。
-            </p>
-            <p>モットーは使い心地のよいサイト制作。</p>
-          </div>
-          <Link
-            href="/about"
-            className={clsx(
-              'mt-4 inline-block text-sm text-muted-foreground',
-              'hover:text-misty-slate-600'
-            )}
-          >
-            Read more →
-          </Link>
-        </div>
-      </section>
-      <section className="bg-misty-slate-100/40 px-4 py-8 pb-20 md:px-6">
+      <section className="bg-misty-slate-100/40 px-4 py-8 pb-24 md:px-6">
         <div className="mx-auto max-w-2xl">
           <h2
             className={clsx(
@@ -66,6 +45,17 @@ const Home = () => {
               </Link>
             ))}
           </ul>
+          <div className="mt-10">
+            <Link
+              className={clsx(
+                'flex items-center w-fit rounded-md border border-button-secondary-border bg-button-secondary-background h-11 py-2 px-4 text-sm text-gray-700',
+                'hover:border-button-secondary-hover-border hover:bg-button-secondary-hover-background hover:text-button-secondary-foreground'
+              )}
+              href="/"
+            >
+              ← Back to Home
+            </Link>
+          </div>
         </div>
       </section>
     </>
