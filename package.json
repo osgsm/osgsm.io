@@ -11,30 +11,31 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@next/font": "13.1.1",
-    "date-fns": "^2.29.3",
-    "gray-matter": "^4.0.3",
     "next": "^13.4.2",
     "next-sitemap": "^3.1.47",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@heroicons/react": "^2.0.18",
+    "@radix-ui/react-popover": "^1.0.6",
+    "@tailwindcss/typography": "^0.5.8",
+    "autoprefixer": "^10.4.13",
+    "clsx": "^1.2.1",
+    "date-fns": "^2.29.3",
+    "eslint": "^8.40.0",
+    "eslint-config-next": "^13.4.2",
+    "eslint-config-prettier": "^8.6.0",
+    "gray-matter": "^4.0.3",
+    "postcss": "^8.4.20",
+    "prettier": "^2.8.1",
+    "prettier-plugin-tailwindcss": "^0.2.1",
     "react-icons": "^4.7.1",
     "rehype-pretty-code": "^0.8.1",
     "rehype-stringify": "^9.0.3",
     "remark": "^14.0.2",
     "remark-rehype": "^10.1.0",
     "shiki": "^0.12.1",
-    "vercel": "^28.12.4"
-  },
-  "devDependencies": {
-    "@tailwindcss/typography": "^0.5.8",
-    "autoprefixer": "^10.4.13",
-    "eslint": "^8.40.0",
-    "eslint-config-next": "^13.4.2",
-    "eslint-config-prettier": "^8.6.0",
-    "postcss": "^8.4.20",
-    "prettier": "^2.8.1",
-    "prettier-plugin-tailwindcss": "^0.2.1",
     "tailwindcss": "^3.2.4"
   }
 }
