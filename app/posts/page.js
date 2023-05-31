@@ -12,7 +12,7 @@ const Home = () => {
         <div className="mx-auto max-w-2xl">
           <h2
             className={clsx(
-              'text-2xl text-misty-slate-500 font-semibold',
+              'text-3xl text-misty-slate-500 font-semibold',
               'md:text-3xl'
             )}
           >
@@ -32,8 +32,8 @@ const Home = () => {
                 <li className={clsx('p-4 bg-background rounded-md', 'md:p-6')}>
                   <div
                     className={clsx(
-                      'text-md font-semibold text-foreground',
-                      'md:text-lg'
+                      'text-lg font-semibold text-foreground',
+                      'md:text-xl'
                     )}
                   >
                     {title}

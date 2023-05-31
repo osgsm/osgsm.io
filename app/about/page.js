@@ -25,7 +25,7 @@ const About = () => {
     <div>
       <section className="prose py-20 mx-auto max-w-2xl px-4 md:px-6">
         <h1 className="text-3xl text-muted-foreground">About</h1>
-        <div className="font-bold text-md md:text-lg">
+        <div className="font-bold text-lg md:text-xl">
           <p className="mb-2">
             おおしましょうごと申します。
             <br />
@@ -62,7 +62,7 @@ const About = () => {
       </section>
       <section className="pb-24 bg-misty-slate-100/30 border-t py-10 px-4 md:px-6">
         <div className="mx-auto max-w-2xl">
-          <p className="leading-relaxed">
+          <p className="leading-relaxed text-[15px]">
             以下は自身の半生で、思考や行動の変遷を辿っています。輝かしい経歴はないですが、興味のある方は読んでみてください。
           </p>
           <div className="mt-8 pt-4 border-t">

@@ -59,7 +59,7 @@ const TimelineContent = ({ item }) => {
       <div className="mt-[1px] text-sm text-muted-foreground">
         <Date dateString={item.date} hideDays />
       </div>
-      <h2 className="mb-2 mt-1 text-foreground text-base font-semibold sm:text-lg">
+      <h2 className="mb-2 mt-1 text-foreground text-lg font-semibold">
         {item.heading}
       </h2>
       <p
