@@ -3,3 +3,79 @@
 @tailwind utilities;
 
 @import './syntax-highlighting.css';
+
+@layer base {
+  :root {
+    --foreground: theme('colors.misty-slate.900');
+    --background: theme('colors.misty-slate.50');
+
+    --muted-foreground: theme('colors.misty-slate.500');
+    --muted-background: theme('colors.misty-slate.100');
+
+    --button-primary-foreground: theme('colors.twilight-indigo.50');
+    --button-primary-background: theme('colors.twilight-indigo.900');
+    --button-primary-border: theme('colors.twilight-indigo.700');
+    --button-primary-hover-border: theme('colors.twilight-indigo.600');
+    --button-primary-hover-background: theme('colors.twilight-indigo.800');
+
+    --button-secondary-foreground: theme('colors.misty-slate.900');
+    --button-secondary-background: theme('colors.misty-slate.100');
+    --button-secondary-border: theme('colors.misty-slate.200');
+    --button-secondary-hover-border: theme('colors.misty-slate.300');
+    --button-secondary-hover-background: theme('colors.misty-slate.200');
+
+    --button-accent-background: theme('colors.twilight-indigo.100');
+    --button-accent-foreground: theme('colors.twilight-indigo.500');
+
+    --footer-foreground: theme('colors.twilight-indigo.600');
+    --footer-background: theme('colors.twilight-indigo.100');
+
+    --link-foreground: theme('colors.twilight-indigo.600');
+    --link-decoration: theme('colors.twilight-indigo.200');
+
+    --border: theme('colors.misty-slate.200');
+
+    --ring: theme('colors.twilight-indigo.200');
+  }
+
+  .dark {
+    --foreground: theme('colors.misty-slate.400');
+    --background: theme('colors.misty-slate.950');
+
+    --muted-foreground: theme('colors.misty-slate.600');
+    --muted-background: theme('colors.misty-slate.900');
+
+    --button-accent-background: theme('colors.twilight-indigo.900');
+    --button-accent-foreground: theme('colors.twilight-indigo.300');
+
+    --button-primary-foreground: theme('colors.misty-slate.900');
+    --button-primary-background: theme('colors.misty-slate.300');
+    --button-primary-border: theme('colors.misty-slate.400');
+    --button-primary-hover-border: theme('colors.misty-slate.300');
+    --button-primary-hover-background: theme('colors.misty-slate.800');
+
+    --button-secondary-foreground: theme('colors.misty-slate.200');
+    --button-secondary-background: theme('colors.misty-slate.800');
+    --button-secondary-border: theme('colors.misty-slate.800');
+    --button-secondary-hover-border: theme('colors.misty-slate.700');
+    --button-secondary-hover-background: theme('colors.misty-slate.800');
+
+    --footer-foreground: theme('colors.twilight-indigo.950');
+    --footer-background: theme('colors.twilight-indigo.950');
+
+    --link-foreground: theme('colors.twilight-indigo.500');
+    --link-decoration: theme('colors.twilight-indigo.800');
+
+    --border: theme('colors.misty-slate.900');
+
+    --ring: theme('colors.twilight-indigo.700');
+  }
+}
+
+* {
+  @apply border-border;
+}
+
+*:focus-visible {
+  @apply outline-none outline-offset-1 ring-2 ring-ring;
+}
