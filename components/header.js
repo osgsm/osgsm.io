@@ -4,38 +4,40 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+import MenuPopover from './menu-popover';
+
+const Logo = () => (
+  <Image
+    priority
+    src="/assets/profile.png"
+    className="rounded-full border-2"
+    height={40}
+    width={40}
+    alt=""
+  />
+);
+
 const Header = () => {
   const pathname = usePathname();
   const isHome = pathname === '/';
   return (
-    <header className="flex flex-col items-center">
-      {isHome ? (
-        <>
-          <Image
-            priority
-            src="/assets/profile.png"
-            className="rounded-full"
-            height={108}
-            width={108}
-            alt=""
-          />
-          <h1 className="mt-2 text-xl">osgsm</h1>
-        </>
-      ) : (
-        <>
-          <Link className="flex flex-col items-center" href="/">
-            <Image
-              priority
-              src="/assets/profile.png"
-              className="rounded-full"
-              height={80}
-              width={80}
-              alt=""
-            />
-            <h2 className="mt-2 text-lg">osgsm</h2>
-          </Link>
-        </>
-      )}
+    <header className="px-4 border-b md:px-6 sticky top-0 bg-background z-10">
+      <div className="mx-auto flex max-w-2xl flex-row items-center justify-between py-2 ">
+        {isHome ? (
+          <div>
+            <Logo />
+            <h1 className="sr-only">osgsm</h1>
+          </div>
+        ) : (
+          <div>
+            <Link className="flex flex-col items-center" href="/">
+              <Logo />
+              <div className="sr-only">osgsm</div>
+            </Link>
+          </div>
+        )}
+        <MenuPopover />
+      </div>
     </header>
   );
 };
