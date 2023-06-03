@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { clsx } from 'clsx';
 import { AiOutlineTwitter } from 'react-icons/ai';
-import { HiArrowUpRight } from 'react-icons/hi2';
 
 import Timeline from '../../components/timeline';
 import timelineContents from '../../content/aboutTimelineContents';
@@ -25,7 +24,7 @@ const About = () => {
     <div>
       <section className="prose py-20 mx-auto max-w-2xl px-4 md:px-6">
         <h1 className="text-3xl text-muted-foreground">About</h1>
-        <div className="font-bold text-lg md:text-xl">
+        <div className="font-bold text-base md:text-lg">
           <p className="mb-2">
             おおしましょうごと申します。
             <br />
