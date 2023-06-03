@@ -1,5 +1,5 @@
 div[data-rehype-pretty-code-fragment] {
-  @apply my-5 overflow-hidden rounded-lg border border-gray-600 bg-gray-900;
+  @apply my-5 overflow-hidden rounded-lg border border-misty-slate-800 bg-misty-slate-950;
 }
 
 div[data-rehype-pretty-code-fragment] code {
@@ -7,7 +7,7 @@ div[data-rehype-pretty-code-fragment] code {
 }
 
 div[data-rehype-pretty-code-fragment] > pre {
-  @apply m-0 rounded-lg bg-gray-900 px-0 [&::-webkit-scrollbar-track]:bg-gray-400;
+  @apply m-0 rounded-lg bg-misty-slate-950 px-0 [&::-webkit-scrollbar-track]:bg-misty-slate-400;
 }
 
 div[data-rehype-pretty-code-fragment] .line {
@@ -15,19 +15,19 @@ div[data-rehype-pretty-code-fragment] .line {
 }
 
 div[data-rehype-pretty-code-fragment] .line.highlighted {
-  @apply border-teal-400 bg-teal-700/30;
+  @apply border-twilight-indigo-500 bg-twilight-indigo-500/20;
 }
 
 div[data-rehype-pretty-code-fragment]
   > div[data-rehype-pretty-code-title]
   + pre {
-  @apply -mt-[1px] rounded-t-none border-t border-gray-600;
+  @apply -mt-[1px] rounded-t-none border-t border-misty-slate-800;
 }
 
 div[data-rehype-pretty-code-title] {
   @apply relative z-10 mx-2 mt-2 block w-fit
-    rounded-t border-x border-t border-gray-600
-    bg-inherit px-2 py-1.5 text-sm leading-none text-gray-400;
+    rounded-t border-x border-t border-misty-slate-800
+    bg-inherit px-2 py-1.5 text-sm leading-none text-misty-slate-500;
 }
 
 code[data-line-numbers] {
@@ -35,7 +35,7 @@ code[data-line-numbers] {
 }
 
 code[data-line-numbers] > .line::before {
-  @apply mr-3 inline-block w-4 text-right text-gray-600
+  @apply mr-3 inline-block w-4 text-right text-misty-slate-700
     content-[counter(lineNumber)]
     [counter-increment:lineNumber];
 }
