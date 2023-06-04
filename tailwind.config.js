@@ -7,6 +7,34 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        'fade-in': 'fade-in .2s ease-out',
+        'fade-out': 'fade-out .1s ease-out',
+      },
+      keyframes: {
+        'fade-in': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(8px)',
+            visibility: 'hidden',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)',
+            visibility: 'visible',
+          },
+        },
+        'fade-out': {
+          '0%': {
+            opacity: '1',
+            visibility: 'visible',
+          },
+          '100%': {
+            opacity: '0',
+            visibility: 'hidden',
+          },
+        },
+      },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',

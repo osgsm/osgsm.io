@@ -34,7 +34,12 @@ const MenuPopover = () => {
       >
         <Bars2Icon className="h-6 w-6" />
       </Popover.Trigger>
-      <Popover.Content align="end" asChild sideOffset={8}>
+      <Popover.Content
+        align="end"
+        asChild
+        sideOffset={8}
+        className="data-[state='open']:animate-fade-in data-[state='closed']:animate-fade-out"
+      >
         <div
           className={clsx(
             'flex flex-col rounded-lg border border-border bg-background p-2.5 min-w-[104px]',
