@@ -29,7 +29,7 @@ const Home = () => {
           </Link>
         </div>
       </section>
-      <section className="bg-misty-slate-100/40 px-4 py-8 pb-20 md:px-6">
+      <section className="bg-misty-slate-100/40 px-4 pt-10 pb-20 md:px-6">
         <div className="mx-auto max-w-2xl">
           <h2
             className={clsx(
