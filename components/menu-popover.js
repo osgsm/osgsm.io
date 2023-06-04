@@ -28,8 +28,8 @@ const MenuPopover = () => {
       <Popover.Trigger
         className={clsx(
           'flex h-8 w-8 rounded-md items-center justify-center',
-          'hover:bg-twilight-indigo-100 hover:text-twilight-indigo-500',
-          'focus-visible:bg-twilight-indigo-100 focus-visible:text-twilight-500 focus-visible:outline-none focus-visible:ring-offset-1'
+          'hover:bg-twilight-indigo-100/75 hover:text-twilight-indigo-500',
+          'focus-visible:bg-twilight-indigo-100/75 focus-visible:text-twilight-500 focus-visible:outline-none focus-visible:ring-offset-1'
         )}
       >
         <Bars2Icon className="h-6 w-6" />
@@ -49,8 +49,8 @@ const MenuPopover = () => {
                   href={path}
                   className={clsx(
                     'rounded-[4px] py-0.5 px-1.5 flex items-center justify-between',
-                    'hover:bg-twilight-indigo-100 hover:text-twilight-indigo-500',
-                    'focus-visible:bg-twilight-indigo-100 focus-visible:text-twilight-500 focus-visible:outline-none focus-visible:ring-offset-1'
+                    'hover:bg-twilight-indigo-100/75 hover:text-twilight-indigo-500',
+                    'focus-visible:bg-twilight-indigo-100/75 focus-visible:text-twilight-500 focus-visible:outline-none focus-visible:ring-offset-1'
                   )}
                 >
                   {name}

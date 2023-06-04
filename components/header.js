@@ -21,7 +21,7 @@ const Header = () => {
   const pathname = usePathname();
   const isHome = pathname === '/';
   return (
-    <header className="px-4 border-b md:px-6 sticky top-0 bg-background/80 backdrop-blur-md z-20">
+    <header className="px-4 border-b md:px-6 sticky top-0 bg-background z-20">
       <div className="mx-auto flex max-w-2xl flex-row items-center justify-between py-2 ">
         {isHome ? (
           <div className="-ml-1">

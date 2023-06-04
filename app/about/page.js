@@ -22,41 +22,51 @@ export const metadata = {
 const About = () => {
   return (
     <div>
-      <section className="prose py-20 mx-auto max-w-2xl px-4 md:px-6">
-        <h1 className="text-3xl text-muted-foreground">About</h1>
-        <div className="font-bold text-base md:text-lg">
-          <p className="mb-2">
-            おおしましょうごと申します。
-            <br />
-            ウェブサイトを作ってます。
-          </p>
-          <p>モットーは使い心地のよいサイト制作。</p>
-          <p>デザインも開発もやります。</p>
-          <p>
-            <span className="inline-block">
-              最近は、React や Next.js などの
-            </span>
-            <span className="inline-block">モダンな技術に興味あり。</span>
-          </p>
-          <p>お問い合わせはツイッターからどうぞ。</p>
-        </div>
-        <div className="mt-8 flex gap-4">
-          <a
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://twitter.com/osgsm_"
+      <section className="py-20 px-4 md:px-6">
+        <div className="mx-auto max-w-2xl">
+          <h1 className="text-3xl text-muted-foreground font-semibold">
+            About
+          </h1>
+          <div
             className={clsx(
-              'flex items-center justify-between rounded-md border h-11 border-button-primary-border bg-button-primary-background py-2 px-4 text-sm text-button-primary-foreground no-underline',
-              'hover:text-button-primary-foreground hover:bg-button-primary-hover-background hover:border-button-primary-hover-border'
+              'mt-8 font-semibold text-base',
+              '[&>p]:mt-5',
+              'md:text-lg'
             )}
           >
-            <div className="flex items-center">
-              <span className="text-lg">
-                <AiOutlineTwitter />
+            <p>
+              おおしましょうごと申します。
+              <br />
+              ウェブサイトを作ってます。
+            </p>
+            <p>モットーは使い心地のよいサイト制作。</p>
+            <p>デザインも開発もやります。</p>
+            <p>
+              <span className="inline-block">
+                最近は、React や Next.js などの
               </span>
-              <span className="ml-1">@osgsm_</span>
-            </div>
-          </a>
+              <span className="inline-block">モダンな技術に興味あり。</span>
+            </p>
+            <p>お問い合わせはツイッターからどうぞ。</p>
+          </div>
+          <div className="mt-8 flex gap-4">
+            <a
+              rel="noopener noreferrer"
+              target="_blank"
+              href="https://twitter.com/osgsm_"
+              className={clsx(
+                'flex items-center justify-between rounded-md border h-11 border-button-primary-border bg-button-primary-background py-2 px-4 text-sm text-button-primary-foreground no-underline',
+                'hover:text-button-primary-foreground hover:bg-button-primary-hover-background hover:border-button-primary-hover-border'
+              )}
+            >
+              <div className="flex items-center">
+                <span className="text-lg">
+                  <AiOutlineTwitter />
+                </span>
+                <span className="ml-1">@osgsm_</span>
+              </div>
+            </a>
+          </div>
         </div>
       </section>
       <section className="pb-24 bg-misty-slate-100/30 border-t py-10 px-4 md:px-6">

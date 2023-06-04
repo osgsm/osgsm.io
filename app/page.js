@@ -33,7 +33,7 @@ const Home = () => {
         <div className="mx-auto max-w-2xl">
           <h2
             className={clsx(
-              'text-3xl text-misty-slate-500 font-semibold',
+              'mb-6 text-2xl text-misty-slate-500 font-semibold',
               'md:text-3xl'
             )}
           >
@@ -45,7 +45,7 @@ const Home = () => {
                 key={id}
                 className={clsx(
                   'block rounded-lg mt-4 p-1 border',
-                  'md:mt-6',
+                  'md:mt-5',
                   'hover:border-twilight-indigo-200 hover:bg-twilight-indigo-100/40'
                 )}
                 href={`/posts/${id}`}
@@ -53,7 +53,7 @@ const Home = () => {
                 <li className={clsx('p-4 bg-background rounded-md', 'md:p-6')}>
                   <div
                     className={clsx(
-                      'text-lg font-semibold text-foreground',
+                      'text-lg font-semibold text-foreground leading-normal',
                       'md:text-xl'
                     )}
                   >

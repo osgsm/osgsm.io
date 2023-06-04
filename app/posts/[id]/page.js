@@ -33,7 +33,7 @@ const Post = async ({ params }) => {
   const postData = await getPostData(params.id);
   return (
     <div className="mb-24 px-4 md:px-6">
-      <div className="mx-auto max-w-2xl py-8 text-muted-foreground text-sm">
+      <div className="mx-auto max-w-2xl pt-8 pb-6 text-muted-foreground text-sm">
         <Link
           href="/posts"
           className="p-1 -mx-1 rounded-md hover:text-misty-slate-600"
@@ -53,7 +53,7 @@ const Post = async ({ params }) => {
         <h1 className="mb-3 text-[28px] font-semibold leading-snug">
           {postData.title}
         </h1>
-        <div className="text-base text-muted-foreground">
+        <div className="text-sm text-muted-foreground">
           <Date dateString={postData.date} />
         </div>
         <div
