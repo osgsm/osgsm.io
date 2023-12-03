@@ -41,7 +41,7 @@ const ThemePopover = () => {
         align="end"
         asChild
         sideOffset={8}
-        className="data-[state='closed']:animate-fade-out data-[state='open']:animate-fade-in"
+        className="data-[state='open']:animate-fade-in"
       >
         <div
           className={twJoin(
