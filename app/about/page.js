@@ -15,7 +15,7 @@ export const metadata = {
   },
   twitter: {
     title: "About — osgsm's personal website",
-    card: 'summary_large_image',
+    card: 'summary',
   },
 };
 

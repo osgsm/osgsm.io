@@ -18,7 +18,7 @@ export const generateMetadata = async ({ params }) => {
     },
     twitter: {
       title,
-      card: 'summary_large_image',
+      card: 'summary',
     },
   };
 };
