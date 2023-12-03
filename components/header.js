@@ -11,7 +11,7 @@ const Logo = () => (
   <Image
     priority
     src="/assets/profile.svg"
-    className="rounded-full"
+    className="rounded-full border"
     height={40}
     width={40}
     alt=""
