@@ -22,16 +22,16 @@ export const metadata = {
 const About = () => {
   return (
     <div>
-      <section className="py-20 px-4 md:px-6">
+      <section className="px-4 py-20 md:px-6">
         <div className="mx-auto max-w-2xl">
-          <h1 className="text-3xl text-muted-foreground font-semibold">
+          <h1 className="text-3xl font-semibold text-muted-foreground">
             About
           </h1>
           <div
             className={clsx(
-              'mt-8 font-semibold text-base',
+              'mt-8 text-base font-semibold',
               '[&>p]:mt-5',
-              'md:text-lg'
+              'md:text-lg',
             )}
           >
             <p>
@@ -55,8 +55,8 @@ const About = () => {
               target="_blank"
               href="https://twitter.com/osgsm_"
               className={clsx(
-                'flex items-center justify-between rounded-md border h-11 border-button-primary-border bg-button-primary-background py-2 px-4 text-sm text-button-primary-foreground no-underline',
-                'hover:text-button-primary-foreground hover:bg-button-primary-hover-background hover:border-button-primary-hover-border'
+                'flex h-11 items-center justify-between rounded-md border border-button-primary-border bg-button-primary-background px-4 py-2 text-sm text-button-primary-foreground no-underline',
+                'hover:border-button-primary-hover-border hover:bg-button-primary-hover-background hover:text-button-primary-foreground',
               )}
             >
               <div className="flex items-center">
@@ -69,12 +69,11 @@ const About = () => {
           </div>
         </div>
       </section>
-      <section className="pb-24 bg-misty-slate-100/30 border-t py-10 px-4 md:px-6">
-        <div className="mx-auto max-w-2xl">
-          <p className="leading-relaxed text-[15px]">
-            以下は自身の半生で、思考や行動の変遷を辿っています。輝かしい経歴はないですが、興味のある方は読んでみてください。
-          </p>
-          <div className="mt-8 pt-4 border-t">
+      <section className="border-t bg-muted-background/5 px-4 py-10 pb-24 md:px-6">
+        <div className="mx-auto max-w-2xl text-[0.9375rem] leading-relaxed">
+          <p>以下は自身の半生で、思考や行動の変遷を辿っています。</p>
+          <p>輝かしい経歴はないですが、興味のある方は読んでみてください。</p>
+          <div className="mt-8 border-t pt-4">
             {timelineContents.map((content) => {
               return (
                 <Timeline
@@ -85,11 +84,11 @@ const About = () => {
               );
             })}
           </div>
-          <div className="mx-auto max-w-2xl mt-10">
+          <div className="mx-auto mt-10 max-w-2xl">
             <Link
               className={clsx(
-                'flex items-center w-fit rounded-md border border-button-secondary-border bg-button-secondary-background h-11 py-2 px-4 text-sm text-gray-700',
-                'hover:border-button-secondary-hover-border hover:bg-button-secondary-hover-background hover:text-button-secondary-foreground'
+                'flex h-11 w-fit items-center rounded-md border border-button-secondary-border bg-button-secondary-background px-4 py-2 text-sm text-button-secondary-foreground',
+                'hover:border-button-secondary-hover-border hover:bg-button-secondary-hover-background hover:text-button-secondary-foreground',
               )}
               href="/"
             >

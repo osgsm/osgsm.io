@@ -1,3 +1,4 @@
+import { twJoin } from 'tailwind-merge';
 import Date from '../components/date';
 
 const Timeline = ({ content }) => {
@@ -13,7 +14,7 @@ const TimelineHeader = ({ headerContent }) => {
   return (
     <header
       className="top-4 mr-3 h-fit min-w-[6ch] basis-16
-        text-xl text-muted-foreground font-semibold sm:sticky sm:pb-10"
+        text-xl font-semibold text-muted-foreground sm:sticky sm:top-[4.5rem] sm:pb-10"
     >
       {headerContent}
     </header>
@@ -42,11 +43,11 @@ const TimelineItem = ({ children }) => {
 const TimelineSeparator = ({ connector = true }) => {
   return (
     <div className="flex flex-col items-center pt-2 sm:mt-[1px]">
-      <span className="inline-block h-[7px] w-[7px] rounded-full bg-twilight-indigo-500 content-['']"></span>
+      <span className="inline-block h-[7px] w-[7px] rounded-full bg-twilight-indigo-500 content-[''] dark:bg-twilight-indigo-600"></span>
       {connector && (
         <span
           className="mt-2 inline-block w-[1px] grow
-            bg-twilight-indigo-500 sm:mt-[9px]"
+            bg-twilight-indigo-500 dark:bg-twilight-indigo-600 sm:mt-[9px]"
         ></span>
       )}
     </div>
@@ -59,12 +60,15 @@ const TimelineContent = ({ item }) => {
       <div className="mt-[1px] text-sm text-muted-foreground">
         <Date dateString={item.date} hideDays />
       </div>
-      <h2 className="mb-2 mt-1 text-foreground text-lg font-semibold">
+      <h2 className="mb-2 mt-1 text-lg font-semibold text-foreground">
         {item.heading}
       </h2>
       <p
         dangerouslySetInnerHTML={{ __html: item.description }}
-        className="mb-0 pb-10 text-[15px] leading-7"
+        className={twJoin(
+          'mb-0 pb-10 text-[15px] leading-7',
+          '[&_a]:text-link-foreground [&_a]:decoration-link-decoration hover:[&_a]:text-link-hover-foreground hover:[&_a]:decoration-link-hover-decoration',
+        )}
       />
     </div>
   );

@@ -1,4 +1,5 @@
 import Header from '../components/header';
+import { ThemeProvider } from '../components/theme-provider';
 
 import '../styles/global.css';
 
@@ -22,13 +23,13 @@ export const metadata = {
 const RootLayout = ({ children }) => {
   return (
     <html lang="ja">
-      <body className="bg-background text-foreground">
-        <div>
+      <body className="bg-background text-foreground selection:bg-twilight-indigo-100 dark:selection:bg-twilight-indigo-900">
+        <ThemeProvider>
           <Header />
           <main>
             <div>{children}</div>
           </main>
-        </div>
+        </ThemeProvider>
       </body>
     </html>
   );

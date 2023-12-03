@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import MenuPopover from './menu-popover';
+import ThemePopover from './theme-popover';
 
 const Logo = () => (
   <Image
@@ -21,7 +22,7 @@ const Header = () => {
   const pathname = usePathname();
   const isHome = pathname === '/';
   return (
-    <header className="px-4 border-b md:px-6 sticky top-0 bg-background z-20">
+    <header className="sticky top-0 z-20 border-b bg-background px-4 md:px-6">
       <div className="mx-auto flex max-w-2xl flex-row items-center justify-between py-2 ">
         {isHome ? (
           <div className="-ml-1">
@@ -36,7 +37,10 @@ const Header = () => {
             </Link>
           </div>
         )}
-        <MenuPopover />
+        <div className="flex gap-3">
+          <ThemePopover />
+          <MenuPopover />
+        </div>
       </div>
     </header>
   );

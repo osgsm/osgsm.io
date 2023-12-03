@@ -1,5 +1,5 @@
 div[data-rehype-pretty-code-fragment] {
-  @apply my-5 overflow-hidden rounded-lg border border-misty-slate-900 bg-misty-slate-950;
+  @apply my-5 overflow-hidden rounded-lg border border-misty-slate-800 dark:border-misty-slate-900 bg-misty-slate-900 dark:bg-misty-slate-950;
 }
 
 div[data-rehype-pretty-code-fragment] code {
@@ -7,11 +7,11 @@ div[data-rehype-pretty-code-fragment] code {
 }
 
 div[data-rehype-pretty-code-fragment] > pre {
-  @apply m-0 rounded-lg bg-misty-slate-950 px-0 [&::-webkit-scrollbar-track]:bg-misty-slate-400;
+  @apply m-0 rounded-lg bg-misty-slate-900 dark:bg-misty-slate-950 px-0 [&::-webkit-scrollbar-track]:bg-misty-slate-400;
 }
 
 div[data-rehype-pretty-code-fragment] > pre > code {
-  @apply bg-misty-slate-950;
+  @apply bg-misty-slate-900 dark:bg-misty-slate-950;
 }
 
 div[data-rehype-pretty-code-fragment] [data-line] {
@@ -19,18 +19,18 @@ div[data-rehype-pretty-code-fragment] [data-line] {
 }
 
 div[data-rehype-pretty-code-fragment] [data-line].highlighted {
-  @apply border-twilight-indigo-600 bg-twilight-indigo-500/10;
+  @apply border-twilight-indigo-500 dark:border-twilight-indigo-600 bg-twilight-indigo-300/10 dark:bg-twilight-indigo-500/20;
 }
 
 div[data-rehype-pretty-code-fragment]
   > div[data-rehype-pretty-code-title]
   + pre {
-  @apply -mt-[1px] rounded-t-none border-t border-misty-slate-900;
+  @apply -mt-[1px] rounded-t-none border-t border-misty-slate-800 dark:border-misty-slate-900;
 }
 
 div[data-rehype-pretty-code-title] {
   @apply relative z-10 mx-2 mt-2 block w-fit
-    rounded-t border-x border-t border-misty-slate-900
+    rounded-t border-x border-t border-misty-slate-800 dark:border-misty-slate-900
     bg-inherit px-2 py-1.5 text-sm leading-none text-misty-slate-500;
 }
 
