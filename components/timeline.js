@@ -42,11 +42,11 @@ const TimelineItem = ({ children }) => {
 
 const TimelineSeparator = ({ connector = true }) => {
   return (
-    <div className="flex flex-col items-center pt-2 sm:mt-[1px]">
+    <div className="mt-0.5 flex flex-col items-center pt-2">
       <span className="inline-block h-[7px] w-[7px] rounded-full bg-twilight-indigo-500 content-[''] dark:bg-twilight-indigo-600"></span>
       {connector && (
         <span
-          className="mt-2 inline-block w-[1px] grow
+          className="mt-2 inline-block w-px grow
             bg-twilight-indigo-500 dark:bg-twilight-indigo-600 sm:mt-[9px]"
         ></span>
       )}
