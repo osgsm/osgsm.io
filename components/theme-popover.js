@@ -58,10 +58,11 @@ const ThemePopover = () => {
                     setTheme(name);
                     localStorage.selected_theme = name;
                   }}
-                  className={twJoin(
-                    'flex items-center justify-between gap-2 rounded-[4px] px-1.5 py-0.5',
+                  className={twMerge(
+                    'flex items-center text-muted-foreground justify-between gap-2 rounded-[4px] px-1.5 py-0.5',
                     'hover:bg-button-accent-background hover:text-button-accent-foreground',
                     'focus-visible:bg-button-accent-background focus-visible:text-button-accent-foreground',
+                    isActive && 'text-foreground',
                   )}
                 >
                   <span className="flex items-center gap-[0.375rem]">

@@ -51,10 +51,11 @@ const MenuPopover = () => {
               <Popover.Close key={path} asChild>
                 <Link
                   href={path}
-                  className={twJoin(
-                    'flex items-center justify-between rounded-[4px] px-1.5 py-0.5',
+                  className={twMerge(
+                    'flex items-center text-muted-foreground justify-between rounded-[4px] px-1.5 py-0.5',
                     'hover:bg-button-accent-background hover:text-button-accent-foreground',
                     'focus-visible:bg-button-accent-background focus-visible:text-button-accent-foreground',
+                    isActive && 'text-foreground',
                   )}
                 >
                   {name}
