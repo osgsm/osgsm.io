@@ -82,6 +82,6 @@
 
 @media (any-pointer: coarse) {
   *:focus-visible {
-    @apply !bg-transparent !ring-0;
+    @apply !ring-0;
   }
 }

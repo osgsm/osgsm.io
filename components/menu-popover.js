@@ -54,7 +54,7 @@ const MenuPopover = () => {
                   className={twMerge(
                     'flex items-center text-muted-foreground justify-between rounded-[4px] px-1.5 py-0.5',
                     'hover:bg-button-accent-background hover:text-button-accent-foreground',
-                    'focus-visible:bg-button-accent-background focus-visible:text-button-accent-foreground',
+                    '[@media(any-hover:hover)and(any-pointer:fine)]focus-visible:bg-button-accent-background [@media(any-hover:hover)and(any-pointer:fine)]focus-visible:text-button-accent-foreground',
                     isActive && 'text-foreground',
                   )}
                 >
