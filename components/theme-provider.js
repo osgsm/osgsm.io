@@ -2,7 +2,8 @@
 
 import { useEffect, useState, createContext } from 'react';
 
-export const ThemeContext = createContext();
+export const ThemeContext = createContext('system');
+export const SetThemeContext = createContext(() => undefined);
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState('system');
@@ -41,8 +42,10 @@ export const ThemeProvider = ({ children }) => {
           `,
         }}
       />
-      <ThemeContext.Provider value={{ theme, setTheme }}>
-        {children}
+      <ThemeContext.Provider value={theme}>
+        <SetThemeContext.Provider value={setTheme}>
+          {children}
+        </SetThemeContext.Provider>
       </ThemeContext.Provider>
     </>
   );

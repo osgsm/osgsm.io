@@ -6,7 +6,7 @@ import {
 } from '@heroicons/react/24/outline';
 import * as Popover from '@radix-ui/react-popover';
 import { twJoin, twMerge } from 'tailwind-merge';
-import { ThemeContext } from './theme-provider';
+import { ThemeContext, SetThemeContext } from './theme-provider';
 
 const themes = [
   {
@@ -24,7 +24,8 @@ const themes = [
 ];
 
 const ThemePopover = () => {
-  const { theme, setTheme } = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
+  const setTheme = useContext(SetThemeContext);
   return (
     <Popover.Root>
       <Popover.Trigger
