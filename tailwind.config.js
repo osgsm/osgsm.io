@@ -5,6 +5,7 @@ module.exports = {
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       animation: {
@@ -61,6 +62,15 @@ module.exports = {
               border: 'hsl(var(--button-secondary-hover-border))',
             },
           },
+          accent: {
+            background: 'hsl(var(--button-accent-background))',
+            foreground: 'hsl(var(--button-accent-foreground))',
+            border: 'hsl(var(--button-accent-border))',
+            hover: {
+              background: 'hsl(var(--button-accent-hover-background))',
+              border: 'hsl(var(--button-accent-hover-border))',
+            },
+          },
         },
         link: {
           foreground: 'hsl(var(--link-foreground))',
@@ -71,7 +81,7 @@ module.exports = {
           },
         },
         border: 'hsl(var(--border))',
-        ring: 'var(--ring)',
+        ring: 'hsl(var(--ring))',
         'misty-slate': {
           50: '#F9F9FB',
           100: '#EDEDF2',
@@ -104,24 +114,17 @@ module.exports = {
           css: {
             'h1, h2, h3, h4, h5, h6': {
               fontWeight: '600',
+              color: 'inherit',
             },
             p: {
               hangingPunctuation: 'allow-end',
             },
             a: {
-              color: theme('colors.link.foreground'),
               fontWeight: 'normal',
-              textDecorationColor: theme('colors.link.decoration'),
               textDecorationThickness: 2,
               textUnderlineOffset: 4,
-              '&:hover': {
-                color: theme('colors.link.hover.foreground'),
-                textDecorationColor: theme('colors.link.hover.decoration'),
-              },
             },
             code: {
-              backgroundColor: theme('colors.muted.background'),
-              borderColor: theme('colors.border'),
               borderWidth: 1,
               borderRadius: theme('borderRadius.DEFAULT'),
               paddingTop: theme('spacing.[0.5]'),
