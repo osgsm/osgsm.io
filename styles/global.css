@@ -79,3 +79,9 @@
     @apply outline-none ring-offset-2 ring-offset-background ring-2 ring-ring;
   }
 }
+
+@media (any-pointer: coarse) {
+  *:focus-visible {
+    @apply !bg-transparent !ring-0;
+  }
+}
