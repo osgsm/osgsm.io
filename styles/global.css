@@ -24,6 +24,9 @@
     --button-secondary-hover-background: 240 15% 90%;
     --button-secondary-hover-border: 240 15% 80%;
 
+    --button-accent-background: 240 85% 94%;
+    --button-accent-foreground: 240 50% 60%;
+
     --link-foreground: 240 40% 50%;
     --link-decoration: 240 80% 90%;
     --link-hover-foreground: 240 35% 40%;
@@ -31,14 +34,48 @@
 
     --border: 240 15% 90%;
 
-    --ring: theme('colors.twilight-indigo.200');
+    --ring: 240 80% 90%;
   }
-}
 
-* {
-  @apply border-border;
-}
+  .dark {
+    --foreground: 240 15% 70%;
+    --background: 240 15% 10%;
+    --muted-foreground: 240 15% 50%;
+    --muted-background: 240 15% 50%;
 
-*:focus-visible {
-  @apply outline-none outline-offset-1 ring-2 ring-ring;
+    --button-primary-foreground: 240 15% 20%;
+    --button-primary-background: 240 15% 80%;
+    --button-primary-border: 240 15% 70%;
+    --button-primary-hover-border: 240 15% 80%;
+    --button-primary-hover-background: 240 15% 90%;
+
+    --button-secondary-foreground: 240 15% 70%;
+    --button-secondary-background: 240 15% 20%;
+    --button-secondary-border: 240 15% 30%;
+    --button-secondary-hover-border: 240 15% 30%;
+    --button-secondary-hover-background: 240 15% 30%;
+
+    --button-accent-background: 240 30% 25%;
+    --button-accent-foreground: 240 70% 80%;
+
+    --footer-foreground: 240 15% 50%;
+    --footer-background: 240 20% 15%;
+
+    --link-foreground: 240 60% 70%;
+    --link-decoration: 240 35% 40%;
+    --link-hover-foreground: 240 70% 80%;
+    --link-hover-decoration: 240 40% 50%;
+
+    --border: 240 15% 20%;
+
+    --ring: 240 35% 40%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  *:focus-visible {
+    @apply outline-none ring-offset-2 ring-offset-background ring-2 ring-ring;
+  }
 }
