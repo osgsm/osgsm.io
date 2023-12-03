@@ -23,6 +23,7 @@ export const metadata = {
 const RootLayout = ({ children }) => {
   return (
     <html lang="ja">
+      <meta name="theme-color" content="#1F1F2E" />
       <body className="bg-background text-foreground selection:bg-twilight-indigo-100 dark:selection:bg-twilight-indigo-900">
         <ThemeProvider>
           <Header />
