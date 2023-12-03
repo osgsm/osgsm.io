@@ -10,8 +10,8 @@ import ThemePopover from './theme-popover';
 const Logo = () => (
   <Image
     priority
-    src="/assets/profile.png"
-    className="rounded-full border-2"
+    src="/assets/profile.svg"
+    className="rounded-full"
     height={40}
     width={40}
     alt=""
