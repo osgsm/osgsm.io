@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { clsx } from 'clsx';
+import { twJoin } from 'tailwind-merge';
 import { AiOutlineTwitter } from 'react-icons/ai';
 
 import Timeline from '../../components/timeline';
@@ -28,7 +28,7 @@ const About = () => {
             About
           </h1>
           <div
-            className={clsx(
+            className={twJoin(
               'mt-8 text-base font-semibold',
               '[&>p]:mt-5',
               'md:text-lg',
@@ -54,7 +54,7 @@ const About = () => {
               rel="noopener noreferrer"
               target="_blank"
               href="https://twitter.com/osgsm_"
-              className={clsx(
+              className={twJoin(
                 'flex h-11 items-center justify-between rounded-md border border-button-primary-border bg-button-primary-background px-4 py-2 text-sm text-button-primary-foreground no-underline',
                 'hover:border-button-primary-hover-border hover:bg-button-primary-hover-background hover:text-button-primary-foreground',
               )}
@@ -86,7 +86,7 @@ const About = () => {
           </div>
           <div className="mx-auto mt-10 max-w-2xl">
             <Link
-              className={clsx(
+              className={twJoin(
                 'flex h-11 w-fit items-center rounded-md border border-button-secondary-border bg-button-secondary-background px-4 py-2 text-sm text-button-secondary-foreground',
                 'hover:border-button-secondary-hover-border hover:bg-button-secondary-hover-background hover:text-button-secondary-foreground',
               )}

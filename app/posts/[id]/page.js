@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { clsx } from 'clsx';
+import { twJoin } from 'tailwind-merge';
 
 import Date from '../../../components/date';
 import { getAllPostIds, getPostData } from '../../../lib/posts';
@@ -42,7 +42,7 @@ const Post = async ({ params }) => {
         </Link>
       </div>
       <article
-        className={clsx(
+        className={twJoin(
           'prose mx-auto max-w-2xl break-words text-foreground [line-break:strict]',
           'grid grid-cols-[repeat(auto-fill,1em)] place-content-center',
           'prose-img:my-6 prose-img:rounded-lg prose-img:border',
@@ -68,7 +68,7 @@ const Post = async ({ params }) => {
       </article>
       <div className="mx-auto mt-10 max-w-2xl">
         <Link
-          className={clsx(
+          className={twJoin(
             'flex h-11 w-fit items-center rounded-md border border-button-secondary-border bg-button-secondary-background px-4 py-2 text-sm text-button-secondary-foreground',
             'hover:border-button-secondary-hover-border hover:bg-button-secondary-hover-background hover:text-button-secondary-foreground',
           )}

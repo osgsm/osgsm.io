@@ -5,7 +5,6 @@ import {
   MoonIcon,
 } from '@heroicons/react/24/outline';
 import * as Popover from '@radix-ui/react-popover';
-import { clsx } from 'clsx';
 import { twJoin, twMerge } from 'tailwind-merge';
 import { ThemeContext } from './theme-provider';
 
@@ -73,12 +72,9 @@ const ThemePopover = () => {
                   </span>
                   <span
                     className={twMerge(
-                      clsx(
-                        'ml-2 inline-block h-1.5 w-1.5 rounded-full bg-transparent',
-                        {
-                          'bg-twilight-indigo-500': isActive,
-                        },
-                      ),
+                      'ml-2 inline-block h-1.5 w-1.5 rounded-full bg-transparent',
+                      isActive &&
+                        'bg-twilight-indigo-500 dark:bg-twilight-indigo-600',
                     )}
                   ></span>
                 </button>

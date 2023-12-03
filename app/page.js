@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 import Date from '../components/date';
 import { getSortedPostsData } from '../lib/posts';
@@ -20,7 +20,7 @@ const Home = () => {
           </div>
           <Link
             href="/about"
-            className={clsx(
+            className={twMerge(
               'mt-4 inline-block text-base text-muted-foreground',
               'hover:text-misty-slate-600 dark:hover:text-misty-slate-500',
             )}
@@ -29,10 +29,10 @@ const Home = () => {
           </Link>
         </div>
       </section>
-      <section className="border-t bg-muted-background/5 px-4 pb-20 pt-10 md:px-6">
+      <section className="border-t bg-muted-background/30 px-4 pb-20 pt-10 dark:bg-muted-background/5 md:px-6">
         <div className="mx-auto max-w-2xl">
           <h2
-            className={clsx(
+            className={twMerge(
               'mb-6 text-2xl font-semibold text-misty-slate-500',
               'md:text-3xl',
             )}
@@ -43,7 +43,7 @@ const Home = () => {
             {allPostsData.map(({ id, date, title }) => (
               <Link
                 key={id}
-                className={clsx(
+                className={twMerge(
                   'mt-4 block rounded-xl border p-1 transition-all',
                   'md:mt-5',
                   'hover:border-twilight-indigo-200 hover:bg-twilight-indigo-100/40',
@@ -51,9 +51,11 @@ const Home = () => {
                 )}
                 href={`/posts/${id}`}
               >
-                <li className={clsx('rounded-lg bg-background p-4', 'md:p-6')}>
+                <li
+                  className={twMerge('rounded-lg bg-background p-4', 'md:p-6')}
+                >
                   <div
-                    className={clsx(
+                    className={twMerge(
                       'text-lg font-semibold leading-normal text-foreground',
                       'md:text-xl',
                     )}
