@@ -27,9 +27,9 @@ const MenuPopover = () => {
     <Popover.Root>
       <Popover.Trigger
         className={clsx(
-          'flex h-8 w-8 rounded-md items-center justify-center',
-          'hover:bg-twilight-indigo-100/75 hover:text-twilight-indigo-500',
-          'focus-visible:bg-twilight-indigo-100/75 focus-visible:text-twilight-500 focus-visible:outline-none focus-visible:ring-offset-1'
+          'flex h-8 w-8 items-center justify-center rounded-md',
+          'hover:bg-button-accent-background hover:text-button-accent-foreground',
+          'focus-visible:bg-button-accent-background focus-visible:text-button-accent-foreground',
         )}
       >
         <Bars2Icon className="h-6 w-6" />
@@ -38,12 +38,12 @@ const MenuPopover = () => {
         align="end"
         asChild
         sideOffset={8}
-        className="data-[state='open']:animate-fade-in data-[state='closed']:animate-fade-out"
+        className="data-[state='closed']:animate-fade-out data-[state='open']:animate-fade-in"
       >
         <div
           className={clsx(
-            'flex flex-col rounded-lg border border-border bg-background p-2.5 min-w-[104px]',
-            '[&>*+*]:mt-1'
+            'flex min-w-[104px] flex-col rounded-xl border border-border bg-background p-2.5',
+            '[&>*+*]:mt-1',
           )}
         >
           {Object.entries(menuItems).map(([path, { name }]) => {
@@ -53,9 +53,9 @@ const MenuPopover = () => {
                 <Link
                   href={path}
                   className={clsx(
-                    'rounded-[4px] py-0.5 px-1.5 flex items-center justify-between',
-                    'hover:bg-twilight-indigo-100/75 hover:text-twilight-indigo-500',
-                    'focus-visible:bg-twilight-indigo-100/75 focus-visible:text-twilight-500 focus-visible:outline-none focus-visible:ring-offset-1'
+                    'flex items-center justify-between rounded-[4px] px-1.5 py-0.5',
+                    'hover:bg-button-accent-background hover:text-button-accent-foreground',
+                    'focus-visible:bg-button-accent-background focus-visible:text-button-accent-foreground',
                   )}
                 >
                   {name}
@@ -65,8 +65,8 @@ const MenuPopover = () => {
                         'ml-2 inline-block h-1.5 w-1.5 rounded-full bg-transparent',
                         {
                           'bg-twilight-indigo-500': isActive,
-                        }
-                      )
+                        },
+                      ),
                     )}
                   ></span>
                 </Link>
