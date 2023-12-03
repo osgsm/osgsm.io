@@ -18,11 +18,6 @@ const Home = () => {
                 ウェブアプリを作ったりしてます。
               </span>
             </p>
-            <p>
-              <span className="block">使い勝手のよいものが好きで、</span>
-              <span className="inline-block">自分がつくるものも</span>
-              <span className="inline-block">そうありたいと思っています。</span>
-            </p>
           </div>
           <Link
             href="/about"

@@ -22,7 +22,7 @@ export const metadata = {
 const About = () => {
   return (
     <>
-      <section className="px-4 py-32 md:px-6">
+      <section className="px-4 py-20 md:px-6">
         <div className="mx-auto max-w-3xl">
           <h1 className="text-3xl font-semibold text-muted-foreground">
             About
@@ -37,8 +37,10 @@ const About = () => {
             </p>
             <p>
               <span className="block">使い勝手のよいものが好きで、</span>
-              <span className="inline-block">自分がつくるものも</span>
-              <span className="inline-block">そうありたいと思っています。</span>
+              <span className="inline-block">自身でも、そのようなものを</span>
+              <span className="inline-block">
+                つくっていきたいと思っています。
+              </span>
             </p>
             <p>
               <span className="inline-block">デザインも好きですが、</span>
