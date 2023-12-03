@@ -23,7 +23,7 @@ const Header = () => {
   const isHome = pathname === '/';
   return (
     <header className="sticky top-0 z-20 border-b bg-background px-4 md:px-6">
-      <div className="mx-auto flex max-w-2xl flex-row items-center justify-between py-2 ">
+      <div className="mx-auto flex max-w-3xl flex-row items-center justify-between py-2 ">
         {isHome ? (
           <div className="-ml-1">
             <Logo />

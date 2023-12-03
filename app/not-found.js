@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const NotFound = () => {
   return (
-    <div className="mx-auto max-w-2xl">
+    <div className="mx-auto max-w-3xl">
       <div className="px-4 md:px-6">
         <h1 className="mt-12 text-3xl">Not Found</h1>
         <p className="mt-4">リクエストされたページが見つかりません</p>

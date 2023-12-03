@@ -14,7 +14,7 @@ const TimelineHeader = ({ headerContent }) => {
   return (
     <header
       className="top-4 mr-3 h-fit min-w-[6ch] basis-16
-        text-xl font-semibold text-muted-foreground sm:sticky sm:top-[4.5rem] sm:pb-10"
+        text-2xl font-semibold text-muted-foreground sm:sticky sm:top-[4.5rem] sm:pb-10"
     >
       {headerContent}
     </header>
@@ -57,16 +57,16 @@ const TimelineSeparator = ({ connector = true }) => {
 const TimelineContent = ({ item }) => {
   return (
     <div className="ml-4 text-foreground sm:ml-6">
-      <div className="mt-[1px] text-sm text-muted-foreground">
+      <div className="mt-[1px] text-base text-muted-foreground">
         <Date dateString={item.date} hideDays />
       </div>
-      <h2 className="mb-2 mt-1 text-lg font-semibold text-foreground">
+      <h2 className="mb-2 mt-0.5 text-xl font-semibold text-foreground">
         {item.heading}
       </h2>
       <p
         dangerouslySetInnerHTML={{ __html: item.description }}
         className={twJoin(
-          'mb-0 pb-10 text-[15px] leading-7',
+          'mb-0 pb-10 text-base leading-7',
           '[&_a]:text-link-foreground [&_a]:decoration-link-decoration hover:[&_a]:text-link-hover-foreground hover:[&_a]:decoration-link-hover-decoration',
         )}
       />

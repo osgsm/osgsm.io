@@ -8,20 +8,26 @@ const Home = () => {
   const allPostsData = getSortedPostsData();
   return (
     <>
-      <section className="px-4 py-32 md:px-6">
-        <div className="mx-auto max-w-2xl">
-          <div className="text-lg font-bold md:text-xl">
-            <p className="mb-2">
-              おおしましょうごと申します。
-              <br />
-              ウェブサイトを作ってます。
+      <section className="px-4 py-40 md:px-6">
+        <div className="mx-auto max-w-3xl">
+          <div className="grid gap-4 text-xl font-bold leading-loose">
+            <p>おおしましょうごと申します。</p>
+            <p>
+              <span className="inline-block">ウェブサイト作ったり、</span>
+              <span className="inline-block">
+                ウェブアプリを作ったりしてます。
+              </span>
             </p>
-            <p>モットーは使い心地のよいサイト制作。</p>
+            <p>
+              <span className="block">使い勝手のよいものが好きで、</span>
+              <span className="inline-block">自分がつくるものも</span>
+              <span className="inline-block">そうありたいと思っています。</span>
+            </p>
           </div>
           <Link
             href="/about"
             className={twMerge(
-              'mt-4 inline-block text-base text-muted-foreground',
+              'mt-8 inline-block text-base text-muted-foreground',
               'hover:text-misty-slate-600 dark:hover:text-misty-slate-500',
             )}
           >
@@ -30,7 +36,7 @@ const Home = () => {
         </div>
       </section>
       <section className="border-t bg-muted-background/30 px-4 pb-20 pt-10 dark:bg-muted-background/5 md:px-6">
-        <div className="mx-auto max-w-2xl">
+        <div className="mx-auto max-w-3xl">
           <h2
             className={twMerge(
               'mb-6 text-2xl font-semibold text-misty-slate-500',

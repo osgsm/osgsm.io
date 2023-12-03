@@ -33,7 +33,7 @@ const Post = async ({ params }) => {
   const postData = await getPostData(params.id);
   return (
     <div className="mb-24 px-4 md:px-6">
-      <div className="mx-auto max-w-2xl pb-6 pt-8 text-sm text-muted-foreground">
+      <div className="mx-auto max-w-3xl pb-6 pt-8 text-sm text-muted-foreground">
         <Link
           href="/posts"
           className="-mx-1 rounded-md p-1 hover:text-misty-slate-600"
@@ -43,7 +43,7 @@ const Post = async ({ params }) => {
       </div>
       <article
         className={twJoin(
-          'prose mx-auto max-w-2xl break-words text-foreground [line-break:strict]',
+          'prose mx-auto max-w-3xl break-words text-foreground [line-break:strict]',
           'grid grid-cols-[repeat(auto-fill,1em)] place-content-center',
           'prose-img:my-6 prose-img:rounded-lg prose-img:border',
           'dark:prose-img:brightness-90',
@@ -66,7 +66,7 @@ const Post = async ({ params }) => {
           dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
         />
       </article>
-      <div className="mx-auto mt-10 max-w-2xl">
+      <div className="mx-auto mt-10 max-w-3xl">
         <Link
           className={twJoin(
             'flex h-11 w-fit items-center rounded-md border border-button-secondary-border bg-button-secondary-background px-4 py-2 text-sm text-button-secondary-foreground',

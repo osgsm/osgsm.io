@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <>
       <section className="bg-muted-background/30 px-4 py-20 pb-24 dark:bg-muted-background/5 md:px-6">
-        <div className="mx-auto max-w-2xl">
+        <div className="mx-auto max-w-3xl">
           <h2
             className={twMerge(
               'mb-8 text-3xl font-semibold text-misty-slate-500',
