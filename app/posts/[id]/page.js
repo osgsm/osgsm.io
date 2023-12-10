@@ -47,12 +47,14 @@ const Post = async ({ params }) => {
           'grid grid-cols-[repeat(auto-fill,1em)] place-content-center',
           'prose-img:my-6 prose-img:rounded-lg prose-img:border',
           'dark:prose-img:brightness-90',
+          'prose-strong:text-foreground',
           '[&>*]:[grid-column:1/-1]',
           '[&_a]:text-link-foreground [&_a]:decoration-link-decoration hover:[&_a]:text-link-hover-foreground hover:[&_a]:decoration-link-hover-decoration',
           '[&_p>img+*]:-mt-4 [&_p>img+*]:block [&_p>img+*]:text-sm [&_p>img+*]:opacity-90',
           '[&_code]:border-misty-slate-200 [&_code]:bg-misty-slate-100 [&_code]:text-misty-slate-900',
           'dark:[&_code]:border-misty-slate-800 dark:[&_code]:bg-misty-slate-900 dark:[&_code]:text-misty-slate-400',
           '[&_hr]:border-border',
+          '[&_ul>li]:marker:text-muted-foreground',
         )}
       >
         <h1 className="mb-3 text-[28px] font-semibold leading-snug text-foreground">
