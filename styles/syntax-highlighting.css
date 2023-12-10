@@ -2,6 +2,10 @@ div[data-rehype-pretty-code-fragment] {
   @apply my-5 overflow-hidden rounded-lg border border-misty-slate-800 dark:border-misty-slate-900 bg-misty-slate-900 dark:bg-misty-slate-950;
 }
 
+div[data-rehype-pretty-code-fragment] *::selection {
+  @apply bg-twilight-indigo-200/20;
+}
+
 div[data-rehype-pretty-code-fragment] code {
   @apply grid auto-rows-fr;
 }
@@ -38,7 +42,7 @@ code[data-line-numbers] {
   @apply [counter-reset:lineNumber];
 }
 
-code[data-line-numbers] > .line::before {
+code[data-line-numbers] > [data-line]::before {
   @apply mr-3 inline-block w-4 text-right text-misty-slate-700
     content-[counter(lineNumber)]
     [counter-increment:lineNumber];
