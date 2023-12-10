@@ -1,4 +1,9 @@
 {
+  "settings": {
+    "tailwindcss": {
+      "callees": ["twMerge", "twJoin"]
+    }
+  },
   "extends": [
     "next/core-web-vitals",
     "plugin:tailwindcss/recommended",
