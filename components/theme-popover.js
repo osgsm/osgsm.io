@@ -60,9 +60,9 @@ const ThemePopover = () => {
                     localStorage.selected_theme = name;
                   }}
                   className={twMerge(
-                    'flex items-center text-muted-foreground justify-between gap-2 rounded-[4px] px-1.5 py-0.5',
+                    'flex items-center justify-between gap-2 rounded-[4px] px-1.5 py-0.5 text-muted-foreground',
                     'hover:bg-button-accent-background hover:text-button-accent-foreground',
-                    '[@media(any-hover:hover)and(any-pointer:fine)]focus-visible:bg-button-accent-background [@media(any-hover:hover)and(any-pointer:fine)]:focus-visible:text-button-accent-foreground',
+                    '[@media(any-hover:hover)and(any-pointer:fine)]:focus-visible:bg-button-accent-background [@media(any-hover:hover)and(any-pointer:fine)]:focus-visible:text-button-accent-foreground',
                     isActive && 'text-foreground',
                   )}
                 >

@@ -71,7 +71,7 @@ const Post = async ({ params }) => {
       <div className="mx-auto mt-10 max-w-3xl">
         <Link
           className={twJoin(
-            'flex h-11 w-fit items-center rounded-md border border-button-secondary-border bg-button-secondary-background px-4 py-2 text-sm text-button-secondary-foreground',
+            'flex h-11  w-fit items-center rounded-md border border-button-secondary-border bg-button-secondary-background px-4 py-2 text-sm text-button-secondary-foreground',
             'hover:border-button-secondary-hover-border hover:bg-button-secondary-hover-background hover:text-button-secondary-foreground',
           )}
           href="/"

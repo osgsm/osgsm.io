@@ -23,14 +23,15 @@ const Home = () => {
               <Link
                 key={id}
                 className={twMerge(
-                  'mt-4 block rounded-lg border p-1',
+                  'mt-4 block rounded-xl border p-1 transition-all',
                   'md:mt-5',
                   'hover:border-twilight-indigo-200 hover:bg-twilight-indigo-100/40',
+                  'dark:hover:border-twilight-indigo-700 dark:hover:bg-twilight-indigo-900/40',
                 )}
                 href={`/posts/${id}`}
               >
                 <li
-                  className={twMerge('rounded-md bg-background p-4', 'md:p-6')}
+                  className={twMerge('rounded-lg bg-background p-4', 'md:p-6')}
                 >
                   <div
                     className={twMerge(
