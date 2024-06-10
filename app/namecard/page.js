@@ -20,13 +20,13 @@ export const metadata = {
 const NameCard = () => {
   return (
     <>
-      <section className="min-h-svh px-4 py-20 md:px-6">
+      <div className="min-h-[calc(100vh-14rem)] px-4 py-20 md:px-6">
         <div className="mx-auto max-w-3xl">
           <h1 className="sr-only text-3xl font-semibold text-muted-foreground">
             自己紹介
           </h1>
           <div className="mt-8 grid gap-4 text-base/relaxed font-semibold">
-            <div className="flex items-start gap-4">
+            <div className="flex items-start gap-4 pb-20">
               <Image
                 src="/assets/profile-photo.webp"
                 alt=""
@@ -43,7 +43,7 @@ const NameCard = () => {
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </>
   );
 };

@@ -87,8 +87,8 @@ const NamecardSection = ({ id, onOutputStart, onOutputCompleted }) => {
   const currentQuestion = questions.find((question) => question.id === id);
 
   return (
-    <section>
-      <div className="ml-8 mt-14 rounded-md bg-misty-slate-100 p-4 font-semibold dark:bg-twilight-indigo-950">
+    <section className="[&+section]:mt-14">
+      <div className="ml-8 rounded-md bg-twilight-indigo-100/40 p-4 font-semibold dark:bg-twilight-indigo-950">
         {currentQuestion.question}
       </div>
       <div className="mt-7">
@@ -135,72 +135,83 @@ const NamecardContent = () => {
 
   return (
     <>
-      <div
-        className={twJoin(isFinished && isOutputCompleted ? 'pb-0' : 'pb-32')}
-      >
-        {selectedAnswerIds.map((id) => (
-          <NamecardSection
-            key={id}
-            id={id}
-            onOutputStart={() => setIsOutputCompleted(false)}
-            onOutputCompleted={() => setIsOutputCompleted(true)}
-          />
-        ))}
-        {isFinished && isOutputCompleted && (
-          <section>
-            <div className="mt-7">
-              <div className="flex items-start gap-4">
-                <Image
-                  src="/assets/profile-photo.webp"
-                  alt=""
-                  className="rounded-full border"
-                  width={32}
-                  height={32}
-                />
-                <div className="grid gap-4 pt-1">
-                  <TypeAnimationItem
-                    contents={
-                      '以上で終了です！\nご覧いただきありがとうございます！\nお問い合わせは X（ツイッター）からどうぞ！'
-                    }
-                    delay={750}
+      {selectedAnswerIds.length > 0 && (
+        <div
+          className={twJoin(isFinished && isOutputCompleted ? 'pb-0' : 'pb-32')}
+        >
+          {selectedAnswerIds.map((id) => (
+            <NamecardSection
+              key={id}
+              id={id}
+              onOutputStart={() => setIsOutputCompleted(false)}
+              onOutputCompleted={() => setIsOutputCompleted(true)}
+            />
+          ))}
+          {isFinished && isOutputCompleted && (
+            <section>
+              <div className="mt-7">
+                <div className="flex items-start gap-4">
+                  <Image
+                    src="/assets/profile-photo.webp"
+                    alt=""
+                    className="rounded-full border"
+                    width={32}
+                    height={32}
                   />
+                  <div className="grid gap-4 pt-1">
+                    <TypeAnimationItem
+                      contents={
+                        '以上で終了です！\nご覧いただきありがとうございます！\nお問い合わせは X（ツイッター）からどうぞ！'
+                      }
+                      delay={750}
+                    />
+                  </div>
+                </div>
+                <div className="mt-20 flex gap-4 pb-20">
+                  <a
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    href="https://twitter.com/osgsm_"
+                    className={twJoin(
+                      'flex h-11 items-center justify-between rounded-md border border-button-primary-border bg-button-primary-background px-4 py-2 text-sm text-button-primary-foreground no-underline',
+                      'hover:border-button-primary-hover-border hover:bg-button-primary-hover-background hover:text-button-primary-foreground',
+                    )}
+                  >
+                    <div className="flex items-center">
+                      <span className="text-lg">
+                        <FaXTwitter />
+                      </span>
+                      <span className="ml-1">@osgsm_</span>
+                    </div>
+                  </a>
                 </div>
               </div>
-              <div className="mt-20 flex gap-4 pb-20">
-                <a
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  href="https://twitter.com/osgsm_"
-                  className={twJoin(
-                    'flex h-11 items-center justify-between rounded-md border border-button-primary-border bg-button-primary-background px-4 py-2 text-sm text-button-primary-foreground no-underline',
-                    'hover:border-button-primary-hover-border hover:bg-button-primary-hover-background hover:text-button-primary-foreground',
-                  )}
-                >
-                  <div className="flex items-center">
-                    <span className="text-lg">
-                      <FaXTwitter />
-                    </span>
-                    <span className="ml-1">@osgsm_</span>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </section>
-        )}
-      </div>
+            </section>
+          )}
+        </div>
+      )}
       <div className="fixed bottom-0 left-0 w-full bg-[linear-gradient(to_bottom,_rgba(249,249,241,0)_0%,#F9F9FB_60%)] pt-10 dark:bg-[linear-gradient(to_bottom,_rgba(22,22,29,0)_0%,#16161D_60%)]">
-        <ul className="flex w-full gap-4 overflow-x-auto px-4 py-6 hide-scrollbar">
-          {displayQuestions.map((question) => (
-            <li key={question.id}>
-              <button
-                onClick={() => handleQuestionClick(question.id)}
-                className="flex min-h-[74px] w-36 rounded-lg border border-button-secondary-border bg-misty-slate-100 p-4 text-left text-sm font-semibold dark:bg-twilight-indigo-950"
-              >
-                {question.question}
-              </button>
-            </li>
-          ))}
-        </ul>
+        <div className="relative mx-auto max-w-[52rem]">
+          <ul
+            tabIndex={-1}
+            className={twJoin(
+              'relative flex w-full gap-4 overflow-x-auto px-8 pb-[4vh] pt-6 hide-scrollbar',
+            )}
+          >
+            {displayQuestions.map((question) => (
+              <li key={question.id}>
+                <button
+                  onClick={() => handleQuestionClick(question.id)}
+                  className="flex min-h-16 w-36 rounded-lg border border-button-secondary-border bg-misty-slate-50 p-4 py-3 text-left text-sm font-semibold dark:bg-twilight-indigo-950"
+                >
+                  {question.question}
+                </button>
+              </li>
+            ))}
+          </ul>
+          <div className="absolute left-0 top-0 block h-full w-8 bg-[linear-gradient(to_left,_rgba(249,249,241,0)_0%,#F9F9FB_60%)] dark:bg-[linear-gradient(to_left,_rgba(22,22,29,0)_0%,#16161D_60%)]"></div>
+          <div className="absolute right-0 top-0 block h-full w-8 bg-[linear-gradient(to_right,_rgba(249,249,241,0)_0%,#F9F9FB_60%)] dark:bg-[linear-gradient(to_right,_rgba(22,22,29,0)_0%,#16161D_60%)]"></div>
+        </div>
       </div>
     </>
   );
