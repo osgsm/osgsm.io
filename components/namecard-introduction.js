@@ -4,7 +4,7 @@ import { useState } from 'react';
 import TypeAnimationItem from './type-animation-item';
 
 const contents = [
-  { id: 1, contents: '大島翔吾と申します。', delay: 1000 },
+  { id: 1, contents: '大島翔吾と申します。', delay: 500 },
   {
     id: 2,
     contents: '株式会社キテレツのフロントエンドエンジニアです。',

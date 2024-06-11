@@ -17,12 +17,13 @@ const TypeAnimationItem = ({
     <>
       <div
         className={twMerge(
-          '[&>span]:after:inline-block [&>span]:after:-translate-y-0.5 [&>span]:after:!content-["▮"]',
+          '[&>span]:after:inline-block [&>span]:after:h-4 [&>span]:after:min-w-2 [&>span]:after:translate-y-1 [&>span]:after:bg-foreground [&>span]:after:content-["▮"]',
           isActive ? '[&>span]:after:inline' : '[&>span]:after:hidden',
         )}
       >
         <TypeAnimation
           ref={ref}
+          cursor={true}
           style={{ whiteSpace: 'pre-line' }}
           sequence={[
             onOutputStart,

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 import { FaXTwitter } from 'react-icons/fa6';
 import { twJoin } from 'tailwind-merge';
 import TypeAnimationItem from './type-animation-item';
@@ -133,6 +134,31 @@ const NamecardContent = () => {
     setSelectedAnswerIds((prevIds) => [...prevIds, id]);
   };
 
+  const list = {
+    visible: {
+      opacity: 1,
+      transition: {
+        when: 'beforeChildren',
+        staggerChildren: 0.05,
+        delay: 5.5,
+      },
+    },
+    hidden: { opacity: 0 },
+  };
+
+  const item = {
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: 'spring',
+        damping: 20,
+        stiffness: 400,
+      },
+    },
+    hidden: { opacity: 0, y: 40 },
+  };
+
   return (
     <>
       {selectedAnswerIds.length > 0 && (
@@ -190,29 +216,42 @@ const NamecardContent = () => {
           )}
         </div>
       )}
-      <div className="fixed bottom-0 left-0 w-full bg-[linear-gradient(to_bottom,_rgba(249,249,241,0)_0%,#F9F9FB_60%)] pt-10 dark:bg-[linear-gradient(to_bottom,_rgba(22,22,29,0)_0%,#16161D_60%)]">
-        <div className="relative mx-auto max-w-[52rem]">
-          <ul
-            tabIndex={-1}
-            className={twJoin(
-              'relative flex w-full gap-4 overflow-x-auto px-8 pb-[4vh] pt-6 hide-scrollbar',
-            )}
-          >
-            {displayQuestions.map((question) => (
-              <li key={question.id}>
-                <button
-                  onClick={() => handleQuestionClick(question.id)}
-                  className="flex min-h-16 w-36 rounded-lg border border-button-secondary-border bg-misty-slate-50 p-4 py-3 text-left text-sm font-semibold dark:bg-twilight-indigo-950"
-                >
-                  {question.question}
-                </button>
-              </li>
-            ))}
-          </ul>
-          <div className="absolute left-0 top-0 block h-full w-8 bg-[linear-gradient(to_left,_rgba(249,249,241,0)_0%,#F9F9FB_60%)] dark:bg-[linear-gradient(to_left,_rgba(22,22,29,0)_0%,#16161D_60%)]"></div>
-          <div className="absolute right-0 top-0 block h-full w-8 bg-[linear-gradient(to_right,_rgba(249,249,241,0)_0%,#F9F9FB_60%)] dark:bg-[linear-gradient(to_right,_rgba(22,22,29,0)_0%,#16161D_60%)]"></div>
+      {!isFinished && (
+        <div className="fixed bottom-0 left-0 w-full bg-[linear-gradient(to_bottom,_rgba(249,249,241,0)_0%,#F9F9FB_60%)] pt-10 dark:bg-[linear-gradient(to_bottom,_rgba(22,22,29,0)_0%,#16161D_60%)]">
+          <div className="relative mx-auto max-w-[52rem]">
+            <motion.ul
+              initial="hidden"
+              animate="visible"
+              variants={list}
+              tabIndex={-1}
+              className={twJoin(
+                'relative flex w-full gap-4 overflow-x-auto pb-[4vh] pt-6 hide-scrollbar',
+              )}
+            >
+              <AnimatePresence>
+                {displayQuestions.map((question) => (
+                  <motion.li
+                    variants={item}
+                    key={question.id}
+                    class="first:ml-4 last:mr-4"
+                    whileTap={{ scale: 1.1 }}
+                    exit={{ opacity: 0, y: 20 }}
+                  >
+                    <button
+                      onClick={() => handleQuestionClick(question.id)}
+                      className="flex min-h-16 w-36 rounded-lg border border-button-secondary-border bg-misty-slate-50 p-4 py-3 text-left text-sm font-semibold dark:bg-twilight-indigo-950"
+                    >
+                      {question.question}
+                    </button>
+                  </motion.li>
+                ))}
+              </AnimatePresence>
+            </motion.ul>
+            <div className="absolute left-0 top-0 block h-full w-4 bg-[linear-gradient(to_left,_rgba(249,249,241,0)_0%,#F9F9FB_80%)] dark:bg-[linear-gradient(to_left,_rgba(22,22,29,0)_0%,#16161D_80%)]"></div>
+            <div className="absolute right-0 top-0 block h-full w-4 bg-[linear-gradient(to_right,_rgba(249,249,241,0)_0%,#F9F9FB_80%)] dark:bg-[linear-gradient(to_right,_rgba(22,22,29,0)_0%,#16161D_80%)]"></div>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };
