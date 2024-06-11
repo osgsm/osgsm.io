@@ -13,8 +13,8 @@ const questions = [
     question: '出身地は？',
     answer: [
       '大阪の羽曳野（はびきの）市というところです。',
-      '「羽曳野」という名前は、『古事記』に登場する英雄ヤマトタケルに由来があるそうです。',
-      '市が運営するサイトによると、“没後白鳥となったヤマトタケルがこの地に舞い降り、天高く飛びさった様子が「羽を曳くが如く」だと伝わる、「白鳥伝説」に由来しています。” とのことです',
+      '「羽曳野」という名前は、ヤマトタケルの白鳥伝説に関係があるそうで、',
+      '没後白鳥となったヤマトタケルがこの地に舞い降り、天高く飛びさった様子が「羽を曳くが如く」だったことが由来らしいです。',
       'ちなみに、野球選手のダルビッシュ有もここの出身です。',
     ],
   },
@@ -24,7 +24,7 @@ const questions = [
     answer: [
       '写真です。',
       'と言っても最近はあまり撮ってないですが、昔は自室を暗室にして、現像したり、プリントするぐらいハマってました。',
-      '一番好きなカメラは Rollei35 で、あの小さなボディに技術が詰めこまれている感じが最高にクールです。',
+      '一番好きなカメラは Rollei35 で、あの手のひらサイズの小さなボディに技術が詰めこまれている感じがたまりません。',
       'デジタルカメラは SIGMA Sd Quattro を使ってます。',
     ],
   },
@@ -32,25 +32,27 @@ const questions = [
     id: 3,
     question: '仕事で使っている技術は？',
     answer: [
-      '言語は JavaScript、TypeScript、PHP や HTML、CSS。',
-      'ライブラリやフレームワークは React や Next.js、Astro、Tailwind CSS などです。CMS は WordPress をよく使います。',
-      'ちなみにこのサイトは Next.js で作ってます。ブログの部分は Markdown ファイルとして管理しています。',
+      '業務で使う言語は JavaScript、TypeScript、PHP や HTML、CSS です。',
+      'ライブラリやフレームワークは React や Next.js、Astro など。CMS は WordPress をよく使います。',
+      'ちなみにこのサイトは Next.js で作ってます。',
     ],
   },
   {
     id: 4,
     question: '最近興味がある分野は？',
     answer: [
-      'Three.js や WebGL に興味ありです。まだまだ学び始めの初心者ですが、表現の幅が広がりそうで楽しみです。',
+      'Three.js や WebGL、あとアニメーションなどの表現にまつわる技術に関心があります。',
+      'あと、3D ソフトの Blender も趣味的な感じで触ってます。',
+      'まだまだ学び始めの初心者ですが、表現の幅が広がりそうで楽しみです。',
     ],
   },
   {
     id: 5,
-    question: 'MBTI（性格診断）はなに？',
+    question: 'MBTI（性格診断）は？',
     answer: [
-      'ISTJ（管理者型）でした。',
-      '誠実で安定を好み、整った環境を尊重するらしいです。',
-      'ENFJ（主人公型）、INFP（仲介者型）、ESTP（起業家型）のタイプと相性がよいとのことです。',
+      'ISTJ（管理者型）です。',
+      '誠実で安定を好み、整った環境を尊重するようです。',
+      '相性がよいのは、ENFJ（主人公型）、INFP（仲介者型）、ESTP（起業家型）らしいです。',
     ],
   },
   {
@@ -58,26 +60,16 @@ const questions = [
     question: '最終学歴は？',
     answer: [
       '高卒です。',
-      'でも、大学にも行ってました。しかも卒論も出して、卒業アルバムも持ってます。',
-      'それなのに、2年休学したのちに結局退学しました。',
+      'でも、大学にも行ってました。卒論も出して、卒業アルバムも持ってます。',
+      'ところが、残りの単位が取れず留年し、2年休学したのちに結局退学しました。',
     ],
   },
   {
     id: 7,
-    question: 'なぜ今の仕事をしてるの？',
-    answer: [
-      'ウェブとの出会いは大学のとき。',
-      'ブログの CSS をいじることから始まり、ウェブ制作の楽しさにのめり込みました。',
-      'その後なぜか写真にはまり、そしてグラフィックデザインをやりたい！となり、前職に就きました。',
-      'はじめは名刺とかカタログとかを作ったりしてましたが、次第にウェブの仕事が増え、気づけばウェブ制作がメインに',
-      'そして、「やっぱりウェブって楽しい！」となり、今に至ります。',
-    ],
-  },
-  {
-    id: 8,
     question: '職歴は？',
     answer: [
-      '前職は小さな会社でグラフィックデザインを少々とウェブ制作（デザイン・写真撮影・コーディングを一通り担当）をやっていました（約5年）。',
+      '前職では、小さな会社でグラフィックデザインを少々とウェブ制作をやっていました。',
+      'メインはウェブの仕事で、デザインからコーディングまで行っていました。あと、サイトに掲載する写真の撮影もやってました。',
       'その前は、本屋兼雑貨屋（スタンダードブックストアというお店）で雑貨の仕入れとか接客をしてました。',
     ],
   },
@@ -89,7 +81,7 @@ const NamecardSection = ({ id, onOutputStart, onOutputCompleted }) => {
 
   return (
     <section className="[&+section]:mt-14">
-      <div className="ml-8 rounded-md bg-twilight-indigo-100/40 p-4 font-semibold dark:bg-twilight-indigo-950">
+      <div className="ml-8 rounded-md bg-misty-slate-100 p-4 font-semibold dark:bg-twilight-indigo-950">
         {currentQuestion.question}
       </div>
       <div className="mt-7">
@@ -123,6 +115,7 @@ const NamecardSection = ({ id, onOutputStart, onOutputCompleted }) => {
 };
 
 const NamecardContent = () => {
+  const [renderStep, setRenderStep] = useState(1);
   const [isOutputCompleted, setIsOutputCompleted] = useState(false);
   const [selectedAnswerIds, setSelectedAnswerIds] = useState([]);
   const displayQuestions = questions.filter(
@@ -134,7 +127,7 @@ const NamecardContent = () => {
     setSelectedAnswerIds((prevIds) => [...prevIds, id]);
   };
 
-  const list = {
+  const listVariants = {
     visible: {
       opacity: 1,
       transition: {
@@ -146,7 +139,7 @@ const NamecardContent = () => {
     hidden: { opacity: 0 },
   };
 
-  const item = {
+  const itemVariants = {
     visible: {
       opacity: 1,
       y: 0,
@@ -185,12 +178,36 @@ const NamecardContent = () => {
                     height={32}
                   />
                   <div className="grid gap-4 pt-1">
-                    <TypeAnimationItem
-                      contents={
-                        '以上で終了です！\nご覧いただきありがとうございます！\nお問い合わせは X（ツイッター）からどうぞ！'
-                      }
-                      delay={750}
-                    />
+                    {[
+                      {
+                        id: 1,
+                        contents: '用意した質問は以上です！',
+                        delay: 500,
+                      },
+                      {
+                        id: 2,
+                        contents: 'ご覧いただきありがとうございます。',
+                        delay: 500,
+                      },
+                      {
+                        id: 3,
+                        contents:
+                          'X（ツイッター）もやってるので、お問い合わせはこちらからどうぞ！',
+                        delay: 500,
+                      },
+                    ].map(
+                      ({ id, contents, delay }) =>
+                        renderStep >= id && (
+                          <TypeAnimationItem
+                            key={id}
+                            contents={contents}
+                            delay={delay}
+                            callback={() =>
+                              setRenderStep((prevId) => prevId + 1)
+                            }
+                          />
+                        ),
+                    )}
                   </div>
                 </div>
                 <div className="mt-20 flex gap-4 pb-20">
@@ -222,7 +239,7 @@ const NamecardContent = () => {
             <motion.ul
               initial="hidden"
               animate="visible"
-              variants={list}
+              variants={listVariants}
               tabIndex={-1}
               className={twJoin(
                 'relative flex w-full gap-4 overflow-x-auto pb-[4vh] pt-6 hide-scrollbar',
@@ -231,7 +248,7 @@ const NamecardContent = () => {
               <AnimatePresence>
                 {displayQuestions.map((question) => (
                   <motion.li
-                    variants={item}
+                    variants={itemVariants}
                     key={question.id}
                     class="first:ml-4 last:mr-4"
                     whileTap={{ scale: 1.1 }}
@@ -239,7 +256,7 @@ const NamecardContent = () => {
                   >
                     <button
                       onClick={() => handleQuestionClick(question.id)}
-                      className="flex min-h-16 w-36 rounded-lg border border-button-secondary-border bg-misty-slate-50 p-4 py-3 text-left text-sm font-semibold dark:bg-twilight-indigo-950"
+                      className="flex min-h-16 w-[148px] rounded-lg border border-button-secondary-border bg-button-secondary-background p-4 py-3 text-left text-sm font-semibold text-button-secondary-foreground"
                     >
                       {question.question}
                     </button>
