@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { FaXTwitter } from 'react-icons/fa6';
 import { motion, AnimatePresence } from 'framer-motion';
 import { twJoin } from 'tailwind-merge';
 import TypeAnimationGroup from './type-animation-group';
@@ -160,13 +161,10 @@ const closingContents = [
   {
     id: 1,
     paragraphs: '用意した質問は以上です！',
+    delay: 1000,
   },
   {
     id: 2,
-    paragraphs: 'ご覧いただきありがとうございます。',
-  },
-  {
-    id: 3,
     paragraphs:
       'X（ツイッター）もやってるので、お問い合わせはこちらからどうぞ！',
   },
@@ -247,6 +245,29 @@ const NamecardContent = () => {
                 contents={closingContents}
                 className="mt-7 flex items-start gap-4"
               />
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ type: 'spring', stiffness: 200, delay: 3.5 }}
+                className="ml-12 mt-8 flex gap-4"
+              >
+                <a
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  href="https://twitter.com/osgsm_"
+                  className={twJoin(
+                    'flex h-11 items-center justify-between rounded-md border border-button-primary-border bg-button-primary-background px-4 py-2 text-sm text-button-primary-foreground no-underline',
+                    'hover:border-button-primary-hover-border hover:bg-button-primary-hover-background hover:text-button-primary-foreground',
+                  )}
+                >
+                  <div className="flex items-center">
+                    <span className="text-lg">
+                      <FaXTwitter />
+                    </span>
+                    <span className="ml-1">@osgsm_</span>
+                  </div>
+                </a>
+              </motion.div>
             </section>
           )}
         </div>
