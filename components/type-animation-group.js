@@ -22,11 +22,11 @@ const TypeAnimationGroup = ({
       />
       <div className="grid gap-4 pt-1">
         {contents.map(
-          ({ id, paragraphs, delay }) =>
+          ({ id, paragraph, delay }) =>
             renderStep >= id && (
               <TypeAnimationItem
                 key={id}
-                paragraphs={paragraphs}
+                paragraph={paragraph}
                 delay={delay}
                 callback={() => setRenderStep((prevId) => prevId + 1)}
                 onOutputStart={onOutputStart}

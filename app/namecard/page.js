@@ -16,15 +16,15 @@ export const metadata = {
 };
 
 const introductionContents = [
-  { id: 1, paragraphs: '大島翔吾と申します。', delay: 500 },
+  { id: 1, paragraph: '大島翔吾と申します。', delay: 500 },
   {
     id: 2,
-    paragraphs: '株式会社キテレツのフロントエンドエンジニアです。',
+    paragraph: '株式会社キテレツのフロントエンドエンジニアです。',
     delay: 500,
   },
   {
     id: 3,
-    paragraphs:
+    paragraph:
       '下に質問リストを用意しているので、\nなにか気になるものがあればタップしてみてください！',
     delay: 500,
   },

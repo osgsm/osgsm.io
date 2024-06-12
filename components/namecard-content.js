@@ -13,21 +13,21 @@ const questions = [
     answer: [
       {
         id: 1,
-        paragraphs: '大阪の羽曳野（はびきの）市というところです。',
+        paragraph: '大阪の羽曳野（はびきの）市というところです。',
       },
       {
         id: 2,
-        paragraphs:
+        paragraph:
           '「羽曳野」という名前は、ヤマトタケルの白鳥伝説に関係があるそうで、',
       },
       {
         id: 3,
-        paragraphs:
+        paragraph:
           '没後白鳥となったヤマトタケルがこの地に舞い降り、天高く飛びさった様子が「羽を曳くが如く」だったことが由来らしいです。',
       },
       {
         id: 4,
-        paragraphs: 'ちなみに、野球選手のダルビッシュ有もここの出身です。',
+        paragraph: 'ちなみに、野球選手のダルビッシュ有もここの出身です。',
       },
     ],
   },
@@ -37,21 +37,21 @@ const questions = [
     answer: [
       {
         id: 1,
-        paragraphs: '写真です。',
+        paragraph: '写真です。',
       },
       {
         id: 2,
-        paragraphs:
+        paragraph:
           'と言っても最近はあまり撮ってないですが、昔は自室を暗室にして、現像したり、プリントするぐらいハマってました。',
       },
       {
         id: 3,
-        paragraphs:
+        paragraph:
           '一番好きなカメラは Rollei35 で、あの手のひらサイズの小さなボディに技術が詰めこまれている感じがたまりません。',
       },
       {
         id: 4,
-        paragraphs: 'デジタルカメラは SIGMA Sd Quattro を使ってます。',
+        paragraph: 'デジタルカメラは SIGMA Sd Quattro を使ってます。',
       },
     ],
   },
@@ -61,17 +61,17 @@ const questions = [
     answer: [
       {
         id: 1,
-        paragraphs:
+        paragraph:
           '業務で使う言語は JavaScript、TypeScript、PHP や HTML、CSS です。',
       },
       {
         id: 2,
-        paragraphs:
+        paragraph:
           'ライブラリやフレームワークは React や Next.js、Astro など。CMS は WordPress をよく使います。',
       },
       {
         id: 3,
-        paragraphs: 'ちなみにこのサイトは Next.js で作ってます。',
+        paragraph: 'ちなみにこのサイトは Next.js で作ってます。',
       },
     ],
   },
@@ -81,16 +81,16 @@ const questions = [
     answer: [
       {
         id: 1,
-        paragraphs:
+        paragraph:
           'Three.js や WebGL、あとアニメーションなどの表現にまつわる技術に関心があります。',
       },
       {
         id: 2,
-        paragraphs: 'あと、3D ソフトの Blender も趣味的な感じで触ってます。',
+        paragraph: 'あと、3D ソフトの Blender も趣味的な感じで触ってます。',
       },
       {
         id: 3,
-        paragraphs:
+        paragraph:
           'まだまだ学び始めの初心者ですが、表現の幅が広がりそうで楽しみです。',
       },
     ],
@@ -101,15 +101,15 @@ const questions = [
     answer: [
       {
         id: 1,
-        paragraphs: 'ISTJ（管理者型）です。',
+        paragraph: 'ISTJ（管理者型）です。',
       },
       {
         id: 2,
-        paragraphs: '誠実で安定を好み、整った環境を尊重するようです。',
+        paragraph: '誠実で安定を好み、整った環境を尊重するようです。',
       },
       {
         id: 3,
-        paragraphs:
+        paragraph:
           '相性がよいのは、ENFJ（主人公型）、INFP（仲介者型）、ESTP（起業家型）らしいです。',
       },
     ],
@@ -120,16 +120,16 @@ const questions = [
     answer: [
       {
         id: 1,
-        paragraphs: '高卒です。',
+        paragraph: '高卒です。',
       },
       {
         id: 2,
-        paragraphs:
+        paragraph:
           'でも、大学にも行ってました。卒論も出して、卒業アルバムも持ってます。',
       },
       {
         id: 3,
-        paragraphs:
+        paragraph:
           'ところが、残りの単位が取れず留年し、2年休学したのちに結局退学しました。',
       },
     ],
@@ -140,17 +140,17 @@ const questions = [
     answer: [
       {
         id: 1,
-        paragraphs:
+        paragraph:
           '前職では、小さな会社でグラフィックデザインを少々とウェブ制作をやっていました。',
       },
       {
         id: 2,
-        paragraphs:
+        paragraph:
           'メインはウェブの仕事で、デザインからコーディングまで行っていました。あと、サイトに掲載する写真の撮影もやってました。',
       },
       {
         id: 3,
-        paragraphs:
+        paragraph:
           'その前は、本屋兼雑貨屋（スタンダードブックストアというお店）で雑貨の仕入れとか接客をしてました。',
       },
     ],
@@ -160,12 +160,12 @@ const questions = [
 const closingContents = [
   {
     id: 1,
-    paragraphs: '用意した質問は以上です！',
+    paragraph: '用意した質問は以上です！',
     delay: 1000,
   },
   {
     id: 2,
-    paragraphs:
+    paragraph:
       'X（ツイッター）もやってるので、お問い合わせはこちらからどうぞ！',
   },
 ];

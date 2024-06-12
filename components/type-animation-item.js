@@ -5,7 +5,7 @@ import { TypeAnimation } from 'react-type-animation';
 import { twMerge } from 'tailwind-merge';
 
 const TypeAnimationItem = ({
-  paragraphs,
+  paragraph,
   delay = 300,
   callback = () => {},
   onOutputStart,
@@ -34,7 +34,7 @@ const TypeAnimationItem = ({
               });
             },
             delay,
-            paragraphs,
+            paragraph,
             callback,
             () => {
               setIsActive(false);
