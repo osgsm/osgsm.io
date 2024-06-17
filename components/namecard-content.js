@@ -1,9 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaXTwitter } from 'react-icons/fa6';
 import { motion, AnimatePresence } from 'framer-motion';
-import { twJoin } from 'tailwind-merge';
+import { twJoin, twMerge } from 'tailwind-merge';
 import TypeAnimationGroup from './type-animation-group';
 
 const questions = [
@@ -189,6 +189,7 @@ const NamecardSection = ({ id, onOutputStart, onOutputCompleted }) => {
 };
 
 const NamecardContent = () => {
+  const [showButton, setShowButton] = useState(true);
   const [isOutputCompleted, setIsOutputCompleted] = useState(false);
   const [selectedAnswerIds, setSelectedAnswerIds] = useState([]);
   const displayQuestions = questions.filter(
@@ -224,6 +225,30 @@ const NamecardContent = () => {
     },
     hidden: { opacity: 0, y: 40 },
   };
+
+  useEffect(() => {
+    const target = document.querySelector('footer');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setShowButton(false);
+          } else {
+            setShowButton(true);
+          }
+        });
+      },
+      { rootMargin: '-5%' },
+    );
+    if (target) {
+      observer.observe(target);
+    }
+    return () => {
+      if (target) {
+        observer.unobserve(target);
+      }
+    };
+  }, [isFinished, isOutputCompleted]);
 
   return (
     <div className="grid gap-4">
@@ -273,7 +298,12 @@ const NamecardContent = () => {
         </div>
       )}
       {!isFinished && (
-        <div className="fixed bottom-0 left-0 w-full bg-[linear-gradient(to_bottom,_rgba(249,249,241,0)_0%,#F9F9FB_60%)] pt-10 dark:bg-[linear-gradient(to_bottom,_rgba(22,22,29,0)_0%,#16161D_60%)]">
+        <div
+          className={twMerge(
+            'fixed bottom-0 left-0 w-full bg-[linear-gradient(to_bottom,_rgba(249,249,241,0)_0%,#F9F9FB_60%)] pt-10 transition-all duration-300 dark:bg-[linear-gradient(to_bottom,_rgba(22,22,29,0)_0%,#16161D_60%)]',
+            showButton ? 'visible opacity-100' : 'invisible opacity-0',
+          )}
+        >
           <div className="relative mx-auto max-w-[52rem]">
             <motion.ul
               initial="hidden"

@@ -32,7 +32,7 @@ const introductionContents = [
 
 const NameCard = () => {
   return (
-    <div className="min-h-[calc(100vh-14rem)] px-4 py-20 md:px-6">
+    <div className="min-h-dvh px-4 py-36 pb-48 md:px-6 md:pb-60">
       <div className="mx-auto max-w-3xl">
         <h1 className="sr-only text-3xl font-semibold text-muted-foreground">
           自己紹介

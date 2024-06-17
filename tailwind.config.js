@@ -86,6 +86,10 @@ module.exports = {
             },
           },
         },
+        footer: {
+          background: 'hsl(var(--footer-background))',
+          foreground: 'hsl(var(--footer-foreground))',
+        },
         link: {
           foreground: 'hsl(var(--link-foreground))',
           decoration: 'hsl(var(--link-decoration))',
