@@ -3,6 +3,7 @@ import { usePathname } from 'next/navigation';
 import { Bars2Icon } from '@heroicons/react/24/outline';
 import * as Popover from '@radix-ui/react-popover';
 import { twJoin, twMerge } from 'tailwind-merge';
+import { FaXTwitter, FaGithub } from 'react-icons/fa6';
 
 const menuItems = {
   '/': {
@@ -13,6 +14,17 @@ const menuItems = {
   },
   '/about': {
     name: 'About',
+  },
+};
+
+const socialLinks = {
+  x: {
+    href: 'https://x.com/osgsm_',
+    icon: FaXTwitter,
+  },
+  github: {
+    href: 'https://github.com/osgsm',
+    icon: FaGithub,
   },
 };
 
@@ -70,6 +82,21 @@ const MenuPopover = () => {
               </Popover.Close>
             );
           })}
+          <div className="!mt-2 flex border-t pt-3">
+            {Object.entries(socialLinks).map(([key, { href, icon: Icon }]) => (
+              <a
+                key={key}
+                href={href}
+                className={twMerge(
+                  'flex items-center justify-between rounded-[4px] px-1.5 py-1 text-muted-foreground',
+                  'hover:bg-button-accent-background hover:text-button-accent-foreground',
+                  '[@media(any-hover:hover)and(any-pointer:fine)]:focus-visible:bg-button-accent-background [@media(any-hover:hover)and(any-pointer:fine)]:focus-visible:text-button-accent-foreground',
+                )}
+              >
+                <Icon className="size-[1.125rem]" />
+              </a>
+            ))}
+          </div>
         </div>
       </Popover.Content>
     </Popover.Root>

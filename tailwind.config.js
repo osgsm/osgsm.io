@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import plugin from 'tailwindcss/plugin';
+
 module.exports = {
   future: {
     hoverOnlyWhenSupported: true,
@@ -14,6 +16,7 @@ module.exports = {
       animation: {
         'fade-in': 'fade-in .2s ease-out',
         'fade-out': 'fade-out .1s ease-out',
+        wave: 'wave 2.5s 0.2s',
       },
       keyframes: {
         'fade-in': {
@@ -37,6 +40,14 @@ module.exports = {
             opacity: '0',
             visibility: 'hidden',
           },
+        },
+        wave: {
+          '0%': { transform: 'rotate(0.0deg)' },
+          '10%': { transform: 'rotate(14.0deg)' },
+          '20%': { transform: 'rotate(-8.0deg)' },
+          '30%': { transform: 'rotate(14.0deg)' },
+          '40%': { transform: 'rotate(0.0deg)' },
+          '100%': { transform: 'rotate(0.0deg)' },
         },
       },
       colors: {
@@ -74,6 +85,10 @@ module.exports = {
               border: 'hsl(var(--button-accent-hover-border))',
             },
           },
+        },
+        footer: {
+          background: 'hsl(var(--footer-background))',
+          foreground: 'hsl(var(--footer-foreground))',
         },
         link: {
           foreground: 'hsl(var(--link-foreground))',
@@ -147,5 +162,21 @@ module.exports = {
       }),
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [
+    require('@tailwindcss/typography'),
+    plugin(({ addUtilities }) => {
+      /*
+       * Hide scrollbar
+       */
+      addUtilities({
+        '.hide-scrollbar': {
+          '-ms-overflow-style': 'none',
+          'scrollbar-width': 'none',
+          '&::-webkit-scrollbar': {
+            display: 'none',
+          },
+        },
+      });
+    }),
+  ],
 };
