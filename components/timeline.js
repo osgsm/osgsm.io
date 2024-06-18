@@ -42,7 +42,7 @@ const TimelineItem = ({ children }) => {
 
 const TimelineSeparator = ({ connector = true }) => {
   return (
-    <div className="mt-0.5 flex flex-col items-center pt-2">
+    <div className="flex flex-col items-center pt-2">
       <span className="inline-block h-[7px] w-[7px] rounded-full bg-twilight-indigo-500 content-[''] dark:bg-twilight-indigo-600"></span>
       {connector && (
         <span
@@ -57,10 +57,10 @@ const TimelineSeparator = ({ connector = true }) => {
 const TimelineContent = ({ item }) => {
   return (
     <div className="ml-4 text-foreground sm:ml-6">
-      <div className="mt-[1px] text-base text-muted-foreground">
+      <div className="mt-[1px] text-sm text-muted-foreground">
         <Date dateString={item.date} hideDays />
       </div>
-      <h2 className="mb-2 mt-0.5 text-xl font-semibold text-foreground">
+      <h2 className="mb-2 mt-0.5 text-lg font-semibold text-foreground">
         {item.heading}
       </h2>
       <p
