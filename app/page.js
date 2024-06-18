@@ -13,10 +13,7 @@ const Home = () => {
           <div className="grid gap-4 text-xl font-bold leading-loose">
             <p>おおしましょうごと申します。</p>
             <p>
-              <span className="inline-block">ウェブサイト作ったり、</span>
-              <span className="inline-block">
-                ウェブアプリを作ったりしてます。
-              </span>
+              <span className="inline-block">ウェブサイト作ってます。</span>
             </p>
           </div>
           <Link

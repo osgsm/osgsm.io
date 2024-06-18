@@ -27,13 +27,10 @@ const About = () => {
           <h1 className="text-3xl font-semibold text-muted-foreground">
             About
           </h1>
-          <div className="mt-8 grid gap-4 text-lg font-bold leading-8">
+          <div className="mt-8 grid gap-4 text-base font-bold leading-8">
             <p>おおしましょうごと申します。</p>
             <p>
-              <span className="inline-block">ウェブサイト作ったり、</span>
-              <span className="inline-block">
-                ウェブアプリを作ったりしてます。
-              </span>
+              <span className="inline-block">ウェブサイト作ってます。</span>
             </p>
             <p>
               <span className="block">使い勝手のよいものが好きで、</span>
@@ -42,17 +39,7 @@ const About = () => {
                 つくっていきたいと思っています。
               </span>
             </p>
-            <p>
-              <span className="inline-block">デザインも好きですが、</span>
-              <span className="inline-block">開発も大好きです。</span>
-            </p>
-            <p>
-              <span className="inline-block">
-                最近は、React や Next.js などの
-              </span>
-              <span className="inline-block">モダンな技術に興味あり。</span>
-            </p>
-            <p>お問い合わせはツイッター（X）からどうぞ。</p>
+            <p>お問い合わせは X（ツイッター）からどうぞ。</p>
           </div>
           <div className="mt-8 flex gap-4">
             <a
