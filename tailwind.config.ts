@@ -162,9 +162,8 @@ const config: Config = {
           letterSpacing: "0.01px",
         },
         ".text-default": {
-          fontSize: "14px",
-          lineHeight: "21px",
-          letterSpacing: "-0.09px",
+          fontSize: "16px",
+          lineHeight: "28px",
         },
       });
     }),

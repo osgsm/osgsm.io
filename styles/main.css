@@ -116,13 +116,29 @@
   }
 
   article {
+    h1 {
+      @apply text-2xl;
+    }
+
+    h2 {
+      @apply text-xl;
+    }
+
+    h3 {
+      @apply text-lg;
+    }
+
+    h4 {
+      @apply text-base;
+    }
+
     h1 + h2 {
       margin-top: 4px !important;
     }
 
     h1 + p,
     h2 + p {
-      margin-top: 8px !important;
+      @apply !mt-4;
     }
 
     figure + h1,
@@ -290,7 +306,7 @@
     pre {
       padding: 16px;
       overflow-x: auto;
-      font-size: 12px;
+      font-size: 14px;
 
       [data-line] {
         margin-top: 0 !important;
