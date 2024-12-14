@@ -158,7 +158,7 @@ const config: Config = {
     plugin(({ addUtilities }) => {
       addUtilities({
         ".text-small": {
-          fontSize: "12px",
+          fontSize: "13px",
           letterSpacing: "0.01px",
         },
         ".text-default": {

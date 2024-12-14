@@ -1,8 +1,11 @@
+import { Breadcrumb } from "@/components/breadcrumb";
 import * as FadeIn from "@/components/motion/staggers/fade";
 import { Posts } from "@/components/posts";
 import { OpenGraph } from "@/lib/og";
 
 import React from "react";
+
+const Spacer = () => <div style={{ marginTop: "48px" }} />;
 
 export function generateMetadata() {
   const title = "Guides";
@@ -24,9 +27,11 @@ export function generateMetadata() {
 export default function Page() {
   return (
     <React.Fragment>
+      <Breadcrumb />
       <FadeIn.Item>
-        <Posts category="guides" />
+        <Posts category="blog" />
       </FadeIn.Item>
+      <Spacer />
     </React.Fragment>
   );
 }

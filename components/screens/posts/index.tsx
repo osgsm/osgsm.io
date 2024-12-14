@@ -1,5 +1,6 @@
 import type { Post } from "@/types";
 
+import { Breadcrumb } from "@/components/breadcrumb";
 import { TableOfContents } from "@/components/on-this-page";
 import { PostNavigation } from "@/components/post-navigation";
 import { formatter } from "@/lib/formatter";
@@ -7,7 +8,6 @@ import { getPosts } from "@/lib/mdx";
 import { MDX } from "@/mdx-components";
 
 import React from "react";
-import { readingTime } from "reading-time-estimator";
 
 interface Props {
   post: Post;
@@ -28,12 +28,9 @@ export const Layout = ({ post, route }: Props) => {
     return <div>Updated {formatter.date(new Date(post.time.updated))}</div>;
   };
 
-  const ReadingTime = () => {
-    return <div>{readingTime(post.content).minutes} minutes read</div>;
-  };
-
   return (
     <React.Fragment>
+      <Breadcrumb postTitle={post.title} />
       <div className="flex flex-col">
         <div>
           <h1>{post.title}</h1>
@@ -42,8 +39,6 @@ export const Layout = ({ post, route }: Props) => {
           <PublishedTime />
           <Seperator />
           <UpdateTime />
-          <Seperator />
-          <ReadingTime />
         </div>
       </div>
 

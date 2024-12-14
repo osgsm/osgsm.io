@@ -74,9 +74,9 @@ const components: MDXComponents = {
         </ol>
       );
     }
-    return <ol className={cn("mt-2 ml-2 list-decimal", className)} {...props} />;
+    return <ol className={cn("mt-2 ml-3 list-decimal", className)} {...props} />;
   },
-  ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => <ul className={cn("mt-2 ml-2 list-disc", className)} {...props} />,
+  ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => <ul className={cn("mt-2 ml-3 list-disc", className)} {...props} />,
   li: ({ className, children, ...props }: React.HTMLAttributes<HTMLLIElement>) => {
     if (props.id?.includes("user-content-fn-")) {
       return (
@@ -107,7 +107,7 @@ const components: MDXComponents = {
         </li>
       );
     }
-    return <li className={cn("mt-2 ml-2 list-item", className)}>{children}</li>;
+    return <li className={cn("mt-1 ml-1 list-item marker:text-[--iris-8]", className)}>{children}</li>;
   },
 };
 
@@ -131,11 +131,11 @@ export function MDX(props: JSX.IntrinsicAttributes & MDXRemoteProps) {
               rehypePrettyCode,
               {
                 theme: {
-                  dark: "github-dark",
-                  light: "github-light",
+                  dark: "rose-pine",
+                  light: "rose-pine-dawn",
                 },
                 keepBackground: false,
-                defaultLang: "tsx",
+                defaultLang: "plaintext",
               },
             ],
           ] as PluggableList,

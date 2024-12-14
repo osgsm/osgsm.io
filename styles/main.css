@@ -2,14 +2,18 @@
 @import url("@radix-ui/colors/gray-alpha.css");
 @import url("@radix-ui/colors/gray-dark.css");
 @import url("@radix-ui/colors/gray-dark-alpha.css");
-@import url("@radix-ui/colors/pink.css");
-@import url("@radix-ui/colors/pink-alpha.css");
-@import url("@radix-ui/colors/pink-dark.css");
-@import url("@radix-ui/colors/pink-dark-alpha.css");
-@import url("@radix-ui/colors/yellow.css");
-@import url("@radix-ui/colors/yellow-alpha.css");
-@import url("@radix-ui/colors/yellow-dark.css");
-@import url("@radix-ui/colors/yellow-dark-alpha.css");
+@import url("@radix-ui/colors/plum.css");
+@import url("@radix-ui/colors/plum-alpha.css");
+@import url("@radix-ui/colors/plum-dark.css");
+@import url("@radix-ui/colors/plum-dark-alpha.css");
+@import url("@radix-ui/colors/cyan.css");
+@import url("@radix-ui/colors/cyan-alpha.css");
+@import url("@radix-ui/colors/cyan-dark.css");
+@import url("@radix-ui/colors/cyan-dark-alpha.css");
+@import url("@radix-ui/colors/iris.css");
+@import url("@radix-ui/colors/iris-alpha.css");
+@import url("@radix-ui/colors/iris-dark.css");
+@import url("@radix-ui/colors/iris-dark-alpha.css");
 @import url("@radix-ui/colors/black-alpha.css");
 @import url("@radix-ui/colors/white-alpha.css");
 
@@ -24,22 +28,23 @@
   */
 
   :root {
-    --bg: var(--gray-1);
-    --fg: var(--gray-12);
-    --muted: var(--gray-8);
-    --border: var(--gray-4);
-    --scrollbar-thumb: var(--gray-4);
+    --bg: var(--iris-1);
+    --fg: var(--iris-12);
+    --muted: var(--iris-9);
+    --border: var(--iris-4);
+    --scrollbar-thumb: var(--iris-4);
     --scrollbar-track: transparent;
-    --selection-background: var(--pink-3);
-    --selection-foreground: var(--pink-11);
-    --kbd-background: var(--gray-3);
-    --kbd-foreground: var(--gray-11);
-    --kbd-border: var(--gray-4);
-    --highlight-background: var(--yellow-3);
-    --highlight-foreground: var(--yellow-11);
+    --selection-background: var(--cyan-3);
+    --selection-foreground: var(--cyan-10);
+    --kbd-background: var(--iris-3);
+    --kbd-foreground: var(--iris-11);
+    --kbd-border: var(--iris-4);
+    --highlight-background: var(--plum-3);
+    --highlight-foreground: var(--plum-11);
     --radius-small: 4px;
     --radius-base: 8px;
     --radius-large: 12px;
+    --code-background: var(--iris-2);
   }
 
   * {
@@ -72,7 +77,7 @@
     h4,
     h5,
     h6 {
-      @apply font-medium;
+      @apply font-normal leading-tight tracking-tight;
     }
 
     h2,
@@ -82,12 +87,20 @@
       @apply text-muted;
     }
 
+    h2 code span,
+    h3 code span,
+    h4 code span,
+    h5 code span,
+    h6 code span {
+      @apply !text-[--muted];
+    }
+
     sub {
       @apply text-small;
     }
 
     a {
-      @apply transition hover:opacity-50;
+      @apply transition hover:opacity-75;
     }
 
     ol {
@@ -113,43 +126,51 @@
       border-radius: 4px;
       box-shadow: 0 0 0 1px var(--kbd-border);
     }
+
+    code {
+      @apply text-[93.75%];
+    }
   }
 
   article {
     h1 {
-      @apply text-2xl;
+      @apply text-3xl leading-tight;
     }
 
     h2 {
-      @apply text-xl;
+      @apply text-2xl border-b border-border pb-1;
     }
 
     h3 {
-      @apply text-lg;
+      @apply text-xl;
     }
 
     h4 {
-      @apply text-base;
+      @apply text-lg;
     }
 
     h1 + h2 {
-      margin-top: 4px !important;
+      @apply mt-6;
     }
 
     h1 + p,
-    h2 + p {
-      @apply !mt-4;
+    h2 + p,
+    h3 + p {
+      @apply !mt-6;
     }
 
     figure + h1,
     p + h1 {
-      margin-top: 48px !important;
+      @apply !mt-12;
+    }
+
+    h1:not(:first-child),
+    h2:not(:first-child),
+    h3:not(:first-child) {
+      @apply mt-8;
     }
 
     p:not(:first-child),
-    h1:not(:first-child),
-    h2:not(:first-child),
-    h3:not(:first-child),
     h4:not(:first-child),
     h5:not(:first-child),
     h6:not(:first-child),
@@ -158,7 +179,11 @@
     ol:not(:first-child),
     pre:not(:first-child),
     figure:not(:first-child) {
-      margin-top: 24px;
+      @apply mt-6;
+    }
+
+    hr {
+      @apply my-6 border-t border-border;
     }
 
     /*
@@ -181,7 +206,7 @@
       @apply bg-transparent scale-y-100;
     }
 
-    /* 
+    /*
     * Here we are setting up the styles for our footnotes and references.
     */
 
@@ -226,14 +251,14 @@
     }
   }
 
-  /* 
+  /*
   * We are using rehypye-pretty to style the code blocks in the project.
-  * rehype-pretty-code is a Rehype plugin powered by the shiki syntax highlighter that provides beautiful code blocks for Markdown or MDX. 
+  * rehype-pretty-code is a Rehype plugin powered by the shiki syntax highlighter that provides beautiful code blocks for Markdown or MDX.
   * It works on both the server at build-time (avoiding runtime syntax highlighting) and on the client for dynamic highlighting.
   * @see: https://rehype-pretty.pages.dev/
   */
 
-  /* 
+  /*
   * Here we are setting up the styles needed to enable theme-aware code blocks.
   * @see: https://rehype-pretty.pages.dev/#multiple-themes-dark-and-light-mode
   */
@@ -254,7 +279,7 @@
     }
   }
 
-  /* 
+  /*
   * Here we are setting up the styles needed to enable line numbers in code blocks.
   * @see: https://rehype-pretty.pages.dev/#line-numbers
   */
@@ -297,16 +322,18 @@
     }
   }
 
-  /* 
+  /*
   * Here we are just some additional styles to make the code blocks look better.
   * @see: https://rehype-pretty.pages.dev/#styles
   */
 
   * {
+    figure[data-rehype-pretty-code-figure] {
+      @apply bg-[--code-background];
+    }
+
     pre {
-      padding: 16px;
-      overflow-x: auto;
-      font-size: 14px;
+      @apply py-4 overflow-x-auto;
 
       [data-line] {
         margin-top: 0 !important;
@@ -318,6 +345,22 @@
       margin-top: 4px;
       border: 1px solid var(--border);
       border-radius: var(--radius-base);
+    }
+
+    figcaption[data-rehype-pretty-code-title] {
+      @apply text-small py-1 px-4 border-b border-border text-[--iris-9];
+    }
+
+    figcaption[data-rehype-pretty-code-title] + pre {
+      @apply mt-0;
+    }
+
+    pre span[data-line] {
+      @apply px-4;
+    }
+
+    span[data-highlighted-line] {
+      @apply !bg-highlight-background;
     }
   }
 }

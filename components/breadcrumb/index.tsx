@@ -7,7 +7,7 @@ import { Link } from "next-view-transitions";
 import { usePathname } from "next/navigation";
 import React from "react";
 
-export const Breadcrumb = () => {
+export const Breadcrumb = ({ postTitle }: { postTitle?: string }) => {
   const pathname = usePathname();
 
   const paths = pathname
@@ -16,7 +16,7 @@ export const Breadcrumb = () => {
     .map((path) => path.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase()));
 
   return (
-    <div className={cn("mt-0 mb-4 flex w-full items-center gap-1 align-middle font-normal text-small")}>
+    <div className={cn("mt-0 mb-4 flex w-full items-center gap-1 overflow-x-auto whitespace-nowrap align-middle font-normal text-small *:shrink-0")}>
       <Link className="text-muted" href="/">
         Home
       </Link>
@@ -32,7 +32,7 @@ export const Breadcrumb = () => {
         return (
           <React.Fragment key={path}>
             {isLast ? (
-              <span className="text-muted">{path}</span>
+              <span className="text-muted">{postTitle || path}</span>
             ) : (
               <Link className="text-muted" href={href}>
                 {path}
