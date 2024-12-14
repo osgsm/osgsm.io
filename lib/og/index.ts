@@ -3,23 +3,23 @@ import type { Metadata } from "next/types";
 export const OpenGraph: Metadata = {
   metadataBase: process.env.NEXT_PUBLIC_SITE_URL ? new URL(process.env.NEXT_PUBLIC_SITE_URL) : undefined,
   title: {
-    default: "Sylph",
+    default: "osgsm.io",
     template: "%s",
   },
   description: "...",
   keywords: ["Design", "Development", "Engineering"],
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "ja",
     url: process.env.NEXT_PUBLIC_SITE_URL,
-    title: "Sylph",
+    title: "osgsm.io",
     description: "...",
     images: [`${process.env.NEXT_PUBLIC_SITE_URL}api/og`],
-    siteName: "Sylph",
+    siteName: "osgsm.io",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sylph",
+    title: "osgsm.io",
     description: "...",
     images: [`${process.env.NEXT_PUBLIC_SITE_URL}api/og`],
   },

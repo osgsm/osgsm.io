@@ -22,7 +22,7 @@ export const Posts = ({ category }: PostProps) => {
   return (
     <div className="mt-8 flex flex-col">
       <NextViewTransition href={`/${category}`} className="flex justify-between">
-        <h2 className="border-0 py-2 text-muted capitalize">
+        <h2 className="border-0 py-2 text-muted text-xl capitalize">
           {category} {posts.length > 0 && `(${posts.length})`}
         </h2>
       </NextViewTransition>
@@ -31,9 +31,9 @@ export const Posts = ({ category }: PostProps) => {
         return (
           <React.Fragment key={post.slug}>
             <Seperator />
-            <NextViewTransition href={`/${category}/${post.slug}`} className="flex w-full justify-between py-2">
+            <NextViewTransition href={`/${category}/${post.slug}`} className="flex w-full flex-col justify-between gap-0 py-2 md:flex-row md:gap-8">
               <p>{post.title}</p>
-              <p className="mt-0 text-muted">{formatter.date(new Date(post.time.created))}</p>
+              <p className="mt-0 shrink-0 text-muted">{formatter.date(new Date(post.time.created))}</p>
             </NextViewTransition>
           </React.Fragment>
         );

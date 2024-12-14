@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://osgsm.io/icon</loc><lastmod>2024-12-14T12:31:17.525Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://osgsm.io/blog</loc><lastmod>2024-12-14T12:31:17.526Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://osgsm.io</loc><lastmod>2024-12-14T12:31:17.526Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://osgsm.io/blog/tailwindcss-typography</loc><lastmod>2024-12-14T12:31:17.526Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://osgsm.io/icon</loc><lastmod>2024-12-14T14:46:24.588Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://osgsm.io</loc><lastmod>2024-12-14T14:46:24.589Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://osgsm.io/blog</loc><lastmod>2024-12-14T14:46:24.589Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://osgsm.io/blog/introducing-rehype-pretty-code</loc><lastmod>2024-12-14T14:46:24.589Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://osgsm.io/blog/rehype-pretty-code-additional-settings</loc><lastmod>2024-12-14T14:46:24.589Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://osgsm.io/blog/tailwindcss-typography</loc><lastmod>2024-12-14T14:46:24.589Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>

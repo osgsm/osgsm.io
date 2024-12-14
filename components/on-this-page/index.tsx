@@ -88,8 +88,8 @@ export const TableOfContents = () => {
         transition={{ duration: 0.25 }}
         className={cn(
           "top-[10rem] right-auto left-[2rem] hidden",
-          "xl:top-[6rem] xl:right-[6rem] xl:left-auto xl:block",
-          "fixed mt-0 h-full w-48 justify-start space-y-4 transition",
+          "xl:top-[6rem] xl:right-[3vw] xl:left-auto xl:block 2xl:right-[5vw] min-[1600px]:right-[8vw]",
+          "fixed mt-0 h-full w-[18vw] justify-start space-y-4 transition 2xl:w-72",
         )}
       >
         <div className="mt-0 flex flex-col gap-0">
@@ -99,12 +99,12 @@ export const TableOfContents = () => {
                 type="button"
                 onClick={() => scroll(heading.id)}
                 className={cn({
-                  "mt-0 ml-2 border-l border-l-gray-4 py-1 text-left text-muted opacity-100 transition ease-in-out hover:opacity-50": true,
-                  "text-bold text-gray-12": visibleHeadings.has(heading.id),
-                  "pl-4": heading.level === "h1",
-                  "pl-6": heading.level === "h2",
-                  "pl-7": heading.level === "h3",
-                  "border-l border-l-gray-12": visibleHeadings.has(heading.id),
+                  "mt-0 ml-1 border-border border-l py-1.5 text-left text-muted leading-normal opacity-100 transition ease-in-out hover:opacity-50": true,
+                  "text-foreground text-normal": visibleHeadings.has(heading.id),
+                  "pl-1": heading.level === "h1",
+                  "pl-5": heading.level === "h2",
+                  "pl-9": heading.level === "h3",
+                  "border-l border-l-foreground": visibleHeadings.has(heading.id),
                 })}
                 data-active={visibleHeadings.has(heading.id) ? "true" : "false"}
               >

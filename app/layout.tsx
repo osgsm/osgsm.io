@@ -29,7 +29,7 @@ export default function RootLayout({
     <html lang="en" className={clsx(inter.className)} suppressHydrationWarning>
       <body className="flex min-h-screen flex-col">
         <Providers>
-          <main className="mx-auto w-full max-w-screen-md overflow-x-hidden px-6 py-24 md:overflow-x-visible">
+          <main className="mx-auto w-full max-w-[704px] overflow-x-hidden px-6 py-24 md:overflow-x-visible">
             <article className="article">{children}</article>
           </main>
           <Footer />

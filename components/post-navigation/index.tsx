@@ -24,7 +24,7 @@ function PostNavigation({ posts }: PostNavigationProps) {
   }
 
   return (
-    <div className="mt-20 flex w-full justify-between gap-2 border-border border-t pt-8 leading-snug">
+    <div className="mt-20 flex w-full justify-between gap-8 border-border border-t pt-8 leading-snug">
       {previous && (
         <Link href={`${previous.slug}`} className="flex w-full flex-col gap-1 text-left">
           <span className="text-muted">Previous</span>

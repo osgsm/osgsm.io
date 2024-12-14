@@ -152,6 +152,15 @@ const config: Config = {
         base: "var(--radius-base)",
         large: "var(--radius-large)",
       },
+      animation: {
+        "move-background": "move-background 20s linear infinite",
+      },
+      keyframes: {
+        "move-background": {
+          "0%, 100%": { backgroundPosition: "left center" },
+          "50%": { backgroundPosition: "right center" },
+        },
+      },
     },
   },
   plugins: [
@@ -164,6 +173,13 @@ const config: Config = {
         ".text-default": {
           fontSize: "16px",
           lineHeight: "28px",
+        },
+        ".hide-scrollbar": {
+          "-ms-overflow-style": "none",
+          "scrollbar-width": "none",
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
         },
       });
     }),
