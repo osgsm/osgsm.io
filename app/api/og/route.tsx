@@ -42,7 +42,7 @@ export async function GET(request: Request) {
             height: "100%",
 
             /* box */
-            padding: "120px",
+            padding: "80px",
 
             /* style */
             fontSize: "32px",
@@ -53,15 +53,15 @@ export async function GET(request: Request) {
           <div
             style={{
               display: "flex",
-              alignItems: "center",
-              height: "24px",
-              gap: 12,
+              flexDirection: "column",
+              gap: 32,
             }}
           >
             <div style={{ color: "rgba(91, 91, 214, 1)" }}>osgsm.io</div>
-            {title && <div style={{ color: "rgba(38, 42, 101, 1)" }}>/</div>}
             {title ? (
-              <div style={{ color: "rgba(91, 91, 214, 1)" }}>
+              <div
+                style={{ color: "rgba(177, 169, 255, 1)", fontSize: "40px" }}
+              >
                 {title.toLowerCase()}
               </div>
             ) : null}
@@ -70,7 +70,7 @@ export async function GET(request: Request) {
       ),
       {
         width: 1200,
-        height: 600,
+        height: 630,
         fonts: [
           {
             name: "Inter",
