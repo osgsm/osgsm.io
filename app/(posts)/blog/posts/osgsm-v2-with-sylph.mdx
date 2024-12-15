@@ -1,0 +1,39 @@
+---
+title: "Sylph を使ってサイトをリニューアルした"
+summary: ""
+time:
+  created: "2024-12-15T05:28:28.180Z"
+  updated: "2024-12-15T05:28:28.180Z"
+---
+
+リニューアル前は、 Next.js のチュートリアルをもとに作成したサイトに、自分で機能を追加したり、見た目を整えたりしていました。
+
+しかし、少し前に [Sylph](https://next-sylph-portfolio.vercel.app/) という Next.js のスターターを知りました。
+
+このスターターは、 MDX でコンテンツを管理できたり、 Tailwind を使っていたり、諸々が好みの感じで、必要としていた機能も備えていたので採用しました。
+
+初期状態から見た目がよく、かつシンプルなスタイリングなので、カスタマイズもやりやすいです。
+
+個人的なお気に入りは、デフォルトで用意されている `<Preview />{:js}` コンポーネントです。次のように、コードブロックと並べて、そのコードの結果を投稿内に表示したりできます。
+
+<Preview codeblock>
+  <div className="text-5xl animate-spin">😵‍💫</div>
+</Preview>
+
+```html
+<div className="text-5xl animate-spin">😵‍💫</div>
+```
+
+---
+
+ちなみにリニューアル前は次のような見た目でした。
+
+<Image src="/blog/images/osgsm-v2-with-sylph/image1.webp" alt="osgsm.io の以前の見た目" width={900} height={900} />
+
+リニューアル前に比べ見た目も機能もよくなったので、これからはもっと気軽に投稿していこうと思います。
+
+---
+
+参考
+
+- [Sylph](https://next-sylph-portfolio.vercel.app/)
