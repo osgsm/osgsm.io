@@ -8,7 +8,7 @@ import React from "react";
 const Spacer = () => <div style={{ marginTop: "48px" }} />;
 
 export function generateMetadata() {
-  const title = "Guides";
+  const title = "Blog";
   const image = `${process.env.NEXT_PUBLIC_SITE_URL}api/og?title=${encodeURIComponent(title)}`;
 
   return {
