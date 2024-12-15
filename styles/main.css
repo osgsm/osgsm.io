@@ -77,7 +77,7 @@
     h4,
     h5,
     h6 {
-      @apply font-normal leading-snug tracking-tight;
+      @apply font-semibold leading-snug tracking-tight;
     }
 
     h2,
