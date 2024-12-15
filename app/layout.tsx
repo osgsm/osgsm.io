@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={clsx(inter.className)} suppressHydrationWarning>
+    <html lang="ja" className={clsx(inter.className)} suppressHydrationWarning>
       <body className="flex min-h-screen flex-col">
         <Providers>
           <Header />
