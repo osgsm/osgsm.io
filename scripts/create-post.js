@@ -14,7 +14,6 @@ async function createPost() {
     const timestamp = new Date().toISOString();
     const template = `---
 title: ""
-description: ""
 time:
   created: "${timestamp}"
   updated: "${timestamp}"
