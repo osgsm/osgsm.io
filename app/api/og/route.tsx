@@ -45,7 +45,7 @@ export async function GET(request: Request) {
             padding: "80px",
 
             /* style */
-            fontSize: "32px",
+            fontSize: "48px",
             letterSpacing: "-0.47px",
             backgroundColor: "rgba(19, 19, 30, 1)",
           }}
@@ -60,7 +60,7 @@ export async function GET(request: Request) {
             <div style={{ color: "rgba(91, 91, 214, 1)" }}>osgsm.io</div>
             {title ? (
               <div
-                style={{ color: "rgba(177, 169, 255, 1)", fontSize: "40px" }}
+                style={{ color: "rgba(177, 169, 255, 1)", fontSize: "60px" }}
               >
                 {title.toLowerCase()}
               </div>
