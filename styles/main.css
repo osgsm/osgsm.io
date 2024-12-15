@@ -134,19 +134,19 @@
 
   article {
     h1 {
-      @apply text-2xl leading-snug;
+      @apply text-xl md:text-2xl leading-snug;
     }
 
     h2 {
-      @apply text-2xl border-b border-border pb-1;
+      @apply text-xl md:text-2xl border-b border-border pb-1;
     }
 
     h3 {
-      @apply text-xl;
+      @apply text-lg md:text-xl;
     }
 
     h4 {
-      @apply text-lg;
+      @apply text-base md:text-lg;
     }
 
     h1 + h2 {

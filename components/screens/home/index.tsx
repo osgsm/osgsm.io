@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <FadeIn.Container>
       <FadeIn.Item>
-        <div className="grid gap-1 text-2xl *:mt-0">
+        <div className="grid gap-1 text-xl *:mt-0 md:text-2xl">
           <p>ようこそ👋🏼 おおしましょうごです。</p>
           <p>大阪在住のウェブデベロッパーです。</p>
           <p>ここは制作のための遊び場です。</p>

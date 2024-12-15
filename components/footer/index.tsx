@@ -2,7 +2,7 @@ import { AppThemeSwitcher } from "@/components/theme";
 
 const Footer = () => {
   return (
-    <footer className="mx-auto mt-auto flex w-full max-w-4xl items-center justify-between px-6 py-3">
+    <footer className="mx-auto mt-auto flex w-full max-w-4xl items-center justify-between px-4 py-3 md:px-6">
       <div className="text-muted text-small">© Shogo Oshima</div>
       <div className="text-muted text-small">
         <AppThemeSwitcher />
