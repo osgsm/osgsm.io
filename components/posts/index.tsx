@@ -38,7 +38,7 @@ export const Posts = ({ category }: PostProps) => {
             <Seperator />
             <NextViewTransition
               href={`/${category}/${post.slug}`}
-              className="flex w-full flex-col justify-between gap-0 py-4 leading-snug md:flex-row md:gap-16"
+              className="flex w-full flex-col justify-between gap-1 py-4 leading-normal md:flex-row md:gap-16"
             >
               <p>{post.title}</p>
               <p className="mt-0 shrink-0 text-muted">

@@ -7,17 +7,23 @@ export default function Home() {
   return (
     <FadeIn.Container>
       <FadeIn.Item>
-        <div className="grid gap-1 text-xl *:mt-0 md:text-2xl">
-          <p>ようこそ👋🏼 おおしましょうごです。</p>
-          <p>大阪在住のウェブデベロッパーです。</p>
-          <p>ここは制作のための遊び場です。</p>
-          <p>作ったものや学んだこと、試したことを共有します。</p>
+        <div className="grid gap-1.5 break-keep text-lg *:mt-0 md:text-xl">
+          <p>ようこそ👋🏼 </p>
+          <p>
+            おおしましょうごと申します。
+            <wbr />
+            ウェブデベロッパーです。
+          </p>
+          <p>
+            ここでは、作ったものや試したこと、
+            <wbr />
+            学んだことを放出します。
+          </p>
         </div>
       </FadeIn.Item>
       <FadeIn.Item>
         <Posts category="blog" />
       </FadeIn.Item>
-      <Spacer />
     </FadeIn.Container>
   );
 }
