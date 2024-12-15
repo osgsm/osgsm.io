@@ -58,10 +58,10 @@ export async function GET(request: Request) {
               gap: 12,
             }}
           >
-            <div style={{ color: "rgba(177, 169, 255, 1)" }}>osgsm.io</div>
+            <div style={{ color: "rgba(91, 91, 214, 1)" }}>osgsm.io</div>
             {title && <div style={{ color: "rgba(38, 42, 101, 1)" }}>/</div>}
             {title ? (
-              <div style={{ color: "rgba(38, 42, 101, 1)" }}>
+              <div style={{ color: "rgba(91, 91, 214, 1)" }}>
                 {title.toLowerCase()}
               </div>
             ) : null}
