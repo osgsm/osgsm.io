@@ -27,7 +27,7 @@ export const Posts = ({ category }: PostProps) => {
         href={`/${category}`}
         className="flex justify-between"
       >
-        <h2 className="border-0 py-2 text-muted text-xl capitalize">
+        <h2 className="border-0 py-4 text-muted text-xl capitalize">
           {category} {posts.length > 0 && `(${posts.length})`}
         </h2>
       </NextViewTransition>
@@ -38,7 +38,7 @@ export const Posts = ({ category }: PostProps) => {
             <Seperator />
             <NextViewTransition
               href={`/${category}/${post.slug}`}
-              className="flex w-full flex-col justify-between gap-0 py-2 md:flex-row md:gap-8"
+              className="flex w-full flex-col justify-between gap-0 py-4 leading-snug md:flex-row md:gap-16"
             >
               <p>{post.title}</p>
               <p className="mt-0 shrink-0 text-muted">

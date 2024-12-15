@@ -351,7 +351,7 @@
       @apply mt-0;
     }
 
-    [data-line] {
+    pre [data-line] {
       @apply mt-0 px-4 border-l-2 border-transparent;
     }
 
