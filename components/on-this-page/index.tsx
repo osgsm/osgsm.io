@@ -6,8 +6,12 @@ import { motion } from "framer-motion";
 import React, { useCallback, useEffect, useState } from "react";
 
 export const TableOfContents = () => {
-  const [headings, setHeadings] = useState<{ id: string; text: string; level: string }[]>([]);
-  const [visibleHeadings, setVisibleHeadings] = useState<Set<string>>(new Set());
+  const [headings, setHeadings] = useState<
+    { id: string; text: string; level: string }[]
+  >([]);
+  const [visibleHeadings, setVisibleHeadings] = useState<Set<string>>(
+    new Set(),
+  );
 
   const getHeadings = useCallback(() => {
     return Array.from(document.querySelectorAll("h1, h2, h3"))
@@ -45,7 +49,10 @@ export const TableOfContents = () => {
       setVisibleHeadings(new Set(visibleSet));
     };
 
-    const observer = new IntersectionObserver(handleIntersection, observerOptions);
+    const observer = new IntersectionObserver(
+      handleIntersection,
+      observerOptions,
+    );
 
     for (const heading of collectedHeadings) {
       const element = document.getElementById(heading.id);
@@ -88,7 +95,7 @@ export const TableOfContents = () => {
         transition={{ duration: 0.25 }}
         className={cn(
           "top-[10rem] right-auto left-[2rem] hidden",
-          "xl:top-[6rem] xl:right-[3vw] xl:left-auto xl:block 2xl:right-[5vw] min-[1600px]:right-[8vw]",
+          "xl:top-[9.5rem] xl:right-[3vw] xl:left-auto xl:block 2xl:right-[5vw] min-[1600px]:right-[8vw]",
           "fixed mt-0 h-full w-[18vw] justify-start space-y-4 transition 2xl:w-72",
         )}
       >
@@ -99,12 +106,17 @@ export const TableOfContents = () => {
                 type="button"
                 onClick={() => scroll(heading.id)}
                 className={cn({
-                  "mt-0 ml-1 border-border border-l py-1.5 text-left text-muted leading-normal opacity-100 transition ease-in-out hover:opacity-50": true,
-                  "text-foreground text-normal": visibleHeadings.has(heading.id),
+                  "mt-0 ml-1 border-border border-l py-1.5 text-left text-muted leading-normal opacity-100 transition ease-in-out hover:opacity-50":
+                    true,
+                  "text-foreground text-normal": visibleHeadings.has(
+                    heading.id,
+                  ),
                   "pl-1": heading.level === "h1",
                   "pl-5": heading.level === "h2",
                   "pl-9": heading.level === "h3",
-                  "border-l border-l-foreground": visibleHeadings.has(heading.id),
+                  "border-l border-l-foreground": visibleHeadings.has(
+                    heading.id,
+                  ),
                 })}
                 data-active={visibleHeadings.has(heading.id) ? "true" : "false"}
               >
