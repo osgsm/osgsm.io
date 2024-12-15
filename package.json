@@ -8,6 +8,7 @@
     "start": "next start",
     "postbuild": "next-sitemap",
     "mdx:timestamps": "node ./scripts/update-mdx-timestamps",
+    "mdx:create": "node ./scripts/create-post",
     "lint:style": "npx stylelint \"**/*.css\" --fix",
     "lint:biome": "npx biome check --fix --unsafe .",
     "lint:prettier": "npx prettier . --write --log-level warn",
