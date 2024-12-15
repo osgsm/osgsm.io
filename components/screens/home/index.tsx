@@ -17,12 +17,6 @@ export default function Home() {
       <FadeIn.Item>
         <Posts category="blog" />
       </FadeIn.Item>
-      <FadeIn.Item>
-        <Posts category="guides" />
-      </FadeIn.Item>
-      <FadeIn.Item>
-        <Posts category="examples" />
-      </FadeIn.Item>
       <Spacer />
     </FadeIn.Container>
   );

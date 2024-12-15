@@ -19,8 +19,6 @@ const inter = Inter({
   display: "swap",
 });
 
-const Spacer = () => <div style={{ marginTop: "48px" }} />;
-
 export default function RootLayout({
   children,
 }: Readonly<{
