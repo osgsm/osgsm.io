@@ -1,4 +1,6 @@
 import clsx from "clsx";
+import { SquareArrowOutUpRight } from "lucide-react";
+import NextLink from "next/link";
 
 interface LinkProps extends React.HTMLProps<HTMLAnchorElement> {
   text?: string;
@@ -7,7 +9,18 @@ interface LinkProps extends React.HTMLProps<HTMLAnchorElement> {
 }
 
 const Link = ({ text, href, underline, className, children }: LinkProps) => {
-  return (
+  const isInternalLink = href?.startsWith("/") || href?.startsWith("#");
+  return isInternalLink ? (
+    <NextLink
+      href={href ?? ""}
+      className={clsx(
+        className,
+        "underline decoration-1 decoration-[--iris-6] underline-offset-2",
+      )}
+    >
+      {children}
+    </NextLink>
+  ) : (
     <a
       target="_blank"
       rel="noopener noreferrer nofollow"
@@ -18,6 +31,7 @@ const Link = ({ text, href, underline, className, children }: LinkProps) => {
       href={href}
     >
       {text || children}
+      <SquareArrowOutUpRight className="size-3 translate-y-px" />
     </a>
   );
 };
