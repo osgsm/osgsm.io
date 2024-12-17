@@ -303,7 +303,8 @@
       width: 2.25rem;
     }
 
-    p [data-line] {
+    p [data-line],
+    li [data-line] {
       padding: 2px 4px;
       margin-right: 2px;
       margin-left: 2px;
