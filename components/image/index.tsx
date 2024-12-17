@@ -17,9 +17,9 @@ export default function MDXImage({ caption, alt, ...props }: MDXImageProps) {
 
   return (
     <motion.a
-      className="my-6 flex cursor-pointer flex-col justify-end gap-2"
+      className="hover:!opacity-100 my-6 flex cursor-pointer flex-col justify-end gap-2"
       href={href}
-      whileHover={{ scale: 0.975, opacity: 0.9 }}
+      whileHover={{ scale: 0.975 }}
     >
       <div className="relative max-h-[560px] w-full overflow-hidden rounded-large border border-border">
         <Image
@@ -40,7 +40,7 @@ export default function MDXImage({ caption, alt, ...props }: MDXImageProps) {
           {...props}
         />
       </div>
-      {caption && <sub className="pt-2 text-center">{caption}</sub>}
+      {caption && <sub className="pt-2 pb-4 text-center">{caption}</sub>}
     </motion.a>
   );
 }
