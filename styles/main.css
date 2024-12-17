@@ -84,15 +84,7 @@
     h3,
     sub,
     sup {
-      @apply text-muted;
-    }
-
-    h2 code span,
-    h3 code span,
-    h4 code span,
-    h5 code span,
-    h6 code span {
-      @apply !text-[--muted];
+      @apply text-foreground;
     }
 
     sub {
@@ -134,19 +126,19 @@
 
   article {
     h1 {
-      @apply text-2xl leading-snug;
+      @apply text-2xl leading-snug lg:text-3xl;
     }
 
     h2 {
-      @apply text-2xl border-b border-border pb-1;
+      @apply text-xl border-b border-border pb-1 lg:text-2xl;
     }
 
     h3 {
-      @apply text-xl;
+      @apply text-lg lg:text-xl;
     }
 
     h4 {
-      @apply text-lg;
+      @apply lg:text-lg;
     }
 
     h1 + h2 {
@@ -184,6 +176,10 @@
 
     hr {
       @apply my-8 border-t border-border;
+    }
+
+    a {
+      @apply transition text-muted underline decoration-1 decoration-[--iris-6] underline-offset-2;
     }
 
     /*

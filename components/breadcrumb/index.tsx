@@ -13,13 +13,17 @@ export const Breadcrumb = ({ postTitle }: { postTitle?: string }) => {
   const paths = pathname
     .split("/")
     .filter((path) => path !== "")
-    .map((path) => path.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase()));
+    .map((path) =>
+      path.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase()),
+    );
 
   return (
     <div
-      className={cn("hide-scrollbar mt-0 mb-4 flex w-full items-center gap-1 overflow-x-auto whitespace-nowrap align-middle font-normal text-small *:shrink-0")}
+      className={cn(
+        "hide-scrollbar mt-0 mb-4 flex w-full items-center gap-1 overflow-x-auto whitespace-nowrap align-middle font-normal text-small *:shrink-0",
+      )}
     >
-      <Link className="text-muted" href="/">
+      <Link className="text-muted no-underline" href="/">
         Home
       </Link>
       <ChevronRightIcon className="text-muted" />
@@ -36,11 +40,13 @@ export const Breadcrumb = ({ postTitle }: { postTitle?: string }) => {
             {isLast ? (
               <span className="text-muted">{postTitle || path}</span>
             ) : (
-              <Link className="text-muted" href={href}>
+              <Link className="text-muted no-underline" href={href}>
                 {path}
               </Link>
             )}
-            {index < paths.length - 1 && <ChevronRightIcon className="text-muted" />}
+            {index < paths.length - 1 && (
+              <ChevronRightIcon className="text-muted" />
+            )}
           </React.Fragment>
         );
       })}
