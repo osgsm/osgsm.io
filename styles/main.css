@@ -178,10 +178,6 @@
       @apply my-8 border-t border-border;
     }
 
-    a {
-      @apply transition text-muted underline decoration-1 decoration-[--iris-6] underline-offset-2;
-    }
-
     /*
     * This handles our highlighting on selection of a table of contents item.
     */
