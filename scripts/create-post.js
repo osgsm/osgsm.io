@@ -1,5 +1,6 @@
-const fs = require("fs");
-const path = require("path");
+const fs = require("node:fs");
+const path = require("node:path");
+const { exec } = require("node:child_process");
 
 // Main function
 async function createPost() {
@@ -19,7 +20,7 @@ time:
   updated: "${timestamp}"
 ---
 
-# Article content goes here
+## Article content goes here
 
 `;
 
@@ -32,11 +33,6 @@ time:
     );
     const filepath = path.join(postsDir, `${filename}.mdx`);
 
-    // Create directory if it doesn't exist
-    if (!fs.existsSync(postsDir)) {
-      fs.mkdirSync(postsDir, { recursive: true });
-    }
-
     // Check if file already exists
     if (fs.existsSync(filepath)) {
       throw new Error(`${filename}.mdx already exists.`);
@@ -44,6 +40,13 @@ time:
 
     fs.writeFileSync(filepath, template, "utf-8");
     console.log(`✅ Created ${filepath}`);
+
+    // Open file in Cursor
+    exec(`cursor "${filepath}"`, (error) => {
+      if (error) {
+        console.warn("⚠️ Could not open Cursor automatically:", error.message);
+      }
+    });
   } catch (error) {
     console.error("❌ Error:", error.message);
     process.exit(1);
