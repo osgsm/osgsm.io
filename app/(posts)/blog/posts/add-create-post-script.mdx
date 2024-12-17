@@ -1,0 +1,164 @@
+---
+title: "新たに投稿を作成する npm スクリプトを追加する"
+time:
+  created: "2024-12-17T04:50:49.566Z"
+  updated: "2024-12-17T04:50:49.566Z"
+---
+
+<a href="/blog/osgsm-v2-with-sylph">前回の記事</a>にも書いたように、このブログは Sylph というスターターを使って作成しています。
+Sylph では、 `.mdx` ファイルを使って投稿を作成し、次のようにフロントマターにタイトルや日付を記述します。
+
+```mdx
+---
+title: "新たに投稿を作成する npm スクリプトを追加する"
+time:
+  created: "2024-12-17T04:50:49.566Z"
+  updated: "2024-12-17T04:50:49.566Z"
+---
+```
+
+これを手動で用意するのは面倒なので、 npm スクリプトを追加し、コマンドで簡単に新規投稿を作成できるようにします。
+
+## スクリプト用のファイルを作成する
+
+例えば、 `/scripts/create-post.js` というファイルを作成します。
+
+`create-post.js` のコードは次のようになります。
+
+ちなみにこのコードはほとんど AI に作成してもらいました。ここではファイル作成後に Cursor で開くようにしています。
+
+```js title="create-post.js"
+const fs = require("node:fs");
+const path = require("node:path");
+const { exec } = require("node:child_process");
+
+// Main function
+async function createPost() {
+  try {
+    const filename = process.argv[2];
+    if (!filename) {
+      throw new Error(
+        "Please specify a filename.\nExample: npm run create-post my-new-post",
+      );
+    }
+
+    const timestamp = new Date().toISOString();
+    const template = `---
+title: ""
+time:
+  created: "${timestamp}"
+  updated: "${timestamp}"
+---
+
+## Article content goes here
+
+`;
+
+    const postsDir = path.join(
+      process.cwd(),
+      "app",
+      "(posts)",
+      "blog",
+      "posts",
+    );
+    const filepath = path.join(postsDir, `${filename}.mdx`);
+
+    // Check if file already exists
+    if (fs.existsSync(filepath)) {
+      throw new Error(`${filename}.mdx already exists.`);
+    }
+
+    fs.writeFileSync(filepath, template, "utf-8");
+    console.log(`✅ Created ${filepath}`);
+
+    // Open file in Cursor
+    exec(`cursor "${filepath}"`, (error) => {
+      if (error) {
+        console.warn("⚠️ Could not open Cursor automatically:", error.message);
+      }
+    });
+  } catch (error) {
+    console.error("❌ Error:", error.message);
+    process.exit(1);
+  }
+}
+
+createPost();
+```
+
+## `package.json` への追加
+
+npm script として使えるように `package.json` に次の記述を追加します。
+
+```json {5} title="package.json"
+{
+  // ...
+  "scripts": {
+    // ...
+    "mdx:create": "node ./scripts/create-post",
+    "lint:style": "npx stylelint \"**/*.css\" --fix",
+    "lint:biome": "npx biome check --fix --unsafe .",
+    "lint:prettier": "npx prettier . --write --log-level warn",
+    "lint": "npm run lint:style && npm run lint:prettier && npm run lint:biome"
+  },
+  // ...
+  }
+}
+```
+
+## 実際に使ってみる
+
+次のコマンドを実行します。引数としてファイル名を渡します。
+
+```shell title="Terminal"
+pnpm mdx:create sample-post
+```
+
+ファイルが作成されると次のように出力されます。
+
+```shell
+✅ Created /Users/username/myproject/app/(posts)/blog/posts/sample-post.mdx
+```
+
+そして、Cursor で作成したファイルが開きます。内容は次のようになっています。
+
+```mdx title="sample-post.mdx"
+---
+title: ""
+time:
+  created: "2024-12-17T05:02:13.439Z"
+  updated: "2024-12-17T05:02:13.439Z"
+---
+
+## Article content goes here
+
+
+```
+
+素晴らしい✨
+
+## スクリプトの概要
+
+スクリプトの概要は次のようになっています。
+
+- `process.argv[2]{:js}` でコマンドライン引数を取得しファイル名にする
+- ファイル名を指定していない場合はエラーを出す
+- タイムスタンプを取得し、テンプレートを用意
+- ファイルが既に存在する場合はエラーを出す
+- ファイルを作成
+- Cursor でファイルを開く
+
+---
+
+これで簡単に投稿を作成できるようになりました。
+
+今回のような簡単なスクリプトであれば、一瞬で AI に作成してもらえるのでいい時代になりましたね。
+
+余談ですが、この投稿は Cursor を使って作成しています。記事の内容もわりといい感じにサジェストされるので、投稿の作成がはかどりそうな予感です。
+
+---
+
+参考
+
+- [Index | Node.js v23.4.0 Documentation](https://nodejs.org/api/)
+- [Project Structure](https://next-sylph-portfolio.vercel.app/guides/project-structure)
