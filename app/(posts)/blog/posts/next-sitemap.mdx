@@ -1,0 +1,176 @@
+---
+title: "Next.js: next-sitemap を使って、サイトマップと robots.txt を自動生成する"
+time:
+  created: "2023-01-24T04:50:49.566Z"
+  updated: "2024-12-17T04:50:49.566Z"
+---
+
+今回は Next.js でサイトマップを自動生成する方法をご紹介します。
+
+[公式ドキュメント](https://nextjs.org/learn/seo/crawling-and-indexing/xml-sitemaps)では、 `getServerSideProps`を使う例が紹介されていますが、今回はもっと簡単な方法を使います。
+
+[`next-sitemap`](https://github.com/iamvishnusankar/next-sitemap) というパッケージを使うと、簡単に、しかも自動でサイトマップを生成することができます。
+ちなみに、 Next.js 用のサイトマップ生成関連のパッケージでメジャーなものは、[`next-sitemap`](https://github.com/iamvishnusankar/next-sitemap) と [`nextjs-sitemap-generator`](https://github.com/IlusionDev/nextjs-sitemap-generator) がありますが、 npm trends で両者を比べると次のようになります（2023年1月24日時点）。
+
+<Image src="/blog/images/next-sitemap/image1.png" alt="npm trends でのダウンロード数の推移" caption="next-sitemap vs nextjs-sitemap-generator | npm trends" />
+
+<Image src="/blog/images/next-sitemap/image2.png" alt="npm trends の統計情報" caption="next-sitemap vs nextjs-sitemap-generator | npm trends" />
+
+`next-sitemap` の方がポピュラーで、しっかりと更新も行われているようです。というわけで `next-sitemap` を採用しました。
+
+では、早速導入していきましょう。
+
+## パッケージのインストール
+
+インストールは次のコマンドから。
+
+```shell
+pnpm install next-sitemap
+```
+
+## 設定ファイルの作成
+
+`next-sitemap` は、プロジェクトルートに `next-sitemap.config.js` という設定ファイルが必要なので、そのファイルを作成します。
+
+ファイルの中身は、ひとまず次のようにします。 `siteUrl` の値は適宜変更してください。
+
+```js title="next-sitemap.config.js"
+/** @type {import('next-sitemap').IConfig} */
+module.exports = {
+  siteUrl: "https://osgsm.io",
+};
+```
+
+1行目の JS Doc はなくてもよいですが、これがあると、エディター上で自動補完が効くので便利です。
+
+特に追加で設定したい項目がなければ、これだけでサイトマップの生成が可能です。
+
+では、試しにサイトマップを生成してみましょう。
+
+## 試しにサイトマップを生成してみる
+
+サイトマップの生成には、プロジェクトをビルドする必要があるので、まずは次のコマンドを実行します。
+
+```shell
+pnpm build
+```
+
+ビルドが終わったら `pnpm next-sitemap` を実行します。すると、次のようにターミナル上に表示されます。
+
+```shell title="Terminal"
+% pnpm next-sitemap
+# ...
+✅ [next-sitemap] Generation completed
+┌───────────────┬────────┐
+│    (index)    │ Values │
+├───────────────┼────────┤
+│ indexSitemaps │   1    │
+│   sitemaps    │   1    │
+└───────────────┴────────┘
+# ...
+```
+
+デフォルトでは、サイトマップは `public` ディレクトリに生成され、今回の例では `sitemap-0.xml` と `sitemap.xml` という2つのサイトマップが作られます。
+
+なぜ2つも生成されるかというと、 `next-sitemap` は、デフォルトで Index Sitemap に対応しているからです。
+
+Index Sitemap というのは、分割された複数のサイトマップを一度に送信するためのインデックス用のサイトマップを指します。 Index Sitemap は、サイトマップの容量が大きく、容量制限内に収まらない場合などに使います。→ 詳しくは [Manage Large Or Multiple Sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/large-sitemaps) 参照。
+
+ちなみに、[一つ当たりのサイトマップの容量制限は 50MB もしくは 50,000 個の URL](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap#sitemapformat) となっています。
+
+個人サイトでは、この上限を超えることはないと思うので、今回は Index Sitemap の生成を無効にしたいと思います。
+
+それでは、設定内容を追加していきましょう。
+
+## 設定内容を追加
+
+設定内容の追記は、上述した `next-sitemap.config.js` という設定ファイルに行っていきます。
+
+設定可能なオプションのリストは [Configuration Options](https://github.com/iamvishnusankar/next-sitemap#configuration-options) にまとまっています。
+
+今回は、次の3つのオプションを変更します。Index Sitemap の生成無効に加えて、2つ追加で変更します。
+
+- `autoLastmod: false`: `<lastmod>` の追加を無効にする。
+- `generateIndexSitemap: false`: Index Sitemap の生成を無効にする。
+- `generateRobotsTxt : true`: `robots.txt` の生成を有効にする。
+
+```js title="next-sitemap.config.js" {4-6}
+/** @type {import('next-sitemap').IConfig} */
+module.exports = {
+  siteUrl: "https://osgsm.io",
+  autoLastmod: false,
+  generateIndexSitemap: false,
+  generateRobotsTxt: true,
+};
+```
+
+`<lastmod>` を無効にしている理由は次の通りです。デフォルトでは、 すべての `<lastmod>` ににサイトマップ生成時の時間が追加されてしまいますが、本来このタグは、該当のファイルの更新日を示すものです。正しい値にするためには `getServerSideSitemap` という API を使って、投稿データから動的にサイトマップを生成する必要がありますが、[`<lastmod>` は必須のものではない](https://www.sitemaps.org/ja/protocol.html)ので、今回は簡略化のため `<lastmod>` 自体を追加しないようにしています。
+
+これで、 `pnpm build`→ `pnpm next-sitemap` で、 次のような `sitemap.xml` と `robots.txt` が生成されます。
+
+```xml title="sitemap.xml"
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url><loc>https://osgsm.io</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://osgsm.io/posts/first-post</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
+<!-- ... -->
+</urlset>
+```
+
+```none title="robots.txt"
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://osgsm.io
+
+# Sitemaps
+Sitemap: https://osgsm.io/sitemap.xml
+```
+
+`robots.txt` には、サイトマップの場所を自動的に明示してくれます。
+
+しかし、毎回毎回 `pnpm build`→ `pnpm next-sitemap` を実行するのは面倒ですよね。これを解決するには `package.json` に script を追加する必要があります。
+
+## postbuild script を使ってビルド時に自動生成する
+
+`package.json` の `"sctipts"` セクションに `"postbuild"` という script を追加し、値を `next-sitemap` にします。
+
+```json title="package.json" {6}
+{
+  // ...
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "postbuild": "next-sitemap",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write ."
+  }
+  // ...
+}
+```
+
+これで `build` 実行後に、自動的に `next-sitemap` が実行され、 `public/sitemap.xml` が生成されます。
+
+`package.json` の `post` が付く script についての詳細は [scripts | npm Docs](https://docs.npmjs.com/cli/v9/using-npm/scripts) をご確認ください。
+
+## さいごに
+
+`next-sitemap` を使えば、とても簡単にサイトマップの作成ができます。
+
+また、サイトマップだけでなく `robots.txt` も生成してくれるのがありがたいですね。今回は行いませんでしたが、 `robots.txt` の内容も柔軟に変更可能なので、色々とお試しください。
+
+今回作成したサイトマップは簡略版なので、ゆくゆくは投稿データから動的にサイトマップを生成するようにもしていきたいですね。
+
+---
+
+参考
+
+- [iamvishnusankar/next-sitemap: Sitemap generator for next.js. Generate sitemap(s) and robots.txt for all static/pre-rendered/dynamic/server-side pages.](https://github.com/iamvishnusankar/next-sitemap)
+- [next-sitemap vs nextjs-sitemap-generator | npm trends](https://npmtrends.com/next-sitemap-vs-nextjs-sitemap-generator)
+- [scripts | npm Docs](https://docs.npmjs.com/cli/v9/using-npm/scripts)
+- [Manage Large Or Multiple Sitemaps | Google Search Central  |  Documentation  |  Google Developers](https://developers.google.com/search/docs/crawling-indexing/sitemaps/large-sitemaps)
+- [Build and Submit a Sitemap | Google Search Central  |  Documentation  |  Google Developers](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap)
+- [sitemaps.org - プロトコル](https://www.sitemaps.org/ja/protocol.html)
