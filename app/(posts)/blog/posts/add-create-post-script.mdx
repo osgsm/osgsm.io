@@ -1,5 +1,5 @@
 ---
-title: "新たに投稿を作成する npm スクリプトを追加する"
+title: "テンプレートに沿ったマークダウンファイルをコマンドから簡単に作成できるようにする"
 time:
   created: "2024-12-17T04:50:49.566Z"
   updated: "2024-12-17T04:50:49.566Z"
@@ -17,15 +17,16 @@ time:
 ---
 ```
 
-これを手動で用意するのは面倒なので、 npm スクリプトを追加し、コマンドで簡単に新規投稿を作成できるようにします。
+このように決まったテンプレートが必要な場合、手動でファイルを作成するのは面倒です。
+
+なので、 npm スクリプトを追加し、コマンドで簡単に新規投稿を作成できるようにします。
 
 ## スクリプト用のファイルを作成する
 
 例えば、 `/scripts/create-post.js` というファイルを作成します。
 
 `create-post.js` のコードは次のようになります。
-
-ちなみにこのコードはほとんど AI に作成してもらいました。ここではファイル作成後に Cursor で開くようにしています。
+ちなみにこのコードはほとんど AI に作成してもらいました。
 
 ```js title="create-post.js"
 const fs = require("node:fs");
@@ -86,9 +87,13 @@ time:
 createPost();
 ```
 
+上のコードはこのブログの構造に沿った内容になっていますが、 `template` の内容や `postDir` のパスを変更すれば他のプロジェクトでも使えるかと思います。
+
+あと、ファイル作成後に Cursor で開くようにしていますが、その部分も適宜変更してください。
+
 ## `package.json` への追加
 
-npm script として使えるように `package.json` に次の記述を追加します。
+npm script として使えるように、 `mdx:create` というスクリプトを `package.json` に追加します。
 
 ```json {5} title="package.json"
 {
@@ -120,7 +125,9 @@ pnpm mdx:create sample-post
 ✅ Created /Users/username/myproject/app/(posts)/blog/posts/sample-post.mdx
 ```
 
-そして、Cursor で作成したファイルが開きます。内容は次のようになっています。
+そして、Cursor で作成したファイルが開きます。
+
+作成されたファイルの内容は次のようになっています。
 
 ```mdx title="sample-post.mdx"
 ---
@@ -143,10 +150,11 @@ time:
 
 - `process.argv[2]{:js}` でコマンドライン引数を取得しファイル名にする
 - ファイル名を指定していない場合はエラーを出す
-- タイムスタンプを取得し、テンプレートを用意
-- ファイルが既に存在する場合はエラーを出す
-- ファイルを作成
-- Cursor でファイルを開く
+- `new Date().toISOString(){:js}` で現在時刻を ISO 形式で取得し、テンプレートに追加
+- `path.join(){:js}` を使って `filepath` を用意
+- `fs.existsSync(){:js}` で同じファイルが既に存在する場合はエラーを出す
+- `fs.writeFileSync(){:js}` でファイルを作成
+- `exec(){:js}` を使って Cursor でファイルを開く
 
 ---
 
@@ -160,5 +168,5 @@ time:
 
 参考
 
-- [Index | Node.js v23.4.0 Documentation](https://nodejs.org/api/)
-- [Project Structure](https://next-sylph-portfolio.vercel.app/guides/project-structure)
+- [Node.js v23.4.0 Documentation](https://nodejs.org/api/)
+- [Project Structure — Sylph](https://next-sylph-portfolio.vercel.app/guides/project-structure)
