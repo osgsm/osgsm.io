@@ -100,11 +100,17 @@ const components: MDXComponents = {
       );
     }
     return (
-      <ol className={cn("mt-2 ml-3 list-decimal", className)} {...props} />
+      <ol
+        className={cn("mt-2 ml-3 list-decimal leading-relaxed", className)}
+        {...props}
+      />
     );
   },
   ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className={cn("mt-2 ml-3 list-disc", className)} {...props} />
+    <ul
+      className={cn("mt-2 ml-3 list-disc leading-relaxed", className)}
+      {...props}
+    />
   ),
   li: ({
     className,

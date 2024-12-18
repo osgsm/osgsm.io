@@ -31,7 +31,7 @@ const Link = ({ text, href, underline, className, children }: LinkProps) => {
       href={href}
     >
       {text || children}
-      <span className="mx-0.5 inline-flex text-[--iris-7]">
+      <span className="mx-0.5 inline-flex text-[--iris-8]">
         <SquareArrowOutUpRight className="inline-block size-3 translate-y-px" />
       </span>
     </a>
