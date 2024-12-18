@@ -22,7 +22,7 @@ export const Posts = ({ category }: PostProps) => {
   }
 
   return (
-    <div className="mt-16 flex flex-col px-4">
+    <div className="mt-16 flex flex-col px-4 md:px-6">
       <NextViewTransition
         href={`/${category}`}
         className="flex justify-between no-underline"

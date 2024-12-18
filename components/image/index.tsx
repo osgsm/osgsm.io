@@ -40,7 +40,9 @@ export default function MDXImage({ caption, alt, ...props }: MDXImageProps) {
           {...props}
         />
       </div>
-      {caption && <sub className="pt-2 pb-4 text-center">{caption}</sub>}
+      {caption && (
+        <sub className="pt-2 pb-4 text-center text-[--iris-10]">{caption}</sub>
+      )}
     </motion.a>
   );
 }
