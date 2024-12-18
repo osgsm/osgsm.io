@@ -31,19 +31,21 @@ export const Layout = ({ post, route }: Props) => {
   return (
     <React.Fragment>
       <Breadcrumb postTitle={post.title} />
-      <div className="flex flex-col">
-        <div>
-          <h1>{post.title}</h1>
+      <div className="px-4">
+        <div className="flex flex-col">
+          <div>
+            <h1>{post.title}</h1>
+          </div>
+          <div className="mt-1 flex gap-2 text-muted text-small">
+            <PublishedTime />
+            <Seperator />
+            <UpdateTime />
+          </div>
         </div>
-        <div className="mt-1 flex gap-2 text-muted text-small">
-          <PublishedTime />
-          <Seperator />
-          <UpdateTime />
-        </div>
-      </div>
 
-      <MDX source={post.content} />
-      <PostNavigation posts={posts} />
+        <MDX source={post.content} />
+        <PostNavigation posts={posts} />
+      </div>
       <TableOfContents />
     </React.Fragment>
   );

@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <FadeIn.Container>
       <FadeIn.Item>
-        <div className="grid gap-1.5 break-keep text-lg *:mt-0 md:text-xl">
+        <div className="grid gap-1.5 break-keep px-4 text-lg *:mt-0 md:text-xl">
           <p>ようこそ👋🏼 </p>
           <p>
             おおしましょうごと申します。
