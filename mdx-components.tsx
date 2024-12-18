@@ -50,11 +50,7 @@ const components: MDXComponents = {
       );
     }
     return (
-      <Link
-        href={href}
-        className="inline-flex items-center gap-1 text-muted"
-        underline
-      >
+      <Link href={href} className="text-muted" underline>
         {children}
       </Link>
     );
