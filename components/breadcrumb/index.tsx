@@ -18,40 +18,42 @@ export const Breadcrumb = ({ postTitle }: { postTitle?: string }) => {
     );
 
   return (
-    <div
-      className={cn(
-        "hide-scrollbar relative mt-0 mb-4 flex w-full items-center gap-1 overflow-x-auto whitespace-nowrap px-4 align-middle font-normal text-small *:shrink-0",
-      )}
-    >
-      <Link className="text-muted no-underline" href="/">
-        Home
-      </Link>
-      <ChevronRightIcon className="text-muted" />
-      {paths.map((path, index) => {
-        const href = `/${paths
-          .slice(0, index + 1)
-          .join("/")
-          .toLowerCase()}`;
+    <div className="relative">
+      <div
+        className={cn(
+          "hide-scrollbar mt-0 mb-4 flex w-full items-center gap-1 overflow-x-auto whitespace-nowrap px-4 align-middle font-normal text-small *:shrink-0 lg:px-6",
+        )}
+      >
+        <Link className="text-muted no-underline" href="/">
+          Home
+        </Link>
+        <ChevronRightIcon className="text-muted" />
+        {paths.map((path, index) => {
+          const href = `/${paths
+            .slice(0, index + 1)
+            .join("/")
+            .toLowerCase()}`;
 
-        const isLast = index === paths.length - 1;
+          const isLast = index === paths.length - 1;
 
-        return (
-          <React.Fragment key={path}>
-            {isLast ? (
-              <span className="text-muted">{postTitle || path}</span>
-            ) : (
-              <Link className="text-muted no-underline" href={href}>
-                {path}
-              </Link>
-            )}
-            {index < paths.length - 1 && (
-              <ChevronRightIcon className="text-muted" />
-            )}
-          </React.Fragment>
-        );
-      })}
-      <div className="fixed top-0 left-0 h-full w-4 bg-gradient-to-r from-background" />
-      <div className="fixed top-0 right-0 h-full w-4 bg-gradient-to-l from-background" />
+          return (
+            <React.Fragment key={path}>
+              {isLast ? (
+                <span className="text-muted">{postTitle || path}</span>
+              ) : (
+                <Link className="text-muted no-underline" href={href}>
+                  {path}
+                </Link>
+              )}
+              {index < paths.length - 1 && (
+                <ChevronRightIcon className="text-muted" />
+              )}
+            </React.Fragment>
+          );
+        })}
+      </div>
+      <div className="absolute top-0 left-0 h-full w-4 bg-gradient-to-r from-background lg:w-6" />
+      <div className="absolute top-0 right-0 h-full w-4 bg-gradient-to-l from-background lg:w-6" />
     </div>
   );
 };
