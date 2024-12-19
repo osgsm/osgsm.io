@@ -21,7 +21,7 @@ export const Breadcrumb = ({ postTitle }: { postTitle?: string }) => {
     <div className="relative">
       <div
         className={cn(
-          "hide-scrollbar mt-0 mb-4 flex w-full items-center gap-1 overflow-x-auto whitespace-nowrap px-4 align-middle font-normal text-small *:shrink-0 lg:px-6",
+          "hide-scrollbar mt-0 mb-4 flex w-full items-center gap-1 overflow-x-auto whitespace-nowrap px-4 align-middle font-normal text-small *:shrink-0 md:px-6",
         )}
       >
         <Link className="text-muted no-underline" href="/">
@@ -52,8 +52,8 @@ export const Breadcrumb = ({ postTitle }: { postTitle?: string }) => {
           );
         })}
       </div>
-      <div className="absolute top-0 left-0 h-full w-4 bg-gradient-to-r from-background lg:w-6" />
-      <div className="absolute top-0 right-0 h-full w-4 bg-gradient-to-l from-background lg:w-6" />
+      <div className="absolute top-0 left-0 h-full w-4 bg-gradient-to-r from-background md:w-6" />
+      <div className="absolute top-0 right-0 h-full w-4 bg-gradient-to-l from-background md:w-6" />
     </div>
   );
 };
