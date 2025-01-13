@@ -2,11 +2,14 @@ import type { MDXComponents } from "mdx/types";
 import type { MDXRemoteProps } from "next-mdx-remote/rsc";
 import type { PluggableList } from "unified";
 
+import { Bluesky } from "@/components/bluesky";
 import FootnoteBackReference from "@/components/footnote/back-reference";
 import FootnoteForwardReference from "@/components/footnote/forward-reference";
 import MDXImage from "@/components/image";
 import Link from "@/components/link";
 import Preview from "@/components/preview";
+import { Spotify } from "@/components/spotify";
+import { Tweet } from "@/components/tweet";
 import { cn } from "@/lib/cn";
 
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -16,6 +19,9 @@ import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
 const components: MDXComponents = {
+  Bluesky: ({ url }) => <Bluesky url={url} />,
+  Spotify: ({ url }) => <Spotify url={url} />,
+  Tweet: ({ url }) => <Tweet url={url} />,
   PreviewExample: () => {
     return (
       <div className="min- flex h-10 w-32 items-center justify-center rounded-lg border border-yellow-6 bg-yellow-3 text-yellow-11">

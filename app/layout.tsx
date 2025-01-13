@@ -9,6 +9,7 @@ import { OpenGraph } from "@/lib/og";
 
 import clsx from "clsx";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   ...OpenGraph,
@@ -28,6 +29,8 @@ export default function RootLayout({
     <html lang="ja" className={clsx(inter.className)} suppressHydrationWarning>
       <body className="flex min-h-screen flex-col">
         <Providers>
+          <Script src="https://embed.bsky.app/static/embed.js" />
+          <Script src="https://platform.twitter.com/widgets.js" />
           <Header />
           <main className="mx-auto w-full max-w-4xl overflow-x-hidden py-20 md:overflow-x-visible">
             <article className="article">{children}</article>
