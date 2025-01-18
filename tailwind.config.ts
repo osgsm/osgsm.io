@@ -181,6 +181,13 @@ const config: Config = {
             display: "none",
           },
         },
+        ".gradient-card": {
+          background:
+            "radial-gradient(50% 60% at 50% 10%, rgb(from var(--gradient-from) r g b / 75%) 0%, rgb(from var(--gradient-to) r g b / 75%) 100%)",
+          boxShadow:
+            "0px 0px 12px var(--shadow-accent-color), 0px 0px 36px var(--shadow-base-color), inset 0px 1px 0px rgba(255, 255, 255, 0.1), inset 0px 0px 1px rgba(255, 255, 255, 0.4)",
+          borderRadius: "12px",
+        },
       });
     }),
   ],
