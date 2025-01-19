@@ -2,11 +2,11 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className="w:full sticky top-0 z-50 mx-auto my-6 grid place-items-center p-2">
-      <div className="gradient-card flex items-center gap-6 rounded-xl px-4 py-2 backdrop-blur-md [--gradient-from:var(--iris-4)] [--gradient-to:var(--iris-3)] [--shadow-accent-color:var(--iris-a4)] [--shadow-base-color:var(--iris-a2)]">
+    <header className="w:full sticky top-0 z-50 my-6 grid place-items-center bg-gradient-to-b from-5% from-[--iris-1] to-50% px-4 py-2">
+      <div className="gradient-card flex w-full items-center justify-between gap-4 rounded-xl border border-iris-4 px-4 py-2 backdrop-blur-md [--gradient-from:var(--iris-a4)] [--gradient-to:var(--iris-a3)] [--shadow-accent-color:var(--iris-a4)] [--shadow-base-color:var(--iris-a2)] lg:w-fit dark:border-0 dark:backdrop-brightness-[0.2]">
         <Link className="transition" href="/">
           <div
-            className="size-[32px] animate-move-background bg-[length:600%] bg-gradient-to-br from-60% from-[--iris-8] via-60% via-[--iris-9] to-90% to-[--iris-7]"
+            className="size-[32px] animate-move-background bg-[length:600%] bg-gradient-to-br from-50% from-[--iris-8] via-[--iris-9] to-90% to-[--iris-10]"
             style={{
               maskImage: "url(/assets/images/logo.svg)",
               WebkitMaskImage: "url(/assets/images/logo.svg)",
@@ -29,7 +29,7 @@ const Header = () => {
           ].map(({ label, href }) => (
             <Link
               key={label}
-              className="rounded-lg px-2 py-0.5 transition hover:bg-[--iris-5] hover:text-white-a12"
+              className="rounded-lg px-2 py-0.5 transition hover:bg-[--iris-4] hover:text-white hover:opacity-100"
               href={href}
             >
               {label}
