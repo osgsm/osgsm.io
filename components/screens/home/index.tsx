@@ -2,6 +2,7 @@ import * as FadeIn from "@/components/motion/staggers/fade";
 import { Posts } from "@/components/posts";
 import { cn } from "@/lib/cn";
 
+import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { BookText, FilePenLine, UserRound } from "lucide-react";
 import Link from "next/link";
 import { FaBluesky, FaGithub, FaXTwitter } from "react-icons/fa6";
@@ -11,7 +12,7 @@ const Spacer = () => <div style={{ marginTop: "48px" }} />;
 export default function Home() {
   return (
     <FadeIn.Container>
-      <div className="lg:-mt-28 grid items-center gap-20 py-10 md:grid-cols-2 md:gap-6 lg:h-[100vh] lg:min-h-[50rem] lg:py-0">
+      <div className="lg:-mt-28 ~/lg:~py-10/40 grid items-center gap-20 md:grid-cols-2 md:gap-6 lg:h-[100vh] lg:min-h-[50rem] lg:py-0">
         <div className="grid gap-4">
           <div className="mb-1 flex w-fit items-center gap-2 rounded-lg border border-[--cyan-4] bg-[--cyan-3] px-2 py-1 text-[--cyan-10] text-sm lg:mb-0">
             <span className="inline-block size-1.5 rounded-full bg-[--cyan-8]" />
@@ -107,7 +108,28 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <Posts category="blog" />
+      <div className="grid ~gap-10/20 pb-20 mt-16 md:mt-0">
+        <div>
+          <Posts category="blog" numberOfPosts={3} />
+          <Link
+            href="/blog"
+            className="ml-auto flex w-fit items-center gap-1 rounded-sm p-1 text-muted"
+          >
+            <span className="capitalize">Blog の一覧を見る</span>
+            <ArrowRightIcon className="h-4 w-4" />
+          </Link>
+        </div>
+        <div>
+          <Posts category="notes" numberOfPosts={3} />
+          <Link
+            href="/notes"
+            className="ml-auto flex w-fit items-center gap-1 rounded-sm p-1 text-muted"
+          >
+            <span className="capitalize">Notes の一覧を見る</span>
+            <ArrowRightIcon className="h-4 w-4" />
+          </Link>
+        </div>
+      </div>
     </FadeIn.Container>
   );
 }
