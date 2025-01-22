@@ -4,6 +4,9 @@ import fluid, { extract, screens } from "fluid-tailwind";
 import plugin from "tailwindcss/plugin";
 
 const config: Config = {
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   important: true,
   content: {
     files: [
