@@ -1,0 +1,39 @@
+---
+title: "CSS でテキストの塗りをグラデーションにする"
+time:
+  created: "2025-01-22T07:25:40.419Z"
+  updated: "2025-01-22T07:25:40.419Z"
+---
+
+テキストカラーをグラデーションにするには、グラデーションにしたい要素の `background` を `radial-gradient()` などでグラーデションにし、 `background-clip: text` を使ってテキストでそのグラーデションを切り抜く。 `color` は `transparent` にしておく。
+
+<Preview codeblock dark>
+  <div style={{
+    background: "radial-gradient(circle at top center, rgb(240, 50, 50), rgb(50, 50, 255))",
+    backgroundClip: "text",
+    fontSize: "clamp(2rem, 4vw, 4rem)",
+    color: "transparent",
+    textAlign: "center",
+    fontWeight: "bold",
+    lineHeight: "1.1",
+  }}>
+  Gradient Text
+  </div>
+</Preview>
+
+```css
+div {
+  background: radial-gradient(circle at center, rgb(240, 50, 50), rgb(50, 50, 255));
+  background-clip: text;
+  color: transparent;
+}
+```
+
+この方法を応用して、[CSS でテキストの線をグラデーションにする](/notes/css-gradient-stroke-text) こともできる。
+
+---
+
+参考
+
+- [background-clip - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/background-clip)
+- [radial-gradient() - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/radial-gradient)
