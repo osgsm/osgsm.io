@@ -190,6 +190,7 @@ const config: Config = {
       animation: {
         "move-background": "move-background 20s linear infinite",
         wave: "wave 0.8s ease-in-out 1s",
+        "ping-slow": "ping 2s cubic-bezier(0, 0, 0.2, 1) infinite",
       },
       keyframes: {
         "move-background": {
