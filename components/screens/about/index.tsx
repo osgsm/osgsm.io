@@ -15,9 +15,9 @@ export default function Home() {
       <div className="lg:-mt-28 ~/lg:~py-10/40 grid items-center gap-20 md:grid-cols-2 md:gap-6 lg:h-[100vh] lg:min-h-[50rem] lg:py-0">
         <div className="grid gap-4">
           <div className="mb-1 flex w-fit items-center gap-2 rounded-lg border border-[--cyan-4] bg-[--cyan-3] px-2 py-1 text-[--cyan-10] text-sm lg:mb-0">
-            <span className="grid *:col-span-full *:row-span-full *:inline-block *:rounded-full *:size-1.5">
-              <span className="bg-[--cyan-6] size-3 animate-ping-slow" />
-              <span className="z-10 bg-[--cyan-8] size-1.5" />
+            <span className="grid *:col-span-full *:row-span-full *:inline-block *:size-1.5 *:rounded-full">
+              <span className="size-3 animate-ping-slow bg-[--cyan-6]" />
+              <span className="z-10 size-1.5 bg-[--cyan-8]" />
             </span>
             Work at KITERETZ inc.
           </div>
@@ -37,7 +37,7 @@ export default function Home() {
             <p>フロントエンドデベロッパーです。</p>
             <p>近頃は 3D とかグラフィック系に興味ありです。</p>
           </div>
-          <div className="flex items-center gap-3 text-mauve-10 *:~text-xl/2xl">
+          <div className="*:~text-xl/2xl flex items-center gap-3 text-mauve-10">
             {[
               {
                 label: "Bluesky",
@@ -102,7 +102,7 @@ export default function Home() {
                 <div className="w-fit rounded-lg border border-[--icon-border-color] p-2 text-[--icon-color]">
                   {icon}
                 </div>
-                <div className="text-center ~text-sm/base text-[--label-color]">
+                <div className="~text-sm/base text-center text-[--label-color]">
                   {label}
                 </div>
               </div>
@@ -110,7 +110,7 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <div className="grid ~gap-10/20 pb-20 mt-16 md:mt-0">
+      <div className="~gap-10/20 mt-16 grid pb-20 md:mt-0">
         <div>
           <Posts category="blog" numberOfPosts={3} />
           <Link
