@@ -18,7 +18,7 @@ export const Breadcrumb = ({ postTitle }: { postTitle?: string }) => {
     );
 
   return (
-    <div className="~-mx-5/6 relative">
+    <div className="~-mx-5/6 ~mt-12/16 relative">
       <div
         className={cn(
           "hide-scrollbar mt-0 mb-4 flex w-full items-center gap-1 overflow-x-auto whitespace-nowrap px-5 align-middle font-normal text-small *:shrink-0 md:px-6",

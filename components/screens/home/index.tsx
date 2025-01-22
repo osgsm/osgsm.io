@@ -14,7 +14,7 @@ export default function Home() {
     <FadeIn.Container>
       <div className="lg:-mt-28 ~/lg:~py-10/40 grid items-center gap-20 md:grid-cols-2 md:gap-6 lg:h-[100vh] lg:min-h-[50rem] lg:py-0">
         <div className="grid gap-4">
-          <div className="mb-1 flex w-fit items-center gap-2 rounded-lg border border-[--cyan-4] bg-[--cyan-3] px-2 py-1 text-[--cyan-10] text-sm lg:mb-0">
+          <div className="mb-1 flex w-fit items-center gap-2 rounded-lg border border-[--cyan-3] bg-[--cyan-2] px-2 py-1 text-[--cyan-10] text-sm lg:mb-0">
             <span className="grid *:col-span-full *:row-span-full *:inline-block *:size-1.5 *:rounded-full">
               <span className="size-3 animate-ping-slow bg-[--cyan-6]" />
               <span className="z-10 size-1.5 bg-[--cyan-8]" />
@@ -120,7 +120,7 @@ export default function Home() {
             href="/blog"
             className="ml-auto flex w-fit items-center gap-1 rounded-sm p-1 text-muted"
           >
-            <span className="font-bold capitalize">Blog の一覧を見る</span>
+            <span className="capitalize">Blog の一覧を見る</span>
             <ArrowRightIcon className="h-4 w-4" />
           </Link>
         </div>
@@ -130,7 +130,7 @@ export default function Home() {
             href="/notes"
             className="ml-auto flex w-fit items-center gap-1 rounded-sm p-1 text-muted"
           >
-            <span className="font-bold capitalize">Notes の一覧を見る</span>
+            <span className="capitalize">Notes の一覧を見る</span>
             <ArrowRightIcon className="h-4 w-4" />
           </Link>
         </div>

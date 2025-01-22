@@ -33,7 +33,7 @@ export default function RootLayout({
           <Script src="https://platform.twitter.com/widgets.js" />
           <Header />
           <main className="~px-5/8 mx-auto w-full max-w-7xl overflow-x-hidden xl:overflow-x-visible">
-            <article className="article my-8">{children}</article>
+            <article className="article">{children}</article>
           </main>
           <Footer />
         </Providers>
