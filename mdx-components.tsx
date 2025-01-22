@@ -35,8 +35,13 @@ const components: MDXComponents = {
       </div>
     );
   },
-  Preview: ({ children, codeblock }) => (
-    <Preview codeblock={codeblock ? codeblock : undefined}>{children}</Preview>
+  Preview: ({ children, codeblock, dark }) => (
+    <Preview
+      codeblock={codeblock ? codeblock : undefined}
+      dark={dark ? dark : undefined}
+    >
+      {children}
+    </Preview>
   ),
   Image: ({ caption, alt, ...props }) => (
     <MDXImage {...props} caption={caption} alt={alt} />
