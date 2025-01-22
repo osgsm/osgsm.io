@@ -23,7 +23,7 @@ export default function Home() {
           </div>
           <div className="lg:-translate-x-0.5 lg:~lg:~text-[4rem]/[5.5rem] font-bold text-5xl leading-[1.1] tracking-[-0.08em] *:m-0">
             <p>
-              <span className="-ml-0.5 lg:-ml-2 bg-[radial-gradient(circle_at_80%_-80%,_var(--mauve-11),_var(--mauve-12))] bg-clip-text text-transparent">
+              <span className="-ml-0.5 lg:-ml-2 bg-[radial-gradient(circle_at_60%_-30%,_var(--iris-11),_var(--iris-12))] bg-clip-text text-transparent">
                 こんにちは
               </span>
               <span className="~px-1/4 inline-block origin-[80%_80%] animate-wave delay-1000">
@@ -31,7 +31,7 @@ export default function Home() {
               </span>
             </p>
             <p>
-              <span className="bg-[radial-gradient(circle_at_80%_-120%,_var(--mauve-11),_var(--mauve-12))] bg-clip-text text-transparent">
+              <span className="bg-[radial-gradient(circle_at_30%_-110%,_var(--iris-11),_var(--iris-12))] bg-clip-text text-transparent">
                 大島翔吾です。
               </span>
             </p>
@@ -40,7 +40,7 @@ export default function Home() {
             <p>フロントエンドデベロッパーです。</p>
             <p>近頃は 3D とかグラフィック系に興味ありです。</p>
           </div>
-          <div className="*:~text-xl/2xl flex items-center gap-3 text-mauve-10">
+          <div className="*:~text-xl/2xl flex items-center gap-3 text-muted">
             {[
               {
                 label: "Bluesky",
