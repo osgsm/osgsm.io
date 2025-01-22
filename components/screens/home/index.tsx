@@ -113,7 +113,7 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <div className="~gap-10/20 mt-16 grid pb-8 md:mt-0">
+      <div className="~gap-10/20 ~text-sm/base mt-16 grid pb-8 md:mt-0">
         <div>
           <Posts category="blog" numberOfPosts={5} />
           <Link

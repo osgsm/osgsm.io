@@ -33,8 +33,8 @@ export const Posts = ({ category, numberOfPosts }: PostProps) => {
             </h2>
             <p className="~text-sm/base m-0 font-bold text-iris-7">
               {category === "blog"
-                ? "試行の記録とか学習メモ"
-                : "ブログに満たないコードスニペットとか"}
+                ? "試したことや学んだこと"
+                : "ブログに満たないもの"}
             </p>
           </hgroup>
         </div>
