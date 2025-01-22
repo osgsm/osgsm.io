@@ -115,7 +115,7 @@ export default function Home() {
       </div>
       <div className="~gap-10/20 mt-16 grid pb-8 md:mt-0">
         <div>
-          <Posts category="blog" numberOfPosts={3} />
+          <Posts category="blog" numberOfPosts={5} />
           <Link
             href="/blog"
             className="ml-auto flex w-fit items-center gap-1 rounded-sm p-1 text-muted"
@@ -125,7 +125,7 @@ export default function Home() {
           </Link>
         </div>
         <div>
-          <Posts category="notes" numberOfPosts={3} />
+          <Posts category="notes" numberOfPosts={5} />
           <Link
             href="/notes"
             className="ml-auto flex w-fit items-center gap-1 rounded-sm p-1 text-muted"
