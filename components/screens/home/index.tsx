@@ -15,7 +15,10 @@ export default function Home() {
       <div className="lg:-mt-28 ~/lg:~py-10/40 grid items-center gap-20 md:grid-cols-2 md:gap-6 lg:h-[100vh] lg:min-h-[50rem] lg:py-0">
         <div className="grid gap-4">
           <div className="mb-1 flex w-fit items-center gap-2 rounded-lg border border-[--cyan-4] bg-[--cyan-3] px-2 py-1 text-[--cyan-10] text-sm lg:mb-0">
-            <span className="inline-block size-1.5 rounded-full bg-[--cyan-8]" />
+            <span className="grid *:col-span-full *:row-span-full *:inline-block *:rounded-full *:size-1.5">
+              <span className="bg-[--cyan-6] size-3 animate-ping-slow" />
+              <span className="z-10 bg-[--cyan-8] size-1.5" />
+            </span>
             Work at KITERETZ inc.
           </div>
           <div className="lg:-translate-x-0.5 lg:~lg:~text-[4rem]/[5.5rem] font-bold text-5xl leading-[1.1] tracking-[-0.08em] *:m-0">
@@ -37,12 +40,12 @@ export default function Home() {
             <p>フロントエンドデベロッパーです。</p>
             <p>近頃は 3D とかグラフィック系に興味ありです。</p>
           </div>
-          <div className="flex items-center gap-3 text-mauve-10 *:text-2xl">
+          <div className="flex items-center gap-3 text-mauve-10 *:~text-xl/2xl">
             {[
               {
                 label: "Bluesky",
                 icon: <FaBluesky />,
-                href: "https://bluesky.social/u/osgsm",
+                href: "https://bsky.app/profile/osgsm.io",
               },
               {
                 label: "Github",
@@ -77,7 +80,7 @@ export default function Home() {
             },
             {
               label: "Short Notes",
-              href: "/shorts",
+              href: "/notes",
               icon: <FilePenLine />,
               className:
                 "rotate-[10deg] z-10 translate-y-10 lg:translate-y-14 [--gradient-from:var(--purple-a4)] [--gradient-to:var(--purple-a3)] [--shadow-base-color:var(--purple-a2)] [--shadow-accent-color:var(--purple-a3)] [--icon-border-color:var(--purple-6)] [--icon-color:var(--purple-9)] [--label-color:var(--purple-12)] [--border-color:var(--purple-4)]",
@@ -102,7 +105,9 @@ export default function Home() {
                 <div className="w-fit rounded-lg border border-[--icon-border-color] p-2 text-[--icon-color]">
                   {icon}
                 </div>
-                <div className="text-center text-[--label-color]">{label}</div>
+                <div className="text-center ~text-sm/base text-[--label-color]">
+                  {label}
+                </div>
               </div>
             </Link>
           ))}

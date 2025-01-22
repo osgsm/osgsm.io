@@ -25,13 +25,13 @@ export const Posts = ({ category, numberOfPosts }: PostProps) => {
 
   return (
     <>
-      <div className="mt-4 grid grid-cols-12 gap-8 pb-8">
+      <div className="mt-4 grid lg:grid-cols-12 gap-8 pb-8">
         <NextViewTransition
           href={`/${category}`}
           className="col-span-full flex justify-between no-underline lg:col-span-4"
         >
           <hgroup>
-            <h2 className="-ml-[.06em] ~text-4xl/8xl border-0 text-iris-5 capitalize leading-none tracking-[-0.07em]">
+            <h2 className="-ml-[.06em] ~text-5xl/8xl border-0 text-iris-7 capitalize leading-none tracking-[-0.07em]">
               {category}
             </h2>
             <p className="~text-sm/base m-0 text-muted">
@@ -47,7 +47,7 @@ export const Posts = ({ category, numberOfPosts }: PostProps) => {
               <React.Fragment key={post.slug}>
                 <NextViewTransition
                   href={`/${category}/${post.slug}`}
-                  className="gradient-card flex w-full flex-col justify-between gap-2 px-6 py-5 leading-normal no-underline [--border-color:var(--iris-4)] [--gradient-from:var(--iris-2)] [--gradient-to:var(--iris-1)] [--shadow-accent-color:var(--iris-a3)] [--shadow-base-color:var(--iris-a2)]"
+                  className="gradient-card flex w-full flex-col justify-between gap-2 px-6 py-5 leading-normal no-underline border border-[--border-color] dark:border-0 [--border-color:var(--iris-4)] [--gradient-from:var(--iris-2)] [--gradient-to:var(--iris-1)] [--shadow-accent-color:var(--iris-a3)] [--shadow-base-color:var(--iris-a2)]"
                 >
                   <p className="~text-base/xl font-bold">{post.title}</p>
                   <p className="~text-sm/base mt-0 shrink-0 text-muted">
