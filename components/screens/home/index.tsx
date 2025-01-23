@@ -26,7 +26,7 @@ export default function Home() {
       viewport={{ once: true }}
       transition={{ duration: 0.5, ease: "easeOut", staggerChildren: 0.1 }}
     >
-      <div className="lg:-mt-28 ~/lg:~py-12/40 grid items-center gap-20 overflow-x-hidden md:grid-cols-2 md:gap-6 lg:h-[100vh] lg:max-h-[60rem] lg:min-h-[50rem] lg:py-0 xl:overflow-x-visible">
+      <div className="lg:-mt-28 ~/lg:~py-12/40 ~/lg:~pb-16/40 grid items-center gap-20 overflow-x-hidden md:grid-cols-2 md:gap-6 lg:h-[100vh] lg:max-h-[60rem] lg:min-h-[50rem] lg:py-0 xl:overflow-x-visible">
         <div className="~pl-5/8 ~pr-5/0 grid gap-4">
           <motion.div
             className="-ml-0.5 ~text-xs/sm mb-1 flex w-fit items-center gap-2 rounded-lg border border-[--cyan-3] bg-[--cyan-2] px-2 py-1 text-[--cyan-10] lg:mb-0"

@@ -37,7 +37,7 @@ export default function About() {
   return (
     <>
       <motion.div
-        className="~px-5/8 lg:-mt-28 ~/lg:~py-12/40 mx-auto grid max-w-[67rem] items-center gap-20 md:gap-6 lg:h-[100vh] lg:max-h-[60rem] lg:min-h-[50rem] lg:py-0"
+        className="~px-5/8 lg:-mt-28 ~/lg:~py-12/40 ~/lg:~pb-16/40 mx-auto grid max-w-[67rem] items-center gap-20 md:gap-6 lg:h-[100vh] lg:max-h-[60rem] lg:min-h-[50rem] lg:py-0"
         variants={variants}
         initial="initial"
         whileInView="whileInView"
