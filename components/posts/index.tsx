@@ -2,8 +2,8 @@ import { formatter } from "@/lib/formatter";
 import { getPosts } from "@/lib/mdx";
 
 import { ArrowRightIcon } from "@radix-ui/react-icons";
+import * as motion from "motion/react-client";
 import { Link as NextViewTransition } from "next-view-transitions";
-import React from "react";
 
 interface PostProps {
   category: string;
@@ -26,7 +26,7 @@ export const Posts = ({ category, numberOfPosts }: PostProps) => {
   return (
     <>
       <div className="mt-4 grid items-start gap-8 pb-8 lg:grid-cols-12">
-        <div className="sticky top-14 col-span-full flex justify-between no-underline lg:col-span-4">
+        <div className="top-14 col-span-full flex justify-between no-underline lg:sticky lg:col-span-4">
           <hgroup className="grid content-start gap-2">
             <h2 className="-ml-[.06em] ~text-5xl/8xl border-0 text-iris-7 capitalize leading-none tracking-[-0.07em]">
               {category}
@@ -41,7 +41,11 @@ export const Posts = ({ category, numberOfPosts }: PostProps) => {
         <div className="~gap-5/8 col-span-full grid lg:col-span-8">
           {posts.slice(0, numberOfPosts).map((post) => {
             return (
-              <React.Fragment key={post.slug}>
+              <motion.div
+                whileHover={{ scale: 1.015 }}
+                whileTap={{ scale: 0.99 }}
+                key={post.slug}
+              >
                 <NextViewTransition
                   href={`/${category}/${post.slug}`}
                   className="gradient-card relative flex w-full flex-col justify-between gap-2 border border-[--border-color] py-5 pr-16 pl-6 leading-normal no-underline [--border-color:var(--iris-4)] [--gradient-from:var(--iris-2)] [--gradient-to:var(--iris-1)] [--shadow-accent-color:var(--iris-a3)] [--shadow-base-color:var(--iris-a2)] dark:border-0"
@@ -54,7 +58,7 @@ export const Posts = ({ category, numberOfPosts }: PostProps) => {
                     <ArrowRightIcon className="text-muted" />
                   </div>
                 </NextViewTransition>
-              </React.Fragment>
+              </motion.div>
             );
           })}
         </div>
