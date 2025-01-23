@@ -43,9 +43,9 @@ export default function About() {
         whileInView="whileInView"
         viewport={{ once: true }}
         transition={{
-          duration: 0.5,
+          duration: 0.8,
           ease: "easeOut",
-          staggerChildren: 0.05,
+          staggerChildren: 0.1,
         }}
       >
         <div className="col-span-full row-span-full grid gap-6">
@@ -74,7 +74,7 @@ export default function About() {
               </p>
             </motion.hgroup>
           </div>
-          <div className="~text-[0.9375rem]/xl grid gap-4 font-bold leading-normal [&_p]:m-0">
+          <div className="~text-[0.9375rem]/xl grid gap-4 font-semibold leading-normal [&_p]:m-0">
             <motion.div variants={variants}>
               <p>大島翔吾と申します。</p>
               <p>フロントエンドデベロッパーです。</p>
@@ -402,7 +402,7 @@ function TimelineList({
 }) {
   return (
     <div className="[&_h3]:~text-lg/xl grid gap-4">
-      <h3 className="w-fit rounded-lg bg-iris-3 px-2 py-1 font-bold text-iris-8 text-sm dark:text-iris-11">
+      <h3 className="w-fit rounded-lg bg-iris-3 px-2 py-1 font-semibold text-iris-8 text-sm dark:text-iris-11">
         {year}
       </h3>
       <div>{children}</div>

@@ -80,7 +80,7 @@ const components: MDXComponents = {
   th: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
     <th
       className={cn(
-        "border border-border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right",
+        "border border-border px-4 py-2 text-left font-semibold [&[align=center]]:text-center [&[align=right]]:text-right",
         className,
       )}
       {...props}

@@ -1,4 +1,3 @@
-import * as FadeIn from "@/components/motion/staggers/fade";
 import { Posts } from "@/components/posts";
 import { cn } from "@/lib/cn";
 
@@ -15,18 +14,34 @@ export default function Home() {
     initial: { opacity: 0, scale: 0.75 },
     whileInView: { opacity: 1, scale: 1 },
   };
+  const fadeInVariants = {
+    initial: { opacity: 0, y: 8 },
+    whileInView: { opacity: 1, y: 0 },
+  };
   return (
-    <FadeIn.Container>
+    <motion.div
+      variants={fadeInVariants}
+      initial="initial"
+      whileInView="whileInView"
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, ease: "easeOut", staggerChildren: 0.1 }}
+    >
       <div className="lg:-mt-28 ~/lg:~py-12/40 grid items-center gap-20 overflow-x-hidden md:grid-cols-2 md:gap-6 lg:h-[100vh] lg:max-h-[60rem] lg:min-h-[50rem] lg:py-0 xl:overflow-x-visible">
         <div className="~pl-5/8 ~pr-5/0 grid gap-4">
-          <div className="-ml-0.5 ~text-xs/sm mb-1 flex w-fit items-center gap-2 rounded-lg border border-[--cyan-3] bg-[--cyan-2] px-2 py-1 text-[--cyan-10] lg:mb-0">
+          <motion.div
+            className="-ml-0.5 ~text-xs/sm mb-1 flex w-fit items-center gap-2 rounded-lg border border-[--cyan-3] bg-[--cyan-2] px-2 py-1 text-[--cyan-10] lg:mb-0"
+            variants={fadeInVariants}
+          >
             <span className="grid *:col-span-full *:row-span-full *:inline-block *:size-1.5 *:rounded-full">
               <span className="size-3 animate-ping-slow bg-[--cyan-6]" />
               <span className="z-10 size-1.5 bg-[--cyan-8]" />
             </span>
             Work at KITERETZ inc.
-          </div>
-          <div className="lg:-translate-x-0.5 lg:~lg:~text-[4rem]/[5.5rem] font-bold text-5xl leading-[1.1] tracking-[-0.08em] *:m-0">
+          </motion.div>
+          <motion.div
+            className="lg:-translate-x-0.5 lg:~lg:~text-[4rem]/[5.5rem] font-semibold text-5xl leading-[1.1] tracking-[-0.08em] *:m-0"
+            variants={fadeInVariants}
+          >
             <p>
               <span className="-ml-1 lg:-ml-2 bg-[radial-gradient(circle_at_60%_-30%,_var(--iris-11),_var(--iris-12))] bg-clip-text text-transparent">
                 こんにちは
@@ -40,12 +55,18 @@ export default function Home() {
                 大島翔吾です。
               </span>
             </p>
-          </div>
-          <div className="~text-[0.936/75rem]/2xl font-bold text-iris-12 leading-normal *:m-0 md:~md:pr-6/12">
+          </motion.div>
+          <motion.div
+            className="~text-[0.936/75rem]/2xl font-semibold text-iris-12 leading-normal *:m-0 md:~md:pr-6/12"
+            variants={fadeInVariants}
+          >
             <p>フロントエンドデベロッパーです。</p>
             <p>近頃は 3D とかグラフィック系に興味ありです。</p>
-          </div>
-          <div className="*:~text-xl/2xl flex items-center gap-3 px-px text-mauve-10">
+          </motion.div>
+          <motion.div
+            className="*:~text-xl/2xl flex items-center gap-3 px-px text-mauve-10"
+            variants={fadeInVariants}
+          >
             {[
               {
                 label: "Bluesky",
@@ -72,7 +93,7 @@ export default function Home() {
                 {icon}
               </a>
             ))}
-          </div>
+          </motion.div>
         </div>
         <motion.div
           className="md:~md/xl:~-ml-0/32 xl:~xl:~-ml-32/8 mx-auto grid max-w-xl grid-cols-3 justify-items-center gap-6 lg:max-w-none"
@@ -161,6 +182,6 @@ export default function Home() {
           </Link>
         </motion.div>
       </div>
-    </FadeIn.Container>
+    </motion.div>
   );
 }
