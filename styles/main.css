@@ -38,6 +38,10 @@
   */
 
   :root {
+    @media not all and (width >= 360px) {
+      font-size: 4vw;
+    }
+
     --bg: var(--iris-1);
     --fg: var(--iris-12);
     --muted: var(--iris-9);
