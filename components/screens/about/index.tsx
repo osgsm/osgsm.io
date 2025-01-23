@@ -32,7 +32,7 @@ import { FaBluesky, FaGithub, FaXTwitter } from "react-icons/fa6";
 export default function About() {
   return (
     <>
-      <div className="~px-5/8 lg:-mt-28 ~/lg:~py-20/40 mx-auto grid max-w-[67rem] items-center gap-20 md:gap-6 lg:h-[100vh] lg:min-h-[50rem] lg:py-0">
+      <div className="~px-5/8 lg:-mt-28 ~/lg:~py-20/40 mx-auto grid max-w-[67rem] items-center gap-20 md:gap-6 lg:h-[100vh] lg:max-h-[60rem] lg:min-h-[50rem] lg:py-0">
         <div className="col-span-full row-span-full grid gap-6">
           <div className="grid gap-1">
             <div className="-ml-0.5 ~text-xs/sm mb-1 flex w-fit items-center gap-2 rounded-lg border border-[--cyan-3] bg-[--cyan-2] px-2 py-1 text-[--cyan-10] lg:mb-0">
