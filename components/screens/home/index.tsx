@@ -4,6 +4,7 @@ import { cn } from "@/lib/cn";
 
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { BookText, FilePenLine, UserRound } from "lucide-react";
+import * as motion from "motion/react-client";
 import Link from "next/link";
 import { FaBluesky, FaGithub, FaXTwitter } from "react-icons/fa6";
 
@@ -36,11 +37,11 @@ export default function Home() {
               </span>
             </p>
           </div>
-          <div className="~text-[0.9375rem]/2xl font-bold text-mauve-11 leading-normal *:m-0">
+          <div className="~text-[0.9375rem]/2xl font-bold text-iris-8 leading-normal *:m-0">
             <p>フロントエンドデベロッパーです。</p>
             <p>近頃は 3D とかグラフィック系に興味ありです。</p>
           </div>
-          <div className="*:~text-xl/2xl flex items-center gap-3 text-muted">
+          <div className="*:~text-xl/2xl flex items-center gap-3 text-iris-8">
             {[
               {
                 label: "Bluesky",
@@ -93,23 +94,28 @@ export default function Home() {
                 "rotate-[6deg] translate-y-4 [--gradient-from:var(--pink-a4)] [--gradient-to:var(--pink-a3)] [--shadow-base-color:var(--pink-a2)] [--shadow-accent-color:var(--pink-a3)] [--icon-border-color:var(--pink-6)] [--icon-color:var(--pink-9)] [--label-color:var(--pink-12)] [--border-color:var(--pink-4)]",
             },
           ].map(({ label, href, icon, className }) => (
-            <Link
+            <motion.div
               key={label}
-              className={cn(
-                "gradient-card lg:~lg:~size-56/64 md:~md/lg:~size-40/56 ~min-[22.5rem]/md:~size-36/64 grid aspect-square place-items-center border border-[--border-color] p-6 backdrop-blur-lg transition-all hover:scale-105 hover:opacity-100 hover:brightness-[101%] dark:border-0 dark:backdrop-brightness-[0.2] dark:hover:brightness-105",
-                className,
-              )}
-              href={href}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <div className="grid place-items-center gap-1">
-                <div className="w-fit rounded-lg border border-[--icon-border-color] p-2 text-[--icon-color]">
-                  {icon}
+              <Link
+                className={cn(
+                  "gradient-card lg:~lg:~size-56/64 md:~md/lg:~size-40/56 ~min-[22.5rem]/md:~size-36/64 grid aspect-square place-items-center border border-[--border-color] p-6 backdrop-blur-lg transition-all hover:opacity-100 hover:brightness-[101%] dark:border-0 dark:backdrop-brightness-[0.2] dark:hover:brightness-105",
+                  className,
+                )}
+                href={href}
+              >
+                <div className="grid place-items-center gap-1">
+                  <div className="w-fit rounded-lg border border-[--icon-border-color] p-2 text-[--icon-color]">
+                    {icon}
+                  </div>
+                  <div className="~text-sm/base text-center text-[--label-color]">
+                    {label}
+                  </div>
                 </div>
-                <div className="~text-sm/base text-center text-[--label-color]">
-                  {label}
-                </div>
-              </div>
-            </Link>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </div>
