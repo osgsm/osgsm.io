@@ -155,7 +155,7 @@ export default function About() {
           ease: "easeOut",
         }}
       >
-        <h2 className="-ml-[.15em] ~/md:~text-5xl/8xl md:-ms-1.5 md:-translate-x-2 border-0 text-iris-7 capitalize leading-none tracking-[-0.07em] md:sticky md:top-4 md:text-9xl md:text-iris-4 md:[writing-mode:vertical-rl]">
+        <h2 className="-ml-[.15em] ~/md:~text-5xl/8xl md:-ms-1.5 border-0 text-iris-7 capitalize leading-none tracking-[-0.07em] md:sticky md:top-4 md:text-9xl md:text-iris-4 md:[writing-mode:vertical-rl]">
           Timeline
         </h2>
         <div className="~gap-4/6 grid">
