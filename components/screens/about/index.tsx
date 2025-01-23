@@ -13,8 +13,8 @@ import {
   CameraIcon,
   CirclePauseIcon,
   CodeXmlIcon,
+  DiamondIcon,
   FlagIcon,
-  GrabIcon,
   GraduationCapIcon,
   HandshakeIcon,
   KeyboardIcon,
@@ -337,7 +337,7 @@ export default function About() {
           <TimelineList year="2000">
             <TimelineItem
               title="ピアノをやめたくて少年野球チームに入る"
-              icon={GrabIcon}
+              icon={DiamondIcon}
             />
           </TimelineList>
           <TimelineList year="1995">
