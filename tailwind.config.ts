@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss";
 
-import fluid, { extract, screens } from "fluid-tailwind";
+import fluid, { extract } from "fluid-tailwind";
 import plugin from "tailwindcss/plugin";
 
 const config: Config = {
@@ -19,7 +19,14 @@ const config: Config = {
     extract,
   },
   theme: {
-    screens,
+    screens: {
+      xs: "25rem", // 400px
+      sm: "40rem", // 640px
+      md: "48rem", // 768px
+      lg: "64rem", // 1024px
+      xl: "80rem", // 1280px
+      "2xl": "96rem", // 1536px
+    },
     extend: {
       colors: {
         mauve: {
