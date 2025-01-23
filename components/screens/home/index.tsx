@@ -11,11 +11,11 @@ const Spacer = () => <div style={{ marginTop: "48px" }} />;
 
 export default function Home() {
   const variants = {
-    initial: { opacity: 0, scale: 0.75 },
-    whileInView: { opacity: 1, scale: 1 },
+    initial: { opacity: 0, y: 8 },
+    whileInView: { opacity: 1, y: 0 },
   };
   const fadeInVariants = {
-    initial: { opacity: 0, y: 8 },
+    initial: { opacity: 0, y: 4 },
     whileInView: { opacity: 1, y: 0 },
   };
   return (
@@ -101,29 +101,45 @@ export default function Home() {
           initial="initial"
           whileInView="whileInView"
           viewport={{ once: true }}
-          transition={{ staggerChildren: 0.1 }}
+          transition={{ delay: 0.4, duration: 0.3, staggerChildren: 0.3 }}
         >
           {[
             {
               label: "Blog",
               href: "/blog",
               icon: <BookText />,
-              className:
-                "rotate-[-5deg] z-20 -translate-y-8 lg:-translate-y-14 [--icon-border-color:var(--iris-6)] [--icon-color:var(--iris-9)] [--label-color:var(--iris-12)] [--border-color:var(--iris-4)]",
+              className: cn(
+                "rotate-[-5deg] z-20 -translate-y-8 lg:-translate-y-14",
+                "[--icon-border-color:var(--iris-6)] [--icon-color:var(--iris-9)]",
+                "[--label-color:var(--iris-12)] [--border-color:var(--iris-4)]",
+                "dark:[--gradient-from:var(--iris-3)] dark:[--gradient-to:var(--iris-2)]",
+              ),
             },
             {
               label: "Short Notes",
               href: "/notes",
               icon: <FilePenLine />,
-              className:
-                "rotate-[10deg] z-10 translate-y-10 lg:translate-y-14 [--gradient-from:var(--purple-a4)] [--gradient-to:var(--purple-a3)] [--shadow-base-color:var(--purple-a2)] [--shadow-accent-color:var(--purple-a3)] [--icon-border-color:var(--purple-6)] [--icon-color:var(--purple-9)] [--label-color:var(--purple-12)] [--border-color:var(--purple-4)]",
+              className: cn(
+                "rotate-[10deg] z-10 translate-y-10 lg:translate-y-14",
+                "[--gradient-from:var(--purple-2)] [--gradient-to:var(--purple-3)]",
+                "[--shadow-base-color:var(--purple-a2)] [--shadow-accent-color:var(--purple-a3)]",
+                "[--icon-border-color:var(--purple-6)] [--icon-color:var(--purple-9)]",
+                "[--label-color:var(--purple-12)] [--border-color:var(--purple-4)]",
+                "dark:[--gradient-from:var(--purple-3)] dark:[--gradient-to:var(--purple-2)]",
+              ),
             },
             {
               label: "About Me",
               href: "/about",
               icon: <UserRound />,
-              className:
-                "rotate-[6deg] translate-y-4 [--gradient-from:var(--pink-a4)] [--gradient-to:var(--pink-a3)] [--shadow-base-color:var(--pink-a2)] [--shadow-accent-color:var(--pink-a3)] [--icon-border-color:var(--pink-6)] [--icon-color:var(--pink-9)] [--label-color:var(--pink-12)] [--border-color:var(--pink-4)]",
+              className: cn(
+                "rotate-[6deg] translate-y-4",
+                "[--gradient-from:var(--pink-2)] [--gradient-to:var(--pink-3)]",
+                "[--shadow-base-color:var(--pink-2)] [--shadow-accent-color:var(--pink-a3)]",
+                "[--icon-border-color:var(--pink-6)] [--icon-color:var(--pink-9)]",
+                "[--label-color:var(--pink-12)] [--border-color:var(--pink-4)]",
+                "dark:[--gradient-from:var(--pink-3)] dark:[--gradient-to:var(--pink-2)]",
+              ),
             },
           ].map(({ label, href, icon, className }) => (
             <motion.div

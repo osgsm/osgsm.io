@@ -196,7 +196,7 @@ const config: Config = {
       },
       animation: {
         "move-background": "move-background 20s linear infinite",
-        wave: "wave 0.8s ease-in-out 2s",
+        wave: "wave 0.8s ease-in-out 1.75s",
         "ping-slow": "ping 2s cubic-bezier(0, 0, 0.2, 1) infinite",
         "spin-slow": "spin 60s linear infinite",
       },
@@ -237,7 +237,7 @@ const config: Config = {
         },
         ".gradient-card": {
           background:
-            "radial-gradient(50% 60% at 50% 10%, var(--gradient-from, theme(colors.iris.a4)) 0%, var(--gradient-to, theme(colors.iris.a3)) 100%)",
+            "radial-gradient(50% 60% at 50% 10%, var(--gradient-from, theme(colors.iris.2)) 0%, var(--gradient-to, theme(colors.iris.3)) 100%)",
           boxShadow:
             "0px 0px 12px var(--shadow-accent-color, theme(colors.iris.a4)), 0px 0px 36px var(--shadow-base-color, theme(colors.iris.a2)), inset 0px 1px 0px rgba(255, 255, 255, 0.1), inset 0px 0px 1px rgba(255, 255, 255, 0.4)",
           borderRadius: "12px",

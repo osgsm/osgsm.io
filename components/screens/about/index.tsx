@@ -145,7 +145,7 @@ export default function About() {
         </motion.div>
       </motion.div>
       <motion.div
-        className="~px-5/8 ~gap-8/10 relative mx-auto mt-16 grid max-w-[67rem] items-start pb-20 md:mt-0 md:grid-cols-[auto_1fr] md:pl-0 lg:pl-8"
+        className="~px-5/8 ~gap-8/10 relative mx-auto mt-16 grid max-w-[67rem] items-start pb-20 md:mt-0 md:grid-cols-[auto_1fr]"
         variants={variants}
         initial="initial"
         whileInView="whileInView"
