@@ -28,7 +28,7 @@ time:
       process.cwd(),
       "app",
       "(posts)",
-      "blog",
+      `${process.argv[3] ?? "blog"}`,
       "posts",
     );
     const filepath = path.join(postsDir, `${filename}.mdx`);

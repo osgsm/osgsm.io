@@ -1,0 +1,45 @@
+---
+title: "CSS でテキストの線をグラデーションにする"
+time:
+  created: "2025-01-22T07:25:41.419Z"
+  updated: "2025-01-22T07:25:41.419Z"
+---
+
+CSS でテキストの線をグラデーションにするには、[CSS でテキストの塗りをグラデーションにする](/notes/css-gradient-text) の方法をベースに、`text-stroke` を使ってテキストの線を透明にして背景のグラデーションが見えるようにする。次の例では、暗い背景に馴染むように `color` を `black` にし、 `mix-blend-mode` を `screen` にしている。
+
+<Preview codeblock dark>
+  <div style={{
+    WebkitTextStroke: "2px transparent",
+    textStroke: "2px transparent",
+    mixBlendMode: "screen",
+    background: "radial-gradient(circle at top center, rgb(240, 50, 50), rgb(50, 50, 255))",
+    backgroundClip: "text",
+    color: "black",
+    fontSize: "clamp(2rem, 4vw, 4rem)",
+    textAlign: "center",
+    fontWeight: "bold",
+    lineHeight: "1.1",
+  }}>
+  Gradient Text
+  </div>
+</Preview>
+
+```css
+div {
+  -webkit-text-stroke: 2px transparent;
+  text-stroke: 2px transparent;
+  mix-blend-mode: screen;
+  background: radial-gradient(circle at center, rgb(240, 50, 50), rgb(50, 50, 255));
+  background-clip: text;
+  color: black;
+}
+```
+
+---
+
+参考
+
+- [-webkit-text-stroke - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-text-stroke)
+- [background-clip - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/background-clip)
+- [radial-gradient() - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/radial-gradient)
+- [CSS でテキストの塗りをグラデーションにする](/notes/css-gradient-text)

@@ -27,12 +27,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja" className={clsx(inter.className)} suppressHydrationWarning>
-      <body className="flex min-h-screen flex-col">
+      <body className="flex min-h-screen flex-col text-[0.9375rem] leading-loose md:text-base/[1.75]">
         <Providers>
           <Script src="https://embed.bsky.app/static/embed.js" />
           <Script src="https://platform.twitter.com/widgets.js" />
           <Header />
-          <main className="mx-auto w-full max-w-4xl overflow-x-hidden py-20 md:overflow-x-visible">
+          <main className="mx-auto w-full max-w-7xl">
             <article className="article">{children}</article>
           </main>
           <Footer />

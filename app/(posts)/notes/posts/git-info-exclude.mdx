@@ -1,0 +1,17 @@
+---
+title: ".gitignore に追記せずにローカル上でのみ特定のファイルを無視する"
+time:
+  created: "2025-01-21T14:36:36.882Z"
+  updated: "2025-01-21T14:36:36.882Z"
+---
+
+プロジェクトの `.gitignore` には書きたくないが、ローカル上では無視したいファイルがある場合、 Git リポジトリのルートにある `.git/info/exclude` というファイルに、無視したいファイルを記述する。
+
+記述後、エディターをリロードすると指定したファイルが無視されるようになる。
+
+---
+
+参考
+
+- [ファイルを無視する - GitHub Docs](https://docs.github.com/ja/get-started/getting-started-with-git/ignoring-files)
+

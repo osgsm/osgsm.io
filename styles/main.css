@@ -1,11 +1,19 @@
-@import url("@radix-ui/colors/gray.css");
-@import url("@radix-ui/colors/gray-alpha.css");
-@import url("@radix-ui/colors/gray-dark.css");
-@import url("@radix-ui/colors/gray-dark-alpha.css");
+@import url("@radix-ui/colors/mauve.css");
+@import url("@radix-ui/colors/mauve-alpha.css");
+@import url("@radix-ui/colors/mauve-dark.css");
+@import url("@radix-ui/colors/mauve-dark-alpha.css");
 @import url("@radix-ui/colors/plum.css");
 @import url("@radix-ui/colors/plum-alpha.css");
 @import url("@radix-ui/colors/plum-dark.css");
 @import url("@radix-ui/colors/plum-dark-alpha.css");
+@import url("@radix-ui/colors/purple.css");
+@import url("@radix-ui/colors/purple-alpha.css");
+@import url("@radix-ui/colors/purple-dark.css");
+@import url("@radix-ui/colors/purple-dark-alpha.css");
+@import url("@radix-ui/colors/pink.css");
+@import url("@radix-ui/colors/pink-alpha.css");
+@import url("@radix-ui/colors/pink-dark.css");
+@import url("@radix-ui/colors/pink-dark-alpha.css");
 @import url("@radix-ui/colors/cyan.css");
 @import url("@radix-ui/colors/cyan-alpha.css");
 @import url("@radix-ui/colors/cyan-dark.css");
@@ -14,6 +22,8 @@
 @import url("@radix-ui/colors/iris-alpha.css");
 @import url("@radix-ui/colors/iris-dark.css");
 @import url("@radix-ui/colors/iris-dark-alpha.css");
+@import url("@radix-ui/colors/teal.css");
+@import url("@radix-ui/colors/teal-dark.css");
 @import url("@radix-ui/colors/black-alpha.css");
 @import url("@radix-ui/colors/white-alpha.css");
 
@@ -28,6 +38,10 @@
   */
 
   :root {
+    @media not all and (width >= 360px) {
+      font-size: 4vw;
+    }
+
     --bg: var(--iris-1);
     --fg: var(--iris-12);
     --muted: var(--iris-9);

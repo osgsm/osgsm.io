@@ -21,7 +21,7 @@ export function TweetEmbed({ html }: { html: string }) {
   return (
     <div
       ref={tweetRef}
-      className="my-6 [&_iframe]:rounded-xl"
+      className="[&_iframe]:rounded-xl"
       // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
       dangerouslySetInnerHTML={{ __html: html }}
     />

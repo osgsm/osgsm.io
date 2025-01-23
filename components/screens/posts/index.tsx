@@ -31,7 +31,7 @@ export const Layout = ({ post, route }: Props) => {
   return (
     <React.Fragment>
       <Breadcrumb postTitle={post.title} />
-      <div className="px-4 md:px-6">
+      <div>
         <div className="flex flex-col">
           <div>
             <h1>{post.title}</h1>

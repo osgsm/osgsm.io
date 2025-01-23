@@ -6,7 +6,7 @@ import { OpenGraph } from "@/lib/og";
 const Spacer = () => <div style={{ marginTop: "48px" }} />;
 
 export function generateMetadata() {
-  const title = "Blog";
+  const title = "Notes";
   const image = `${process.env.NEXT_PUBLIC_SITE_URL}api/og?title=${encodeURIComponent(title)}`;
 
   return {
@@ -27,7 +27,7 @@ export default function Page() {
     <div className="~px-5/8">
       <Breadcrumb />
       <FadeIn.Item>
-        <Posts category="blog" />
+        <Posts category="notes" />
       </FadeIn.Item>
       <Spacer />
     </div>

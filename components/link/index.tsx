@@ -1,4 +1,5 @@
-import clsx from "clsx";
+import { cn } from "@/lib/cn";
+
 import { SquareArrowOutUpRight } from "lucide-react";
 import NextLink from "next/link";
 
@@ -13,7 +14,8 @@ const Link = ({ text, href, underline, className, children }: LinkProps) => {
   return isInternalLink ? (
     <NextLink
       href={href ?? ""}
-      className={clsx(
+      className={cn(
+        "text-muted",
         className,
         "underline decoration-1 decoration-[--iris-6] underline-offset-2",
       )}
@@ -24,7 +26,7 @@ const Link = ({ text, href, underline, className, children }: LinkProps) => {
     <a
       target="_blank"
       rel="noopener noreferrer nofollow"
-      className={clsx(className, {
+      className={cn("text-muted", className, {
         "underline decoration-1 decoration-[--iris-6] underline-offset-2":
           underline,
       })}
