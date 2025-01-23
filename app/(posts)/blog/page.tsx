@@ -26,12 +26,12 @@ export function generateMetadata() {
 
 export default function Page() {
   return (
-    <React.Fragment>
+    <div className="~px-5/8">
       <Breadcrumb />
       <FadeIn.Item>
         <Posts category="blog" />
       </FadeIn.Item>
       <Spacer />
-    </React.Fragment>
+    </div>
   );
 }

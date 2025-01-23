@@ -50,7 +50,7 @@ export default function Page({ params }: PageProps) {
   }
 
   return (
-    <div className="mx-auto max-w-2xl py-30">
+    <div className="~px-5/8 mx-auto max-w-2xl py-30">
       <Layout post={post} route={route} />
     </div>
   );

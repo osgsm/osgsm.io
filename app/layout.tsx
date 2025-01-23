@@ -32,7 +32,7 @@ export default function RootLayout({
           <Script src="https://embed.bsky.app/static/embed.js" />
           <Script src="https://platform.twitter.com/widgets.js" />
           <Header />
-          <main className="~px-5/8 mx-auto w-full max-w-7xl overflow-x-hidden xl:overflow-x-visible">
+          <main className="mx-auto w-full max-w-7xl">
             <article className="article">{children}</article>
           </main>
           <Footer />

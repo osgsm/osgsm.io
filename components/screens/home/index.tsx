@@ -13,8 +13,8 @@ const Spacer = () => <div style={{ marginTop: "48px" }} />;
 export default function Home() {
   return (
     <FadeIn.Container>
-      <div className="lg:-mt-28 ~/lg:~py-10/40 grid items-center gap-20 md:grid-cols-2 md:gap-6 lg:h-[100vh] lg:min-h-[50rem] lg:py-0">
-        <div className="grid gap-4">
+      <div className="lg:-mt-28 ~/lg:~py-10/40 grid items-center gap-20 overflow-x-hidden md:grid-cols-2 md:gap-6 lg:h-[100vh] lg:min-h-[50rem] lg:py-0 xl:overflow-x-visible">
+        <div className="~px-5/8 grid gap-4">
           <div className="mb-1 flex w-fit items-center gap-2 rounded-lg border border-[--cyan-3] bg-[--cyan-2] px-2 py-1 text-[--cyan-10] text-sm lg:mb-0">
             <span className="grid *:col-span-full *:row-span-full *:inline-block *:size-1.5 *:rounded-full">
               <span className="size-3 animate-ping-slow bg-[--cyan-6]" />
@@ -24,7 +24,7 @@ export default function Home() {
           </div>
           <div className="lg:-translate-x-0.5 lg:~lg:~text-[4rem]/[5.5rem] font-bold text-5xl leading-[1.1] tracking-[-0.08em] *:m-0">
             <p>
-              <span className="-ml-0.5 lg:-ml-2 bg-[radial-gradient(circle_at_60%_-30%,_var(--iris-11),_var(--iris-12))] bg-clip-text text-transparent">
+              <span className="-ml-1 lg:-ml-2 bg-[radial-gradient(circle_at_60%_-30%,_var(--iris-11),_var(--iris-12))] bg-clip-text text-transparent">
                 こんにちは
               </span>
               <span className="~px-1/4 inline-block origin-[80%_80%] animate-wave delay-1000">
@@ -41,7 +41,7 @@ export default function Home() {
             <p>フロントエンドデベロッパーです。</p>
             <p>近頃は 3D とかグラフィック系に興味ありです。</p>
           </div>
-          <div className="*:~text-xl/2xl flex items-center gap-3 text-iris-8">
+          <div className="*:~text-xl/2xl flex items-center gap-3 px-px text-mauve-9">
             {[
               {
                 label: "Bluesky",
@@ -97,7 +97,7 @@ export default function Home() {
             <motion.div
               key={label}
               whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileTap={{ scale: 0.99 }}
             >
               <Link
                 className={cn(
@@ -119,7 +119,7 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <div className="~gap-10/20 ~text-sm/base mt-16 grid pb-8 md:mt-0">
+      <div className="~px-5/8 ~gap-10/20 ~text-sm/base mt-16 grid pb-8 md:mt-0">
         <div>
           <Posts category="blog" numberOfPosts={5} />
           <Link
