@@ -30,45 +30,69 @@ import Image from "next/image";
 import { FaBluesky, FaGithub, FaXTwitter } from "react-icons/fa6";
 
 export default function About() {
+  const variants = {
+    initial: { opacity: 0, y: 8 },
+    whileInView: { opacity: 1, y: 0 },
+  };
   return (
     <>
-      <div className="~px-5/8 lg:-mt-28 ~/lg:~py-20/40 mx-auto grid max-w-[67rem] items-center gap-20 md:gap-6 lg:h-[100vh] lg:max-h-[60rem] lg:min-h-[50rem] lg:py-0">
+      <motion.div
+        className="~px-5/8 lg:-mt-28 ~/lg:~py-12/40 mx-auto grid max-w-[67rem] items-center gap-20 md:gap-6 lg:h-[100vh] lg:max-h-[60rem] lg:min-h-[50rem] lg:py-0"
+        variants={variants}
+        initial="initial"
+        whileInView="whileInView"
+        viewport={{ once: true }}
+        transition={{
+          duration: 0.5,
+          ease: "easeOut",
+          staggerChildren: 0.05,
+        }}
+      >
         <div className="col-span-full row-span-full grid gap-6">
           <div className="grid gap-1">
-            <div className="-ml-0.5 ~text-xs/sm mb-1 flex w-fit items-center gap-2 rounded-lg border border-[--cyan-3] bg-[--cyan-2] px-2 py-1 text-[--cyan-10] lg:mb-0">
+            <motion.div
+              className="-ml-0.5 ~text-xs/sm mb-1 flex w-fit items-center gap-2 rounded-lg border border-[--cyan-3] bg-[--cyan-2] px-2 py-1 text-[--cyan-10] lg:mb-0"
+              variants={variants}
+            >
               <span className="grid *:col-span-full *:row-span-full *:inline-block *:size-1.5 *:rounded-full">
                 <span className="size-3 animate-ping-slow bg-[--cyan-6]" />
                 <span className="z-10 size-1.5 bg-[--cyan-8]" />
               </span>
               Work at KITERETZ inc.
-            </div>
-            <hgroup className="grid gap-3 md:gap-0 md:*:col-span-full md:*:row-span-full">
+            </motion.div>
+            <motion.hgroup
+              className="grid gap-3 md:gap-0 md:*:col-span-full md:*:row-span-full"
+              variants={variants}
+            >
               <h1 className="-ml-[0.075em] lg:-ml-[0.05em] ~/md:~text-6xl/8xl font-semibold tracking-[-0.07em] *:m-0">
                 <span className="block w-[5em] bg-[radial-gradient(circle_at_80%_-80%,_var(--iris-5),_var(--iris-7))] bg-clip-text text-transparent leading-[1.075] sm:w-full sm:leading-tight">
                   Shogo <span className="-ml-0.5 inline-block">Oshima</span>
                 </span>
               </h1>
-              <p className="-translate-y-1.5 ~/md:~text-sm/[0.9375rem] m-0 self-end text-mauve-7 leading-none">
+              <p className="-translate-y-1.5 ~/md:~text-sm/[0.9375rem] m-0 self-end text-mauve-9 leading-none">
                 Frontend developer
               </p>
-            </hgroup>
+            </motion.hgroup>
           </div>
-          <div className="~text-[0.9375rem]/2xl grid gap-4 font-bold leading-normal [&_p]:m-0">
-            <div>
+          <div className="~text-[0.9375rem]/xl grid gap-4 font-bold leading-normal [&_p]:m-0">
+            <motion.div variants={variants}>
               <p>大島翔吾と申します。</p>
               <p>フロントエンドデベロッパーです。</p>
-            </div>
-            <div>
+            </motion.div>
+            <motion.div variants={variants}>
               <p>HTML / CSS / TypeScript が主軸。</p>
               <p>フレームワークは Astro や Next.js、</p>
               <p>CMS は WordPress をよく使います。</p>
-            </div>
-            <div>
+            </motion.div>
+            <motion.div variants={variants}>
               <p>技術だけでなくデザインにも関心があります。</p>
               <p>近頃は 3D とか WebGL に惹かれてます。</p>
-            </div>
+            </motion.div>
           </div>
-          <div className="*:~text-xl/2xl flex items-center gap-3 text-mauve-10">
+          <motion.div
+            className="*:~text-xl/2xl flex items-center gap-3 text-mauve-10"
+            variants={variants}
+          >
             {[
               {
                 label: "Bluesky",
@@ -95,9 +119,12 @@ export default function About() {
                 {icon}
               </a>
             ))}
-          </div>
+          </motion.div>
         </div>
-        <div className="~xs/sm:~-translate-x-0/16 sm:~sm/md:~translate-y-10/48 col-span-full row-span-full size-[min(32vw,22.5rem)] translate-y-10 place-items-center self-start justify-self-end sm:translate-x-0 lg:translate-y-20 lg:self-center min-[22.5rem]:visible">
+        <motion.div
+          className="~xs/sm:~-translate-x-0/16 sm:~sm/md:~translate-y-10/48 col-span-full row-span-full size-[min(32vw,22.5rem)] translate-y-10 place-items-center self-start justify-self-end sm:translate-x-0 lg:translate-y-20 lg:self-center min-[22.5rem]:visible"
+          variants={variants}
+        >
           <motion.div
             whileTap={{
               rotate: 720,
@@ -112,12 +139,22 @@ export default function About() {
               alt=""
               width={360}
               height={360}
-              className="rounded-full border border-iris-4"
+              className="pointer-events-none rounded-full border border-iris-4"
             />
           </motion.div>
-        </div>
-      </div>
-      <div className="~px-5/8 ~gap-8/10 relative mx-auto mt-16 grid max-w-[67rem] items-start pb-20 md:mt-0 md:grid-cols-[auto_1fr] md:pl-0 lg:pl-8">
+        </motion.div>
+      </motion.div>
+      <motion.div
+        className="~px-5/8 ~gap-8/10 relative mx-auto mt-16 grid max-w-[67rem] items-start pb-20 md:mt-0 md:grid-cols-[auto_1fr] md:pl-0 lg:pl-8"
+        variants={variants}
+        initial="initial"
+        whileInView="whileInView"
+        viewport={{ once: true }}
+        transition={{
+          duration: 0.5,
+          ease: "easeOut",
+        }}
+      >
         <h2 className="-ml-[.15em] ~/md:~text-5xl/8xl md:-ms-1.5 md:-translate-x-2 border-0 text-iris-7 capitalize leading-none tracking-[-0.07em] md:sticky md:top-4 md:text-9xl md:text-iris-4 md:[writing-mode:vertical-rl]">
           Timeline
         </h2>
@@ -351,7 +388,7 @@ export default function About() {
             />
           </TimelineList>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 }

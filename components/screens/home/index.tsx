@@ -11,10 +11,14 @@ import { FaBluesky, FaGithub, FaXTwitter } from "react-icons/fa6";
 const Spacer = () => <div style={{ marginTop: "48px" }} />;
 
 export default function Home() {
+  const variants = {
+    initial: { opacity: 0, scale: 0.75 },
+    whileInView: { opacity: 1, scale: 1 },
+  };
   return (
     <FadeIn.Container>
-      <div className="lg:-mt-28 ~/lg:~py-20/40 grid items-center gap-20 overflow-x-hidden md:grid-cols-2 md:gap-6 lg:h-[100vh] lg:max-h-[60rem] lg:min-h-[50rem] lg:py-0 xl:overflow-x-visible">
-        <div className="~px-5/8 grid gap-4">
+      <div className="lg:-mt-28 ~/lg:~py-12/40 grid items-center gap-20 overflow-x-hidden md:grid-cols-2 md:gap-6 lg:h-[100vh] lg:max-h-[60rem] lg:min-h-[50rem] lg:py-0 xl:overflow-x-visible">
+        <div className="~pl-5/8 ~pr-5/0 grid gap-4">
           <div className="-ml-0.5 ~text-xs/sm mb-1 flex w-fit items-center gap-2 rounded-lg border border-[--cyan-3] bg-[--cyan-2] px-2 py-1 text-[--cyan-10] lg:mb-0">
             <span className="grid *:col-span-full *:row-span-full *:inline-block *:size-1.5 *:rounded-full">
               <span className="size-3 animate-ping-slow bg-[--cyan-6]" />
@@ -37,11 +41,11 @@ export default function Home() {
               </span>
             </p>
           </div>
-          <div className="~text-[0.9375rem]/2xl font-bold text-iris-8 leading-normal *:m-0">
+          <div className="~text-[0.936/75rem]/2xl font-bold text-iris-12 leading-normal *:m-0 md:~md:pr-6/12">
             <p>フロントエンドデベロッパーです。</p>
             <p>近頃は 3D とかグラフィック系に興味ありです。</p>
           </div>
-          <div className="*:~text-xl/2xl flex items-center gap-3 px-px text-mauve-9">
+          <div className="*:~text-xl/2xl flex items-center gap-3 px-px text-mauve-10">
             {[
               {
                 label: "Bluesky",
@@ -70,7 +74,14 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <div className="md:~md/xl:~-ml-0/32 xl:~xl:~-ml-32/8 mx-auto grid max-w-xl grid-cols-3 justify-items-center gap-6 lg:max-w-none">
+        <motion.div
+          className="md:~md/xl:~-ml-0/32 xl:~xl:~-ml-32/8 mx-auto grid max-w-xl grid-cols-3 justify-items-center gap-6 lg:max-w-none"
+          variants={variants}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true }}
+          transition={{ staggerChildren: 0.1 }}
+        >
           {[
             {
               label: "Blog",
@@ -96,6 +107,7 @@ export default function Home() {
           ].map(({ label, href, icon, className }) => (
             <motion.div
               key={label}
+              variants={variants}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.99 }}
             >
@@ -117,10 +129,14 @@ export default function Home() {
               </Link>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
       <div className="~px-5/8 ~gap-10/20 ~text-sm/base mt-16 grid pb-8 md:mt-0">
-        <div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           <Posts category="blog" numberOfPosts={5} />
           <Link
             href="/blog"
@@ -129,8 +145,12 @@ export default function Home() {
             <span className="capitalize">Blog の一覧を見る</span>
             <ArrowRightIcon className="h-4 w-4" />
           </Link>
-        </div>
-        <div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           <Posts category="notes" numberOfPosts={5} />
           <Link
             href="/notes"
@@ -139,7 +159,7 @@ export default function Home() {
             <span className="capitalize">Notes の一覧を見る</span>
             <ArrowRightIcon className="h-4 w-4" />
           </Link>
-        </div>
+        </motion.div>
       </div>
     </FadeIn.Container>
   );
