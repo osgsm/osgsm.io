@@ -14,7 +14,6 @@ import {
   CirclePauseIcon,
   CodeXmlIcon,
   DiamondIcon,
-  FlagIcon,
   GraduationCapIcon,
   HandshakeIcon,
   KeyboardIcon,
@@ -22,6 +21,7 @@ import {
   PaintbrushIcon,
   PianoIcon,
   RocketIcon,
+  StarIcon,
   UniversityIcon,
   UserRoundXIcon,
 } from "lucide-react";
@@ -202,7 +202,7 @@ export default function About() {
             <TimelineItem
               date="Jan. 1"
               title="ウェブ制作を極めるべく転職を決意"
-              icon={FlagIcon}
+              icon={StarIcon}
             >
               <p>
                 ウェブ制作を極めるべく、スペシャリストが集まる会社に行きたいと決意。
