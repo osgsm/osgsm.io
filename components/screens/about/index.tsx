@@ -31,7 +31,7 @@ import { FaBluesky, FaGithub, FaXTwitter } from "react-icons/fa6";
 
 export default function About() {
   const variants = {
-    initial: { opacity: 0, y: 8 },
+    initial: { opacity: 0, y: 4 },
     whileInView: { opacity: 1, y: 0 },
   };
   return (
@@ -45,7 +45,7 @@ export default function About() {
         transition={{
           duration: 0.8,
           ease: "easeOut",
-          staggerChildren: 0.1,
+          staggerChildren: 0.2,
         }}
       >
         <div className="col-span-full row-span-full grid gap-6">

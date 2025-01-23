@@ -57,7 +57,7 @@ export default function Home() {
             </p>
           </motion.div>
           <motion.div
-            className="~text-[0.936/75rem]/2xl font-semibold text-iris-12 leading-normal *:m-0 md:~md:pr-6/12"
+            className="~text-[0.9375rem]/2xl font-semibold text-iris-12 leading-normal *:m-0 md:~md:pr-6/12"
             variants={fadeInVariants}
           >
             <p>フロントエンドデベロッパーです。</p>
