@@ -3,8 +3,6 @@ import * as FadeIn from "@/components/motion/staggers/fade";
 import { Posts } from "@/components/posts";
 import { OpenGraph } from "@/lib/og";
 
-import React from "react";
-
 const Spacer = () => <div style={{ marginTop: "48px" }} />;
 
 export function generateMetadata() {
