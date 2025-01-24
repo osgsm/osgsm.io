@@ -270,7 +270,7 @@ export default function About() {
           </TimelineList>
           <TimelineList year="2019">
             <TimelineItem
-              title="社内のウェブ制作担当がいなくなる"
+              title="社内のウェブ業務担当がいなくなる"
               icon={UserRoundXIcon}
             >
               <p>諸事情により、主にウェブ関連の仕事を担当していた者が離脱。</p>
@@ -291,7 +291,7 @@ export default function About() {
               <p>ウェブ制作の楽しさを思い出す。</p>
             </TimelineItem>
             <TimelineItem
-              title="グラフィックデザイナー見習いとして神戸にある会社に転職"
+              title="グラフィックデザイナー見習いとして転職"
               icon={HandshakeIcon}
             />
           </TimelineList>
@@ -336,7 +336,7 @@ export default function About() {
           </TimelineList>
           <TimelineList year="2013">
             <TimelineItem
-              title="卒業論文を提出するも休学"
+              title="卒業論文を提出するも卒業できず"
               icon={CirclePauseIcon}
             >
               <p>
@@ -371,7 +371,7 @@ export default function About() {
               icon={UniversityIcon}
             />
           </TimelineList>
-          <TimelineList year="2005">
+          <TimelineList year="2006">
             <TimelineItem
               title="時給708円でキーボードをカタカタし始める"
               icon={KeyboardIcon}
