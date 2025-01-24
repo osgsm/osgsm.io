@@ -367,7 +367,7 @@ export default function About() {
           </TimelineList>
           <TimelineList year="2009">
             <TimelineItem
-              title="キラキラのキャンパスライフを夢見て近畿大学に入学"
+              title="華のキャンパスライフを夢見て近大に入学"
               icon={UniversityIcon}
             />
           </TimelineList>
