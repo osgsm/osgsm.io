@@ -87,6 +87,13 @@ export default function About() {
               <p>技術だけでなくデザインにも関心があります。</p>
               <p>近頃は 3D とか WebGL に惹かれてます。</p>
             </motion.div>
+            <motion.div variants={variants}>
+              <p>
+                お問い合わせは{" "}
+                <Link href="https://bsky.app/profile/osgsm.io">Bluesky</Link>{" "}
+                からどうぞ。
+              </p>
+            </motion.div>
           </div>
           <motion.div
             className="*:~text-xl/2xl flex items-center gap-3 text-mauve-10"
