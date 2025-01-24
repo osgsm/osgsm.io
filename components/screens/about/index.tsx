@@ -84,7 +84,7 @@ export default function About() {
               <p>CMS は WordPress をよく使います。</p>
             </motion.div>
             <motion.div variants={variants}>
-              <p>技術だけでなくデザインにも関心があります。</p>
+              <p>技術だけでなくデザインにも関心あり。</p>
               <p>近頃は 3D とか WebGL に惹かれてます。</p>
             </motion.div>
             <motion.div variants={variants}>
@@ -204,7 +204,7 @@ export default function About() {
             />
             <TimelineItem
               date="Oct. 10"
-              title="リニューアル案件で、ほんの少しだけフロントエンドを担当"
+              title="リニューアルプロジェクトで、ほんの少しだけフロントエンドを担当"
               icon={RocketIcon}
               isTweet
             >
@@ -212,7 +212,7 @@ export default function About() {
             </TimelineItem>
             <TimelineItem
               date="Jul. 4"
-              title="WordPress 構築案件を担当"
+              title="WordPress 構築を担当"
               icon={RocketIcon}
               isTweet
             >
@@ -244,14 +244,14 @@ export default function About() {
             />
             <TimelineItem
               date="Jan. 1"
-              title="ウェブ制作を極めるべく転職を決意"
+              title="ウェブ制作を追求すべく転職を決意"
               icon={StarIcon}
             >
               <p>
-                ウェブ制作を極めるべく、スペシャリストが集まる会社に行きたいと決意。
+                その道を深く探求するためには、「スペシャリストが集まる会社に行くべしだ！」と転職を決意。
               </p>
               <p>
-                そのために必要な技術を集中的に学び始める。この過程で、開発の楽しさをより実感するようになる。
+                そのために必要な技術を集中的に学び始める。この過程で開発の楽しさをより実感するようになる。
               </p>
             </TimelineItem>
           </TimelineList>
@@ -288,7 +288,7 @@ export default function About() {
               <p>
                 昔にウェブ制作をかじっていたので、下層ページの作成などを任されるように。
               </p>
-              <p>ウェブ制作の楽しさを思い出す。</p>
+              <p>このとき、かつて熱中していたウェブ制作の楽しさを思い出す。</p>
             </TimelineItem>
             <TimelineItem
               title="グラフィックデザイナー見習いとして転職"
@@ -313,8 +313,12 @@ export default function About() {
               title="部屋中の窓を段ボールで閉ざす"
               icon={PackageIcon}
             >
-              <p>暗室を作るために、自室の窓をすべて閉ざす。</p>
-              <p>自室でフィルムの現像からプリント、額装までを行う。</p>
+              <p>
+                暗室を作るために、自室の窓をすべて段ボールでふさぎ、壁一面を黒いマスキングテープで覆う。
+              </p>
+              <p>
+                ネットで情報をかき集め、フィルム現像からプリント、額装までを自分で行う。
+              </p>
             </TimelineItem>
           </TimelineList>
           <TimelineList year="2015">
@@ -332,6 +336,7 @@ export default function About() {
               <p>
                 この頃は写真にハマり、休日はもちろん、バイトの休憩中や行き帰りでも写真を撮り続ける。
               </p>
+              <p>食べることもおろそかになり、体重は40キロ台まで落ちる。</p>
             </TimelineItem>
           </TimelineList>
           <TimelineList year="2013">
