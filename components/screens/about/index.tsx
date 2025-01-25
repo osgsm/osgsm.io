@@ -49,16 +49,6 @@ export default function About() {
       >
         <div className="col-span-full row-span-full grid gap-6">
           <div className="grid gap-1">
-            <motion.div
-              className="-ml-0.5 ~text-xs/sm mb-1 flex w-fit items-center gap-2 rounded-lg border border-[--cyan-3] bg-[--cyan-2] px-2 py-1 text-[--cyan-10] lg:mb-0"
-              variants={variants}
-            >
-              <span className="grid *:col-span-full *:row-span-full *:inline-block *:size-1.5 *:rounded-full">
-                <span className="size-3 animate-ping-slow bg-[--cyan-6]" />
-                <span className="z-10 size-1.5 bg-[--cyan-8]" />
-              </span>
-              Work at KITERETZ inc.
-            </motion.div>
             <motion.hgroup
               className="grid gap-3 md:gap-0 md:*:col-span-full md:*:row-span-full"
               variants={variants}
@@ -128,7 +118,7 @@ export default function About() {
           </motion.div>
         </div>
         <motion.div
-          className="~xs/sm:~-translate-x-0/16 sm:~sm/md:~translate-y-10/48 col-span-full row-span-full size-[min(32vw,22.5rem)] translate-y-10 place-items-center self-start justify-self-end sm:translate-x-0 lg:translate-y-20 lg:self-center min-[22.5rem]:visible"
+          className="~xs/sm:~-translate-x-0/16 sm:~sm/md:~translate-y-40/48 sm:~sm/lg:~-translate-x-10/32 lg:~/xl:~-translate-x-32/0 col-span-full row-span-full size-[min(32vw,22.5rem)] translate-y-2 place-items-center self-start justify-self-end lg:translate-y-20 lg:self-center min-[22.5rem]:visible"
           variants={variants}
         >
           <motion.div
