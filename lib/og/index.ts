@@ -1,10 +1,12 @@
 import type { Metadata } from "next/types";
 
 export const OpenGraph: Metadata = {
-  metadataBase: process.env.NEXT_PUBLIC_SITE_URL ? new URL(process.env.NEXT_PUBLIC_SITE_URL) : undefined,
+  metadataBase: process.env.NEXT_PUBLIC_SITE_URL
+    ? new URL(process.env.NEXT_PUBLIC_SITE_URL)
+    : undefined,
   title: {
     default: "osgsm.io",
-    template: "%s",
+    template: "%s | osgsm.io",
   },
   description: "...",
   keywords: ["Design", "Development", "Engineering"],
