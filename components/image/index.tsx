@@ -21,7 +21,7 @@ export default function MDXImage({ caption, alt, ...props }: MDXImageProps) {
       href={href}
       whileHover={{ scale: 0.975 }}
     >
-      <div className="relative max-h-[560px] w-full overflow-hidden rounded-large border border-border">
+      <div className="relative max-h-[560px] w-fit overflow-hidden rounded-large border border-border">
         <Image
           unoptimized
           alt={alt}
