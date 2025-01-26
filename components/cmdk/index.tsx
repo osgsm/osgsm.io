@@ -48,6 +48,7 @@ export const CommandMenu = () => {
       open={open}
       onOpenChange={setOpen}
       label="Global Command Menu"
+      loop
       contentClassName="fixed inset-0 z-50 grid place-items-center pointer-events-none backdrop-blur-md backdrop-brightness-50"
       className="pointer-events-auto relative min-w-72 rounded-xl border border-iris-4 bg-iris-2 leading-snug"
     >
