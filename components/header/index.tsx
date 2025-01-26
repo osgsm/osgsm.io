@@ -1,10 +1,11 @@
+import { CommandMenu } from "@/components/cmdk";
 import { cn } from "@/lib/cn";
 
 import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className="sticky top-0 z-50 grid w-full place-items-center from-5% from-[--iris-1] to-50% px-4 py-3 lg:my-6 dark:bg-gradient-to-b">
+    <header className="sticky top-0 z-40 grid w-full place-items-center from-5% from-[--iris-1] to-50% px-4 py-3 lg:my-6 dark:bg-gradient-to-b">
       <div
         className={cn(
           "gradient-card flex w-full items-center justify-between gap-4 rounded-xl border border-iris-4 px-4 py-3 backdrop-blur-md",
@@ -46,6 +47,7 @@ const Header = () => {
           ))}
         </div>
       </div>
+      <CommandMenu />
     </header>
   );
 };
