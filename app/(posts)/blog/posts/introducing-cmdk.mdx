@@ -1,0 +1,273 @@
+---
+title: "cmdk を使ってコマンドパレットのような機能を追加する"
+time:
+  created: "2025-01-26T13:02:28.713Z"
+  updated: "2025-01-26T13:02:28.713Z"
+---
+
+最近のいい感じのウェブアプリケーションやドキュメントでは、よく <kbd>⌘</kbd><kbd>K</kbd> で検索したり、コマンドを実行できたりしますよね。
+
+それを、今回は簡易的にこのサイトに追加してみようと思います。
+
+とは言え、自分で一から実装する必要はなくライブラリを使います。
+
+[`cmdk`](https://github.com/pacocoursey/cmdk) というライブラリを使うと、ウェブサイトやアプリケーションにコマンドパレットのような機能を簡単に追加することができます。
+
+このライブラリは、コンボボックスとして利用できる React コンポーネントを提供します。このコンボボックス内にメニュー項目を追加し、入力などに応じてフィルタリングを行うことができます。
+
+そして、それぞれの項目に実行したい処理を割り当てることで、コマンドパレットのような機能を実現します。
+
+## インストールと挙動の確認
+
+```shell title="Terminal"
+pnpm install cmdk
+```
+
+コマンドパレットのように使用したい場合は `Command.Dialog` を使います。これは、Radix UI の [Dialog](https://www.radix-ui.com/primitives/docs/components/dialog) コンポーネントを使用しています。
+
+以下のコードは `cmdk` の README に記載のものをベースにしたものです。
+
+```tsx title="components/cmdk/index.tsx"
+"use client";
+
+import { Command } from "cmdk";
+import { useEffect, useState } from "react";
+
+export const CommandMenu = () => {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        setOpen((open) => !open);
+      }
+    };
+
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+  }, []);
+
+  return (
+    <Command.Dialog
+      open={open}
+      onOpenChange={setOpen}
+      label="Global Command Menu"
+    >
+      <Command.Input />
+      <Command.List>
+        <Command.Empty>No results found.</Command.Empty>
+
+        <Command.Group heading="Letters">
+          <Command.Item>a</Command.Item>
+          <Command.Item>b</Command.Item>
+          <Command.Separator />
+          <Command.Item>c</Command.Item>
+        </Command.Group>
+
+        <Command.Item>Apple</Command.Item>
+      </Command.List>
+    </Command.Dialog>
+  );
+};
+```
+
+このクライアントコンポーネントを適当な場所で使用し、ブラウザで <kbd>⌘</kbd><kbd>K</kbd> を押すと、次のようなコンボボックスが表示されます。
+
+<Image src="/blog/images/introducing-cmdk/image1.png" alt="" className="w-80" />
+
+このライブラリはスタイリングは提供しないので簡素な見た目になっています。
+
+`ap` と入力すると、 "Apple" という項目がフィルタリングされます。
+
+<Image src="/blog/images/introducing-cmdk/image2.png" alt="" className="w-80" />
+
+入力欄にフォーカスしている状態で、キーボードの <kbd>↑</kbd><kbd>↓</kbd>  を押すと、表示自体は変わりませんが、開発者ツールで確認すると、選択されている項目の `aria-selected`, `data-selected` が `true` になっているのが確認できます。
+
+例えば、 `c` という項目を選択すると、次のようになっています。
+
+```html
+<div id="radix-:r12:" cmdk-item="" role="option" aria-disabled="false" aria-selected="true" data-disabled="false" data-selected="true" data-value="c">c</div>
+```
+
+項目選択時に実行したい処理は、 `onSelect` prop にコールバックを渡します。例えば、次のようなコールバックを追加すると、 `c` を選択している状態で <kbd>Enter</kbd> を押すと、コンソールに `Selected c` と表示されます。
+
+```tsx
+<Command.Item onSelect={(value) => console.log('Selected', value)}>
+```
+
+簡単な挙動の確認は以上です。
+
+基本的な機能はこのライブラリが提供してくれるので、スタイリングや、項目が選択されたときの処理を我々ユーザーが追加していく形になります。
+
+では、今回は、ダークモードとライトモードをコマンドパレットから変更できるようにしてみます。加えて、スタイリングも行います。
+
+## 項目選択時の処理を追加する
+
+このサイトでは、 `next-themes` というライブラリを使ってダークモードなどの管理を行っています。
+
+なので、コマンドパレットの項目が選択されたときに、そのライブラリが提供する関数を実行するようにしていきます。
+
+```tsx title="components/cmdk/index.tsx"
+"use client";
+
+import { Command } from "cmdk";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+
+export const CommandMenu = () => {
+  const [open, setOpen] = useState(false);
+  const { setTheme } = useTheme();
+
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        setOpen((open) => !open);
+      }
+    };
+
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+  }, []);
+
+  return (
+    <Command.Dialog
+      open={open}
+      onOpenChange={setOpen}
+      label="Global Command Menu"
+    >
+      <Command.Input />
+      <Command.List>
+        <Command.Empty>No results found.</Command.Empty>
+        <Command.Item onSelect={() => setTheme("dark")}>
+          Change theme to dark
+        </Command.Item>
+        <Command.Item onSelect={() => setTheme("light")}>
+          Change theme to light
+        </Command.Item>
+      </Command.List>
+    </Command.Dialog>
+  );
+};
+```
+
+こうすることで、次のように <kbd>⌘</kbd><kbd>K</kbd> → `light` と入力 → <kbd>Enter</kbd> のようにしてテーマを切り替えることができるようになります。
+
+<Image src="/blog/images/introducing-cmdk/image3.gif" alt="" />
+
+では、次はコマンドパレット部分をスタイリングします。
+
+## スタイリング
+
+次のようにスタイリングします。ここでは Tailwind を使い、共通のスタイルを当てるために、 `CommandItem` コンポーネントを定義しています。
+
+加えて、アイコンをインポートして使用したり、コマンドパレットでコマンドが選択されたときに `setOpen(false)` を実行するようにも修正しています。
+
+このサイトでは Radix Colors を使っているので、カラーの部分などは適宜変更してください。
+
+```tsx title="components/cmdk/index.tsx"
+"use client";
+
+import { cn } from "@/lib/cn";
+
+import { Command } from "cmdk";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+
+interface CommandItemProps extends React.ComponentProps<typeof Command.Item> {
+  children: React.ReactNode;
+}
+
+const CommandItem = ({ children, className, ...props }: CommandItemProps) => {
+  return (
+    <Command.Item
+      className={cn(
+        "flex items-center gap-2 rounded-md p-2",
+        "hover:bg-iris-4 hover:text-iris-11",
+        "aria-selected:bg-iris-4 aria-selected:text-iris-11",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </Command.Item>
+  );
+};
+
+export const CommandMenu = () => {
+  const [open, setOpen] = useState(false);
+  const { setTheme } = useTheme();
+
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        setOpen((open) => !open);
+      }
+    };
+
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+  }, []);
+
+  return (
+    <Command.Dialog
+      open={open}
+      onOpenChange={setOpen}
+      label="Global Command Menu"
+      loop
+      contentClassName="fixed inset-0 z-50 grid place-items-center pointer-events-none backdrop-blur-md backdrop-brightness-50"
+      className="pointer-events-auto relative min-w-72 rounded-xl border border-iris-4 bg-iris-2 leading-snug"
+    >
+      <div className="border-iris-4 border-b px-4 py-3">
+        <Command.Input
+          placeholder="Type a command or search..."
+          className="bg-transparent outline-none placeholder:text-iris-8"
+        />
+      </div>
+      <Command.List className="p-2">
+        <Command.Empty className="p-2 text-iris-10">
+          No results found.
+        </Command.Empty>
+        <CommandItem
+          onSelect={() => {
+            setTheme("dark");
+            setOpen(false);
+          }}
+        >
+          <Moon size={16} />
+          Change theme to dark
+        </CommandItem>
+        <CommandItem
+          onSelect={() => {
+            setTheme("light");
+            setOpen(false);
+          }}
+        >
+          <Sun size={16} />
+          Change theme to light
+        </CommandItem>
+      </Command.List>
+    </Command.Dialog>
+  );
+};
+```
+
+これで次のようにコマンドパレットを開いてコマンドを実行することができます。
+
+<Image src="/blog/images/introducing-cmdk/image4.gif" alt="" />
+
+デベロッパー感が増してクールですね！
+
+今回はテーマを変更するコマンドのみを用意しましたが、今後は投稿の検索に使ったりできるように変更していこうと考えています。
+
+このように、とても簡単にコマンドパレットを追加できるので、ぜひお試しあれ。
+
+---
+
+参考
+
+- [pacocoursey/cmdk: Fast, unstyled command menu React component.](https://github.com/pacocoursey/cmdk)
+- [Fast, composable, unstyled command menu for React — ⌘K](https://cmdk.paco.me/)
