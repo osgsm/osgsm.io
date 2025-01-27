@@ -1,0 +1,155 @@
+---
+title: "Rehype Pretty Code を使ってシンタックスハイライトを効かせた状態で diff を表示する"
+time:
+  created: "2025-01-27T12:03:43.934Z"
+  updated: "2025-01-27T12:03:43.934Z"
+---
+
+このブログは Rehype Pretty Code を使用しています。 Rehype Pretty Code については [前の投稿](/blog/introducing-rehype-pretty-code) で紹介しています。
+
+Rehype Pretty Code では、次のように、言語に `diff` を設定することで diff を表示できます。
+
+<Preview codeblock>
+```diff
+- console.log('removed')
++ console.log('added')
+console.log('unchanged')
+```
+</Preview>
+
+````
+```diff
+- console.log('removed')
++ console.log('added')
+console.log('unchanged')
+```
+````
+
+これはこれで見やすいですが、シンタックスハイライトを効かせた状態で diff を表示した方がベターな気がします。
+
+Rehype Pretty Code は、 Shiki を使っているので、 `@shikijs/transformers` から `transformerNotationDiff` をインポートし、 それを Rehype Pretty Code のオプションとして渡すことで、シンタックスハイライトを効かせた状態で diff を表示できます。
+
+## 今回得られる結果
+
+まず、結果を見てみましょう。次のような表示になります。
+
+<Preview codeblock>
+```ts
+console.log('removed') // [!code --]
+console.log('added') // [!code ++]
+console.log('unchanged')
+```
+</Preview>
+
+````
+```ts
+console.log('removed') // [!code --]
+console.log('added') // [!code ++]
+console.log('unchanged')
+```
+````
+
+コードブロックの部分を見ると行の終わりにコメントが書かれていますが、この記述に従ってスタイリング用のクラスが付与されます。このコメントは最終的には表示されません。
+
+
+## `transformerNotationDiff` を使うための準備
+
+まずは、 `@shikijs/transformers` をインストールします。
+
+```shell
+pnpm add -D @shikijs/transformers
+```
+
+次に、 `@shikijs/transformers` から `transformerNotationDiff` をインポートします。
+
+```ts
+import { transformerNotationDiff } from '@shikijs/transformers'
+```
+
+そして、それを Rehype Pretty Code のオプションとして渡します。このブログでは `<MDXRemote />` を使っているので、次のように `transformerNotationDiff()` を指定します。この辺りは適宜変更してください。
+
+
+```tsx {20} title="mdx-components.tsx"
+export function MDX(props: JSX.IntrinsicAttributes & MDXRemoteProps) {
+  return (
+    <MDXRemote
+      {...props}
+      components={components}
+      options={{
+        mdxOptions: {
+          remarkPlugins: [remarkGfm],
+          rehypePlugins: [
+            rehypeSlug,
+            [
+              rehypePrettyCode,
+              {
+                theme: {
+                  dark: "github-dark",
+                  light: "github-light",
+                },
+                keepBackground: false,
+                defaultLang: "plaintext",
+                transformers: [transformerNotationDiff()],
+              },
+            ],
+          ] as PluggableList,
+        },
+      }}
+    />
+  );
+}
+```
+
+## diff 用のスタイリング
+
+`@shikijs/transformers` は、スタイリングを提供してくれないので、自分で行う必要があります。
+
+上述の手順で、スタイリングのためのクラスが付与されるのでそれに合わせてスタイルを当てていきます。
+
+任意の CSS ファイルに次の記述を追加します。ここでは Tailwind CSS を使用しています。配色の部分は Radix Colors の値を使用しているので、適宜変更してください。
+
+```css title="styles/main.css"
+[data-line] {
+  @apply relative before:absolute before:left-0 before:px-px;
+}
+
+[data-line].diff.add {
+  @apply bg-[--teal-3] text-[--teal-10] before:content-['+'];
+}
+
+[data-line].diff.remove {
+  @apply bg-[--pink-4] text-[--pink-10] opacity-70 before:content-['-'];
+}
+```
+
+
+これで使用できるようになるので、マークダウン内で次のように記述します。
+
+````
+```ts
+console.log('removed') // [!code --]
+console.log('added') // [!code ++]
+console.log('unchanged')
+```
+````
+
+すると、次のようにシンタックスハイライトを効かせた状態で diff を表示できます。
+
+```ts
+console.log('removed') // [!code --]
+console.log('added') // [!code ++]
+console.log('unchanged')
+```
+
+素晴らしい！
+
+これで diff をいい感じに表示できるようになりました。
+
+`@shikijs/transformers` には、他にもさまざまなトランスフォーマーが用意されているので、使用する機会があったらまた紹介したいと思います。
+
+---
+
+参考
+
+- [Rehype Pretty Code | Rehype Pretty](https://rehype-pretty.pages.dev/#transformers)
+- [@shikijs/transformers | Shiki](https://shiki.style/packages/transformers)
