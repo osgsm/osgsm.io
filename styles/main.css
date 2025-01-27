@@ -365,5 +365,17 @@
     [data-highlighted-line] {
       @apply !bg-highlight-background border-highlight-foreground;
     }
+
+    [data-line] {
+      @apply relative before:absolute before:left-0 before:px-px;
+    }
+
+    [data-line].diff.add {
+      @apply bg-[--teal-3] text-[--teal-10] before:content-['+'];
+    }
+
+    [data-line].diff.remove {
+      @apply bg-[--pink-4] text-[--pink-10] opacity-70 before:content-['-'];
+    }
   }
 }
