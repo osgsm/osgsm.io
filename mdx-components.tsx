@@ -12,6 +12,7 @@ import { Spotify } from "@/components/spotify";
 import { Tweet } from "@/components/tweet";
 import { cn } from "@/lib/cn";
 
+import { transformerNotationDiff } from "@shikijs/transformers";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import React from "react";
 import rehypePrettyCode from "rehype-pretty-code";
@@ -207,11 +208,12 @@ export function MDX(props: JSX.IntrinsicAttributes & MDXRemoteProps) {
               rehypePrettyCode,
               {
                 theme: {
-                  dark: "rose-pine",
-                  light: "rose-pine-dawn",
+                  dark: "github-dark",
+                  light: "github-light",
                 },
                 keepBackground: false,
                 defaultLang: "plaintext",
+                transformers: [transformerNotationDiff()],
               },
             ],
           ] as PluggableList,
