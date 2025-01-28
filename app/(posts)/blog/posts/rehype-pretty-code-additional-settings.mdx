@@ -63,19 +63,17 @@ figure[data-rehype-pretty-code-figure] {
 }
 ```
 
-今回は、次のようにスタイリングしています。併せて、子要素の `pre` にもスタイルを適用しています。
+今回は、次のようにスタイリングしています。併せて、子要素の `pre` にもスタイルを適用しています。配色の部分では [Radix Colors](https://www.radix-ui.com/colors) を使用しています。
 
 ```css title="styles/syntax-highlighting.css"
 figure[data-rehype-pretty-code-figure] {
-  @apply my-5 overflow-hidden rounded-lg border border-gray-600 bg-gray-900;
+  @apply w-full mt-4 border border-[--border] rounded-[--radius-base] bg-[--iris-2];
 }
 
 figure[data-rehype-pretty-code-figure] pre {
-  @apply m-0 rounded-lg bg-gray-900 px-0;
+  @apply py-4 overflow-x-auto;
 }
 ```
-
-`px-0` で横側の `padding` を `0` にしているのは、行のハイライトをコードブロック全体に行き渡らせるためです。次の工程で行ごとに `padding` を当てていきます。
 
 では、次にコードブロックの行をスタイリングしていきます。
 
@@ -84,8 +82,8 @@ figure[data-rehype-pretty-code-figure] pre {
 Rehype Pretty Code では、コードブロック内の各行に対して `data-line` という data attribute が追加されます。なので、行のスタイリングは、 `data-line` に対して行っていきます。
 
 ```css title="styles/syntax-highlighting.css"
-[data-line] {
-  @apply border-l-[3px] border-transparent px-4;
+figure[data-rehype-pretty-code-figure] [data-line] {
+  @apply mt-0 px-4 border-l-2 border-transparent;
 }
 ```
 
@@ -117,7 +115,7 @@ add(2, 3) // 5
 
 ```css title="styles/syntax-highlighting.css"
 [data-highlighted-line] {
-  @apply border-teal-400 bg-teal-700/30;
+  @apply !bg-[--plum-3] !border-[--plum-8];
 }
 ```
 
@@ -154,24 +152,14 @@ add(2, 3) // 5
 ここでは、タイトル部分に加えて、タイトルに隣接する `pre` 要素にもスタイルを適用しています。
 
 ```css title="styles/syntax-highlighting.css"
-figure[data-rehype-pretty-code-figure]
-  > [data-rehype-pretty-code-title]
-  + pre {
-  @apply -mt-[1px] rounded-t-none border-t border-gray-600;
+figcaption[data-rehype-pretty-code-title] {
+  @apply text-small py-1 px-4 border-b border-border text-[--iris-9];
 }
 
-[data-rehype-pretty-code-title] {
-  @apply relative z-10 mx-2 mt-2 block w-fit
-    rounded-t border-x border-t border-gray-600
-    bg-inherit px-2 py-1.5 text-sm leading-none text-gray-400;
+figcaption[data-rehype-pretty-code-title] + pre {
+  @apply mt-0;
 }
 ```
-
-タイトルがある場合には、 `pre` の上側の `border-radius` をなくして `border` を追加しています。 `margin-top` を `-1px` にしているのは、エディターのタブっぽい見た目にするためです。
-
-適用後は次のようになります。
-
-<Image src="/blog/images/rehype-pretty-code-additional-settings/image1.webp" alt="タイトル関連のスタイリング後の状態" />
 
 最後に、行番号を追加し、スタイリングしていきます。
 
@@ -189,13 +177,35 @@ add(2, 3) // 5
 
 次に、 `lineNumber` をインクリメントするための記述と、 `lineNumber` の表示を行います。ついでに他のスタイリングも行います。
 
-```css title="styles/syntax-highlighting.css"
+```css title="styles/syntax-highlighting.css" showLineNumbers
+code[data-line-numbers] {
+  counter-reset: line;
+}
+
 code[data-line-numbers] > [data-line]::before {
-  @apply mr-3 inline-block w-4 text-right text-gray-600
-    content-[counter(lineNumber)]
-    [counter-increment:lineNumber];
+  display: inline-block;
+  width: 12px;
+  margin-right: 1rem;
+  color: gray;
+  text-align: right;
+  content: counter(line);
+  counter-increment: line;
+}
+
+code[data-line-numbers-max-digits="2"] > [data-line]::before {
+  width: 1.25rem;
+}
+
+code[data-line-numbers-max-digits="3"] > [data-line]::before {
+  width: 1.75rem;
+}
+
+code[data-line-numbers-max-digits="4"] > [data-line]::before {
+  width: 2.25rem;
 }
 ```
+
+以上で、上に今表示されているようないい感じのコードブロックを表示できます。
 
 ## さいごに
 
@@ -203,9 +213,10 @@ Rehype Pretty Code を使って、適宜 CSS を用意すれば、美しく、�
 
 CSS については、デフォルトで用意されているものがないので、自身で用意する必要がありますが、デフォルトのスタイリングがない分、自由にできるのがありがたいですね。
 
+Rehype Pretty Code は、Shiki を使っているので、 Shiki が用意しているトランスフォーマーを使えば、[シンタックスハイライトを効かせた状態で diff を表示する](/blog/syntax-hilighted-diff) ことも可能です。興味のある方はチェックしてみてください。
+
 ---
 
 参考
 
-- [Rehype Pretty Code](https://rehype-pretty-code.netlify.app/)
-- [Build-Time Syntax Highlighting: Zero Client-Side JS, Support for 100+ Languages and Any VSCode Theme | delba.dev](https://delba.dev/blog/next-blog-build-time-syntax-highlighting)
+- [Rehype Pretty Code | Rehype Pretty](https://rehype-pretty.pages.dev/)

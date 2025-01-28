@@ -13,13 +13,13 @@ time:
 
 シンタックスハイライトといえば [Prism](https://prismjs.com) が有名ですが、今回は Shiki を使用したパッケージを採用しました。
 
-## Prism よりも Shiki がよさそう
+## Prism よりも Shiki の方が精度が高い
 
-シンタックスハイライトの導入にあたり、ググってみたところ [Prism](https://prismjs.com) はハイライトの精度が完全でなく、崩れることもあるようでした。→ [syntax highlighter を shiki に切り替えた | blog.ojisan.io](https://blog.ojisan.io/use-shiki/) 参照。
+他の導入事例を見たところ、 [Prism](https://prismjs.com) はハイライトの精度が完全でなく、崩れることもあるようでした。→ [syntax highlighter を shiki に切り替えた | blog.ojisan.io](https://blog.ojisan.io/use-shiki/) 参照。
 
-ハイライトの精度では、Prism よりも [Shiki](https://shiki.matsu.io/) に軍配が上がるようで、しかも Shiki では、 Visual Studio Code のテーマが使えます。
+その点、Shiki は VS Code と同じシンタックスハイライトのエンジンを使っているようなので安心です。
 
-ちなみに、今話題の [Astro](https://astro.build/) でも、 Shiki がデフォルトのシンタックスハイライトとして使われているようです。→ [Markdown & MDX 🚀 Astro Documentation](https://docs.astro.build/en/guides/markdown-content/#syntax-highlighting) 参照。
+ちなみに、[Astro](https://astro.build/) でも、 Shiki がデフォルトのシンタックスハイライトとして使われているようです。→ [Markdown & MDX 🚀 Astro Documentation](https://docs.astro.build/en/guides/markdown-content/#syntax-highlighting) 参照。
 
 そんなわけで、 Shiki を使うのがよかろうと結論しました。
 
@@ -39,41 +39,41 @@ const add = (a, b) => a + b;
 add(2, 3); // 5
 ```
 
-行のハイライトや行番号・ファイル名の表示については、後日改めて記事にする予定です。
+行のハイライトや行番号・ファイル名の表示については、 [Rehype Pretty Code で、コードブロックに行番号を付け、特定の行をハイライトする](/blog/rehype-pretty-code-additional-settings) をご参照ください。
 
 ## Rehype プラグインを使うための準備
 
-このブログは Next.js の公式チュートリアルをもとに作っていて、マークダウンを HTML に変換するために `remark` と `remark-html` を使用しています。
+このブログは、記事作成時点では Next.js の公式チュートリアルをもとに作っていて、マークダウンを HTML に変換するために `remark` と `remark-html` を使用しています。
 
 `remark-html` は、 `.use(remarkRehype).use(rehypeStringify)` のショートカットにあたるプラグインですが、 rehype プラグインを使うためには `remark-rehype` と `remark-stringify` を別々で使用する必要があります。
 
 なので、 `remark-html` を取り除き、
 
 ```shell title="Terminal"
-yarn remove remark-html
+pnpm rm remark-html
 ```
 
 `remark-rehype` と `rehype-stringify` をインストールしましょう。
 
 ```shell title="Terminal"
-yarn add remark-rehype rehype-stringify
+pnpm add remark-rehype rehype-stringify
 ```
 
 そしてそれらを使用するために `lib/posts.js` で、それらをインポートし、`remark-html` は削除します。
 
-```diff title="lib/posts.js" {6-7}
+```js title="lib/posts.js"
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
-- import html from 'remark-html';
-+ import remarkRehype from 'remark-rehype';
-+ import rehypeStringify from 'rehype-stringify';
+import html from 'remark-html'; // [!code --]
+import remarkRehype from 'remark-rehype'; // [!code ++]
+import rehypeStringify from 'rehype-stringify'; // [!code ++]
 ```
 
 次に、それらを使用している `getPostData` を変更します。
 
-```diff title="lib/posts.js" {9-10}
+```js title="lib/posts.js"
 export const getPostData = async (id) => {
   const fullPath = path.join(postsDirectory, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
@@ -81,9 +81,9 @@ export const getPostData = async (id) => {
   const matterResult = matter(fileContents);
 
   const processedContent = await remark()
--   .use(html)
-+   .use(remarkRehype)
-+   .use(rehypeStringify)
+    .use(html) // [!code --]
+    .use(remarkRehype) // [!code ++]
+    .use(rehypeStringify) // [!code ++]
     .process(matterResult.content);
   const contentHtml = processedContent.toString();
 
@@ -104,24 +104,24 @@ Rehype プラグインを使用する準備ができたので、 `rehype-pretty-
 まずは [公式ドキュメント](https://rehype-pretty-code.netlify.app/)に沿って、必要なパッケージをインストールします。
 
 ```shell title="Terminal"
-yarn add rehype-pretty-code shiki
+pnpm add rehype-pretty-code shiki
 ```
 
 次に `lib/posts.js` で `rehype-pretty-code` をインポートします。
 
-```jsx title="lib/posts.js" {6}
+```jsx title="lib/posts.js"
 import fs from "fs";
 import path from "path";
 
 import matter from "gray-matter";
 import rehypePrettyCode from "rehype-pretty-code";
-import rehypeStringify from "rehype-stringify";
+import rehypeStringify from "rehype-stringify"; // [!code ++]
 import remarkRehype from "remark-rehype";
 ```
 
 そして、それを使用するために `getPostData` を変更します。 次のように `.use(rehypePrettyCode)` を追加します。
 
-```jsx title="lib/posts.js" {9}
+```jsx title="lib/posts.js"
 export const getPostData = async (id) => {
   const fullPath = path.join(postsDirectory, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
@@ -130,7 +130,7 @@ export const getPostData = async (id) => {
 
   const processedContent = await remark()
     .use(remarkRehype)
-    .use(rehypePrettyCode)
+    .use(rehypePrettyCode) // [!code ++]
     .use(rehypeStringify)
     .process(matterResult.content);
   const contentHtml = processedContent.toString();
@@ -165,9 +165,9 @@ const processedContent = await remark()
   .process(matterResult.content);
 ```
 
-ちなみに Shiki に含まれるテーマは [shiki/themes.md > All Themes](https://github.com/shikijs/shiki/blob/main/docs/themes.md#all-themes) から確認できます。
+ちなみに Shiki に含まれるテーマは [Themes | Shiki](https://shiki.style/themes) から確認できます。
 
-Shiki に含まれていないテーマでも、 JSON があればそれを読み込んで使用することもできます。詳しくは[ドキュメント](https://rehype-pretty-code.netlify.app/)をご参照あれ。
+Shiki に含まれていないテーマでも、 JSON があればそれを読み込んで使用することもできます。詳しくは[ドキュメント](https://rehype-pretty.pages.dev/#theme)をご参照あれ。
 
 ## さいごに
 
@@ -175,7 +175,7 @@ Shiki に含まれていないテーマでも、 JSON があればそれを読�
 
 Rehype Pretty Code には、他にも便利な機能があり、特定の行のハイライトや行番号を行うことも可能です。
 
-この辺については、後日改めて記事を公開する予定ですのでお楽しみに！
+この辺については、後日改めて記事を公開する予定ですのでお楽しみに！ → 公開しました 👉🏼 [Rehype Pretty Code で、コードブロックに行番号を付け、特定の行をハイライトする](/blog/rehype-pretty-code-additional-settings)
 
 ---
 
