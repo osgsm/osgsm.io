@@ -106,7 +106,7 @@ export const TableOfContents = () => {
                 type="button"
                 onClick={() => scroll(heading.id)}
                 className={cn({
-                  "mt-0 ml-1 border-border border-l py-1.5 text-left text-muted leading-normal opacity-100 transition ease-in-out hover:opacity-50":
+                  "mt-0 ml-1 border-border border-l py-1.5 text-left text-muted text-sm leading-normal opacity-100 transition ease-in-out hover:opacity-50":
                     true,
                   "text-foreground text-normal": visibleHeadings.has(
                     heading.id,
