@@ -54,7 +54,7 @@
     --kbd-foreground: var(--iris-11);
     --kbd-border: var(--iris-4);
     --highlight-background: var(--plum-3);
-    --highlight-foreground: var(--plum-10);
+    --highlight-foreground: var(--plum-8);
     --radius-small: 4px;
     --radius-base: 8px;
     --radius-large: 12px;
@@ -298,7 +298,7 @@
     code[data-line-numbers] > [data-line]::before {
       display: inline-block;
       width: 12px;
-      margin-right: 2rem;
+      margin-right: 1rem;
       color: gray;
       text-align: right;
       content: counter(line);
@@ -344,10 +344,7 @@
     }
 
     figure {
-      width: 100%;
-      margin-top: 4px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-base);
+      @apply w-full mt-4 border border-[--border] rounded-[--radius-base];
     }
 
     figcaption[data-rehype-pretty-code-title] {
@@ -363,10 +360,10 @@
     }
 
     [data-highlighted-line] {
-      @apply !bg-highlight-background border-highlight-foreground;
+      @apply !bg-highlight-background !border-highlight-foreground;
     }
 
-    [data-line] {
+    [data-line].diff {
       @apply relative before:absolute before:left-0 before:px-px;
     }
 
