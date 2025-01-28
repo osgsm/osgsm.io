@@ -1,9 +1,18 @@
 import { CommandMenu } from "@/components/cmdk";
 import { cn } from "@/lib/cn";
+import { getPosts } from "@/lib/mdx";
 
 import Link from "next/link";
 
 const Header = () => {
+  const [blogPosts, notesPosts] = ["blog", "notes"].map((category) => {
+    return getPosts(category).sort((a, b) => {
+      return (
+        new Date(b.time.created).getTime() - new Date(a.time.created).getTime()
+      );
+    });
+  });
+
   return (
     <header className="sticky top-0 z-40 grid w-full place-items-center from-5% from-[--iris-1] to-50% px-4 py-3 lg:my-6 dark:bg-gradient-to-b">
       <div
@@ -47,7 +56,7 @@ const Header = () => {
           ))}
         </div>
       </div>
-      <CommandMenu />
+      <CommandMenu blogPosts={blogPosts} notesPosts={notesPosts} />
     </header>
   );
 };
