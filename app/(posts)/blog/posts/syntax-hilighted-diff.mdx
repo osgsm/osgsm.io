@@ -1,5 +1,5 @@
 ---
-title: "Rehype Pretty Code を使ってシンタックスハイライトを効かせた状態で diff を表示する"
+title: "Rehype Pretty Code (Shiki) を使ってシンタックスハイライトを効かせた状態で diff を表示する"
 time:
   created: "2025-01-27T12:03:43.934Z"
   updated: "2025-01-27T12:03:43.934Z"
@@ -49,7 +49,7 @@ console.log('unchanged')
 ```
 ````
 
-コードブロックの部分を見ると行の終わりにコメントが書かれていますが、この記述に従ってスタイリング用のクラスが付与されます。このコメントは最終的には表示されません。
+コードブロックの部分を見ると行の終わりにコメントが書かれていますが、この記述に従ってスタイリング用のクラスが付与されます。このコメントは最終的な出力からは削除されるので、表示はされません。
 
 
 ## `transformerNotationDiff` を使うための準備
@@ -63,7 +63,7 @@ pnpm add -D @shikijs/transformers
 次に、 `@shikijs/transformers` から `transformerNotationDiff` をインポートします。
 
 ```ts
-import { transformerNotationDiff } from '@shikijs/transformers'
+import { transformerNotationDiff } from "@shikijs/transformers";
 ```
 
 そして、それを Rehype Pretty Code のオプションとして渡します。このブログでは `<MDXRemote />` を使っているので、次のように `transformerNotationDiff()` を指定します。この辺りは適宜変更してください。
