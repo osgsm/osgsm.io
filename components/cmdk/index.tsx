@@ -102,7 +102,7 @@ export const CommandMenu = ({
         loop
         contentClassName="fixed inset-0 z-50 p-8 md:p-[10vh] pointer-events-none backdrop-blur-md backdrop-brightness-50"
         className={cn(
-          "pointer-events-auto relative mx-auto w-full max-w-[50rem] rounded-xl border border-iris-4 bg-iris-2 leading-snug",
+          "pointer-events-auto relative mx-auto w-full max-w-[50rem] rounded-xl border border-iris-4 bg-iris-1 leading-snug",
           "[&_[cmdk-group-heading]]:mt-3 [&_[cmdk-group-heading]]:mb-2 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:text-iris-8 dark:[&_[cmdk-group-heading]]:text-muted",
         )}
       >
