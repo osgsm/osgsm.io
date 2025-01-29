@@ -144,7 +144,7 @@
     }
 
     h2 {
-      @apply text-xl border-b border-border pb-1 lg:text-2xl;
+      @apply text-xl border-b border-border pb-2 lg:text-2xl;
     }
 
     h3 {
@@ -315,6 +315,15 @@
 
     code[data-line-numbers-max-digits="4"] > [data-line]::before {
       width: 2.25rem;
+    }
+
+    h1 [data-line],
+    h2 [data-line],
+    h3 [data-line],
+    h4 [data-line],
+    h5 [data-line],
+    h6 [data-line] {
+      @apply font-sans px-1.5 py-0.5 mx-px !bg-[--kbd-background] rounded-md  shadow-[0_0_0_1px_var(--kbd-border)];
     }
 
     p [data-line],
