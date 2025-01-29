@@ -53,6 +53,18 @@ const CommandItem = ({
   );
 };
 
+const CommandSeparator = ({
+  className,
+  ...props
+}: React.ComponentProps<typeof Command.Separator>) => {
+  return (
+    <Command.Separator
+      className={cn("mx-2 mt-2 border-border border-t py-1", className)}
+      {...props}
+    />
+  );
+};
+
 export const CommandMenu = ({
   blogPosts,
   notesPosts,
@@ -103,10 +115,10 @@ export const CommandMenu = ({
         contentClassName="fixed inset-0 z-50 p-8 md:p-[10vh] pointer-events-none backdrop-blur-md backdrop-brightness-50"
         className={cn(
           "pointer-events-auto relative mx-auto w-full max-w-[50rem] rounded-xl border border-iris-4 bg-iris-1 leading-snug",
-          "[&_[cmdk-group-heading]]:mt-3 [&_[cmdk-group-heading]]:mb-2 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:text-iris-8 dark:[&_[cmdk-group-heading]]:text-muted",
+          "[&_[cmdk-group-heading]]:my-1.5 [&_[cmdk-group-heading]]:mb-1 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:text-iris-8 dark:[&_[cmdk-group-heading]]:text-muted",
         )}
       >
-        <div className="relative border-iris-4 border-b px-4 py-4">
+        <div className="relative border-iris-4 border-b px-5 py-4">
           <Command.Input
             value={search}
             onValueChange={setSearch}
@@ -124,9 +136,9 @@ export const CommandMenu = ({
             </span>
             <X size={16} className="md:hidden" aria-hidden />
           </button>
-          <div className="-bottom-5 absolute left-0 h-5 w-full translate-y-px bg-gradient-to-b from-25% from-iris-2" />
+          <div className="-bottom-5 absolute left-0 h-5 w-full translate-y-px bg-gradient-to-b from-25% from-iris-2 dark:from-iris-1" />
         </div>
-        <Command.List className="max-h-[calc(100svh-4rem-47px)] scroll-pt-4 overflow-y-auto p-2 md:max-h-[calc(100svh-20vh-47px)]">
+        <Command.List className="max-h-[calc(100svh-4rem-47px)] scroll-pt-4 overflow-y-auto p-3 md:max-h-[calc(100svh-20vh-47px)]">
           <Command.Empty className="p-2 text-iris-10">
             No results found.
           </Command.Empty>
@@ -146,7 +158,7 @@ export const CommandMenu = ({
                 />
               ))}
           </Command.Group>
-          <Command.Separator className="mt-2 border-border border-t py-1" />
+          <CommandSeparator />
           <Command.Group heading="Notes">
             {notesPosts
               .slice(0, search ? undefined : 3)
@@ -163,7 +175,7 @@ export const CommandMenu = ({
                 />
               ))}
           </Command.Group>
-          <Command.Separator className="mt-2 border-border border-t py-1" />
+          <CommandSeparator />
           <Command.Group heading="Navigation">
             {[
               { label: "Home", href: "/" },
@@ -183,7 +195,7 @@ export const CommandMenu = ({
               />
             ))}
           </Command.Group>
-          <Command.Separator className="mt-2 border-border border-t py-1" />
+          <CommandSeparator />
           <Command.Group heading="Links">
             {[
               {
@@ -214,7 +226,7 @@ export const CommandMenu = ({
               />
             ))}
           </Command.Group>
-          <Command.Separator className="mt-2 border-border border-t py-1" />
+          <CommandSeparator />
           <Command.Group heading="Command">
             <CommandItem
               label="Toggle theme"
