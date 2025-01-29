@@ -23,6 +23,12 @@ tags: []
 
 ## Article content goes here
 
+---
+
+参考
+
+- 
+
 `;
 
     const postsDir = path.join(
