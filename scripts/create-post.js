@@ -18,6 +18,7 @@ title: ""
 time:
   created: "${timestamp}"
   updated: "${timestamp}"
+tags: []
 ---
 
 ## Article content goes here
