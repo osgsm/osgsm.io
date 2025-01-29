@@ -48,7 +48,7 @@ export const Posts = ({ category, numberOfPosts }: PostProps) => {
               >
                 <NextViewTransition
                   href={`/${category}/${post.slug}`}
-                  className="gradient-card relative flex w-full flex-col justify-between gap-2 border border-[--border-color] py-5 pr-16 pl-6 leading-normal no-underline [--border-color:var(--iris-4)] [--gradient-from:var(--iris-2)] [--gradient-to:var(--iris-1)] [--shadow-accent-color:var(--iris-a3)] [--shadow-base-color:var(--iris-a2)] dark:border-0"
+                  className="gradient-card relative flex w-full flex-col justify-between gap-2 border border-[--border-color] py-5 pr-16 pl-6 leading-normal no-underline [--border-color:var(--iris-4)] [--gradient-from:var(--iris-2)] [--gradient-to:var(--iris-1)] [--shadow-accent-color:var(--iris-a3)] [--shadow-base-color:var(--iris-a2)] hover:opacity-100 dark:border-0"
                 >
                   <p className="~text-base/xl font-semibold">{post.title}</p>
                   <p className="~text-sm/base mt-0 shrink-0 text-muted">
