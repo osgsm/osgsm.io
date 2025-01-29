@@ -1,0 +1,36 @@
+---
+title: "Git エイリアスを使って Git コマンドをすばやく実行する"
+time:
+  created: "2025-01-29T11:54:56.215Z"
+  updated: "2025-01-29T11:54:56.215Z"
+tags: []
+---
+
+[コマンドエイリアス](/notes/command-alias) のような機能が Git にもある。例えば、 `git reset @~` を `git undo` で実行できるようになる。
+
+コマンドエイリアスと組み合わせれば `g undo` で `git reset @~` を実行できる。
+
+個人的な設定↓
+
+```ini title="~/.gitconfig"
+[alias]
+  ad = add -u
+  br = branch
+  c = commit
+  cm = commit -m
+  l = log --pretty=oneline -n 20 --graph --abbrev-commit
+  ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
+  pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
+  rs = restore
+  rss = restore --staged
+  s = status -s
+  sw = switch
+  swc = switch -c
+  undo = reset @~
+```
+
+---
+
+参考
+
+- [Git - Git Aliases](https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases)
