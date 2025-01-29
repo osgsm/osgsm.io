@@ -15,6 +15,7 @@ import {
   Moon,
   Search,
   Sun,
+  X,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
@@ -40,13 +41,13 @@ const CommandItem = ({
     <Command.Item
       className={cn(
         "flex cursor-pointer items-center gap-2 rounded-md p-2",
-        "hover:bg-iris-4 hover:text-iris-11",
-        "aria-selected:bg-iris-4 aria-selected:text-iris-11",
+        "hover:bg-iris-3 hover:text-iris-11",
+        "aria-selected:bg-iris-3 aria-selected:text-iris-11",
         className,
       )}
       {...props}
     >
-      {Icon && <Icon size={16} className="flex-shrink-0 text-muted" />}
+      {Icon && <Icon size={16} className="flex-shrink-0 text-iris-8" />}
       {label}
     </Command.Item>
   );
@@ -85,11 +86,14 @@ export const CommandMenu = ({
     <>
       <button
         type="button"
-        className="flex items-center gap-1 rounded-md bg-iris-5 py-1 pr-2 pl-1.5 text-iris-11 text-sm"
+        className="flex items-center gap-1 rounded-md border border-iris-4 bg-iris-3 p-1.5 text-iris-11 text-xs transition-colors duration-200 hover:bg-iris-4 hover:text-iris-12 md:pr-2 md:pl-1.5 dark:border-iris-5 dark:bg-iris-4"
         onClick={() => setOpen(true)}
       >
-        <Search size={16} />
-        ⌘K
+        <Search size={14} />
+        <span className="sr-only">Search</span>
+        <span className="hidden translate-y-[0.5px] md:block" aria-hidden>
+          ⌘K
+        </span>
       </button>
       <Command.Dialog
         open={open}
@@ -99,35 +103,41 @@ export const CommandMenu = ({
         contentClassName="fixed inset-0 z-50 p-8 md:p-[10vh] pointer-events-none backdrop-blur-md backdrop-brightness-50"
         className={cn(
           "pointer-events-auto relative mx-auto w-full max-w-[50rem] rounded-xl border border-iris-4 bg-iris-2 leading-snug",
-          "[&_[cmdk-group-heading]]:mt-2 [&_[cmdk-group-heading]]:mb-1 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:text-muted",
+          "[&_[cmdk-group-heading]]:mt-3 [&_[cmdk-group-heading]]:mb-2 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:text-iris-8 dark:[&_[cmdk-group-heading]]:text-muted",
         )}
       >
-        <div className="relative border-iris-4 border-b px-4 py-3">
+        <div className="relative border-iris-4 border-b px-4 py-4">
           <Command.Input
             value={search}
             onValueChange={setSearch}
-            placeholder="Type a command or search..."
-            className="bg-transparent outline-none placeholder:text-muted"
+            placeholder="Search or type a command..."
+            className="w-full bg-transparent pr-10 text-[16px] outline-none placeholder:text-iris-8 placeholder:tracking-tight dark:placeholder:text-muted"
           />
           <button
             type="button"
-            className="-translate-y-1/2 absolute top-1/2 right-3 rounded-md border border-iris-6 bg-iris-3 px-1 py-1 font-mono text-iris-10 text-sm leading-none"
+            className="-translate-y-1/2 absolute top-1/2 right-3 rounded-md border border-iris-4 bg-iris-3 p-1.5 text-iris-11 text-sm leading-none dark:border-iris-5 dark:bg-iris-4"
             onClick={() => setOpen(false)}
           >
-            esc
+            <span className="sr-only">Close</span>
+            <span className="hidden md:inline" aria-hidden>
+              esc
+            </span>
+            <X size={16} className="md:hidden" aria-hidden />
           </button>
+          <div className="-bottom-5 absolute left-0 h-5 w-full translate-y-px bg-gradient-to-b from-25% from-iris-2" />
         </div>
-        <Command.List className="max-h-[calc(100vh-4rem-47px)] overflow-y-auto p-2 md:max-h-[calc(100vh-20vh-47px)]">
+        <Command.List className="max-h-[calc(100svh-4rem-47px)] scroll-pt-4 overflow-y-auto p-2 md:max-h-[calc(100svh-20vh-47px)]">
           <Command.Empty className="p-2 text-iris-10">
             No results found.
           </Command.Empty>
           <Command.Group heading="Blog">
             {blogPosts
               .slice(0, search ? undefined : 3)
-              .map(({ slug, title }) => (
+              .map(({ slug, title, tags }) => (
                 <CommandItem
                   key={slug}
                   label={title}
+                  keywords={tags}
                   icon={BookText}
                   onSelect={() => {
                     setSearch("");
@@ -141,10 +151,11 @@ export const CommandMenu = ({
           <Command.Group heading="Notes">
             {notesPosts
               .slice(0, search ? undefined : 3)
-              .map(({ slug, title }) => (
+              .map(({ slug, title, tags }) => (
                 <CommandItem
                   key={slug}
                   label={title}
+                  keywords={tags}
                   icon={FilePenLine}
                   onSelect={() => {
                     resetSearch();
@@ -164,6 +175,7 @@ export const CommandMenu = ({
               <CommandItem
                 key={href}
                 label={label}
+                keywords={["navigation"]}
                 icon={ArrowRight}
                 onSelect={() => {
                   resetSearch();
@@ -194,6 +206,7 @@ export const CommandMenu = ({
               <CommandItem
                 key={href}
                 label={label}
+                keywords={["links"]}
                 icon={Icon}
                 onSelect={() => {
                   resetSearch();
@@ -205,7 +218,8 @@ export const CommandMenu = ({
           <Command.Separator className="mt-2 border-border border-t py-1" />
           <Command.Group heading="Command">
             <CommandItem
-              label={`Toggle theme (change to ${theme === "light" ? "dark" : "light"} mode)`}
+              label="Toggle theme"
+              keywords={[theme === "light" ? "dark mode" : "light mode"]}
               icon={theme === "light" ? Moon : Sun}
               onSelect={() => {
                 resetSearch();
