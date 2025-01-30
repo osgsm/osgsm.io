@@ -1,3 +1,4 @@
+import { Notes } from "@/components/notes";
 import { Posts } from "@/components/posts";
 import { cn } from "@/lib/cn";
 
@@ -190,7 +191,7 @@ export default function Home() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <Posts category="notes" numberOfPosts={5} />
+          <Notes category="notes" numberOfPosts={10} />
           <Link
             href="/notes"
             className="ml-auto flex w-fit items-center gap-1 rounded-sm p-1 text-muted"

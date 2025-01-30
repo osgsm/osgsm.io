@@ -1,6 +1,6 @@
 import { Breadcrumb } from "@/components/breadcrumb";
 import * as FadeIn from "@/components/motion/staggers/fade";
-import { Posts } from "@/components/posts";
+import { Notes } from "@/components/notes";
 import { OpenGraph } from "@/lib/og";
 
 const Spacer = () => <div style={{ marginTop: "48px" }} />;
@@ -27,7 +27,7 @@ export default function Page() {
     <div className="~px-5/8">
       <Breadcrumb />
       <FadeIn.Item>
-        <Posts category="notes" />
+        <Notes category="notes" />
       </FadeIn.Item>
       <Spacer />
     </div>
