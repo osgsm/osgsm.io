@@ -48,9 +48,7 @@ export const Notes = ({ category, numberOfPosts }: PostProps) => {
                   href={`/${category}/${post.slug}`}
                   className="relative flex w-full items-center justify-between gap-3 border-iris-4 border-b py-4 leading-normal no-underline hover:opacity-100"
                 >
-                  <p className="~text-base/lg font-normal text-iris-11">
-                    {post.title}
-                  </p>
+                  <p className="~text-base/lg text-foreground">{post.title}</p>
                   <div className="grid size-8 shrink-0 place-items-center rounded-full border border-iris-4">
                     <ArrowRightIcon className="text-muted" />
                   </div>
