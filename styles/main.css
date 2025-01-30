@@ -144,7 +144,7 @@
     }
 
     h2 {
-      @apply text-xl border-b border-border pb-2 lg:text-2xl;
+      @apply text-xl border-b border-border py-1.5 lg:text-2xl;
     }
 
     h3 {
