@@ -1,0 +1,26 @@
+---
+title: "直前のコミットメッセージを修正する"
+time:
+  created: "2025-01-30T14:15:36.469Z"
+  updated: "2025-01-30T14:15:36.469Z"
+tags: []
+---
+
+Git で直前のコミットメッセージを修正したい場合は `git commit --amend{:shell}` を使う。コマンド実行後にエディタが開くので、既にあるメッセージを修正し保存すればよい。
+
+```shell
+git commit --amend
+```
+
+`-m` オプションを追加すると、エディタを表示せずにコマンドラインから新しいメッセージを渡すこともできる。ss
+
+```shell
+git commit --amend -m 'commit message'
+```
+
+---
+
+参考
+
+- [Git - Rewriting History](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History)
+
