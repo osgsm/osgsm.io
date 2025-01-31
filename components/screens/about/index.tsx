@@ -151,7 +151,7 @@ export default function About() {
           ease: "easeOut",
         }}
       >
-        <h2 className="-ml-[.15em] ~/md:~text-5xl/8xl md:-ms-1.5 border-0 text-iris-7 capitalize leading-none tracking-[-0.07em] md:sticky md:top-4 md:text-9xl md:text-iris-4 md:[writing-mode:vertical-rl]">
+        <h2 className="-ml-[.15em] ~/md:~text-5xl/8xl md:-ms-1.5 border-0 pt-0 text-iris-7 capitalize leading-none tracking-[-0.07em] md:sticky md:top-4 md:text-9xl md:text-iris-4 md:[writing-mode:vertical-rl]">
           Timeline
         </h2>
         <div className="~gap-4/6 grid">
@@ -432,8 +432,8 @@ function TimelineList({
   children: React.ReactNode;
 }) {
   return (
-    <div className="[&_h3]:~text-lg/xl grid gap-4">
-      <h3 className="w-fit rounded-lg bg-iris-3 px-2 py-1 font-semibold text-iris-8 text-sm dark:text-iris-11">
+    <div className="grid gap-4">
+      <h3 className="w-fit rounded-lg bg-iris-3 p-2 font-semibold text-iris-8 text-lg/none dark:text-iris-11">
         {year}
       </h3>
       <div>{children}</div>
