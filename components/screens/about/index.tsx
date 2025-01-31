@@ -225,7 +225,7 @@ export default function About() {
               title="20px をきっかけに KITERETZ inc. にジョイン"
               icon={HandshakeIcon}
             >
-              <p>かねてより恋い焦がれた KITERETZ inc. で働き始める。</p>
+              <p>かねてより思いを馳せていた KITERETZ inc. で働き始める。</p>
               <p>
                 リスペクトしている方々と働けることに喜びを噛み締めつつ、フロントエンドを中心に、
                 WordPress の構築なども担当。
@@ -233,13 +233,15 @@ export default function About() {
             </TimelineItem>
             <TimelineItem
               date="Jan. 1"
-              title="Next.js を使ってこのサイトの v1 を作成"
+              title="React, Next.js との出会い"
               icon={CodeXmlIcon}
             >
-              <p>転職用の履歴書代わりにこのサイトの前身を作成。</p>
               <p>
-                React も Next.js
-                も未知の世界だったが、とりあえずなにか作ってみることで学びになった。
+                転職には React と Next.js
+                の知識が必要と感じ、このサイトの前身を作成。
+              </p>
+              <p>
+                どちらも未知の世界だったが、とりあえずなにか作ってみることで学びになった。
               </p>
             </TimelineItem>
           </TimelineList>
@@ -251,10 +253,10 @@ export default function About() {
             />
             <TimelineItem
               date="Jan. 1"
-              title="自分の武器を磨くため転職を決意"
+              title="自分の武器を磨くために転職を決意"
               icon={StarIcon}
             >
-              <p>デザインも写真も好きだが、より極めたいのは「開発」だった。</p>
+              <p>写真も好きだが、より極めたいのは「ウェブ制作」だった。</p>
               <p>
                 その道を深く探求するためには、「スペシャリストが集まる会社に行くべしだ！」と転職を決意。
               </p>
@@ -264,7 +266,10 @@ export default function About() {
             </TimelineItem>
           </TimelineList>
           <TimelineList year="2021">
-            <TimelineItem title="自分には武器がなかった" icon={AppWindowIcon}>
+            <TimelineItem
+              title="できることが増え、自身の無能を知る"
+              icon={AppWindowIcon}
+            >
               <p>
                 打ち合わせ、デザイン、コーディングという受託制作の一連の流れを担う。
               </p>
@@ -372,7 +377,7 @@ export default function About() {
               <p>WordPress を使ったメディアサイトの立ち上げに関わる。</p>
             </TimelineItem>
             <TimelineItem
-              title="就活で運命の出会いを果たす"
+              title="就活での運命の出会い"
               icon={BriefcaseBusinessIcon}
             >
               <p>就活をしていく中でウェブ系の仕事の存在を知る。</p>
