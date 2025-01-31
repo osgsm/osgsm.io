@@ -3,6 +3,7 @@ import type { MDXRemoteProps } from "next-mdx-remote/rsc";
 import type { PluggableList } from "unified";
 
 import { Bluesky } from "@/components/bluesky";
+import { Callout } from "@/components/callout";
 import FootnoteBackReference from "@/components/footnote/back-reference";
 import FootnoteForwardReference from "@/components/footnote/forward-reference";
 import MDXImage from "@/components/image";
@@ -20,6 +21,11 @@ import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
 const components: MDXComponents = {
+  Callout: ({ type, heading, children }) => (
+    <Callout type={type} heading={heading}>
+      {children}
+    </Callout>
+  ),
   Bluesky: ({ url }) => <Bluesky url={url} />,
   Spotify: ({ url }) => <Spotify url={url} />,
   Tweet: ({ url }) => <Tweet url={url} />,
