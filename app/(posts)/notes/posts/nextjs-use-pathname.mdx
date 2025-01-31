@@ -1,0 +1,44 @@
+---
+title: "Next.js の usePathname で URL のパス名を読み取る"
+time:
+  created: "2025-01-31T05:33:09.444Z"
+  updated: "2025-01-31T05:33:09.444Z"
+tags: []
+---
+
+<Callout type="note">
+  Using App Router
+</Callout>
+
+Next.js の `usePathname` は、現在の URL の pathname を読み取ることを可能にする Client Component hook。
+
+```tsx
+'use client'
+
+import { usePathname } from 'next/navigation'
+
+export default function ExampleClientComponent() {
+  const pathname = usePathname()
+  return <p>Current pathname: {pathname}</p>
+}
+```
+
+`usePathname()` は、引数を受け取らず、現在の pathname を string として返す。
+
+URL と return value の対応は以下の通り。
+
+| URL                 | Return value          |
+| ------------------- | --------------------- |
+| `/`                 | `'/'`                 |
+| `/blog`             | `'/blog'`             |
+| `/blog?page=2`      | `'/blog'`             |
+| `/blog/hello-world` | `'/blog/hello-world'` |
+
+query string が URL に含まれる場合、それは return value には含まれない。
+
+---
+
+参考
+
+- [Functions: usePathname | Next.js](https://nextjs.org/docs/app/api-reference/functions/use-pathname)
+

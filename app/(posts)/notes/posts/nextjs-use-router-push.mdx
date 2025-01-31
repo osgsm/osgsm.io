@@ -1,0 +1,44 @@
+---
+title: "Next.js の useRouter を使ってボタンクリック時などにページ遷移する"
+time:
+  created: "2025-01-31T05:00:46.404Z"
+  updated: "2025-01-31T05:00:46.404Z"
+tags: ["nextjs"]
+---
+
+<Callout type="note">
+  Using App Router
+</Callout>
+
+Next.js でページ遷移を行いたい場合は `<Link>` コンポーネントを使うことが推奨されるが、ボタンクリック時など programmatically に遷移させたい場合は `useRouter` を使う。
+
+App Router の場合、`useRouter` は `next/navigation` からインポートできる。
+
+```tsx
+'use client';
+
+import { useRouter } from 'next/navigation';
+
+export default function Page() {
+  const router = useRouter();
+
+  return (
+    <button type="button" onClick={() => router.push('/dashboard')}>
+      Dashboard
+    </button>
+  );
+}
+```
+
+たいていは、 `const router = useRouter();{:tsx}` のように `router` variable にアサインし、 `router.push(){:tsx}` を使ってページ遷移する。
+
+`push()` は、引数として渡された route に client-side navigation し、ブラウザの履歴スタックに新しいエントリーを追加する。
+
+`push()` 以外にも、ブラウザの履歴スタックにエントリーを追加しない `replace()` や、`back()`, `forward()` などのメソッドがある。
+
+---
+
+参考
+
+- [Functions: useRouter | Next.js](https://nextjs.org/docs/app/api-reference/functions/use-router)
+

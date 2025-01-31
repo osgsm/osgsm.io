@@ -1,0 +1,40 @@
+---
+title: "Next.js ルーティング関連の Pages Router と App Router の主な違い"
+time:
+  created: "2025-01-31T07:24:41.574Z"
+  updated: "2025-01-31T07:24:41.574Z"
+tags: ["nextjs", "routing"]
+---
+
+App Router では、`useRouter` や `usePathname` などのルーティング関連の hooks は、`next/navigation` からインポートする必要がある。
+
+`useRouter` hook の挙動は、 Pages Router で`next/router` からインポートできるものと異なる。`next/router` の方は App Router では使用できない。
+
+新しい `useRouter` は、 `pathname` string を返さないが、その代わりに `usePathname` を使う。 加えて、 `query` object も返さないようになったが、その代わりに `useSearchParams` や `useParams` を使う。
+
+App Router の新しい hooks は、 Client Component でしか使用できないので要注意。
+
+```tsx
+'use client'
+
+import { useRouter, usePathname, useSearchParams } from 'next/navigation'
+
+export default function ExampleClientComponent() {
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+
+  // ...
+}
+```
+
+他にも `isFallback` や `basePath`, `asPath`, `isReady`, `route` などが削除されている。
+
+詳しくは [Upgrading: From Pages to App | Next.js](https://nextjs.org/docs/pages/building-your-application/upgrading/app-router-migration#step-5-migrating-routing-hooks) を参照。
+
+---
+
+参考
+
+- [Upgrading: From Pages to App | Next.js](https://nextjs.org/docs/pages/building-your-application/upgrading/app-router-migration#step-5-migrating-routing-hooks)
+

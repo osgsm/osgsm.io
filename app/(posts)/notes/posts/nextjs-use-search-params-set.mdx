@@ -1,0 +1,48 @@
+---
+title: "Next.js の useSearchParams を使ってクエリパラメータを更新する"
+time:
+  created: "2025-01-31T07:09:45.176Z"
+  updated: "2025-01-31T07:09:45.176Z"
+tags: ["nextjs"]
+---
+
+<Callout type="note">
+  Using App Router
+</Callout>
+
+Next.js の `useSearchParams` は、現在の URL の query string を読み取るための Client Component。[URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams) インターフェースの read-only version を返す。
+
+`useSearchParams` から返されるものは read-only なので、search parameter の値を更新したい場合は、  `URLSearchParams()` コンストラクターに `searchParams.toString(){:js}` を渡す。
+
+そしてインスタンス化した `URLSearchParams` object の `set()` や `delete()` を使って search parameter を更新する。
+
+次の例では、更新された search parameter を `toString()` で query string とし、 `pathname` と合わせて `replace()` に渡している。
+
+```tsx
+'use client';
+
+import { useSearchParams, usePathname, useRouter } from 'next/navigation';
+
+export default function Search() {
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
+
+  function handleSearch(term: string) {
+    const params = new URLSearchParams(searchParams);
+    if (term) {
+      params.set('query', term);
+    } else {
+      params.delete('query');
+    }
+    replace(`${pathname}?${params.toString()}`);
+  }
+}
+```
+
+---
+
+参考
+
+- [Functions: useSearchParams | Next.js](https://nextjs.org/docs/app/api-reference/functions/use-search-params)
+
