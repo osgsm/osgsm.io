@@ -157,6 +157,11 @@ export default function About() {
         <div className="~gap-4/6 grid">
           <TimelineList year="2025">
             <TimelineItem
+              date="Jan."
+              title="Created 300 commits in 5 repositories"
+              icon={GitHubLogoIcon}
+            />
+            <TimelineItem
               date="Jan. 23"
               title="このサイトをリニューアル"
               icon={CodeXmlIcon}
@@ -217,14 +222,26 @@ export default function About() {
             />
             <TimelineItem
               date="Jun. 1"
-              title="KITERETZ inc. にジョイン"
+              title="20px をきっかけに KITERETZ inc. にジョイン"
               icon={HandshakeIcon}
-            />
+            >
+              <p>かねてより恋い焦がれた KITERETZ inc. で働き始める。</p>
+              <p>
+                リスペクトしている方々と働けることに喜びを噛み締めつつ、フロントエンドを中心に、
+                WordPress の構築なども担当。
+              </p>
+            </TimelineItem>
             <TimelineItem
               date="Jan. 1"
               title="Next.js を使ってこのサイトの v1 を作成"
               icon={CodeXmlIcon}
-            />
+            >
+              <p>転職用の履歴書代わりにこのサイトの前身を作成。</p>
+              <p>
+                React も Next.js
+                も未知の世界だったが、とりあえずなにか作ってみることで学びになった。
+              </p>
+            </TimelineItem>
           </TimelineList>
           <TimelineList year="2022">
             <TimelineItem
@@ -234,27 +251,28 @@ export default function About() {
             />
             <TimelineItem
               date="Jan. 1"
-              title="ウェブ制作を追求すべく転職を決意"
+              title="自分の武器を磨くため転職を決意"
               icon={StarIcon}
             >
+              <p>デザインも写真も好きだが、より極めたいのは「開発」だった。</p>
               <p>
                 その道を深く探求するためには、「スペシャリストが集まる会社に行くべしだ！」と転職を決意。
               </p>
               <p>
-                そのために必要な技術を集中的に学び始める。この過程で開発の楽しさをより実感するようになる。
+                そのために必要な技術を集中的に学び始め、学べば学ぶほどに楽しくなる。
               </p>
             </TimelineItem>
           </TimelineList>
           <TimelineList year="2021">
-            <TimelineItem
-              title="ウェブ制作の一連の流れを担う"
-              icon={AppWindowIcon}
-            >
+            <TimelineItem title="自分には武器がなかった" icon={AppWindowIcon}>
               <p>
                 打ち合わせ、デザイン、コーディングという受託制作の一連の流れを担う。
               </p>
               <p>
-                また、昔に写真撮影を学んでいたおかげで、ウェブサイトに掲載する写真や動画の撮影も担当。
+                写真も好きだったので、ウェブサイトに掲載する写真や動画の撮影も担当。
+              </p>
+              <p>
+                色々とできるようになった反面、自分には武器がないことに気づく。
               </p>
             </TimelineItem>
           </TimelineList>
@@ -271,19 +289,26 @@ export default function About() {
           </TimelineList>
           <TimelineList year="2018">
             <TimelineItem
-              title="ウェブ制作のアシスタントを担う"
+              title="いつの間にかウェブ制作がメインに"
               icon={CodeXmlIcon}
             >
               <p>グラフィック系の仕事もあったが、ウェブの仕事が増える。</p>
               <p>
-                昔にウェブ制作をかじっていたので、下層ページの作成などを任されるように。
+                学生のときにウェブ制作をかじっていたので、下層ページの作成などを任されるように。
               </p>
               <p>このとき、かつて熱中していたウェブ制作の楽しさを思い出す。</p>
             </TimelineItem>
             <TimelineItem
+              date="Apr. 1"
               title="グラフィックデザイナー見習いとして転職"
               icon={HandshakeIcon}
-            />
+            >
+              <p>神戸元町にある会社に転職。</p>
+              <p>
+                イベントで配るビラから始まり、名刺やインビテーション、カタログなどを作る。
+              </p>
+              <p>昔に写真に力を入れていたこともあり、物撮りなども担当。</p>
+            </TimelineItem>
           </TimelineList>
           <TimelineList year="2017">
             <TimelineItem
