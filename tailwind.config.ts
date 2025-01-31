@@ -196,7 +196,7 @@ const config: Config = {
       },
       animation: {
         "move-background": "move-background 20s linear infinite",
-        wave: "wave 0.8s ease-in-out 1.75s",
+        wave: "wave 0.8s ease-in-out 1.25s",
         "ping-slow": "ping 2s cubic-bezier(0, 0, 0.2, 1) infinite",
         "spin-slow": "spin 60s linear infinite",
       },
