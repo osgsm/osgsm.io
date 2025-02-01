@@ -49,7 +49,7 @@ export const Notes = ({ category, numberOfPosts }: PostProps) => {
               >
                 <NextViewTransition
                   href={`/${category}/${post.slug}`}
-                  className="relative flex w-full items-center justify-between gap-3 border-iris-4 border-b py-4 leading-normal no-underline hover:opacity-100"
+                  className="relative flex w-full items-center justify-between gap-3 border-iris-4 border-b py-4 leading-normal no-underline hover:border-iris-5 hover:opacity-100"
                 >
                   <p className="~text-base/lg text-foreground">{post.title}</p>
                   <div className="grid size-8 shrink-0 place-items-center rounded-full border border-iris-4">

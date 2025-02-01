@@ -90,6 +90,7 @@ export default function Home() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="transition-all hover:opacity-100 hover:brightness-[130%]"
               >
                 {icon}
               </a>
