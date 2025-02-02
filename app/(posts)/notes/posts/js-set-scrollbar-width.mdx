@@ -1,21 +1,12 @@
 ---
-title: "JavaScript でスクロールバーの幅を取得する"
+title: "JavaScript でスクロールバーの幅を取得して CSS カスタムプロパティとして設定する"
 time:
   created: "2025-02-02T00:44:16.466Z"
   updated: "2025-02-02T00:44:16.466Z"
 tags: ["js", "scrollbar"]
 ---
 
-`window.innerWidth` から `document.documentElement` の `clientWidth` を引くとスクロールバーの幅を取得できる。
-
-
-```js
-console.log(window.innerWidth - document.documentElement.clientWidth)
-// 15
-```
-
-実際には、次のように `ResizeObserver` を使ってスクロールバーの幅を取得して、CSS カスタムプロパティとして設定することが多い。
-
+次の例では、 `ResizeObserver` を使ってリサイズを監視し、スクロールバーの幅を取得して、CSS カスタムプロパティとして設定している。
 
 ```ts title="set-scrollbar-width.ts"
 /**
@@ -30,6 +21,8 @@ const resizeObserver = new ResizeObserver(() => {
 
 resizeObserver.observe(document.documentElement);
 ```
+
+このように、 `window.innerWidth` から `document.documentElement` の `clientWidth` を引くとスクロールバーの幅を取得できる。
 
 ---
 
