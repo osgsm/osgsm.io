@@ -70,8 +70,11 @@
     --moz-osx-font-smoothing: grayscale;
 
     font-variant-ligatures: none;
-    text-wrap: pretty;
     text-rendering: optimizelegibility;
+  }
+
+  *:not(pre, code, [data-line], [data-line] span) {
+    text-wrap: pretty;
   }
 
   *::selection {
