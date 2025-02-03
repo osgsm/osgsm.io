@@ -1,0 +1,28 @@
+---
+title: "Vim でジャンプ前のカーソルに戻る"
+time:
+  created: "2025-02-03T08:33:03.604Z"
+  updated: "2025-02-03T08:33:03.604Z"
+tags: ["vim", "jumplist"]
+---
+
+Vim のノーマルモードで `gg` や `G` でジャンプした後に、ジャンプする前の場所に戻りたいときは `C-o` を使う。再度ジャンプしたカーソルに戻りたい場合は `C-i` を使う。
+
+VIm はジャンプした位置を覚えていて、このリストのことをジャンプリスト（jumplist）と呼ぶ。ジャンプリスト内において `C-o` は古いカーソル位置に戻り、 `C-i` は、新しいカーソル位置に戻る。
+
+```txt title=":help motion.txt"
+							*jumplist*
+Jumps are remembered in a jump list.  With the CTRL-O and CTRL-I command you
+can go to cursor positions before older jumps, and back again.  Thus you can
+move up and down the list.  There is a separate jump list for each window.
+The maximum number of entries is fixed at 100.
+```
+
+---
+
+参考
+
+- [Vim: change.txt](https://vimhelp.org/change.txt.html#%3As)
+- [Vim: cmdline.txt](https://vimhelp.org/cmdline.txt.html#%5Brange%5D)
+
+

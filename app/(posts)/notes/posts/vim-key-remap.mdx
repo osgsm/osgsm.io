@@ -1,0 +1,59 @@
+---
+title: "Vim でキーリマップする"
+time:
+  created: "2025-02-03T09:17:37.459Z"
+  updated: "2025-02-03T09:17:37.459Z"
+tags: ["key-remap", "vim"]
+---
+
+VIm のキーリマップコマンドには大別して再マップ可のものとそうでないものがある。 `:map` と `:no[remap]`  コマンドというものがあり、前者は再マップされ、後者は再マップされない。
+
+書き方は次の通り。
+
+```txt
+:map {lhs} {rhs}
+```
+
+`{lhs}` を `{rhs}` に割り当てる。ちなみに `lhs` とは left-hand-side （左辺値）のこと。 `rhs` は右辺値。
+
+また、マップには7つのモードがある。
+
+- ノーマル
+- ビジュアル
+- 選択
+- オペレータ待機: `d`, `y`, `c` などを押したあとなど
+- 挿入
+- コマンドライン
+- ターミナル: `:terminal` バッファでの入力時
+
+マップコマンドとモードの対応は次のようになっている。
+
+```txt title=":help map.txt"
+							map-table
+         Mode  | Norm | Ins | Cmd | Vis | Sel | Opr | Term | Lang | 
+Command        +------+-----+-----+-----+-----+-----+------+------+ 
+[nore]map      | yes  |  -  |  -  | yes | yes | yes |  -   |  -   |
+n[nore]map     | yes  |  -  |  -  |  -  |  -  |  -  |  -   |  -   |
+[nore]map!     |  -   | yes | yes |  -  |  -  |  -  |  -   |  -   |
+i[nore]map     |  -   | yes |  -  |  -  |  -  |  -  |  -   |  -   |
+c[nore]map     |  -   |  -  | yes |  -  |  -  |  -  |  -   |  -   |
+v[nore]map     |  -   |  -  |  -  | yes | yes |  -  |  -   |  -   |
+x[nore]map     |  -   |  -  |  -  | yes |  -  |  -  |  -   |  -   |
+s[nore]map     |  -   |  -  |  -  |  -  | yes |  -  |  -   |  -   |
+o[nore]map     |  -   |  -  |  -  |  -  |  -  | yes |  -   |  -   |
+t[nore]map     |  -   |  -  |  -  |  -  |  -  |  -  | yes  |  -   |
+l[nore]map     |  -   | yes | yes |  -  |  -  |  -  |  -   | yes  |
+```
+
+例えば、挿入時とコマンドラインで `C-d` を `<Del>` にリマップしたい場合は次のようになる。
+
+```txt
+:noremap! <C-d> <Del>
+```
+
+---
+
+参考
+
+-[Vim: map.txt](https://vimhelp.org/map.txt.html#%3Amap-modes)
+

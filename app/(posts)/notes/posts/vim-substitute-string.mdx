@@ -1,0 +1,46 @@
+---
+title: "Vim でファイル内の文字列を一括置換する"
+time:
+  created: "2025-02-03T08:33:03.604Z"
+  updated: "2025-02-03T08:33:03.604Z"
+tags: ["vim", "substitute", "search", "replace"]
+---
+
+Vim でファイル内の文字列を一括置換したい場合は次のようにコマンドを実行する。
+
+```txt
+:%s/foo/bar/g
+```
+
+`:s` は、`:substitute` でも `:su` でもよい。 `%` は `1,$` と等価でファイル全体を指す。そのあとに置換したいパターン、置換後の文字列、フラグを指定する。 `g` を付けることで、行においてマッチしたすべての文字列を置換することができる。
+
+```txt title=":help change.txt"
+4.2 Substitute						:substitute
+						          	:s :su
+:[range]s[ubstitute]/{pattern}/{string}/[flags] [count]
+			For each line in [range] replace a match of {pattern}
+			with {string}.
+			For the {pattern} see pattern.
+			{string} can be a literal string, or something
+			special; see sub-replace-special.
+			When [range] and [count] are omitted, replace in the
+			current line only.  When [count] is given, replace in
+			[count] lines, starting with the last line in [range].
+			When [range] is omitted start in the current line.
+							E939 E1510
+			[count] must be a positive number (max 2147483647)
+			Also see cmdline-ranges.
+
+			See :s_flags for [flags].
+			The delimiter doesn't need to be /, see
+			pattern-delimiter.
+```
+
+---
+
+参考
+
+- [Vim: change.txt](https://vimhelp.org/change.txt.html#%3As)
+- [Vim: cmdline.txt](https://vimhelp.org/cmdline.txt.html#%5Brange%5D)
+
+
