@@ -63,7 +63,7 @@ export const Callout = ({ type = "note", heading, children }: CalloutProps) => {
         calloutVariants[type].className,
       )}
     >
-      <h3 className="pb-3 text-base text-inherit leading-none">
+      <h3 className="~text-sm/base pb-3 text-inherit leading-none">
         <span className="flex items-center gap-1.5">
           <Icon size={16} />
           {heading ? (
