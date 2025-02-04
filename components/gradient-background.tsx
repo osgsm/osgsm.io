@@ -27,7 +27,7 @@ function GradientMesh() {
         vec2 p = vUv * 2.0 - 1.0;
 
         float t = uTime * 0.1;
-        vec3 color1 = vec3(0.3, 0.0745, 0.4);
+        vec3 color1 = vec3(0.1, 0.0745, 0.3);
         vec3 color2 = vec3(0.0745, 0.0745, 0.118);
 
         // Create wave patterns by combining two sine waves
@@ -38,7 +38,7 @@ function GradientMesh() {
         vec3 color = mix(
           color1,
           color2,
-          smoothstep(-0.75, 0.75, waves)
+          smoothstep(-0.5, 0.5, waves)
         );
 
         gl_FragColor = vec4(color, 0.1);
