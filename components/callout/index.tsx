@@ -18,7 +18,7 @@ import {
 type CalloutType = "note" | "tip" | "important" | "warning" | "caution";
 
 interface CalloutProps {
-  type: CalloutType;
+  type?: CalloutType;
   heading?: string;
   children: ReactNode;
 }
@@ -54,7 +54,7 @@ const calloutVariants: Record<
   },
 };
 
-export const Callout = ({ type, heading, children }: CalloutProps) => {
+export const Callout = ({ type = "note", heading, children }: CalloutProps) => {
   const Icon = calloutVariants[type].icon;
   return (
     <div
@@ -73,7 +73,7 @@ export const Callout = ({ type, heading, children }: CalloutProps) => {
           )}
         </span>
       </h3>
-      <div className="text-foreground leading-relaxed [&_*+*]:mt-2">
+      <div className="text-foreground leading-relaxed [&_*+*]:mt-2 [&_[data-line]]:p-0 [&_figure]:mt-1.5 [&_figure]:border-0 [&_figure]:bg-transparent [&_pre]:p-0">
         {children}
       </div>
     </div>
