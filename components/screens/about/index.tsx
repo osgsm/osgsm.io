@@ -573,28 +573,34 @@ function TimelineItemPostList({
           <span className="px-1 font-medium">View all posts in {date}</span>
         </summary>
         {blogPosts.length > 0 && (
-          <ul className="mt-4 ml-2 list-disc leading-relaxed">
-            {blogPosts.map((post) => (
-              <li
-                key={post.slug}
-                className="mt-1 ml-2 list-item marker:text-[--iris-8]"
-              >
-                <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-              </li>
-            ))}
-          </ul>
+          <>
+            <div className="mt-4 font-medium text-muted">Blog</div>
+            <ul className="mt-0 ml-2 list-disc leading-relaxed">
+              {blogPosts.map((post) => (
+                <li
+                  key={post.slug}
+                  className="mt-1 ml-2 list-item leading-snug marker:text-[--iris-8]"
+                >
+                  <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                </li>
+              ))}
+            </ul>
+          </>
         )}
         {notesPosts.length > 0 && (
-          <ul className="mt-4 ml-2 list-disc leading-relaxed">
-            {notesPosts.map((post) => (
-              <li
-                key={post.slug}
-                className="mt-1 ml-2 list-item marker:text-[--iris-8]"
-              >
-                <Link href={`/notes/${post.slug}`}>{post.title}</Link>
-              </li>
-            ))}
-          </ul>
+          <>
+            <div className="mt-4 font-medium text-muted">Notes</div>
+            <ul className="mt-0 ml-2 list-disc leading-relaxed">
+              {notesPosts.map((post) => (
+                <li
+                  key={post.slug}
+                  className="mt-1 ml-2 list-item leading-snug marker:text-[--iris-8]"
+                >
+                  <Link href={`/notes/${post.slug}`}>{post.title}</Link>
+                </li>
+              ))}
+            </ul>
+          </>
         )}
       </details>
     </TimelineItem>
