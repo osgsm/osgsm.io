@@ -14,7 +14,7 @@ const Header = () => {
   });
 
   return (
-    <header className="sticky top-0 z-40 grid w-full place-items-center from-5% from-[--iris-1] to-50% px-4 py-3 lg:my-6 dark:bg-gradient-to-b">
+    <header className="sticky top-0 z-40 grid w-full place-items-center px-4 py-3 lg:my-6">
       <div
         className={cn(
           "gradient-card flex w-full items-center justify-between gap-2 rounded-xl border border-iris-4 px-3 py-3 backdrop-blur-md md:gap-4 md:px-4",
@@ -57,6 +57,7 @@ const Header = () => {
         </div>
         <CommandMenu blogPosts={blogPosts} notesPosts={notesPosts} />
       </div>
+      <div className="-z-10 -top-6 pointer-events-none absolute inset-x-0 bottom-0 from-0% from-[--iris-1] to-50% dark:bg-gradient-to-b" />
     </header>
   );
 };
