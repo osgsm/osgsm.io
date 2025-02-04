@@ -3,6 +3,7 @@ import type React from "react";
 import Link from "@/components/link";
 import { Tweet } from "@/components/tweet";
 import { cn } from "@/lib/cn";
+import { getPosts } from "@/lib/mdx";
 
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import {
@@ -21,6 +22,7 @@ import {
   PaintbrushIcon,
   PianoIcon,
   RocketIcon,
+  SquarePenIcon,
   StarIcon,
   UniversityIcon,
   UserRoundXIcon,
@@ -156,11 +158,13 @@ export default function About() {
         </h2>
         <div className="~gap-4/6 grid">
           <TimelineList year="2025">
+            <TimelineItemPostList date="Feb." year={2025} month={2} />
             <TimelineItem
               date="Jan."
               title="Created 300 commits in 5 repositories"
               icon={GitHubLogoIcon}
             />
+            <TimelineItemPostList date="Jan." year={2025} month={1} />
             <TimelineItem
               date="Jan. 23"
               title="このサイトをリニューアル"
@@ -216,11 +220,6 @@ export default function About() {
           </TimelineList>
           <TimelineList year="2023">
             <TimelineItem
-              title="1,155 contributions"
-              icon={GitHubLogoIcon}
-              isDetached
-            />
-            <TimelineItem
               date="Jun. 1"
               title="20px のアイコンをきっかけに KITERETZ inc. にジョイン"
               icon={HandshakeIcon}
@@ -237,8 +236,8 @@ export default function About() {
               icon={CodeXmlIcon}
             >
               <p>
-                転職には React と Next.js
-                の知識が必要と感じ、このサイトの前身を作成。
+                転職するためには React と Next.js
+                の知識が必要だと感じ、このサイトの前身を作成。
               </p>
               <p>
                 どちらも未知の世界だったが、とりあえずなにか作ってみることで学びになった。
@@ -247,18 +246,15 @@ export default function About() {
           </TimelineList>
           <TimelineList year="2022">
             <TimelineItem
-              title="861 contributions"
-              icon={GitHubLogoIcon}
-              isDetached
-            />
-            <TimelineItem
               date="Jan. 1"
               title="自分の武器を磨くために転職を決意"
               icon={StarIcon}
             >
-              <p>写真も好きだが、より極めたいのは「ウェブ制作」だった。</p>
               <p>
-                その道を深く探求するためには、「スペシャリストが集まる会社に行くべしだ！」と転職を決意。
+                写真も好きだったが、より極めたいと思ったのは「ウェブ制作」だった。
+              </p>
+              <p>
+                その道を深く探求していくには、「スペシャリストが集まる会社に行くべきだ！」と転職を決意。
               </p>
               <p>
                 そのために必要な技術を集中的に学び始め、学べば学ぶほどに楽しくなる。
@@ -267,7 +263,7 @@ export default function About() {
           </TimelineList>
           <TimelineList year="2021">
             <TimelineItem
-              title="できることが増え、自身の無能を知る"
+              title="できることが増えたが、武器がないことに焦る"
               icon={AppWindowIcon}
             >
               <p>
@@ -277,7 +273,7 @@ export default function About() {
                 写真も好きだったので、ウェブサイトに掲載する写真や動画の撮影も担当。
               </p>
               <p>
-                色々とできるようになった反面、自分には武器がないことに気づく。
+                色々とできるようになった反面、自分には武器と呼べる強みがないと気づく。
               </p>
             </TimelineItem>
           </TimelineList>
@@ -295,7 +291,7 @@ export default function About() {
           <TimelineList year="2018">
             <TimelineItem
               title="いつの間にかウェブ制作がメインに"
-              icon={CodeXmlIcon}
+              icon={AppWindowIcon}
             >
               <p>グラフィック系の仕事もあったが、ウェブの仕事が増える。</p>
               <p>
@@ -535,5 +531,73 @@ function TimelineBody({
     >
       {children}
     </div>
+  );
+}
+
+function TimelineItemPostList({
+  date,
+  year,
+  month,
+}: {
+  date: string;
+  year: number;
+  month: number;
+}) {
+  const getPostsByYearMonth = (
+    category: string,
+    year: number,
+    month: number,
+  ) => {
+    return getPosts(category)
+      .sort(
+        (a, b) =>
+          new Date(b.time.created).getTime() -
+          new Date(a.time.created).getTime(),
+      )
+      .filter((post) => {
+        const postYear = new Date(post.time.created).getFullYear();
+        const postMonth = new Date(post.time.created).getMonth() + 1;
+        return postYear === year && postMonth === month;
+      });
+  };
+  const blogPosts = getPostsByYearMonth("blog", year, month);
+  const notesPosts = getPostsByYearMonth("notes", year, month);
+
+  return (
+    <TimelineItem
+      date={date}
+      title={`Published ${[...blogPosts, ...notesPosts].length} posts`}
+      icon={SquarePenIcon}
+    >
+      <details>
+        <summary className="cursor-pointer marker:text-iris-8">
+          <span className="px-1 font-medium">View All Posts in {date}</span>
+        </summary>
+        {blogPosts.length > 0 && (
+          <ul className="mt-4 ml-2 list-disc leading-relaxed">
+            {blogPosts.map((post) => (
+              <li
+                key={post.slug}
+                className="mt-1 ml-2 list-item marker:text-[--iris-8]"
+              >
+                <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+              </li>
+            ))}
+          </ul>
+        )}
+        {notesPosts.length > 0 && (
+          <ul className="mt-4 ml-2 list-disc leading-relaxed">
+            {notesPosts.map((post) => (
+              <li
+                key={post.slug}
+                className="mt-1 ml-2 list-item marker:text-[--iris-8]"
+              >
+                <Link href={`/notes/${post.slug}`}>{post.title}</Link>
+              </li>
+            ))}
+          </ul>
+        )}
+      </details>
+    </TimelineItem>
   );
 }
