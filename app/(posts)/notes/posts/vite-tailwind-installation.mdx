@@ -1,0 +1,43 @@
+---
+title: "Vite で Tailwind CSS を使う"
+time:
+  created: "2025-02-04T02:27:14.524Z"
+  updated: "2025-02-04T02:27:14.524Z"
+tags: ["vite", "tailwind"]
+---
+
+
+
+<Callout heading="Dependencies">
+```json
+"@tailwindcss/vite": "^4.0.3",
+"tailwindcss": "^4.0.3"
+```
+</Callout>
+
+Tailwind CSS v4.0 以降、Vite プラグイン を使って Tailwind をインストールできる。次のコマンドからパッケージをインストールする。
+
+```shell
+pnpm add tailwindcss @tailwindcss/vite
+```
+
+インストールしたプラグインを使うために `vite.config.ts` を更新する。
+
+```ts title="vite.config.ts"
+import { defineConfig } from 'vite';
+import tailwindcss from '@tailwindcss/vite';
+
+export default defineConfig({
+  plugins: [tailwindcss()],
+});
+```
+
+CSS ファイルで `tailwindcss` をインポートする。
+
+```css title="style.css"
+@import 'tailwindcss';
+```
+
+これで Vite で Tailwind CSS を使えるようになる。
+
+ちなみに Astro でもこの Vite プラグインが使われていて、用意されているコマンドを使うことでより簡単に Tailwind を使える。  → [Astro で Tailwind CSS を使う](/notes/astro-tailwind-installation) も参照。

@@ -1,0 +1,91 @@
+---
+title: "Astro で Tailwind CSS を使う"
+time:
+  created: "2025-02-04T02:27:14.524Z"
+  updated: "2025-02-04T02:27:14.524Z"
+tags: ["astro", "tailwind"]
+---
+
+
+<Callout heading="Dependencies">
+```json
+"@tailwindcss/vite": "^4.0.3",
+"astro": "^5.2.3",
+"tailwindcss": "^4.0.3"
+```
+</Callout>
+
+Astro で Tailwind CSS を使うには、以下のコマンドを実行する。
+
+```shell
+pnpm astro add tailwind
+```
+
+コマンド実行後、次のように出力があり、質問がいくつかあるので適宜回答する。回答に応じてファイルの変更などを行ってくれる。
+
+```shell
+> tailwind-v4-astro@0.0.1 astro /Users/user/sample-project
+> astro "add" "tailwind"
+
+✔ Resolving packages...
+
+  Astro will run the following command:
+  If you skip this step, you can always run it yourself later
+
+ ╭───────────────────────────────────────────────────────╮
+ │ pnpm add @tailwindcss/vite@^4.0.3 tailwindcss@^4.0.3  │
+ ╰───────────────────────────────────────────────────────╯
+
+✔ Continue? … yes
+✔ Installing dependencies...
+
+  Astro will scaffold ./src/styles/global.css.
+
+✔ Continue? … yes
+
+  Astro will make the following changes to your config file:
+
+ ╭ astro.config.mjs ─────────────────────────────╮
+ │ // @ts-check                                  │
+ │ import { defineConfig } from 'astro/config';  │
+ │                                               │
+ │ import tailwindcss from '@tailwindcss/vite';  │
+ │                                               │
+ │ // https://astro.build/config                 │
+ │ export default defineConfig({                 │
+ │   vite: {                                     │
+ │     plugins: [tailwindcss()]                  │
+ │   }                                           │
+ │ });                                           │
+ ╰───────────────────────────────────────────────╯
+
+✔ Continue? … yes
+  
+   success  Added the following integration to your project:
+  - tailwind
+  
+   success  Import './src/styles/global.css' in a layout
+```
+
+`Layout.astro` などで `global.css` をインポートする
+
+```astro title="Layout.astro=
+---
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="ja">
+  <!-- ... -->
+</html>
+```
+
+これで Astro で Tailwind CSS を使えるようになる。
+
+Astro 以外のプロジェクトで、 Vite を使っている場合は、 [Vite で Tailwind CSS を使う](/notes/vite-tailwind-installation) も参照。
+
+---
+
+参考
+
+- [Styles and CSS | Docs](https://docs.astro.build/en/guides/styling/#css-integrations)
