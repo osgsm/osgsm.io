@@ -158,13 +158,13 @@ export default function About() {
         </h2>
         <div className="~gap-4/6 grid">
           <TimelineList year="2025">
-            <TimelineItemPostList date="Feb." year={2025} month={2} />
+            <TimelineItemPostList date="February" year={2025} month={2} />
             <TimelineItem
               date="Jan."
               title="Created 300 commits in 5 repositories"
               icon={GitHubLogoIcon}
             />
-            <TimelineItemPostList date="Jan." year={2025} month={1} />
+            <TimelineItemPostList date="January" year={2025} month={1} />
             <TimelineItem
               date="Jan. 23"
               title="このサイトをリニューアル"
@@ -565,13 +565,12 @@ function TimelineItemPostList({
 
   return (
     <TimelineItem
-      date={date}
       title={`Published ${[...blogPosts, ...notesPosts].length} posts`}
       icon={SquarePenIcon}
     >
       <details>
         <summary className="cursor-pointer marker:text-iris-8">
-          <span className="px-1 font-medium">View All Posts in {date}</span>
+          <span className="px-1 font-medium">View all posts in {date}</span>
         </summary>
         {blogPosts.length > 0 && (
           <ul className="mt-4 ml-2 list-disc leading-relaxed">

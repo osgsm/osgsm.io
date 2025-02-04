@@ -73,7 +73,7 @@ export const Callout = ({ type = "note", heading, children }: CalloutProps) => {
           )}
         </span>
       </h3>
-      <div className="text-foreground leading-relaxed [&_*+*]:mt-2 [&_[data-line]]:p-0 [&_figure]:mt-1.5 [&_figure]:border-0 [&_figure]:bg-transparent [&_pre]:p-0">
+      <div className="text-foreground leading-relaxed [&_*+*]:mt-2 [&_[data-line]]:p-0 [&_figure]:mt-0 [&_figure]:border-0 [&_figure]:bg-transparent [&_pre]:p-0">
         {children}
       </div>
     </div>

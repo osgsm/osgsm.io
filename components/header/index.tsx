@@ -2,7 +2,7 @@ import { CommandMenu } from "@/components/cmdk";
 import { cn } from "@/lib/cn";
 import { getPosts } from "@/lib/mdx";
 
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 
 const Header = () => {
   const [blogPosts, notesPosts] = ["blog", "notes"].map((category) => {

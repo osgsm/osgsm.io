@@ -5,7 +5,7 @@ import { cn } from "@/lib/cn";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { BookText, FilePenLine, UserRound } from "lucide-react";
 import * as motion from "motion/react-client";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { FaBluesky, FaGithub, FaXTwitter } from "react-icons/fa6";
 
 const Spacer = () => <div style={{ marginTop: "48px" }} />;
@@ -28,7 +28,7 @@ export default function Home() {
       transition={{ duration: 0.5, ease: "easeOut", staggerChildren: 0.1 }}
     >
       <div className="lg:-mt-28 ~/lg:~py-12/40 ~/lg:~pb-16/40 grid items-center gap-20 overflow-x-hidden md:grid-cols-2 md:gap-6 lg:h-[100vh] lg:max-h-[75rem] lg:min-h-[50rem] lg:py-0 xl:overflow-x-visible">
-        <div className="~pl-5/8 ~pr-5/0 grid gap-4">
+        <div className="~pl-5/8 ~pr-5/0 grid gap-4 md:pb-10">
           <motion.div
             className="-ml-0.5 ~text-xs/sm mb-1 flex w-fit items-center gap-2 rounded-lg border border-[--cyan-3] bg-[--cyan-2] px-2 py-1 text-[--cyan-10] lg:mb-0"
             variants={fadeInVariants}
@@ -62,7 +62,7 @@ export default function Home() {
             variants={fadeInVariants}
           >
             <p>フロントエンドデベロッパーです。</p>
-            <p>近頃は 3D とかグラフィック系に興味ありです。</p>
+            <p>近頃は 3D とか WebGL に惹かれてます。</p>
           </motion.div>
           <motion.div
             className="*:~text-xl/2xl flex items-center gap-3 px-px text-mauve-10"
@@ -98,7 +98,7 @@ export default function Home() {
           </motion.div>
         </div>
         <motion.div
-          className="md:~md/xl:~-ml-0/32 xl:~xl:~-ml-32/8 mx-auto grid max-w-xl grid-cols-3 justify-items-center gap-6 lg:max-w-none"
+          className="md:~md/xl:~-ml-0/32 xl:~xl:~-ml-32/8 mx-auto grid max-w-xl grid-cols-3 justify-items-center gap-6 md:pb-10 lg:max-w-none"
           variants={variants}
           initial="initial"
           whileInView="whileInView"
