@@ -1,4 +1,3 @@
-import { GradientBackground } from "@/components/gradient-background";
 import { Notes } from "@/components/notes";
 import { Posts } from "@/components/posts";
 import { cn } from "@/lib/cn";
@@ -22,7 +21,6 @@ export default function Home() {
   };
   return (
     <>
-      <GradientBackground />
       <motion.div
         variants={fadeInVariants}
         initial="initial"
@@ -37,7 +35,7 @@ export default function Home() {
               variants={fadeInVariants}
             >
               <span className="grid *:col-span-full *:row-span-full *:inline-block *:size-1.5 *:rounded-full">
-                <span className="size-3 animate-ping-slow bg-[--cyan-6]" />
+                <span className="size-[0.8125rem] animate-ping-slow bg-[--cyan-6]" />
                 <span className="z-10 size-1.5 bg-[--cyan-8]" />
               </span>
               Work at KITERETZ inc.
