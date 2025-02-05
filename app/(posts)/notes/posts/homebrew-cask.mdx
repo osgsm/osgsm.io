@@ -1,0 +1,65 @@
+---
+title: "Homebrew Cask を使って macOS 用のアプリケーションを管理する"
+time:
+  created: "2025-02-05T01:28:49.610Z"
+  updated: "2025-02-05T01:28:49.610Z"
+tags: ["macos", "homebrew"]
+---
+
+Homebrew Cask を使うと、 Google Chrome のような GUI macOS アプリケーションを Homebrew 経由で管理できる。
+
+特に追加のインストールは不要で、Homebrew がインストールされていれば使える。
+
+よく使うコマンドは次の通り。
+
+- `install` — installs the given Cask.
+- `uninstall` — uninstalls the given Cask.
+- `reinstall` — reinstalls the given Cask.
+- `list --casks` — lists installed Casks.
+
+例えば、 Google Chrome をインストールする場合は次のようにする。
+
+```shell
+brew install google-chrome
+```
+
+Cask を検索するには `brew search` コマンドを使う。
+
+```shell
+brew search google-chrome
+
+==> Casks
+google-chrome                google-chrome-beta           google-chrome-canary         google-chrome-dev
+```
+
+他にも次のようなコマンドがある。
+
+- `info` — displays information about the given Cask.
+- `fetch` — downloads remote application files for the given Cask to the local cache (with `--force`, re-download even if already cached).
+- `--cache` — displays the path to Homebrew's local cache.
+- `doctor` — checks for configuration issues.
+- `style` — checks Cask style using RuboCop.
+- `home` — opens the homepage of the given Cask; or with no arguments, the Homebrew project page.
+- `uninstall --zap` — try to remove _all_ files associated with a Cask (may include resources shared with other applications).
+- `outdated` — lists all outdated Casks.
+- `upgrade` — updates all outdated Casks.
+
+エイリアスも用意されている。
+
+- `ls` — `list`
+- `-S` — `search`
+- `rm`, `remove` — `uninstall`
+- `dr` — `doctor`
+- `abv` — `info`
+- `homepage` — `home`
+
+App Store のアプリケーションを Homebrew 経由で管理することも可能。 → [mas-cli を使って Homebrew 経由で App Store のアプリケーションを管理する](/notes/homebrew-mas-cli)
+
+また、Homebrew 経由でインストールしたものは、Homebrew Bundle を使って Brewfile にリストアップしておくことも可能なので、パソコンを新しくするときなどに一括でインストールできるのも便利。 → [Homebrew Bundle を使って Brewfile でパッケージを管理する](/notes/homebrew-bundle)
+
+---
+
+参考
+
+- [Homebrew/homebrew-cask: 🍻 A CLI workflow for the administration of macOS applications distributed as binaries](https://github.com/Homebrew/homebrew-cask)
+

@@ -1,0 +1,168 @@
+---
+title: "Homebrew Bundle を使って Brewfile でパッケージを管理する"
+time:
+  created: "2025-02-05T01:42:30.284Z"
+  updated: "2025-02-05T01:42:30.284Z"
+tags: ["macos", "homebrew"]
+---
+
+<Callout heading="Requirements">
+- [Homebrew](https://github.com/Homebrew/brew) (on macOS or [Linux](https://docs.brew.sh/Homebrew-on-Linux)) for installing dependencies.
+- [Homebrew Cask](https://github.com/Homebrew/homebrew-cask) is optional and used for installing Mac applications.
+- [mas-cli](https://github.com/mas-cli/mas) is optional and used for installing Mac App Store applications.
+- [Whalebrew](https://github.com/whalebrew/whalebrew) is optional and used for installing Whalebrew images.
+- [Visual Studio Code](https://code.visualstudio.com/) is optional and used for installing Visual Studio Code extensions.
+</Callout>
+
+Homebrew Bundle は、 Homebrew や Homebrew Cask、 Mac App Store のためのバンドラ。
+
+Brewfile というファイルに Homebrew 経由でインストールしたパッケージをリストアップし、そのファイルをもとに管理することができる。パソコンを新しくするときに、 Homebrew を使ってインストールしたパッケージを一括でインストールできるので便利。
+
+すでに Homebrew を使ってパッケージをインストールしている場合、 `brew bundle dump` を実行すると Brewfile を作成できる。
+
+```shell
+brew bundle dump
+```
+
+例えば、次のような内容の `Brewfile` がカレントディレクトリに作成される。
+
+```ini
+tap "homebrew/bundle"
+brew "node"
+brew "git"
+cask "figma"
+cask "google-chrome"
+```
+
+この `Brewfile` ファイルを使ってアプリを管理することができる。
+
+例えば、 `Brewfile` から特定のアプリ（この例では `figma`）を削除し...
+
+``` ini
+tap "homebrew/bundle"
+brew "node"
+brew "git"
+cask "figma" # [!code --]
+cask "google-chrome"
+```
+
+`brew bundle --cleanup` を実行すると、そのアプリがアンインストールされる。
+
+逆に、 `Brewfile` に特定のアプリを追加し...
+
+``` ini
+tap "homebrew/bundle"
+brew "node"
+brew "git"
+cask "figma" # [!code ++]
+cask "google-chrome"
+```
+
+`brew bundle` を実行すると、そのアプリがインストールされる。
+
+このように `Brewfile` にリストアップさえしておけば、一括でアプリをインストールできる。
+
+ちなみに、Homebrew では、 macOS のアプリケーションや App Store のアプリケーションも管理できる。以下を参照。
+
+- [Homebrew Cask を使って macOS 用のアプリケーションを管理する](/notes/homebrew-cask)
+- [mas-cli を使って Homebrew 経由で App Store のアプリケーションを管理する](/notes/homebrew-mas-cli)
+
+```shell title="brew bundle --help"
+Usage: brew bundle [subcommand]
+
+Bundler for non-Ruby dependencies from Homebrew, Homebrew Cask, Mac App Store
+and Whalebrew.
+
+brew bundle [install]:
+    Install and upgrade (by default) all dependencies from the Brewfile.
+
+You can specify the Brewfile location using --file or by setting the
+HOMEBREW_BUNDLE_FILE environment variable.
+
+You can skip the installation of dependencies by adding space-separated values
+to one or more of the following environment variables:
+HOMEBREW_BUNDLE_BREW_SKIP, HOMEBREW_BUNDLE_CASK_SKIP,
+HOMEBREW_BUNDLE_MAS_SKIP, HOMEBREW_BUNDLE_WHALEBREW_SKIP,
+HOMEBREW_BUNDLE_TAP_SKIP.
+
+brew bundle will output a Brewfile.lock.json in the same directory as the
+Brewfile if all dependencies are installed successfully. This contains
+dependency and system status information which can be useful in debugging brew
+bundle failures and replicating a "last known good build" state. You can
+opt-out of this behaviour by setting the HOMEBREW_BUNDLE_NO_LOCK environment
+variable or passing the --no-lock option. You may wish to check this file into
+the same version control system as your Brewfile (or ensure your version
+control system ignores it if you'd prefer to rely on debugging information from
+a local machine).
+
+brew bundle dump:
+    Write all installed casks/formulae/images/taps into a Brewfile in the
+current directory.
+
+brew bundle cleanup:
+    Uninstall all dependencies not listed from the Brewfile.
+
+This workflow is useful for maintainers or testers who regularly install lots of
+formulae.
+
+brew bundle check:
+    Check if all dependencies are installed from the Brewfile.
+
+This provides a successful exit code if everything is up-to-date, making it
+useful for scripting.
+
+brew bundle list:
+    List all dependencies present in the Brewfile.
+
+By default, only Homebrew dependencies are listed.
+
+brew bundle exec command:
+    Run an external command in an isolated build environment based on the
+Brewfile dependencies.
+
+This sanitized build environment ignores unrequested dependencies, which makes
+sure that things you didn't specify in your Brewfile won't get picked up by
+commands like bundle install, npm install, etc. It will also add compiler
+flags which will help find keg-only dependencies like openssl, icu4c, etc.
+
+      --file                       Read the Brewfile from this location. Use
+                                   --file=- to pipe to stdin/stdout.
+      --global                     Read the Brewfile from ~/.Brewfile.
+  -v, --verbose                    install prints output from commands as they
+                                   are run. check lists all missing
+                                   dependencies.
+      --no-upgrade                 install won't run brew upgrade on
+                                   outdated dependencies. Note they may still be
+                                   upgraded by brew install if needed.
+  -f, --force                      dump overwrites an existing Brewfile.
+                                   cleanup actually performs its cleanup
+                                   operations.
+      --cleanup                    install performs cleanup operation, same as
+                                   running cleanup --force.
+      --no-lock                    install won't output a
+                                   Brewfile.lock.json.
+      --all                        list all dependencies.
+      --formula, --brews           list Homebrew dependencies.
+      --cask, --casks              list Homebrew Cask dependencies.
+      --tap, --taps                list tap dependencies.
+      --mas                        list Mac App Store dependencies.
+      --whalebrew                  list Whalebrew dependencies.
+      --vscode                     list VSCode extensions.
+      --describe                   dump adds a description comment above each
+                                   line, unless the dependency does not have a
+                                   description.
+      --no-restart                 dump does not add restart_service to
+                                   formula lines.
+      --zap                        cleanup casks using the zap command
+                                   instead of uninstall.
+  -d, --debug                      Display any debugging information.
+  -q, --quiet                      Make some output more quiet.
+  -h, --help                       Show this message.
+```
+
+---
+
+参考
+
+- [Homebrew/homebrew-bundle: 📦 Bundler for non-Ruby dependencies from Homebrew, Homebrew Cask and the Mac App Store.](https://github.com/Homebrew/homebrew-bundle)
+

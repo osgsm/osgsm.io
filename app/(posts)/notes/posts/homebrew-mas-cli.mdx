@@ -1,0 +1,87 @@
+---
+title: "mas-cli を使って Homebrew 経由で App Store のアプリケーションを管理する"
+time:
+  created: "2025-02-05T01:35:21.791Z"
+  updated: "2025-02-05T01:35:21.791Z"
+tags: ["macos", "homebrew"]
+---
+
+`mas-cli` は、 Mac App Store のための command line interface。 Homebrew などを経由して、 App Store のアプリを管理できる。
+
+Homebrew を使って次のコマンドで `mas` をインストールする。
+
+```shell
+brew install mas
+```
+
+Mac App Store 内のそれぞれのアプリケーションは、 product identifier を持っており、それは mas-cli commands でも使われる。 `mas list` を使うと、インストール済みのアプリケーションを確認でき、 product identifiers も確認できる。
+
+```shell
+mas list
+446107677 Screens
+407963104 Pixelmator
+497799835 Xcode
+```
+
+`mas search` を使って、アプリ名を渡すと、 そのアプリの identifiers を確認することができる。
+
+```shell
+mas search xcode
+   497799835  Xcode                                              (14.3.1)
+  1388020431  DevCleaner for Xcode                               (2.4.0)
+  1183412116  Swiftify for Xcode                                 (5.8)
+  # ...
+```
+
+もしくは、 App Store の該当のページから ID を見つけることもできる。
+
+1. Mac App Store 内でアプリを見つける
+2. シェアアイコンをクリック → リンクをコピー
+3. `idXXXXXXXX` の部分がそのアプリの ID となる。 Xcode の場合、リンクは次のようになる。→ https://apps.apple.com/jp/app/xcode/id497799835?mt=12 。したがって、 ID は `497799835` となる。
+
+アプリをインストールする場合は `mas install` を使う。
+
+```shell
+mas install 497799835
+```
+
+このコマンドは、アプリをはじめてインストール（購入）する場合は `mas install` では行えないので要注意。その場合は、 `mas purchase` を使う。
+
+
+また、 `mas search` が返すリストのうち、はじめに現れるアプリをインストールしたい場合は `mas lucky` を使う。
+
+```shell
+mas lucky twitter
+==> Downloading Twitter
+==> Installed Twitter
+```
+
+`mas outdated` で更新可能なアプリケーションをリストアップできる。
+
+```
+mas outdated
+409203825 Numbers (12.2.1 -> 14.1)
+409183694 Keynote (12.2.1 -> 14.1)
+409201541 Pages (12.2.1 -> 14.1)
+6446206067 Klack (1.2.1 -> 1.6.1)
+```
+
+`mas upgrade` ですべての更新可能なアプリケーションを更新できる。個別で更新したい場合は `mas upgrade 6446206067` のように app identifier を使う。
+
+```
+mas upgrade 6446206067
+Upgrading 1 outdated application:
+Klack (1.2.1)
+==> Installed Klack
+```
+
+App Store にないアプリケーションの場合は Homebrew Cask を使う。 → [Homebrew Cask を使って macOS 用のアプリケーションを管理する](/notes/homebrew-cask)
+
+`mas-cli` を使って Homebrew 経由でインストールしたものは、Homebrew Bundle を使って Brewfile にリストアップしておくことも可能なので、パソコンを新しくするときなどに一括でインストールできるのも便利。 → [Homebrew Bundle を使って Brewfile でパッケージを管理する](/notes/homebrew-bundle)
+
+---
+
+参考
+
+- [mas-cli/mas: :package: Mac App Store command line interface](https://github.com/mas-cli/mas)
+
