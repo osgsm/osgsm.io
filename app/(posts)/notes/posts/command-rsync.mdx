@@ -1,0 +1,55 @@
+---
+title: "rsync を使ってリモートサーバーからローカルにファイルを同期する"
+time:
+  created: "2025-02-06T02:07:59.755Z"
+  updated: "2025-02-06T02:07:59.755Z"
+tags: ["command"]
+---
+
+`rsync` は、ローカルとリモートホストとの間でファイルを transfer するコマンド。デフォルトで SSH を使う。リモートホスト間同士では移行できない。
+
+ファイルを移行する場合は次のようにする。
+
+```shell
+rsync path/to/source path/to/destination
+```
+
+例えば、WordPress で `uploads` ディレクトリをリモートサーバーからローカルに同期する場合は次のようにする。ここでは `hostalias` というホストエイリアスが `~/.ssh/config` に設定されているとする。ファイルのパスについては適当。
+
+```shell
+rsync -ahuvz hostalias:/example.com/public_html/wp-content/uploads wp-content/uploads
+```
+
+こうすることで、リモートの `uploads` をローカルに同期することができる。
+
+ホストエイリアスが設定されていない場合は `-e` オプションを使って、鍵の場所やポート番号を指定する。
+
+
+```shell
+rsync -ahuvz -e "ssh -i $HOME/.ssh/id_ed25519 -p 10022" user@hostname:/example.com/public_html/wp-content/uploads wp-content/uploads
+```
+
+ただ、このように毎回指定するのは面倒なので、 `~/.ssh/config` にホストエイリアスを設定しておくほうがよい。例えば次のような感じで。
+
+```txt title="~/.ssh/config"
+Host hostalias
+  HostName     example.server.com
+  Port         10022
+  User         user
+  IdentityFile ~/.ssh/id_ed25519
+```
+
+上述の例で使用している `-ahuvz` というオプションは、次のことを意味する。
+
+- `-a`: `--archive` アーカイブモード。 `-rlptgoD` と等価。再帰的に、かつ諸々の情報を保持して転送したい場合に使用する。
+- `-h`: `--human-readable`  読みやすいフォーマットで表示する。
+- `-u`: `--update` レシーバーに新しいファイルがあった場合にスキップする。
+- `-v`: `--verbose` 転送中の情報を増やす。 `-v` でどのファイルが転送されているかと最後にようやくを表示する。 `-vv` でどのファイルがスキップされたかと、最後にさらに詳しい情報が表示される。このオプションがないと `rsync` はデフォルトでサイレントに機能する。
+- `-z`: `--compress` データを圧縮して転送する。
+
+---
+
+参考
+
+- [rsync(1) manpage](https://download.samba.org/pub/rsync/rsync.1)
+
