@@ -1,0 +1,29 @@
+---
+title: "複数階層のディレクトリを mkdir する"
+time:
+  created: "2025-02-05T08:54:55.379Z"
+  updated: "2025-02-05T08:54:55.379Z"
+tags: ["command", "mkdir"]
+---
+
+`mkdir` で複数階層のディレクトリ（例えば `foo/bar/` など）を一気に作成したい場合は `-p` オプションを使う。
+
+```shell
+% mkdir -p foo/bar/
+```
+
+manual page には次のように書かれている。
+
+```txt
+-p    Create intermediate directories as required.  If this option is not specified, the full path prefix of each operand must already exist.  On
+      the other hand, with this option specified, no error will be reported if a directory given as an operand already exists.  Intermediate
+      directories are created with permission bits of “rwxrwxrwx” (0777) as modified by the current umask, plus write and search permission for the
+      owner.
+```
+
+---
+
+参考
+
+- [mkdir Man Page - macOS - SS64.com](https://ss64.com/mac/mkdir.html)
+

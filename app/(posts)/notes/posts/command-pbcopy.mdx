@@ -1,0 +1,43 @@
+---
+title: "pbcopy を使ってコマンドラインからクリップボードにコピーする（macOS）"
+time:
+  created: "2025-02-06T01:33:58.859Z"
+  updated: "2025-02-06T01:33:58.859Z"
+tags: ["command", "macos"]
+---
+
+macOS の `pbcopy` コマンドは、標準入力を受け取り、それをクリップボードにコピーする。
+
+次のようにリダイレクトを使ってファイルの内容をクリップボードにコピーできる。
+
+```shell
+pbcopy < sample.txt
+```
+
+同じように、ファイルの内容をコピーする場合、`cat` コマンドの出力を、パイプラインを使って `pbcopy` の入力として渡すこともできる。
+
+```shell
+cat sample.txt | pbcopy
+```
+
+カレントディレクトリ内の特定の拡張子を持つファイルのリストをコピーすることもできる
+
+```shell
+find . -name "*.png" | pbcopy
+```
+
+`grep` と組み合わせて、ファイルの中から特定の文字列を含む行をコピーすることもできる。
+
+```shell
+grep 'version' package.json | pbcopy
+```
+
+ちなみに、クリップボードの内容を出力したい場合は `pbpaste` コマンドを使う。
+
+---
+
+参考
+
+- [pbcopy Man Page - macOS - SS64.com](https://ss64.com/mac/pbcopy.html)
+- [pbpaste Man Page - macOS - SS64.com](https://ss64.com/mac/pbpaste.html)
+

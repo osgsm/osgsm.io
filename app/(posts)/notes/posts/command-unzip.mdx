@@ -1,0 +1,35 @@
+---
+title: "unzip コマンドで ZIP ファイルからファイルを取り出す"
+time:
+  created: "2025-02-05T09:00:02.390Z"
+  updated: "2025-02-05T09:00:02.390Z"
+tags: ["command", "unzip"]
+---
+
+ZIP ファイルからファイルを取り出したいときは `unzip` コマンドを使う。ファイルの展開先を指定したい場合は `-d` オプションを付ける。
+
+```shell
+unzip sample.zip -d sample
+```
+
+`-d` オプションを付けない場合は、カレントディレクトリにファイルが展開される。
+
+ちなみに、ZIP ファイルの中身を確認したいときは `-l` オプションを付ける。
+
+```shell
+unzip -l compressed.zip
+
+Archive:  compressed.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+        0  02-05-2025 18:03   sample-zip/
+---------                     -------
+        0                     1 file
+```
+
+---
+
+参考
+
+- [unzip - manned.org](https://manned.org/unzip)
+

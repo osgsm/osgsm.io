@@ -1,0 +1,33 @@
+---
+title: "ダウンロードした zip ファイルを展開し、もとの zip ファイルは削除するスクリプト"
+time:
+  created: "2025-02-05T09:00:02.390Z"
+  updated: "2025-02-05T09:00:02.390Z"
+tags: ["command", "unzip"]
+---
+
+```shell
+find ~/Downloads -name '*.zip' | xargs -I {} sh -c 'unzip {} -d ~/Downloads/$(basename {} .zip) && rm {}'
+```
+
+`find` コマンドで `~/Downloads` ディレクトリ以下の `.zip` ファイルを検索し、一致したファイル名を `xargs` に渡す。
+
+`-I {}` でプレースホルダーを使い、引数の位置を指定できるようにする。ちなみに `-I {}` を使った場合は、それぞれのインプット行に対してコマンドが実行される。
+
+プレースホルダーの値を複数のコマンドに渡したい場合は `sh -c` を実行し、コマンド文字列を作り、文字列をコマンドとして実行する必要がある。
+
+コマンド文字列内では `unzip` コマンドを使う（[unzip コマンドで ZIP ファイルからファイルを取り出す](/notes/command-unzip) も参照）。その引数として `xargs` に渡されたものを使用する。
+
+`-d` オプションで展開先を指定しているが、その中でコマンド置換を使って `basename` を実行。 `xargs` に渡されたパスからディレクトリ部分と拡張子を取り除いている。
+
+最後に `rm {}` とし、 `xargs` に渡されたファイルを削除する。
+
+---
+
+参考
+
+- [find - manned.org](https://manned.org/find)
+- [xargs](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/xargs.html)
+- [sh - manned.org](https://manned.org/sh)
+- [basename invocation (GNU Coreutils 9.6)](https://www.gnu.org/software/coreutils/manual/html_node/basename-invocation.html#basename-invocation)
+- [unzip - manned.org](https://manned.org/unzip)
