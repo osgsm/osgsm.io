@@ -158,7 +158,12 @@ export default function About() {
         </h2>
         <div className="~gap-4/6 grid">
           <TimelineList year="2025">
-            <TimelineItemPostList date="February" year={2025} month={2} />
+            <TimelineItem
+              date="Feb."
+              title="Created 40 commits in 2 repositories"
+              icon={GitHubLogoIcon}
+            />
+            <TimelineItemPostList date="Feb." year={2025} month={2} />
             <TimelineItem
               date="Jan."
               title="Created 300 commits in 5 repositories"
@@ -563,14 +568,32 @@ function TimelineItemPostList({
   const blogPosts = getPostsByYearMonth("blog", year, month);
   const notesPosts = getPostsByYearMonth("notes", year, month);
 
+  const monthMap: { [key: string]: string } = {
+    1: "January",
+    2: "February",
+    3: "March",
+    4: "April",
+    5: "May",
+    6: "June",
+    7: "July",
+    8: "August",
+    9: "September",
+    10: "October",
+    11: "November",
+    12: "December",
+  };
+
   return (
     <TimelineItem
+      date={date}
       title={`Published ${[...blogPosts, ...notesPosts].length} posts`}
       icon={SquarePenIcon}
     >
       <details>
         <summary className="cursor-pointer marker:text-iris-8">
-          <span className="px-1 font-medium">View all posts in {date}</span>
+          <span className="px-1 font-medium">
+            View all posts in {monthMap?.[month] ?? "this month"}
+          </span>
         </summary>
         {blogPosts.length > 0 && (
           <>

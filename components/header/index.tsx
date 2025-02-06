@@ -39,7 +39,7 @@ const Header = () => {
           />
           <div className="sr-only">osgsm.io</div>
         </Link>
-        <div className="flex items-center">
+        <div className="flex items-center gap-0.5">
           {[
             { label: "Home", href: "/" },
             { label: "Blog", href: "/blog" },
