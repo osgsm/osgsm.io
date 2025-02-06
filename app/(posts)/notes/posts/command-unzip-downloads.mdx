@@ -6,6 +6,11 @@ time:
 tags: ["command", "unzip"]
 ---
 
+<Callout type="caution">
+次のコマンドは `rm` を使っているので、重要なファイルがダウンロードディレクトリにある場合は使用しないでください。
+もしくは、 [`trash-cli`](https://github.com/andreafrancia/trash-cli) の `trash-put` などで代用してください。
+</Callout>
+
 ```shell
 find ~/Downloads -name '*.zip' | xargs -I {} sh -c 'unzip {} -d ~/Downloads/$(basename {} .zip) && rm {}'
 ```
