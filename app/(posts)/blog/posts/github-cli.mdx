@@ -154,8 +154,8 @@ ID  TITLE                  BRANCH               CREATED AT
 
 `gh pr status` を実行すると、関連のあるプルリクエストを確認することができます。
 
-```shell
-❯ gh pr status title="Terminal"
+```shell title="Terminal"
+❯ gh pr status
 
 Relevant pull requests in osgsm/osgsm.io-v2
 
@@ -187,9 +187,9 @@ M       README.md
 Switched to branch 'patch-2'
 ```
 
-ちなみに、[GitHub CLIのすヽめ&オレオレ関数で効率化していく](https://zenn.dev/toraco/articles/d6b760fd11bf3a) で紹介されている次の関数を `.zshrc` に追加すると、プルリクエストの確認 → チェックアウトまでを行えるので便利です。筆者の方に感謝🙏🏻
+ちなみに、[GitHub CLIのすヽめ&オレオレ関数で効率化していく](https://zenn.dev/toraco/articles/d6b760fd11bf3a) で紹介されている次の関数を `.zshrc` に追加すると、プルリクエストの確認 → チェックアウトまでをひとつのコマンドで行えるので便利です。筆者の方に感謝🙏🏻
 
-```ini title=".zshrc"
+```shell title=".zshrc"
 prco () {
     gh pr list;
     echo "Type the number of PR to checkout: " && read number;
@@ -206,7 +206,7 @@ prco () {
 
 次のように `prco` を実行します。そして、チェックアウトしたい番号を入力します。
 
-```shell
+```shell title="Terminal"
 ❯ prco
 
 Showing 1 of 1 open pull request in osgsm/osgsm.io-v2
@@ -229,7 +229,7 @@ Already up to date.
 
 次のように、`gh repo create` を実行すると、いろいろと尋ねられるので、それに答えていきます。
 
-```shell
+```shell title="Terminal"
 ❯ gh repo create
 
 ? What would you like to do? Push an existing local repository to GitHub
@@ -258,7 +258,7 @@ branch 'main' set up to track 'origin/main'.
 
 ちなみに、次のような関数を `.zshrc` に用意しておくと、`ginit` を実行するだけで、 `git init` → `git add` → `git commit` という手順を行ったあとで、 `gh reop create` を使ってリモートリポジトリへのプッシュまでを行うことができます。
 
-```shell
+```shell title=".zshrc"
 ginit () {
     git init && git add . && git status && git commit -m "First commit" && git branch -M main;
     gh repo create;
