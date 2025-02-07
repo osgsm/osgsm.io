@@ -252,7 +252,7 @@ export default function About() {
           <TimelineList year="2022">
             <TimelineItem
               date="Jan. 1"
-              title="自分の武器を磨くために転職を決意"
+              title="武器を磨くために転職を決意"
               icon={StarIcon}
             >
               <p>
@@ -268,7 +268,7 @@ export default function About() {
           </TimelineList>
           <TimelineList year="2021">
             <TimelineItem
-              title="できることが増えたが、武器がないことに焦る"
+              title="できることが増え、武器がないことに焦る"
               icon={AppWindowIcon}
             >
               <p>
@@ -278,7 +278,7 @@ export default function About() {
                 写真も好きだったので、ウェブサイトに掲載する写真や動画の撮影も担当。
               </p>
               <p>
-                色々とできるようになった反面、自分には武器と呼べる強みがないと気づく。
+                色々とできるようになった反面、自分には武器と呼べるほどの強みがないことに気づく。
               </p>
             </TimelineItem>
           </TimelineList>
@@ -294,10 +294,7 @@ export default function About() {
             </TimelineItem>
           </TimelineList>
           <TimelineList year="2018">
-            <TimelineItem
-              title="いつの間にかウェブ制作がメインに"
-              icon={AppWindowIcon}
-            >
+            <TimelineItem title="ウェブとの邂逅" icon={AppWindowIcon}>
               <p>グラフィック系の仕事もあったが、ウェブの仕事が増える。</p>
               <p>
                 学生のときにウェブ制作をかじっていたので、下層ページの作成などを任されるように。
@@ -393,7 +390,7 @@ export default function About() {
           </TimelineList>
           <TimelineList year="2009">
             <TimelineItem
-              title="華のキャンパスライフを夢見て近大に入学"
+              title="近畿大学経済学部に入学"
               icon={UniversityIcon}
             />
           </TimelineList>
