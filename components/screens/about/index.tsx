@@ -226,7 +226,7 @@ export default function About() {
           <TimelineList year="2023">
             <TimelineItem
               date="Jun. 1"
-              title="20px のアイコンをきっかけに KITERETZ inc. にジョイン"
+              title="憧れの KITERETZ inc. へ"
               icon={HandshakeIcon}
             >
               <p>かねてより思いを馳せていた KITERETZ inc. で働き始める。</p>
