@@ -1,0 +1,108 @@
+---
+title: "GitHub CLI でよく使うコマンド"
+time:
+  created: "2025-02-07T01:27:27.304Z"
+  updated: "2025-02-07T01:27:27.304Z"
+tags: ["github", "command"]
+---
+
+GitHub CLI は、GitHub を CLI から操作するためものです。例えば、イシューやプルリクエストを作成したり、それらを確認することができます。
+
+今回は、 GitHub CLI の中でも、特によく使うコマンドを紹介していきます。
+
+## gh browse
+
+`gh browse` は、カレントリポジトリをブラウザ上で開くコマンドです。
+
+GitHub CLI があるとは言え、やっぱり GitHub の操作はブラウザで行うことに慣れているので、このコマンドをよく使います。
+
+### ホームページを開く
+
+```shell
+gh browse
+```
+
+### 特定のディレクトリのページを開く
+
+```shell
+gh browse app
+```
+
+### 特定のイシューページを開く
+
+```shell
+gh browse
+```
+
+### 特定のブランチのページを開く
+
+```shell
+gh browse -b dev
+```
+
+## gh issue
+
+`gh issue` は、イシュー関連の操作を行うコマンドです。
+
+### イシューを作成する
+
+次のコマンドを実行すると、インタラクティブにイシューを作成できます。
+
+```shell
+gh issue create
+```
+
+コマンド実行後は、次のように諸々を尋ねられます。途中までは CLI で行い、続きはブラウザで行うこともできます。
+
+```shell
+❯ gh issue create
+
+Creating issue in osgsm/osgsm.io-v2
+
+? Title (required) Add note for GitHub CLI
+? Choose a template Open a blank issue
+? Body <Received>
+? What's next?  [Use arrows to move, type to filter]
+> Submit
+  Continue in browser
+  Add metadata
+  Cancel
+```
+
+次のように `-w` (`--web`) オプションを使用すると、ブラウザ上でイシューを作成することができます。
+
+```shell
+gh issue create -w
+```
+
+### イシューを確認する
+
+`gh issue list` を使って、イシューを確認できます。
+
+```shell
+❯ gh issue list
+
+Showing 1 of 1 open issue in osgsm/osgsm.io-v2
+
+ID  TITLE                    LABELS  UPDATED
+#3  Add note for GitHub CLI          about 8 minutes ago
+```
+
+オプションを使えば、イシューをフィルタリングしたり、ブラウザで確認したりできます。
+
+- `-a`, `--assignee <string>`: `"@me"` が self-assign を表す
+- `-A`, `--author <string>`
+- `-l`, `--label <string>`: `"bug"` などのラベルでフィルタリング
+- `-S`, `--search <query>`: クエリを渡して検索も可能
+- `w`, `--web`: ブラウザで開く
+
+検索に使えるクエリについては、 [Searching issues and pull requests - GitHub Docs](https://docs.github.com/en/search-github/searching-on-github/searching-issues-and-pull-requests) を参照してください。
+
+
+---
+
+参考
+
+- [cli/cli: GitHub’s official command line tool](https://github.com/cli/cli#installation)
+- [Manual | GitHub CLI](https://cli.github.com/manual/)
+
