@@ -7,6 +7,7 @@ import { Header } from "@/components/header";
 import { Providers } from "@/components/providers";
 import { OpenGraph } from "@/lib/og";
 
+import { Analytics } from "@vercel/analytics/react";
 import clsx from "clsx";
 import { Inter } from "next/font/google";
 import Script from "next/script";
@@ -37,6 +38,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
