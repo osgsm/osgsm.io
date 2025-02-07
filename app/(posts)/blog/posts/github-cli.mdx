@@ -1,0 +1,282 @@
+---
+title: "GitHub CLI でよく使うコマンド"
+time:
+  created: "2025-02-07T01:27:27.304Z"
+  updated: "2025-02-07T01:27:27.304Z"
+tags: ["github", "command"]
+---
+
+<Callout>
+Terminal コードブロックの `❯` はプロンプトなので、実行の際は省いてください。
+</Callout>
+
+GitHub CLI は、GitHub を CLI から操作するためものです。
+
+例えば、イシューやプルリクエストを作成したり、それらを確認することができます。
+
+今回は、 GitHub CLI の中でも、特によく使うコマンドを紹介していきます。
+
+紹介しているのはほんの一部なので、詳しくは[ドキュメント](https://cli.github.com/manual/)をご覧ください。インストール方法もドキュメントに書かれています。
+
+## gh browse
+
+`gh browse` は、カレントリポジトリをブラウザ上で開くコマンドです。
+
+GitHub CLI があるとは言え、やっぱり GitHub の操作はブラウザで行うことに慣れているので、このコマンドをよく使ってしまいます。
+
+### カレントリポジトリのホームページを開く
+
+```shell
+gh browse
+```
+
+### 特定のディレクトリのページを開く
+
+```shell
+gh browse app
+```
+
+### 特定のイシューページを開く
+
+```shell
+gh browse 3
+```
+
+### 特定のブランチのページを開く
+
+```shell
+gh browse -b dev
+```
+
+## gh issue
+
+`gh issue` は、イシュー関連の操作を行うコマンドです。
+
+### イシューを作成する
+
+次のコマンドを実行すると、インタラクティブにイシューを作成できます。
+
+```shell
+gh issue create
+```
+
+コマンド実行後は、次のように諸々を尋ねられます。途中までは CLI で行い、続きはブラウザで行うこともできます。
+
+```shell title="Terminal"
+❯ gh issue create
+
+Creating issue in osgsm/osgsm.io-v2
+
+? Title (required) Add note for GitHub CLI
+? Choose a template Open a blank issue
+? Body <Received>
+? What's next?  [Use arrows to move, type to filter]
+> Submit
+  Continue in browser
+  Add metadata
+  Cancel
+```
+
+次のように `-w` (`--web`) オプションを使用すると、ブラウザ上でイシューを作成することができます。
+
+```shell
+gh issue create -w
+```
+
+### イシューを確認する
+
+`gh issue list` を使って、イシューを確認できます。
+
+```shell title="Terminal"
+❯ gh issue list
+
+Showing 1 of 1 open issue in osgsm/osgsm.io-v2
+
+ID  TITLE                    LABELS  UPDATED
+#3  Add note for GitHub CLI          about 8 minutes ago
+```
+
+オプションを使えば、イシューをフィルタリングしたり、ブラウザで確認したりできます。
+
+- `-a`, `--assignee <string>`: `"@me"` が self-assign を表す
+- `-A`, `--author <string>`
+- `-l`, `--label <string>`: `"bug"` などのラベルでフィルタリング
+- `-S`, `--search <query>`: クエリを渡して検索も可能
+- `w`, `--web`: ブラウザで開く
+
+検索に使えるクエリについては、 [Searching issues and pull requests - GitHub Docs](https://docs.github.com/en/search-github/searching-on-github/searching-issues-and-pull-requests) を参照してください。
+
+## gh pr
+
+`gh pr` は、プルリクエストに関するコマンドです。
+
+### プルリクエストを作成する
+
+次のコマンドを実行すると、インタラクティブにプルリクエストを作成できます。
+
+```shell
+gh pr create
+```
+
+次のように諸々と尋ねられます。そのまま submit したり、 draft にしたり、ブラウザで続けたりを選択できます。
+
+```shell title="Terminal"
+❯ gh pr create
+
+Creating pull request for add-post-github-cli into main in osgsm/osgsm.io-v2
+
+? Title (required) Add "github-cli" post
+? Body <Received>
+? What's next?  [Use arrows to move, type to filter]
+> Submit
+  Submit as draft
+  Continue in browser
+  Add metadata
+  Cancel
+```
+
+### プルリクエストを確認する
+
+`gh br list` でプルリクエストを確認できます。
+
+```shell title="Terminal"
+❯ gh pr list
+
+Showing 1 of 1 open pull request in osgsm/osgsm.io-v2
+
+ID  TITLE                  BRANCH               CREATED AT
+#4  Add "github-cli" post  add-post-github-cli  about 1 minute ago
+```
+
+`gh issue list` と同じように `-a` オプションなどを使ったフィルタリングや、 `-w` を使ったブラウザでの確認も可能です。
+
+### プルリクエストのステータスを確認する
+
+`gh pr status` を実行すると、関連のあるプルリクエストを確認することができます。
+
+```shell
+❯ gh pr status title="Terminal"
+
+Relevant pull requests in osgsm/osgsm.io-v2
+
+Current branch
+  #4  Add "github-cli" post [add-post-github-cli]
+  ✓ Checks passing
+
+Created by you
+  #4  Add "github-cli" post [add-post-github-cli]
+  ✓ Checks passing
+
+Requesting a code review from you
+  You have no pull requests to review
+```
+
+### 特定のプルリクエストにチェックアウトする
+
+`gh pr checkout <number>` で、特定のプルリクエストにチェックアウトできます。例えば、次のようになります。
+
+```shell title="Terminal"
+❯ gh pr checkout 12
+remote: Enumerating objects: 66, done.
+remote: Counting objects: 100% (66/66), done.
+remote: Total 83 (delta 66), reused 66 (delta 66), pack-reused 17
+Unpacking objects: 100% (83/83), done.
+From https://github.com/owner/repo
+ * [new ref]             refs/pull/8896/head -> patch-2
+M       README.md
+Switched to branch 'patch-2'
+```
+
+ちなみに、[GitHub CLIのすヽめ&オレオレ関数で効率化していく](https://zenn.dev/toraco/articles/d6b760fd11bf3a) で紹介されている次の関数を `.zshrc` に追加すると、プルリクエストの確認 → チェックアウトまでを行えるので便利です。筆者の方に感謝🙏🏻
+
+```ini title=".zshrc"
+prco () {
+    gh pr list;
+    echo "Type the number of PR to checkout: " && read number;
+    gh pr checkout ${number};
+}
+```
+
+ちなみにこの関数は次のことを行ってくれます。
+
+- `gh pr list` でプルリクエスト一覧を確認
+- プルリクエストの番号を入力するように促す
+- `read` を使って入力を `number` にアサイン
+- `number` を `gh pr checkout` に渡して実行
+
+次のように `prco` を実行します。そして、チェックアウトしたい番号を入力します。
+
+```shell
+❯ prco
+
+Showing 1 of 1 open pull request in osgsm/osgsm.io-v2
+
+ID  TITLE                  BRANCH               CREATED AT
+#4  Add "github-cli" post  add-post-github-cli  about 24 minutes ago
+Type the number of PR to checkout:
+4
+Switched to branch 'add-post-github-cli'
+Already up to date.
+```
+
+これだけで、特定のプルリクエストにチェックアウトできます。素晴らしいですね！
+
+## gh repo create
+
+最後は、リポジトリを作成するコマンド `gh repo create` を紹介します。
+
+新たなプロジェクトを作成し、ローカル上で `git init` → `git add` → `git commit` したあとに `gh repo create` を実行すると、リモートリポジトリの作成からプッシュまでをこのコマンドひとつで行うことができます。
+
+次のように、`gh repo create` を実行すると、いろいろと尋ねられるので、それに答えていきます。
+
+```shell
+❯ gh repo create
+
+? What would you like to do? Push an existing local repository to GitHub
+? Path to local repository .
+? Repository name sample-project
+? Repository owner osgsm
+? Description 
+? Visibility Private
+✓ Created repository osgsm/sample-project on GitHub
+  https://github.com/osgsm/sample-project
+? Add a remote? Yes
+? What should the new remote be called? origin
+✓ Added remote git@github.com:osgsm/sample-project.git
+? Would you like to push commits from the current branch to "origin"? Yes
+Enumerating objects: 15, done.
+Counting objects: 100% (15/15), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (13/13), done.
+Writing objects: 100% (15/15), 9.61 KiB | 4.80 MiB/s, done.
+Total 15 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To github.com:osgsm/sample-project.git
+ * [new branch]      HEAD -> main
+branch 'main' set up to track 'origin/main'.
+✓ Pushed commits to git@github.com:osgsm/sample-project.git
+```
+
+ちなみに、次のような関数を `.zshrc` に用意しておくと、`ginit` を実行するだけで、 `git init` → `git add` → `git commit` という手順を行ったあとで、 `gh reop create` を使ってリモートリポジトリへのプッシュまでを行うことができます。
+
+```shell
+ginit () {
+    git init && git add . && git status && git commit -m "First commit" && git branch -M main;
+    gh repo create;
+}
+```
+
+## さいごに
+
+このように、GitHub CLI を使えば、ブラウザ上での操作が減るのでラクに GitHub 上の操作が行えます。
+
+ブラウザで操作したい派の人にとっても、 `gh browse` を使うだけでも GitHub CLI を使う価値があると思うのでぜひお試しあれ。
+
+---
+
+参考
+
+
+
+- [cli/cli: GitHub’s official command line tool](https://github.com/cli/cli#installation)
+- [Manual | GitHub CLI](https://cli.github.com/manual/)
+
