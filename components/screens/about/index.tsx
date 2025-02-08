@@ -169,7 +169,7 @@ export default function About() {
               title="Created 300 commits in 5 repositories"
               icon={GitHubLogoIcon}
             />
-            <TimelineItemPostList date="January" year={2025} month={1} />
+            <TimelineItemPostList date="Jan." year={2025} month={1} />
             <TimelineItem
               date="Jan. 23"
               title="このサイトをリニューアル"
