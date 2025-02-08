@@ -1,0 +1,24 @@
+---
+title: "JavaScript で偶数か奇数かを判定する"
+time:
+  created: "2025-02-08T07:44:29.855Z"
+  updated: "2025-02-08T07:44:29.855Z"
+tags: ["js", "even", "odd"]
+---
+
+JavaScript の `%` 剰余演算子（remainder operator）を使うことで、その結果から、ある数値が偶数か奇数かを判定できる。
+
+`n % 2` とすることで、結果が `0` であれば偶数、 `1` であれば奇数になる。
+
+```js
+const evenOrOdd = (number) => number % 2 === 0 ? 'even' : 'odd';
+// evenOrOdd(2) -> 'even'
+// evenOrOdd(3) -> 'odd'
+```
+
+---
+
+参考
+
+- [Remainder (%) - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Remainder)
+
