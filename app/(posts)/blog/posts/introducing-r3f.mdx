@@ -252,7 +252,7 @@ export default App;
 
 `clock.elapsedTime` には clock が動きはじめてからのトータル時間が保持されます。上記のコードでは、それをフレームごとにログに表示しています。
 
-次のステップでは、この値を使って `<mesh />` の `rotation` の値を変更します。
+次のステップでは、この値を使って `<mesh />{:tsx}` の `rotation` の値を変更します。
 
 ### `useRef` を使ってメッシュの参照を取得する
 
@@ -260,7 +260,7 @@ React では state を変更することでコンポーネントの更新を行�
 
 なので、 `useRef` を使ってアニメーションしたい要素への参照を取得し、直接その property などを変更することでアニメーションを実現します。
 
-`useRef` を `React` からインポートし、 `Sphere` コンポーネントで使用します。このとき、 `useRef` には型を明示する必要があります（[Using with TypeScript - React Three Fiber](https://r3f.docs.pmnd.rs/tutorials/typescript#typing-with-useref) 参照）。
+`useRef` を `React` からインポートし、 `<Sphere />{:tsx}` コンポーネントで使用します。このとき、 `useRef` には型を明示する必要があります（[Using with TypeScript - React Three Fiber](https://r3f.docs.pmnd.rs/tutorials/typescript#typing-with-useref) 参照）。
 
 ```tsx title="src/App.tsx" {3,5,11,16}
 import './App.css';
