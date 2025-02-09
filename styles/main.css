@@ -57,8 +57,8 @@
     --kbd-background: var(--iris-3);
     --kbd-foreground: var(--iris-11);
     --kbd-border: var(--iris-4);
-    --highlight-background: var(--plum-3);
-    --highlight-foreground: var(--plum-8);
+    --highlight-background: var(--blue-3);
+    --highlight-foreground: var(--blue-8);
     --radius-small: 4px;
     --radius-base: 8px;
     --radius-large: 12px;
