@@ -19,7 +19,7 @@ type CalloutType = "note" | "tip" | "important" | "warning" | "caution";
 
 interface CalloutProps {
   type?: CalloutType;
-  heading?: string;
+  title?: string;
   children: ReactNode;
 }
 
@@ -54,7 +54,7 @@ const calloutVariants: Record<
   },
 };
 
-export const Callout = ({ type = "note", heading, children }: CalloutProps) => {
+export const Callout = ({ type = "note", title, children }: CalloutProps) => {
   const Icon = calloutVariants[type].icon;
   return (
     <div
@@ -66,8 +66,8 @@ export const Callout = ({ type = "note", heading, children }: CalloutProps) => {
       <h3 className="~text-sm/base pb-3 text-inherit leading-none">
         <span className="flex items-center gap-1.5">
           <Icon size={16} />
-          {heading ? (
-            <span>{heading}</span>
+          {title ? (
+            <span>{title}</span>
           ) : (
             <span className="capitalize">{type}</span>
           )}

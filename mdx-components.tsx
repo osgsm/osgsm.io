@@ -20,11 +20,22 @@ import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
+import MDXVideo from "./components/video";
+
 const components: MDXComponents = {
-  Callout: ({ type, heading, children }) => (
-    <Callout type={type} heading={heading}>
+  Callout: ({ type, title, children }) => (
+    <Callout type={type} title={title}>
       {children}
     </Callout>
+  ),
+  Video: ({ src, caption, autoPlay, controls, loop }) => (
+    <MDXVideo
+      src={src}
+      caption={caption}
+      autoPlay={autoPlay}
+      controls={controls}
+      loop={loop}
+    />
   ),
   Bluesky: ({ url }) => <Bluesky url={url} />,
   Spotify: ({ url }) => <Spotify url={url} />,
