@@ -20,11 +20,7 @@ export default function MDXVideo({
   muted = true,
 }: MDXVideoProps) {
   return (
-    <motion.a
-      className="hover:!opacity-100 my-6 flex cursor-pointer flex-col justify-end gap-2"
-      href={src}
-      whileHover={{ scale: 0.975 }}
-    >
+    <div className="hover:!opacity-100 my-6 flex flex-col justify-end gap-2">
       <div className="relative max-h-[560px] w-fit overflow-hidden rounded-large border border-border">
         <video
           autoPlay={autoPlay}
@@ -41,6 +37,6 @@ export default function MDXVideo({
       {caption && (
         <sub className="pt-2 pb-4 text-center text-[--iris-10]">{caption}</sub>
       )}
-    </motion.a>
+    </div>
   );
 }
