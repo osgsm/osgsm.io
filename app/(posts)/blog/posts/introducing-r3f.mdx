@@ -1,0 +1,335 @@
+---
+title: "React Three Fiber の基本から簡単にアニメーションさせるまで"
+time:
+  created: "2025-02-09T05:45:31.319Z"
+  updated: "2025-02-09T05:45:31.319Z"
+tags: ["react", "threejs", "r3f"]
+---
+
+<Callout type="important">
+React Three Fiber v8 は React 19 に対応していないので、React 19 で使用したい場合は `@react-three/fiber@rc` をインストールする必要があります。この投稿では React 18 を使用します。
+</Callout>
+
+<Callout title="Dependencies">
+```json
+"@react-three/fiber": "^8.17.14",
+"react": "^18.0.0",
+"react-dom": "^18.0.0",
+"three": "^0.173.0"
+"@types/react": "^18.0.0",
+"@types/react-dom": "^18.0.0",
+"@types/three": "^0.173.0",
+```
+</Callout>
+
+React Three Fiber （以下 R3F）は、three.js のための React renderer。React コンポーネントを使ってシーンを宣言的に構築できるのが特徴です。
+
+最小限であれば、次のような JSX でオブジェクトをシーンに配置できます。
+
+```jsx
+<Canvas>
+  <mesh>
+    <boxGeometry />
+  </mesh>
+</Canvas>
+```
+
+## R3F を使うための準備
+
+今回は Vite を使います。なので、まずは `create vite` を実行しましょう。
+
+```shell title="Terminal"
+❯ pnpm create vite
+
+✔ Project name: … r3f-getting-started
+✔ Select a framework: › React
+✔ Select a variant: › TypeScript + SWC
+
+Done.
+```
+
+執筆時点では、`create vite` コマンドではデフォルトで React 19 が使われますが、 R3F v8 ではそれに対応していないので、React 18 を使用するように変更します。 `package.json` を次のように変更します。 
+
+```json title="package.json"
+  "dependencies": {
+    "react": "^19.0.0", // [!code --]
+    "react-dom": "^19.0.0", // [!code --]
+    "react": "^18.0.0", // [!code ++]
+    "react-dom": "^18.0.0", // [!code ++]
+  },
+  "devDependencies": {
+    // ...
+    "@types/react": "^19.0.0", // [!code --]
+    "@types/react-dom": "^19.0.0", // [!code --]
+    "@types/react": "^18.0.0", // [!code ++]
+    "@types/react-dom": "^18.0.0", // [!code ++]
+    // ...
+  }
+```
+
+R3F に必要なパッケージをインストールします。
+
+```shell 
+pnpm add three @types/three @react-three/fiber
+```
+
+これで準備は完了です。
+
+## 3D オブジェクトの配置
+
+今回は `create vite` で作成される `src/App.tsx` を使って 3D オブジェクトを配置します。
+
+まず、 CSS を少し調整します。 `src/App.css` の内容を次のようにします。
+
+```css title="src/App.css"
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: unset;
+  background-color: #09090e;
+}
+```
+
+そして、 `src/App.tsx` を次のようにします。詳細は後述します。
+
+```tsx title="src/App.tsx"
+import './App.css';
+
+import { Canvas } from '@react-three/fiber';
+
+function App() {
+  return (
+    <Canvas>
+      <mesh>
+        <boxGeometry />
+      </mesh>
+    </Canvas>
+  );
+}
+
+export default App;
+```
+
+これで、次のようなオブジェクトが配置されます。
+
+<Image src="/blog/images/introducing-r3f/image1.png" alt="" />
+
+平面に見えますが、実際には 3D オブジェクトです。メッシュを45°回転させてみましょう。 R3F では props を使って値のセットを行えます。
+
+```tsx
+<Canvas>
+  <mesh rotation-y={Math.PI / 4}>
+    <boxGeometry />
+  </mesh>
+</Canvas>
+```
+
+<Image src="/blog/images/introducing-r3f/image2.png" alt="" />
+
+いい感じですね！
+
+とりあえずオブジェクトを配置できたので、 `App.tsx` に追加した `<Canvas />{:tsx}` コンポーネントなどについて解説していきます。
+
+### `<Canvas />{:tsx}` コンポーネント
+
+`@react-three/fiber` からインポートしている `<Canvas />{:tsx}` コンポーネントは、 R3F シーンを定義するために必要なもので、裏側で次の2つことを行ってくれます。
+
+- Three.js の基本構成要素であるシーンとカメラのセットアップ
+- 毎フレームでシーンをレンダリング
+
+Three.js では、シーンやカメラをインスタンス化し、 `requestAnimationFrame()`で毎フレームレンダリングするための記述が必要になりますが、 R3F では `<Canvas />{:tsx}` を使うだけでそれが可能になります。
+
+R3F では、デフォルト値がいい感じに設定されているので、簡単に 3D オブジェクトを配置できます。どのような値が設定されているかは [Canvas - React Three Fiber](https://r3f.docs.pmnd.rs/api/canvas#properties) から確認できます。
+
+### Fiber コンポーネント
+
+`<mesh />{:tsx}` や `<boxGeometry />{:tsx}` などは、ドキュメントでは Fiber コンポーネント（Fiber components）と呼ばれています。これらは、 R3F では native JSX element として扱われます。
+
+なので、インポートなどを行う必要はなく、 `<div />{:tsx}` などと同じような感覚で使用することができます。
+
+書き方のルールとして、基本的に Fiber コンポーネントは、three.js object のキャメルケースとなります。例えば、 `Mesh` → `mesh`、 `BoxGeometry` → `boxGeometry` のように書きます。
+
+それでは、新たに Fiber コンポーネントを追加して、キューブの色を変えてみましょう。
+
+```tsx {4}
+<Canvas>
+  <mesh rotation-y={0.8}>
+    <boxGeometry />
+    <meshBasicMaterial color="red" />
+  </mesh>
+</Canvas>
+```
+
+Three.js では `Mesh` をインスタンス化するときなどに `geometry` と `material` をセットしますが、 R3F では `<mesh />{:tsx}` の children としてそれらを記述するだけで自動的にアタッチされます。
+
+これで、次のようにキューブが赤くなります。
+
+<Image src="/blog/images/introducing-r3f/image3.png" alt="" />
+
+## ライトの追加・オブジェクトの変更
+
+現状では少しおもしろみに欠けるので、ライトの追加とジオメトリ、マテリアルの変更を行ってみましょう。
+
+[DirectionalLight](https://threejs.org/docs/?q=directional#api/en/lights/DirectionalLight) を追加し、`<mesh />{:tsx}` の children として [SphereGeometry](https://threejs.org/docs/?q=sphere#api/en/geometries/SphereGeometry) と [MeshStandardMaterial](https://threejs.org/docs/?q=meshStandardMaterial#api/en/materials/MeshStandardMaterial) を使用します。
+
+```tsx title="src/App.tsx"
+<Canvas>
+  <directionalLight args={['white', 1.5]} position={[0.5, 0.5, 1]} />
+  <mesh>
+    <sphereGeometry args={[2, 16, 16]} />
+    <meshStandardMaterial color="#5B5BD6" flatShading />
+  </mesh>
+</Canvas>
+```
+
+`args` prop には、 three.js の該当オブジェクトのコンストラクターに渡せるものを配列で渡すことができます。その他の properties については該当の prop に値を渡すことができます。
+
+これで、次のような sphere が表示されます。
+
+<Image src="/blog/images/introducing-r3f/image4.png" alt="" />
+
+## アニメーションの追加
+
+アニメーションを行うためには、フレームごとにメッシュの位置や回転などを異なる値にセットする必要があります。
+
+R3F には、毎フレーム上でコードを実行するための hook として、 `useFrame` Fiber hook というものが用意されています。
+
+<Callout type="important">
+Fiber hooks は、 `Canvas` 内でのみコールすることができるので要注意
+</Callout>
+
+### `useFrame` の使用
+
+まず、`useFrame` を使用するために、 sphere をコンポーネントとして抽出します。
+
+```tsx title="src/App.tsx" {5,10-17}
+function App() {
+  return (
+    <Canvas>
+      <directionalLight args={['white', 1.5]} position={[0.5, 0.5, 1]} />
+      <Sphere />
+    </Canvas>
+  );
+}
+
+function Sphere() {
+  return (
+    <mesh>
+      <sphereGeometry args={[2, 16, 16]} />
+      <meshStandardMaterial color="#5B5BD6" flatShading />
+    </mesh>
+  );
+}
+
+export default App;
+```
+
+次に、 `useFrame` を `@react-three/fiber` からインポートし、 `Sphere` コンポーネントで使用します。
+
+```tsx title="src/App.tsx" {3,8}
+import './App.css';
+
+import { Canvas, useFrame } from '@react-three/fiber';
+
+// ...
+
+function Sphere() {
+  useFrame(({ clock }) => console.log(clock.elapsedTime));
+  return (
+    <mesh>
+      <sphereGeometry args={[2, 16, 16]} />
+      <meshStandardMaterial color="#5B5BD6" flatShading />
+    </mesh>
+  );
+}
+
+export default App;
+```
+
+`useFrame()` に渡したコールバックは毎フレームで実行されます。そして、このコールバックは [`state`](https://r3f.docs.pmnd.rs/api/hooks#state-properties) properties を受け取り、ここではその中から `clock` を使用しています。これは three.js の `THREE.Clock` に該当します。
+
+`clock.elapsedTime` には clock が動きはじめてからのトータル時間が保持されます。上記のコードでは、それをフレームごとにログに表示しています。
+
+次のステップでは、この値を使って `<mesh />` の `rotation` の値を変更します。
+
+### `useRef` を使ってメッシュの参照を取得する
+
+React では state を変更することでコンポーネントの更新を行うことが一般的ですが、アニメーションのような継続的な更新の場合、毎フレームでコンポーネントを再レンダリングするのはパフォーマンスもよくありません。
+
+なので、 `useRef` を使ってアニメーションしたい要素への参照を取得し、直接その property などを変更することでアニメーションを実現します。
+
+`useRef` を `React` からインポートし、 `Sphere` コンポーネントで使用します。このとき、 `useRef` には型を明示する必要があります（[Using with TypeScript - React Three Fiber](https://r3f.docs.pmnd.rs/tutorials/typescript#typing-with-useref) 参照）。
+
+```tsx title="src/App.tsx" {3,5,11,16}
+import './App.css';
+
+import type { Mesh } from 'three';
+
+import { useRef } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+
+// ...
+
+function Sphere() {
+  const meshRef = useRef<Mesh>(null);
+
+  useFrame(({ clock }) => console.log(clock.elapsedTime));
+
+  return (
+    <mesh ref={meshRef}>
+      <sphereGeometry args={[2, 16, 16]} />
+      <meshStandardMaterial color="#5B5BD6" flatShading />
+    </mesh>
+  );
+}
+
+export default App;
+```
+
+これでメッシュへの参照を使ってアニメーションすることができるようになったので、 `useFrame()` のコールバックを次のようにします。
+
+```tsx  title="src/App.tsx" {2-6}
+function Sphere() {
+  useFrame(({ clock }) => {
+    if (!meshRef.current) return;
+    meshRef.current.rotation.y = clock.elapsedTime * 0.3;
+    meshRef.current.rotation.z = clock.elapsedTime * 0.2;
+  });
+  const meshRef = useRef<Mesh>(null);
+
+  return (
+    <mesh ref={meshRef}>
+      <sphereGeometry args={[2, 16, 16]} />
+      <meshStandardMaterial color="#5B5BD6" flatShading />
+    </mesh>
+  );
+}
+```
+
+以上で、次のように sphere を回転させることができます。
+
+<Video src="/blog/images/introducing-r3f/video1.mp4" autoPlay loop controls={false} />
+
+クールですね！
+
+## さいごに
+
+R3F では、とても簡単に 3D オブジェクトの配置からアニメーションまでを行うことができます。
+
+個人的には、この「時間をかけずにいい感じの結果を得られる」というのがとてもいいなと感じました。
+
+なかなか結果を得られないと学習の意欲も削がれてしまいますが、 R3F を使うとすぐに「すげー！」とか「楽しい！」と思えます。
+
+このようなポジティブな感情が生まれると、どんどん探究心が生まれます。探求していく過程で three.js の知識も増えていくと思います。
+
+どうしても React の基礎知識は必要になりますが、それがある方は、three.js の学習は [Creating a scene – three.js docs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) をサラッと読むくらいにしておいて、そのあとは R3F で遊んでみるっていう学習のやり方もめっちゃアリだと感じました。
+
+---
+
+参考
+
+- [pmndrs/react-three-fiber: 🇨🇭 A React renderer for Three.js](https://github.com/pmndrs/react-three-fiber)
+- [Introduction - React Three Fiber](https://r3f.docs.pmnd.rs/getting-started/introduction)
+- [Basic Animations - React Three Fiber](https://r3f.docs.pmnd.rs/tutorials/basic-animations#basic-animations)
