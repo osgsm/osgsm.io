@@ -62,7 +62,7 @@ export async function GET(request: Request) {
               <div
                 style={{ color: "rgba(177, 169, 255, 1)", fontSize: "60px" }}
               >
-                {title.toLowerCase()}
+                {title}
               </div>
             ) : null}
           </div>
