@@ -8,6 +8,7 @@ interface MDXVideoProps {
   autoPlay?: boolean;
   controls?: boolean;
   loop?: boolean;
+  muted?: boolean;
 }
 
 export default function MDXVideo({
@@ -16,6 +17,7 @@ export default function MDXVideo({
   autoPlay = false,
   controls = true,
   loop = false,
+  muted = true,
 }: MDXVideoProps) {
   return (
     <motion.a
@@ -28,6 +30,7 @@ export default function MDXVideo({
           autoPlay={autoPlay}
           controls={controls}
           loop={loop}
+          muted={muted}
           playsInline
           className="h-auto w-full object-contain"
         >

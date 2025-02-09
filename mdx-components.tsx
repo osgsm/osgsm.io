@@ -28,13 +28,14 @@ const components: MDXComponents = {
       {children}
     </Callout>
   ),
-  Video: ({ src, caption, autoPlay, controls, loop }) => (
+  Video: ({ src, caption, autoPlay, controls, loop, muted }) => (
     <MDXVideo
       src={src}
       caption={caption}
       autoPlay={autoPlay}
       controls={controls}
       loop={loop}
+      muted={muted}
     />
   ),
   Bluesky: ({ url }) => <Bluesky url={url} />,
