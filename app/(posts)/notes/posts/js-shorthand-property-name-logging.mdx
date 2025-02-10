@@ -1,0 +1,65 @@
+---
+title: "JavaScript で shorthand property names を使って console.log() を見やすくする"
+time:
+  created: "2025-02-10T04:23:53.143Z"
+  updated: "2025-02-10T04:23:53.143Z"
+tags: ["js"]
+---
+
+Shorthand property names を使うと、 `console.log()` を使ったデバッグを見やすくできる。 `console.log()` に渡す変数を `{}` で囲うことで、コンソールに変数名と値のセットを表示させることができる。
+
+
+例えば次のコードを書いたとする。
+
+```js
+const sum = (a, b) => {
+    console.log(a); // 1
+    console.log(b); // 3
+    let total = a + b;
+    console.log(total); // 4
+    return total;
+}
+
+// Sample usage
+sum(1, 3);
+```
+
+このように `console.log()` が複数あると、実際にコンソールで確認した際にどのログがどれに該当するかがわかりづらい。
+
+```txt
+1
+3
+4
+```
+
+これを解決するには `console.log()` に渡している変数を `{}` で囲う。こうすることで該当の変数の名前をオブジェクトのプロパティ名にし、その変数の値をプロパティの値にできる。
+
+```js
+const sum = (a, b) => {
+    console.log({a}); // {a: 1}
+    console.log({b}); // {b: 3}
+    let total = a + b;
+    console.log({total}); // {total: 4}
+    return total;
+}
+
+// Sample usage
+sum(1, 3);
+```
+
+コンソールを確認すると下図のようになる。これで変数名と値をセットで表示できる。
+
+```txt
+{a: 1}
+{b: 3}
+{total: 4}
+```
+
+[JavaScript で shorthand property names を使ってオブジェクトのプロパティ名を省略する](/notes/js-shorthand-property-names) も参照。
+
+---
+
+参考
+
+- [Object initializer - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#property_definitions)
+

@@ -1,0 +1,37 @@
+---
+title: "JavaScript で shorthand property names を使ってオブジェクトのプロパティ名を省略する"
+time:
+  created: "2025-02-10T04:12:00.453Z"
+  updated: "2025-02-10T04:12:00.453Z"
+tags: ["js"]
+---
+
+JavaScript でオブジェクトを定義する時、そのオブジェクトのプロパティ名の値としてそのプロパティ名と同じ名前の変数を使用するとき、shorthand property names を使うことで、そのプロパティ名を省略して書くことができる。
+
+言葉だとややこしいが、コードで見るとわかりやすい。
+
+次の例は、shorthand property names を使わない例。
+
+```js {4}
+const age = 18;
+const person = {
+    name: "John",
+    age: age
+}
+```
+
+Shorthand property names を使うと次のように書ける。
+
+```js {4}
+const age = 18;
+const person = {
+    name: "John",
+    age
+}
+```
+
+---
+
+参考
+
+- [Object initializer - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#property_definitions)

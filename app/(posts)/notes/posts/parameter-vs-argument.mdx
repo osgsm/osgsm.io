@@ -1,0 +1,28 @@
+---
+title: "Parameter と argument の違い"
+time:
+  created: "2025-02-10T03:53:41.343Z"
+  updated: "2025-02-10T03:53:41.343Z"
+tags: ["js"]
+---
+
+Parameters は関数定義に含まれる変数であり、 arguments は、関数呼び出し時に渡す値のこと。
+
+日本語では、前者は仮引数、後者は実引数と呼ばれる。
+
+```js
+const myFunction = (parameter) => {
+  console.log(parameter);
+};
+
+const argument = 'foo';
+myFunction(argument); // foo
+```
+
+---
+
+参考
+
+- [Parameter - MDN Web Docs Glossary: Definitions of Web-related terms | MDN](https://developer.mozilla.org/en-US/docs/Glossary/Parameter)
+- [Argument - MDN Web Docs Glossary: Definitions of Web-related terms | MDN](https://developer.mozilla.org/en-US/docs/Glossary/Argument)
+

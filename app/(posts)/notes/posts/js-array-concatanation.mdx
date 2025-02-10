@@ -1,0 +1,35 @@
+---
+title: "JavaScript でスプレッド構文を使って配列を連結する"
+time:
+  created: "2025-02-10T04:05:38.511Z"
+  updated: "2025-02-10T04:05:38.511Z"
+tags: ["js", "array", "concatenation"]
+---
+
+JavaScript のスプレッド構文（spread syntax） `...{:js}` を使うと複数の配列を連結することができる。
+
+すでにある配列を連結するには `[...arr1, ...arr2]{:js}` のように書く。
+
+
+```js
+const lat = [5.234];
+const lng = [1.412];
+const point = [...lat, ...lng];
+console.log(point); // [5.234, 1.412];
+```
+
+次の例では、すでにある配列に対して新しい要素を追加している。
+
+```js
+const items = ["Apples", "Oranges"];
+
+const allItems = [...items, "Tomatoes"];
+console.log(allItems); // ["Apples", "Oranges", "Tomatoes"]
+```
+
+---
+
+参考
+
+- [Spread syntax (...) - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
+
