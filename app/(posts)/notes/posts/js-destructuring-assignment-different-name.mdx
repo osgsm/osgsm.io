@@ -1,0 +1,33 @@
+---
+title: "JavaScript の分割代入（destructuring assignment）で変数名をリネームする"
+time:
+  created: "2025-02-11T09:35:33.528Z"
+  updated: "2025-02-11T09:35:33.528Z"
+tags: []
+---
+
+分割代入（destructuring assignment）では、アサインされる変数名のリネームも可能。
+
+例えば、 すでに `name` 変数を定義済みの状態で `user.name` を destructure したい場合などに使える。次の例では、 `userName` という変数名にアサインしている。
+
+
+```js
+const name = "Document title"; // name variable is already declared
+
+const user = {
+    id: 1,
+    name: "Sam",
+    isAdmin: true
+};
+
+// destructure user.name into variable userName
+const {name: userName, isAdmin} = user;
+console.log(userName); // "Sam"
+```
+
+---
+
+参考
+
+- [Destructuring assignment - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#object_destructuring)
+

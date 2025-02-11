@@ -1,0 +1,43 @@
+---
+title: "JavaScript の分割代入（destructuring assignment）でデフォルト値を設定する"
+time:
+  created: "2025-02-11T09:25:23.108Z"
+  updated: "2025-02-11T09:25:23.108Z"
+tags: ["js"]
+---
+
+分割代入（destructuring assignment）ではデフォルト値も使える。
+
+これを使うことでオブジェクトに該当のプロパティが存在しない場合に備えられる。アサインするオブジェクトにプロパティがある場合は、その値が適用される。
+
+
+```js
+const user = {
+    id: 1,
+    name: "Sam"
+};
+
+const {name, isAdmin = false} = user;
+console.log(isAdmin); // false
+```
+
+次の例は、デフォルト値を設定しているが、オブジェクトに該当のプロパティがある場合。
+
+```js
+const user = {
+    id: 1,
+    name: "Sam",
+    isAdmin: true
+};
+
+const {name, isAdmin = false} = user;
+console.log(isAdmin); // true
+```
+
+
+---
+
+参考
+
+- [Destructuring assignment - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#default_value)
+

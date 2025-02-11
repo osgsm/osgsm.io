@@ -1,0 +1,34 @@
+---
+title: "JavaScript でスプレッド構文を使ってオブジェクトを連結する"
+time:
+  created: "2025-02-10T04:05:40.511Z"
+  updated: "2025-02-10T04:05:40.511Z"
+tags: ["js", "array", "concatenation"]
+---
+
+JavaScriptでオブジェクトを連結したい場合は スプレッド構文（spread syntax）  `...{:js}` を使う。
+
+同じプロパティ名がある場合は後者の値で上書きされるので要注意。
+
+
+```js
+const firstPerson = {
+    name: "Sam",
+    age: 18
+}
+
+const secondPerson = {
+    age: 25,
+    type: "admin"
+}
+
+const mergedObjects = {...firstPerson, ...secondPerson};
+console.log(mergedObjects); // {name: "Sam", age: 25, type: "admin"}
+```
+
+
+---
+
+参考
+
+- [Spread syntax (...) - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#spread_in_object_literals)
