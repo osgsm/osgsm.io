@@ -185,10 +185,7 @@ export default function About() {
               <p>
                 フレームワークは{" "}
                 <Link text="Next.js" href="https://nextjs.org/" />
-                、コンテンツの管理は{" "}
-                <Link text="MDX" href="https://mdxjs.com/" />。
-              </p>
-              <p>
+                、コンテンツは <Link text="MDX" href="https://mdxjs.com/" />、
                 スタイリングは{" "}
                 <Link text="Tailwind CSS" href="https://tailwindcss.com/" />
                 、アニメーションは{" "}
@@ -196,7 +193,7 @@ export default function About() {
                   text="Motion"
                   href="https://www.framer.com/motion/"
                 />{" "}
-                を使っています。
+                を使用。
               </p>
             </TimelineItem>
           </TimelineList>
@@ -230,10 +227,7 @@ export default function About() {
               icon={HandshakeIcon}
             >
               <p>かねてより思いを馳せていた KITERETZ inc. で働き始める。</p>
-              <p>
-                リスペクトしている方々と働けることに喜びを噛み締めつつ、フロントエンドを中心に、
-                WordPress の構築なども担当。
-              </p>
+              <p>フロントエンドを中心に、 WordPress の構築なども担当。</p>
             </TimelineItem>
             <TimelineItem
               date="Jan. 1"
@@ -245,8 +239,9 @@ export default function About() {
                 の知識が必要だと感じ、このサイトの前身を作成。
               </p>
               <p>
-                どちらも未知の世界だったが、とりあえずなにか作ってみることで学びになった。
+                どちらも未知の世界だったが、とりあえずなにか作ってみることはとても学びになった。
               </p>
+              <p>そして、モダンな技術の素晴らしさにどんどん心惹かれていく。</p>
             </TimelineItem>
           </TimelineList>
           <TimelineList year="2022">
@@ -256,13 +251,13 @@ export default function About() {
               icon={StarIcon}
             >
               <p>
-                写真も好きだったが、より極めたいと思ったのは「ウェブ制作」だった。
+                武器の候補には「写真」と「ウェブ制作」があったが、より極めたいと思ったのは後者だった。
               </p>
               <p>
                 その道を深く探求していくには、「スペシャリストが集まる会社に行くべきだ！」と転職を決意。
               </p>
               <p>
-                そのために必要な技術を集中的に学び始め、学べば学ぶほどに楽しくなる。
+                そのために必要な技術を集中的に学び始め、学べば学ぶほどに楽しくなっていく。
               </p>
             </TimelineItem>
           </TimelineList>
@@ -275,7 +270,7 @@ export default function About() {
                 打ち合わせ、デザイン、コーディングという受託制作の一連の流れを担う。
               </p>
               <p>
-                写真も好きだったので、ウェブサイトに掲載する写真や動画の撮影も担当。
+                写真も好きだったので、サイトに掲載する写真や動画の撮影も担当。
               </p>
               <p>
                 色々とできるようになった反面、自分には武器と呼べるほどの強みがないことに気づく。
@@ -322,7 +317,7 @@ export default function About() {
                 学生時代にイラレなどを触っていたので、当時働いていたお店でフライヤー作成を依頼される。
               </p>
               <p>
-                その流れでポップやカフェのメニューを作ったり、そのままグラフィックデザインにハマっていく。
+                その流れでポップやカフェのメニューを作ったりして、そのままグラフィックデザインにハマっていく。
               </p>
             </TimelineItem>
           </TimelineList>
@@ -358,10 +353,7 @@ export default function About() {
             </TimelineItem>
           </TimelineList>
           <TimelineList year="2013">
-            <TimelineItem
-              title="卒業論文を提出するも卒業できず"
-              icon={CirclePauseIcon}
-            >
+            <TimelineItem title="卒業論文を提出して休学" icon={CirclePauseIcon}>
               <p>
                 卒業論文を提出したものの就職先もなく、「まだ学生でいた方がメリットがあるかも」と考え休学。
               </p>
