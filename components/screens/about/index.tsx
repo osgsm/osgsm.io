@@ -160,7 +160,7 @@ export default function About() {
           <TimelineList year="2025">
             <TimelineItem
               date="Feb."
-              title="Created 40 commits in 2 repositories"
+              title="Created 79 commits in 5 repositories"
               icon={GitHubLogoIcon}
             />
             <TimelineItemPostList date="Feb." year={2025} month={2} />
