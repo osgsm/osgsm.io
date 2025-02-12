@@ -241,7 +241,7 @@ export default function About() {
               <p>
                 どちらも未知の世界だったが、とりあえずなにか作ってみることはとても学びになった。
               </p>
-              <p>そして、モダンな技術の素晴らしさにどんどん心惹かれていく。</p>
+              <p>そして、モダンな技術の素晴らしさにどんどん心惹かれてく。</p>
             </TimelineItem>
           </TimelineList>
           <TimelineList year="2022">
