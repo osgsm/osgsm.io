@@ -48,7 +48,7 @@ const Header = () => {
           ].map(({ label, href }) => (
             <Link
               key={label}
-              className="~text-sm/base rounded-md px-1.5 py-0.5 transition hover:bg-[--iris-4] hover:text-white hover:opacity-100 md:px-2"
+              className="~text-sm/base rounded-md px-1.5 py-0.5 transition hover:bg-iris-a3 hover:text-white hover:opacity-100 md:px-2"
               href={href}
             >
               {label}
