@@ -246,7 +246,7 @@
       position: relative;
       padding-top: 4px;
       padding-left: 6px;
-      font-size: 12px;
+      font-size: 14px;
       color: var(--muted);
       counter-increment: list;
     }
