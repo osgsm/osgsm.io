@@ -99,7 +99,7 @@ export const CommandMenu = ({
     <>
       <button
         type="button"
-        className="flex items-center gap-1 rounded-md border border-iris-4 bg-iris-2 p-1.5 text-iris-11 text-xs transition-colors duration-200 hover:bg-iris-3 hover:text-iris-12 md:pr-2 md:pl-1.5 dark:border-iris-5 dark:bg-iris-3 dark:hover:bg-iris-4"
+        className="flex items-center gap-1 rounded-md border border-iris-a4 bg-iris-a3 p-1.5 text-iris-11 text-xs transition-colors duration-200 hover:bg-iris-3 hover:text-iris-12 md:pr-2 md:pl-1.5 dark:hover:bg-iris-4"
         onClick={() => setOpen(true)}
       >
         <Search size={14} />
