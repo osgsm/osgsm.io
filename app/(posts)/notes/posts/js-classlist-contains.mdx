@@ -1,0 +1,26 @@
+---
+title: "JavaScript で要素が特定の class を持っているかどうかをチェックする"
+time:
+  created: "2025-02-13T11:50:01.109Z"
+  updated: "2025-02-13T11:50:01.109Z"
+tags: ["js", "class"]
+---
+
+`DOMTokenList.contains(){:js}` メソッドを使うことで、ある要素が特定の class を持っているかどうかをチェックできる。返り値は boolean。
+
+```html
+<div id="box" class="activated"></div>
+```
+
+```javascript
+const box = document.querySelector("#box");
+box.classList.contains("activated"); // true
+box.classList.contains("highlighted"); // false
+```
+
+---
+
+参考
+
+- [DOMTokenList: contains() method - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/contains)
+
