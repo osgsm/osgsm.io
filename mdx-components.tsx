@@ -122,12 +122,7 @@ const components: MDXComponents = {
           (child as React.ReactElement).props.id?.includes("user-content-fn-"),
       )
     ) {
-      return (
-        <ol data-footnotes>
-          <div className="mt-6 mb-2 text-muted text-small">Footnotes</div>
-          {props.children}
-        </ol>
-      );
+      return <ol data-footnotes>{props.children}</ol>;
     }
     return (
       <ol

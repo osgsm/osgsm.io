@@ -13,12 +13,13 @@
 }
 
 .footnote-back-reference a {
-  color: var(--gray-9) !important;
+  color: var(--muted);
 }
 
 .footnote-forward-reference {
   display: inline-block;
   margin-right: 2px;
   margin-left: 2px;
+  color: var(--muted);
   cursor: pointer;
 }

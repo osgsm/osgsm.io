@@ -8,7 +8,9 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
 
 function FootnoteForwardReference({ href, children }: Props): JSX.Element {
   const scroll = () => {
-    const footnote = document.querySelector(`[id="${href.replace("fn-", "fnref-")}"]`);
+    const footnote = document.querySelector(
+      `[id="${href.replace("fn-", "fnref-")}"]`,
+    );
 
     if (footnote) {
       window.scrollTo({
@@ -34,7 +36,7 @@ function FootnoteForwardReference({ href, children }: Props): JSX.Element {
       }}
       className={styles["footnote-forward-reference"]}
     >
-      {children}
+      [{children}]
     </button>
   );
 }
