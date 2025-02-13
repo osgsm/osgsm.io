@@ -1,0 +1,28 @@
+---
+title: "JavaScript で文字列の先頭のみを大文字に（キャピタライズ）する"
+time:
+  created: "2025-02-13T11:17:54.952Z"
+  updated: "2025-02-13T11:17:54.952Z"
+tags: ["js", "string", "capitalize"]
+---
+
+JavaScript には、キャピタライズするメソッドがない。なので、キャピタライズを実現するには、自身で書くしかない。
+
+先頭文字に `toUpperCase(){:js}` を使い、`substring(1){:js}` で二番目以降の文字からなる文字列を返し、その返された部分文字列に対して `toLowerCase(){:js}` を使う。
+
+```js
+const capitalize = (word) =>
+  word[0].toUpperCase() + word.substring(1).toLowerCase();
+
+capitalize('hello');
+// "Hello"
+```
+
+---
+
+参考
+
+- [String.prototype.toUpperCase() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase)
+- [String.prototype.substring() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substring)
+- [String.prototype.toLowerCase() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase)
+
