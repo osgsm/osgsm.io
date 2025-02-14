@@ -1,0 +1,31 @@
+---
+title: "JavaScript で特定の要素が overflow しているかどうかをチェックする"
+time:
+  created: "2025-02-14T08:22:33.013Z"
+  updated: "2025-02-14T08:22:33.013Z"
+tags: ["js"]
+---
+
+JavaScript で特定の要素が overflow しているかどうかをチェックするには、特定の要素の `scrollHeight` と `clientHeight` を比較する。
+
+```js
+const el = document.querySelector('.container')
+const checkOverflow = () => {
+  if (el.scrollHeight > el.clientHeight) {
+    console.log('overflow');
+  } else {
+    console.log('no overflow');
+  }
+}
+```
+
+`scrollHeight` には、オーバーフローしていて見えない部分の高さも含まれる。一方、 `clientHeight` には、オーバーフローしている部分が含まれない。
+
+なので、 `scrollHeight` の方が大きい場合は overflow していることになる。
+
+---
+
+参考
+
+- [Element: scrollHeight property - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight)
+- [Element: clientHeight property - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/clientHeight)
