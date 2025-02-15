@@ -113,6 +113,7 @@ export default function Home() {
                 icon: <BookText />,
                 className: cn(
                   "rotate-[-5deg] z-20 -translate-y-8 lg:-translate-y-14",
+                  "[--gradient-from:var(--iris-3)] [--gradient-to:var(--iris-4)]",
                   "[--icon-border-color:var(--iris-6)] [--icon-color:var(--iris-9)]",
                   "[--label-color:var(--iris-12)] [--border-color:var(--iris-4)]",
                   "dark:[--gradient-from:var(--iris-3)] dark:[--gradient-to:var(--iris-2)]",
@@ -124,7 +125,7 @@ export default function Home() {
                 icon: <FilePenLine />,
                 className: cn(
                   "rotate-[10deg] z-10 translate-y-10 lg:translate-y-14",
-                  "[--gradient-from:var(--purple-2)] [--gradient-to:var(--purple-3)]",
+                  "[--gradient-from:var(--purple-3)] [--gradient-to:var(--purple-4)]",
                   "[--shadow-base-color:var(--purple-a2)] [--shadow-accent-color:var(--purple-a3)]",
                   "[--icon-border-color:var(--purple-6)] [--icon-color:var(--purple-9)]",
                   "[--label-color:var(--purple-12)] [--border-color:var(--purple-4)]",
@@ -137,7 +138,7 @@ export default function Home() {
                 icon: <UserRound />,
                 className: cn(
                   "rotate-[6deg] translate-y-4",
-                  "[--gradient-from:var(--pink-2)] [--gradient-to:var(--pink-3)]",
+                  "[--gradient-from:var(--pink-3)] [--gradient-to:var(--pink-4)]",
                   "[--shadow-base-color:var(--pink-2)] [--shadow-accent-color:var(--pink-a3)]",
                   "[--icon-border-color:var(--pink-6)] [--icon-color:var(--pink-9)]",
                   "[--label-color:var(--pink-12)] [--border-color:var(--pink-4)]",
