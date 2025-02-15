@@ -1,0 +1,43 @@
+---
+title: "JavaScript の target と currentTarget の違い"
+time:
+  created: "2025-02-15T09:24:01.945Z"
+  updated: "2025-02-15T09:24:01.945Z"
+tags: ["js", "event"]
+---
+
+例えば、`addEventListener(){:js}` で特定の要素がクリックされたとき、コールバック内でその要素を取得したい場合、 `currentTarget` もしくは `target` プロパティを使える。
+
+注意点として、`target` はクリックされた要素を返すが、必ずしもその要素がイベントリスナーにアタッチされているとは限らない。
+
+例えば、次のようなボタンがあったとする。
+
+```html
+<button>
+  Hello <span>world!</span>
+</button>
+```
+
+そして、次のようにイベントリスナーを定義する。
+
+```js
+const button = document.querySelector('button');
+
+button.addEventListener('click', (e) => {
+  console.log(e.target);
+  console.log(e.currentTarget);
+})
+```
+
+ここで `e.target` は、 `<button>{:html}` 要素もしくは `<span>{:html}` 要素を返す可能性がある。どちらが返されるかはユーザーが実際にクリックした場所による。
+
+一方、 `e.currentTarget` は、イベントリスナーにアタッチされている要素を返すので、ユーザーがボタンのどこをクリックしようが、常に `<button>{:html}` を返す。
+
+
+---
+
+参考
+
+- [Event: currentTarget property - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget)
+- [Event: target property - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Event/target)
+
