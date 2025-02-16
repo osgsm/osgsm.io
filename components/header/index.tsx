@@ -25,7 +25,7 @@ const Header = () => {
       >
         <Link className="transition" href="/">
           <div
-            className="size-7 animate-move-background bg-[length:600%] bg-gradient-to-br from-50% from-[--iris-8] via-[--iris-9] to-90% to-[--iris-10]"
+            className="size-[1.5625rem] animate-move-background bg-[length:600%] bg-gradient-to-br from-50% from-[--iris-8] via-[--iris-9] to-90% to-[--iris-10]"
             style={{
               maskImage: "url(/assets/images/logo.svg)",
               WebkitMaskImage: "url(/assets/images/logo.svg)",
