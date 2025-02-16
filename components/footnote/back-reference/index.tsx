@@ -1,5 +1,7 @@
 "use client";
 
+import { CornerDownLeftIcon } from "lucide-react";
+
 import styles from "../styles.module.css";
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
@@ -8,11 +10,14 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
 
 function FootnoteBackReference({ href, children }: Props): JSX.Element {
   const scroll = () => {
-    const footnote = document.querySelector(`[id="${href.replace("ref", "")}"]`);
+    const footnote = document.querySelector(
+      `[id="${href.replace("ref", "")}"]`,
+    );
 
     if (footnote) {
       const headerOffset = 100;
-      const elementPosition = footnote.getBoundingClientRect().top + window.scrollY;
+      const elementPosition =
+        footnote.getBoundingClientRect().top + window.scrollY;
       const offsetPosition = elementPosition - headerOffset;
 
       window.scrollTo({
@@ -23,23 +28,25 @@ function FootnoteBackReference({ href, children }: Props): JSX.Element {
   };
 
   return (
-    <button
-      id={href}
-      type="button"
-      onClick={(e) => {
-        e.preventDefault();
-        scroll();
-      }}
-      onKeyUp={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
+    <div className={styles["footnote-back-reference"]}>
+      {children}
+      <button
+        id={href}
+        type="button"
+        onClick={(e) => {
           e.preventDefault();
           scroll();
-        }
-      }}
-      className={styles["footnote-back-reference"]}
-    >
-      {children}
-    </button>
+        }}
+        onKeyUp={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            scroll();
+          }
+        }}
+      >
+        <CornerDownLeftIcon className="text-muted" />
+      </button>
+    </div>
   );
 }
 

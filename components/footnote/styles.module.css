@@ -1,10 +1,7 @@
 .footnote-back-reference {
+  color: var(--fg);
   text-align: left;
   cursor: pointer;
-
-  &:hover {
-    opacity: 0.8;
-  }
 }
 
 .footnote-back-reference svg {
@@ -14,6 +11,10 @@
 
 .footnote-back-reference a {
   color: var(--muted);
+}
+
+.footnote-back-reference button:hover {
+  opacity: 0.8;
 }
 
 .footnote-forward-reference {
