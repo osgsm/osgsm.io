@@ -1,0 +1,294 @@
+---
+title: "React Three Fiber でホバーやクリックなどのイベントを利用する"
+time:
+  created: "2025-02-16T02:49:59.767Z"
+  updated: "2025-02-16T02:49:59.767Z"
+tags: ["r3f", "threejs", "react", "3d"]
+---
+
+前回は、[React Three Fiber の基本から簡単にアニメーションさせるまで](/blog/introducing-r3f)を紹介しました。
+
+今回は、その続きとして、ホバーやクリックなどのイベントに反応するようにしていきます。
+
+Three.js でそのようなイベントを利用する場合は、Raycaster[^1] を使って実装する必要があり少し手間がかかります。
+
+[^1]: [Raycaster – three.js docs](https://threejs.org/docs/#api/en/core/Raycaster): Raycasting is used for mouse picking (working out what objects in the 3d space the mouse is over) amongst other things.
+
+しかし、 React Three Fiber では、コンポーネントに props を渡すだけでホバー時のエフェクトなどを追加することができます。
+
+## Props を使ってイベントに反応させる
+
+まずはメッシュをクリックしたときに `console.log(){:js}` を使って `clicked` と表示してみましょう。
+
+```tsx title="src/App.tsx" {1}
+<mesh ref={meshRef} onClick={() => console.log('clicked')}>
+  <sphereGeometry args={[2, 16, 16]} />
+  <meshStandardMaterial color="#5B5BD6" flatShading />
+</mesh>
+```
+
+<Video src="/blog/images/r3f-event-interaction/video1.mp4" />
+
+これだけです。めちゃくちゃ簡単ですね。
+
+ホバー時のエフェクトを追加したい場合は `onPointerEnter` を使います。
+
+```tsx
+<mesh ref={meshRef} onPointerEnter={() => console.log('hovered')}>
+```
+
+<Video src="/blog/images/r3f-event-interaction/video2.mp4" />
+
+`console.log(){:js}` だけではつまらないので、ホバー時にメッシュの見た目を変更してみましょう。
+
+このようなケースでは、React state を一緒に利用します。
+
+## React state と組み合わせる
+
+まずは `useState` をインポートし、 `isActive` state を用意します。
+
+```tsx title="src/App.tsx"
+// ...
+
+import { useRef, useState } from 'react';
+// ...
+
+function Sphere() {
+  const [isActive, setIsActive] = useState(false);
+  
+  // ...
+}
+```
+
+ホバー時にアクティブに、ホバーが外れたときに非アクティブになるようにします。それぞれ `onPointerEnter`, `onPointerLeave` を使います。
+
+```tsx title="src/App.tsx" {3,4}
+<mesh
+  ref={meshRef}
+  onPointerEnter={() => setIsActive(true)}
+  onPointerLeave={() => setIsActive(false)}
+>
+```
+
+`isActive` の値に応じてマテリアルの見た目が変わるようにしてみます。ここではメタリックなオレンジ色にしています。
+
+```tsx title="src/App.tsx" {8-10}
+<mesh
+  ref={meshRef}
+  onPointerEnter={() => setIsActive(true)}
+  onPointerLeave={() => setIsActive(false)}
+>
+  <sphereGeometry args={[2, 16, 16]} />
+  <meshStandardMaterial
+    metalness={isActive ? 0.5 : 0}
+    roughness={isActive ? 0.25 : 1}
+    color={isActive ? '#F76B15' : '#5B5BD6'}
+    flatShading
+  />
+</mesh>
+```
+
+<Video src="/blog/images/r3f-event-interaction/video3.mp4" />
+
+いい感じです。
+
+ただ、少し華やかに欠けるので、メッシュホバー時にシーンにライトが追加されるようにしていきましょう。
+
+## メッシュホバー時にシーンを更新する
+
+現状では、`<mesh />{:jsx}` コンポーネントが `isActive` state を持っていますが、シーンを更新するには `<App />{:jsx}` コンポーネントに `isActive` state を持たせる必要があります。なので、この state をリフトアップします。
+
+そして、`<Sphere />{:jsx}` コンポーネントから `isActive` state を更新できるように props として `setIsActive` も含めて渡しておきます。
+
+```tsx title="src/App.tsx" {2,7}
+function App() {
+  const [isActive, setIsActive] = useState(false);
+
+  return (
+    <Canvas>
+      <directionalLight args={['white', 1.5]} position={[0.5, 0.5, 1]} />
+      <Sphere isActive={isActive} setIsActive={setIsActive} />
+    </Canvas>
+  );
+}
+```
+
+`<Sphere />{:jsx}` コンポーネントから `useState(){:jsx}` の部分を削除し、 引数を追加します。
+
+```tsx title="src/App.tsx"
+function Sphere() { // [!code --]
+  const [isActive, setIsActive] = useState(false); // [!code --]
+function Sphere({ // [!code ++]
+  isActive, // [!code ++]
+  setIsActive, // [!code ++]
+}: { // [!code ++]
+  isActive: boolean; // [!code ++]
+  setIsActive: (isActive: boolean) => void; // [!code ++]
+}) { // [!code ++]
+  useFrame(({ clock }) => {
+    if (!meshRef.current) return;
+    meshRef.current.rotation.y = clock.elapsedTime * 0.3;
+    meshRef.current.rotation.z = clock.elapsedTime * 0.2;
+  });
+  const meshRef = useRef<Mesh>(null);
+
+  return (
+    <mesh
+      ref={meshRef}
+      onPointerEnter={() => setIsActive(true)}
+      onPointerLeave={() => setIsActive(false)}
+    >
+      <sphereGeometry args={[2, 16, 16]} />
+      <meshStandardMaterial
+        metalness={isActive ? 0.5 : 0}
+        roughness={isActive ? 0.25 : 1}
+        color={isActive ? '#F76B15' : '#5B5BD6'}
+        flatShading
+      />
+    </mesh>
+  );
+}
+```
+
+これで、メッシュホバー時に `<App />{:jsx}` コンポーネントの `isActive` state が更新されるようになります。
+
+では、試しにひとつライトを追加してみましょう。 `isActive` が `true` の場合に `<pointLight />{:jsx}` を表示します。
+
+```tsx title="src/App.tsx" {3}
+<Canvas>
+  <directionalLight args={['white', 1.5]} position={[0.5, 0.5, 1]} />
+  {isActive && <pointLight intensity={30} position={[0, 3, 1]} />}
+  <Sphere isActive={isActive} setIsActive={setIsActive} />
+</Canvas>
+```
+
+<Video src="/blog/images/r3f-event-interaction/video4.mp4" />
+
+少し華やかさが増しましたね！
+
+最後に、もっとライトを追加し、ライトのアニメーションも行い、キラキラな雰囲気にしてみましょう。
+
+まずは、`useRef` で利用する型 `PointLight`, `DirectionalLight` をインポートします。
+
+```tsx title="src/App.tsx"
+import type { Mesh, PointLight, DirectionalLight } from 'three';
+```
+
+`<DiscoLights />{:jsx}` コンポーネントを作成します。
+
+```tsx title="src/App.tsx"
+function DiscoLights() {
+  const lightsRef = useRef<PointLight[] | DirectionalLight[]>([]);
+
+  useFrame(({ clock }) => {
+    lightsRef.current.forEach((light, index) => {
+      if (!light) return;
+
+      const speed = 0.4 + index * 0.1;
+      const offset = index * 2;
+      const radius = 3 + (index % 2);
+
+      if (index % 2 === 0) {
+        light.position.x =
+          Math.sin(clock.elapsedTime * speed + offset) * radius;
+        light.position.y =
+          Math.cos(clock.elapsedTime * speed + offset) * radius;
+      } else {
+        light.position.y =
+          Math.sin(clock.elapsedTime * speed + offset) * radius;
+        light.position.z =
+          Math.cos(clock.elapsedTime * speed + offset) * radius;
+      }
+    });
+  });
+
+  return (
+    <>
+      {[
+        { color: 'red', intensity: 5, type: 'point' },
+        { color: 'green', intensity: 5, type: 'point' },
+        { color: 'purple', intensity: 4, type: 'point' },
+        { color: 'orange', intensity: 3, type: 'point' },
+        { color: 'cyan', intensity: 5, type: 'point' },
+        { color: 'blue', intensity: 8, type: 'directional' },
+        { color: 'green', intensity: 5, type: 'directional' },
+        { color: 'purple', intensity: 6, type: 'directional' },
+        { color: 'red', intensity: 3, type: 'directional' },
+      ].map(({ color, intensity, type }, index) =>
+        type === 'point' ? (
+          <pointLight
+            key={`${type}-${color}`}
+            ref={(el) => {
+              if (el) lightsRef.current[index] = el;
+            }}
+            color={color}
+            intensity={intensity}
+          />
+        ) : (
+          <directionalLight
+            key={`${type}-${color}`}
+            ref={(el) => {
+              if (el) lightsRef.current[5 + index] = el;
+            }}
+            color={color}
+            intensity={intensity}
+          />
+        )
+      )}
+      <pointLight color="white" intensity={10} position={[0, 2, 1]} />
+      <pointLight color="white" intensity={10} position={[0, -3, 1]} />
+    </>
+  );
+}
+```
+
+アクティブ時のマテリアルをもっとメタリックにします。
+
+```tsx title="src/App.tsx" {2-4}
+<meshStandardMaterial
+  metalness={isActive ? 0.9 : 0}
+  roughness={isActive ? 0.2 : 1}
+  color={isActive ? '#FFF' : '#5B5BD6'}
+  flatShading
+/>
+```
+
+`<DiscoLights />{:jsx}` を `<App />{:jsx}` に追加します。
+
+```tsx title="src/App.tsx" {7}
+function App() {
+  const [isActive, setIsActive] = useState(false);
+
+  return (
+    <Canvas>
+      <directionalLight args={['white', 1.5]} position={[0.5, 0.5, 1]} />
+      {isActive && <DiscoLights />}
+      <Sphere isActive={isActive} setIsActive={setIsActive} />
+    </Canvas>
+  );
+}
+```
+
+これで、次のようになります。
+
+<Video src="/blog/images/r3f-event-interaction/video5.mp4" />
+
+キラキラですね！
+
+## さいごに
+
+R3F では、props を使うだけでホバーやクリックなどのイベントに反応させることができるので、とてもラクですね。
+
+React state を組み合わせて、それに応じてコンポーネントを追加したり、メッシュの見た目を変更したりするだけで、3D オブジェクトを簡単にインタラクティブにできます。
+
+今回デモを作成するときに、本題のイベント使用部分が簡単にでき過ぎたので、無駄にメッシュをキラキラにしてみました。
+
+このように、下準備の時間を最小限にして、演出の部分に時間を割けるというのも R3F のいいところだと感じます。
+
+React Three Fiber、ますます魅力的です！
+
+---
+
+参考
+
+- [Events and Interaction - React Three Fiber](https://r3f.docs.pmnd.rs/tutorials/events-and-interaction)
