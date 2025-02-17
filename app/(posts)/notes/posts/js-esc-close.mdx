@@ -1,0 +1,33 @@
+---
+title: "JavaScript で エスケープキー（Esc）を押したときにモーダルを閉じる"
+time:
+  created: "2025-02-17T07:00:01.241Z"
+  updated: "2025-02-17T07:00:01.241Z"
+tags: ["js"]
+---
+
+モーダルはエスケープキー押下で閉じられる方が親切。モーダル系のライブラリはこれを実装していることが多く、キーボードを使ってブラウジングする人にとってもやさしい設計にできる。
+
+方法としては、 `window` で `'keydown'{:ts}` イベントをリッスンし、イベントハンドラーで `closeDialog(){:ts}` のようなモーダルを閉じる処理を行う。
+
+```ts title="TypeScript"
+const onKeyDownEsc = (event: KeyboardEvent) => {
+	if (!isOpen || event.key !== 'Escape') return;
+	event.preventDefault();
+	closeDialog();
+};
+
+window.addEventListener('keydown', onKeyDownEsc);
+```
+
+ここでは、`isOpen` 変数でモーダルの状態を管理しているとする。
+
+もし `isOpen` でない場合や押下されたキーが `'Escape'{:ts}` でない場合は、アーリーリターンする。
+
+---
+
+参考
+
+- [Element: keydown event - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/keydown_event)
+- [KeyboardEvent: key property - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key)
+
