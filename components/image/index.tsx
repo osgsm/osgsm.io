@@ -27,7 +27,8 @@ export default function MDXImage({
     <motion.a
       className="hover:!opacity-100 my-6 flex cursor-pointer flex-col justify-end gap-2"
       href={href}
-      whileHover={{ scale: 0.975 }}
+      target={href.startsWith("/") ? "_self" : "_blank"}
+      whileHover={{ scale: 0.99 }}
     >
       <div
         className={cn(
