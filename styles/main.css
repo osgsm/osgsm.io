@@ -109,7 +109,7 @@
     }
 
     sub {
-      @apply text-small;
+      @apply text-small leading-snug;
     }
 
     a {
