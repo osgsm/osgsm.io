@@ -1,0 +1,27 @@
+---
+title: "JavaScript でタッチデバイスかどうかを判定する"
+time:
+  created: "2025-02-18T06:52:35.333Z"
+  updated: "2025-02-18T06:52:35.333Z"
+tags: ["js", "touch", "mobile"]
+---
+
+JavaScript  でタッチデバイスかどうかを判定する方法のひとつとして `Window.matchMedia(){:js}` を使う方法がある。
+
+タッチデバイスは `'(hover: none)'` に該当するので、 `MediaQueryList.matches{:js}` プロパティを条件にし、それにマッチする場合の処理を書く。
+
+```ts
+if (window.matchMedia('(hover: none)').matches) {
+  console.log('this is a touch device');
+} else {
+  console.log('this is a mouse device');
+}
+```
+
+---
+
+参考
+
+- [Window: matchMedia() method - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia)
+- [hover - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/hover)
+- [MediaQueryList: matches property - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/matches)
