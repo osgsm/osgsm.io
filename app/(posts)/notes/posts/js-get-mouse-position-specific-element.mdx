@@ -24,7 +24,7 @@ el?.addEventListener('mousemove', (event: MouseEvent) => {
 
 `DOMRect` のプロパティについては、MDN の画像がわかりやすい（下図参照）。
 
-<Image className="rounded-none" src="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect/element-box-diagram.png" alt="DOMRect object that is the smallest rectangle containing the entire element." caption="Element: getBoundingClientRect() method - Web APIs | MDN" />
+<Image className="rounded-none bg-white-a11" src="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect/element-box-diagram.png" alt="DOMRect object that is the smallest rectangle containing the entire element." caption="Element: getBoundingClientRect() method - Web APIs | MDN" />
 
 したがって、イベントリスナーがアタッチされている要素で `getBoundingClientRect(){:js}` をコールし、返された object の `left` と `top` の値を `event.clientX{:js}` と `event.clientY{:js}` から引く。
 
