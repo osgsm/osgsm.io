@@ -1,0 +1,52 @@
+---
+title: "特定の要素の中でマウスイベントが生じた位置を取得する"
+time:
+  created: "2025-02-18T02:27:11.102Z"
+  updated: "2025-02-18T02:27:11.102Z"
+tags: ["js", "mouse", "event"]
+---
+
+例えば、 `a` 要素内でマウスイベントが生じた位置を取得しようと、次のように `MouseEvent.clientX{:js}` などを使っても、ビューポートにおけるイベントが生じた位置しか取得できない。
+
+```ts title="TypeScript"
+const el = document.querySelector('a');
+
+el?.addEventListener('mousemove', (event: MouseEvent) => {
+  console.log({ x: event.clientX, y: event.clientY });
+});
+```
+
+仮に、ビューポート内で要素が左端から 40px、上端から400pxの位置にあるとして、その要素の左上端でマウスイベントが生じた場合、 `event.clientX{:js}` は `40` になり、 `event.clientY{:js}` は `400` になる。
+
+特定の要素の中でイベントが発生した位置を取得したい場合、上述のケースでは、それぞれ `0` を取得したい。
+
+これを実現するには、 `Element.getBoundingClientRect(){:js}` を使う。このメソッドは `DOMRect` object を返すが、この object には、その要素のサイズとビューポートを基準とした位置が含まれる。
+
+`DOMRect` のプロパティについては、MDN の画像がわかりやすい（下図参照）。
+
+<Image className="rounded-none" src="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect/element-box-diagram.png" alt="DOMRect object that is the smallest rectangle containing the entire element." caption="Element: getBoundingClientRect() method - Web APIs | MDN" />
+
+したがって、イベントリスナーがアタッチされている要素で `getBoundingClientRect(){:js}` をコールし、返された object の `left` と `top` の値を `event.clientX{:js}` と `event.clientY{:js}` から引く。
+
+```ts title="TypeScript"
+el?.addEventListener('mousemove', (event: MouseEvent) => {
+  if (!(event.currentTarget instanceof HTMLAnchorElement)) return;
+
+  const targetRect = event.currentTarget.getBoundingClientRect();
+
+  console.log({
+    x: event.clientX - targetRect.left,
+    y: event.clientY - targetRect.top,
+  });
+});
+```
+
+これで、 `a` 要素の左上端でイベントが生じた場合に `0`, `0` を取得できる。
+
+---
+
+参考
+
+- [MouseEvent: clientX property - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/clientX)
+- [Element: getBoundingClientRect() method - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect)
+- [DOMRect - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/DOMRect)
