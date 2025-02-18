@@ -62,8 +62,8 @@ const components: MDXComponents = {
       {children}
     </Preview>
   ),
-  Image: ({ caption, alt, ...props }) => (
-    <MDXImage {...props} caption={caption} alt={alt} />
+  Image: ({ className, caption, alt, ...props }) => (
+    <MDXImage {...props} className={className} caption={caption} alt={alt} />
   ),
   h2: ({ children, id }: React.HTMLAttributes<HTMLHeadingElement>) => {
     if (id?.includes("footnote-label")) {

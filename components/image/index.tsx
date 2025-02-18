@@ -2,16 +2,24 @@
 
 import type { ImageProps } from "next/image";
 
+import { cn } from "@/lib/cn";
+
 import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
 
 interface MDXImageProps extends ImageProps {
+  className?: string;
   alt: string;
   caption?: string;
 }
 
-export default function MDXImage({ caption, alt, ...props }: MDXImageProps) {
+export default function MDXImage({
+  className,
+  caption,
+  alt,
+  ...props
+}: MDXImageProps) {
   const [isImageLoading, setImageLoading] = React.useState(true);
   const href = props.src.toString();
 
@@ -21,7 +29,12 @@ export default function MDXImage({ caption, alt, ...props }: MDXImageProps) {
       href={href}
       whileHover={{ scale: 0.975 }}
     >
-      <div className="relative max-h-[560px] w-fit overflow-hidden rounded-large border border-border">
+      <div
+        className={cn(
+          "relative max-h-[560px] w-fit overflow-hidden rounded-large border border-border",
+          className,
+        )}
+      >
         <Image
           unoptimized
           alt={alt}
