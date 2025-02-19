@@ -52,6 +52,15 @@ if (storedView && container) {
 ```
 
 ```ts title="TypeScript"
+const storedView = localStorage.getItem('viewMode');
+
+if (storedView && container) {
+  container.dataset.view = storedView;
+  triggers?.forEach((trigger) => {
+    trigger.disabled = trigger.dataset.view === storedView;
+  });
+}
+
 triggers?.forEach((trigger) => {
   trigger.addEventListener('click', (event: MouseEvent) => {
     if (!container || !(event.currentTarget instanceof HTMLButtonElement))
@@ -68,15 +77,6 @@ triggers?.forEach((trigger) => {
     localStorage.setItem('viewMode', nextView);
   });
 });
-
-const storedView = localStorage.getItem('viewMode');
-
-if (storedView && container) {
-  container.dataset.view = storedView;
-  triggers?.forEach((trigger) => {
-    trigger.disabled = trigger.dataset.view === storedView;
-  });
-}
 ```
 
 ---
