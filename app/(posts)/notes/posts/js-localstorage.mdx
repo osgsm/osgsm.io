@@ -1,0 +1,87 @@
+---
+title: "JavaScript でローカルストレージを使ってユーザーが選択したモードなどを保存・取得する"
+time:
+  created: "2025-02-19T01:44:26.176Z"
+  updated: "2025-02-19T01:44:26.176Z"
+tags: ["js", "localstorage"]
+---
+
+View モードの変更やダークモードの使用など、ウェブサイトやアプリケーション内でユーザーが選択したモードはローカルストレージに保存しておくと親切。
+
+ここでは、 View モードの変更を例に、ローカルストレージの読み書きを行う方法を示す。
+
+例えば、次のような `<button>{:html}` のマークアップがあるとする。
+
+```html
+<button data-view="list">List</button>
+<button data-view="grid">grid</button>
+```
+
+それぞれのボタンクリック時に該当のボタンの `data-view` 属性の値をローカルストレージにセットする。 `localStorage.setItem(){:ts}` を使い、 `'viewMode'{:ts}` というキーを持つ項目を追加する。
+
+```ts title="TypeScript"
+const triggers = container?.querySelectorAll('button');
+
+triggers?.forEach((trigger) => {
+  trigger.addEventListener('click', (event: MouseEvent) => {
+    if (!(event.currentTarget instanceof HTMLButtonElement)) return;
+    const nextView = event.currentTarget.dataset.view ?? 'list';
+
+    localStorage.setItem('viewMode', nextView);
+  });
+});
+```
+
+これで、`localStorage.getItem('viewMode'){:ts}` 使って、その値を取得できる。例えば、次のように、初回読み込み時にストアされている値を使ってコンテナーの `dataset` をセットすることができる。
+
+```ts
+const storedView = localStorage.getItem('viewMode');
+
+if (storedView && container) {
+  container.dataset.view = storedView;
+}
+```
+
+以上で、ローカルストレージの読み書きはできるが、実際には、現在のモードのボタンに `disabled` を付与したり、ボタンクリック時にコンテナーの状態も変更しておく必要がある。
+
+それらを含めたマークアップとスクリプトは次のようになる。
+
+```html
+<button data-view="list" disabled>List</button>
+<button data-view="grid">grid</button>
+```
+
+```ts title="TypeScript"
+triggers?.forEach((trigger) => {
+  trigger.addEventListener('click', (event: MouseEvent) => {
+    if (!container || !(event.currentTarget instanceof HTMLButtonElement))
+      return;
+
+    const nextView = event.currentTarget.dataset.view ?? 'list';
+
+    container.dataset.view = nextView;
+
+    triggers.forEach((trigger) => {
+      trigger.disabled = trigger.dataset.view === nextView;
+    });
+
+    localStorage.setItem('viewMode', nextView);
+  });
+});
+
+const storedView = localStorage.getItem('viewMode');
+
+if (storedView && container) {
+  container.dataset.view = storedView;
+  triggers?.forEach((trigger) => {
+    trigger.disabled = trigger.dataset.view === storedView;
+  });
+}
+```
+
+---
+
+参考
+
+- [Window: localStorage property - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
+- [Storage - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Storage)
