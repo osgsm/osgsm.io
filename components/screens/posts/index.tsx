@@ -36,7 +36,7 @@ export const Layout = ({ post, route }: Props) => {
           <div>
             <h1>{post.title}</h1>
           </div>
-          <div className="mt-2 flex gap-2 text-muted text-small">
+          <div className="mt-3 flex gap-2 text-muted text-small">
             <PublishedTime />
             <Seperator />
             <UpdateTime />
