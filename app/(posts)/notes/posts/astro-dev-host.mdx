@@ -6,13 +6,13 @@ time:
 tags: ["astro", "development", "mobile", "smartphone"]
 ---
 
-Astro では `astro dev{:shell}` コマンドで開発サーバーを起動できるが、これに `--help{:shell}` flag を渡すことで、同じネットワーク上にある他のデバイスで開発中のサイトにアクセスできる。
+Astro では `astro dev{:shell}` コマンドで開発サーバーを起動できるが、これに `--host{:shell}` flag を渡すことで、同じネットワーク上にある他のデバイスで開発中のサイトにアクセスできる。
+
+`package.json` の `scripts` に `"dev": "astro dev"{:json}` がある場合、次のように実行する。
 
 ```shell
 pnpm dev --host
 ```
-
-上記の例は、 `package.json` の `scripts` に `"dev": "astro dev"{:json}` が設定されていることが前提。
 
 `astro dev{:shell}` には、他にも次のような flags が用意されている。
 
