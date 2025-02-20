@@ -1,0 +1,42 @@
+---
+title: "Astro で開発中のサイトをスマホでチェックする"
+time:
+  created: "2025-02-20T00:18:34.870Z"
+  updated: "2025-02-20T00:18:34.870Z"
+tags: ["astro", "development", "mobile", "smartphone"]
+---
+
+Astro では `astro dev{:shell}` コマンドで開発サーバーを起動できるが、これに `--help{:shell}` flag を渡すことで、同じネットワーク上にある他のデバイスで開発中のサイトにアクセスできる。
+
+```shell
+pnpm dev --host
+```
+
+上記の例は、 `package.json` の `scripts` に `"dev": "astro dev"{:json}` が設定されていることが前提。
+
+`astro dev{:shell}` には、他にも次のような flags が用意されている。
+
+```shell title="Terminal"
+> astro "dev" "--help"
+
+
+  astro dev [...flags]
+
+   Flags 
+                   --mode  Specify the mode of the project. Defaults to "development".
+                   --port  Specify which port to run on. Defaults to 4321.
+                   --host  Listen on all addresses, including LAN and public addresses.
+  --host <custom-address>  Expose on a network IP address at <custom-address>
+                   --open  Automatically open the app in the browser on server start
+                  --force  Clear the content layer cache, forcing a full rebuild.
+              --help (-h)  See all available flags.
+
+Check https://docs.astro.build/en/reference/cli-reference/#astro-dev for more information.
+```
+
+---
+
+参考
+
+- [CLI Commands | Docs](https://docs.astro.build/en/reference/cli-reference/#astro-dev)
+
