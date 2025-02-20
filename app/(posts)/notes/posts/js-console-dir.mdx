@@ -1,0 +1,19 @@
+---
+title: "JavaScript で Object の中身をコンソールで確認する"
+time:
+  created: "2025-02-20T07:34:34.403Z"
+  updated: "2025-02-20T07:34:34.403Z"
+tags: ["javascript", "console"]
+---
+
+コンソール上で Object の中身を確認したい場合は `console.dir(){:js}` を使う。第2引数としてオプションを渡せるので、全レベルを表示したい場合は `{ depth: null }{:js}` を渡す。
+
+```js
+console.dir(object, { depth: null });
+```
+
+---
+
+参考
+
+- [console: dir() static method - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/console/dir_static)
