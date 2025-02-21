@@ -133,7 +133,10 @@ const components: MDXComponents = {
   },
   ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
     <ul
-      className={cn("mt-6 ml-3 list-disc leading-relaxed", className)}
+      className={cn(
+        "mt-6 ml-3 list-disc leading-relaxed [li>&]:mt-0",
+        className,
+      )}
       {...props}
     />
   ),
