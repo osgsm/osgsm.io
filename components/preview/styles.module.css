@@ -7,9 +7,9 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    min-height: 320px;
-    padding: 24px;
-    margin-top: 4px;
+    min-height: 20rem;
+    padding: 1.5rem;
+    margin-top: 0.25rem;
     border-color: var(--border);
     border-width: 1px;
     border-radius: var(--radius-base);
