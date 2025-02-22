@@ -15,6 +15,7 @@
     "lint": "npm run lint:style && npm run lint:prettier && npm run lint:biome"
   },
   "dependencies": {
+    "@giscus/react": "^3.1.0",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/mdx": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
