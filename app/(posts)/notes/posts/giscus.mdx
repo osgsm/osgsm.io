@@ -1,0 +1,71 @@
+---
+title: "giscus を使ってブログにコメント機能を追加する"
+time:
+  created: "2025-02-23T10:14:41.140Z"
+  updated: "2025-02-23T10:14:41.140Z"
+tags: ["github", "comment"]
+---
+
+<Callout title="Dependency">
+```json
+"@giscus/react": "^3.1.0"
+```
+</Callout>
+
+giscus は、GitHub Discussions を使ったコメントシステム。データは GitHub Discussions にストアされる。
+
+giscus を利用するには、次の条件を満たす必要がある。
+
+- リポジトリが public であること
+- [giscus](https://github.com/apps/giscus) アプリがインストールされていること
+- GitHub Discussions を有効にすること
+
+導入と設定を行うには、[giscus](https://giscus.app/ja) にアクセスする。 このページで入力を進めていくと最後に `<script>{:html}` タグを提示してくれるので、サイト内の適当な場所に貼り付ける。
+
+React で使う場合は、 [giscus/giscus-component](https://github.com/giscus/giscus-component) というものがあるのでこれを使う。
+
+```shell
+pnpm add @giscus/react
+```
+
+そして、インポートした `<Giscus />{:tsx}` コンポーネントに、上述の設定ページで確認した内容を props として渡す。
+
+このブログは Next.js で作成しているので、次のような内容でコンポーネント用のファイルを作成した。 `useTheme(){:tsx}` を使ってテーマも切り替わるようにしている。
+
+```tsx
+"use client";
+
+import Giscus from "@giscus/react";
+import { useTheme } from "next-themes";
+
+export const Comments = () => {
+  const { theme } = useTheme();
+
+  return (
+    <div className="mt-12">
+      <Giscus
+        id="comments"
+        repo="osgsm/osgsm.io-v2"
+        repoId="R_kgDONdFYBw"
+        categoryId="DIC_kwDONdFYB84CnNrT"
+        mapping="pathname"
+        reactionsEnabled="1"
+        emitMetadata="0"
+        inputPosition="bottom"
+        theme={theme === "dark" ? "dark" : "light"}
+        lang="en"
+        loading="lazy"
+      />
+    </div>
+  );
+};
+```
+
+以上で、コメント機能が追加される。どのようなコメント欄が追加されるかは、この投稿の最下部をチェック。
+
+---
+
+参考
+
+- [giscus](https://giscus.app/)
+
