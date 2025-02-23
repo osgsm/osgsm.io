@@ -17,7 +17,7 @@ export const Comments = () => {
         reactionsEnabled="1"
         emitMetadata="0"
         inputPosition="bottom"
-        theme={resolvedTheme === "dark" ? "dark" : "light"}
+        theme={resolvedTheme}
         lang="en"
         loading="lazy"
       />
