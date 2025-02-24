@@ -6,25 +6,21 @@ time:
 tags: ["react", "threejs", "r3f", "3d"]
 ---
 
-<Callout type="important">
-React Three Fiber v8 は React 19 に対応していないので、React 19 で使用したい場合は `@react-three/fiber@rc` をインストールする必要があります。この投稿では React 18 を使用します。
-</Callout>
-
 <Callout title="Dependencies">
 ```json
-"@react-three/fiber": "^8.17.14",
-"react": "^18.0.0",
-"react-dom": "^18.0.0",
+"@react-three/fiber": "^9.0.0",
+"react": "^19.0.0",
+"react-dom": "^19.0.0",
 "three": "^0.173.0"
-"@types/react": "^18.0.0",
-"@types/react-dom": "^18.0.0",
+"@types/react": "^19.0.0",
+"@types/react-dom": "^19.0.0",
 "@types/three": "^0.173.0",
 ```
 </Callout>
 
-React Three Fiber （以下 R3F）は、three.js のための React renderer。React コンポーネントを使ってシーンを宣言的に構築できるのが特徴です。
+React Three Fiber （以下 R3F）は、three.js のための React renderer で、React コンポーネントを使ってシーンを宣言的に構築できるのが特徴です。
 
-最小限であれば、次のような JSX でオブジェクトをシーンに配置できます。
+最小限であれば、次のような JSX で 3D オブジェクトをシーンに配置できます。
 
 ```jsx
 <Canvas>
@@ -48,28 +44,9 @@ React Three Fiber （以下 R3F）は、three.js のための React renderer。R
 Done.
 ```
 
-執筆時点では、`create vite` コマンドではデフォルトで React 19 が使われますが、 R3F v8 ではそれに対応していないので、React 18 を使用するように変更します。 `package.json` を次のように変更します。 
+次に、R3F に必要なパッケージをインストールします。
 
-```json title="package.json"
-  "dependencies": {
-    "react": "^19.0.0", // [!code --]
-    "react-dom": "^19.0.0", // [!code --]
-    "react": "^18.0.0", // [!code ++]
-    "react-dom": "^18.0.0", // [!code ++]
-  },
-  "devDependencies": {
-    // ...
-    "@types/react": "^19.0.0", // [!code --]
-    "@types/react-dom": "^19.0.0", // [!code --]
-    "@types/react": "^18.0.0", // [!code ++]
-    "@types/react-dom": "^18.0.0", // [!code ++]
-    // ...
-  }
-```
-
-R3F に必要なパッケージをインストールします。
-
-```shell 
+```shell
 pnpm add three @types/three @react-three/fiber
 ```
 
@@ -128,8 +105,6 @@ export default App;
 
 <Image src="/blog/images/introducing-r3f/image2.png" alt="" />
 
-いい感じですね！
-
 とりあえずオブジェクトを配置できたので、 `App.tsx` に追加した `<Canvas />{:tsx}` コンポーネントなどについて解説していきます。
 
 ### `<Canvas />{:tsx}` コンポーネント
@@ -139,7 +114,7 @@ export default App;
 - Three.js の基本構成要素であるシーンとカメラのセットアップ
 - 毎フレームでシーンをレンダリング
 
-Three.js では、シーンやカメラをインスタンス化し、 `requestAnimationFrame()`で毎フレームレンダリングするための記述が必要になりますが、 R3F では `<Canvas />{:tsx}` を使うだけでそれが可能になります。
+Three.js では、シーンやカメラをインスタンス化し、 `requestAnimationFrame(){:ts}`で毎フレームレンダリングするための記述が必要になりますが、 R3F では `<Canvas />{:tsx}` を使うだけでそれが可能になります。
 
 R3F では、デフォルト値がいい感じに設定されているので、簡単に 3D オブジェクトを配置できます。どのような値が設定されているかは [Canvas - React Three Fiber](https://r3f.docs.pmnd.rs/api/canvas#properties) から確認できます。
 
