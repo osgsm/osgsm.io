@@ -1,10 +1,10 @@
 "use client";
 
-export function CodeSandbox({ url, module }: { url: string; module?: string }) {
+export function CodeSandbox({ id, module }: { id: string; module?: string }) {
   const defaultModule = "/src/App.tsx";
   return (
     <iframe
-      src={`${url}?view=preview&module=${module || defaultModule}&hidenavigation=1&hidedevtools=1`}
+      src={`https://codesandbox.io/embed/${id}?view=preview&module=${module || defaultModule}&hidenavigation=1&hidedevtools=1`}
       style={{
         width: "100%",
         height: "30rem",

@@ -24,7 +24,7 @@ import remarkGfm from "remark-gfm";
 import MDXVideo from "./components/video";
 
 const components: MDXComponents = {
-  CodeSandbox: ({ url, module }) => <CodeSandbox url={url} module={module} />,
+  CodeSandbox: ({ id, module }) => <CodeSandbox id={id} module={module} />,
   Callout: ({ type, title, children }) => (
     <Callout type={type} title={title}>
       {children}
