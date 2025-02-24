@@ -4,6 +4,7 @@ import type { PluggableList } from "unified";
 
 import { Bluesky } from "@/components/bluesky";
 import { Callout } from "@/components/callout";
+import { CodeSandbox } from "@/components/codesandbox";
 import FootnoteBackReference from "@/components/footnote/back-reference";
 import FootnoteForwardReference from "@/components/footnote/forward-reference";
 import MDXImage from "@/components/image";
@@ -23,6 +24,7 @@ import remarkGfm from "remark-gfm";
 import MDXVideo from "./components/video";
 
 const components: MDXComponents = {
+  CodeSandbox: ({ url, module }) => <CodeSandbox url={url} module={module} />,
   Callout: ({ type, title, children }) => (
     <Callout type={type} title={title}>
       {children}
