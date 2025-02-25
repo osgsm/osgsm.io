@@ -1,0 +1,33 @@
+---
+title: "Newt で特定のフィールドの値を取得する"
+time:
+  created: "2025-02-25T05:45:13.584Z"
+  updated: "2025-02-25T05:45:13.584Z"
+tags: ["newt", "select"]
+---
+
+投稿一覧ページでは必要なデータは限られる。例えば、投稿のスラッグとタイトルのみとか。
+
+Newt を使っている場合、 `getContents(){:ts}` に渡すパラメータの中の `query.select` を使って取得するフィールドを選択できる。 `string[]` を渡せる。
+
+```ts {8}
+import { newtClient } from '../lib/newt'
+import type { Article } from '../lib/newt'
+
+const { items: articles } = await newtClient.getContents<Article>({
+  appUid: 'blog',
+  modelUid: 'article',
+  query: {
+    select: ['title', 'slug'],
+  },
+})
+```
+
+`select` 以外にも `order`, `limit`, `skip`, `depth`, `or`, `and` などが使える。詳しくは [Newt-Inc/newt-client-js: JavaScript client for Newt.](https://github.com/Newt-Inc/newt-client-js#get-contents) を参照。
+
+---
+
+参考
+
+- [Newt-Inc/newt-client-js: JavaScript client for Newt.](https://github.com/Newt-Inc/newt-client-js#get-contents)
+- [NewtとAstro v4を利用してブログを作成する](https://www.newt.so/docs/tutorials/get-contents-in-astro#4-3.%20%E6%8A%95%E7%A8%BF%E4%B8%80%E8%A6%A7%E3%81%AE%E5%8F%96%E5%BE%97%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B)
