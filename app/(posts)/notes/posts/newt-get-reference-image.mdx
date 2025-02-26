@@ -1,0 +1,84 @@
+---
+title: "Newt で投稿にひもづいた参照フィールドの画像の情報などを取得する"
+time:
+  created: "2025-02-26T00:54:02.528Z"
+  updated: "2025-02-26T00:54:02.528Z"
+tags: ["newt"]
+---
+
+<Callout title="dependency">
+```json
+"newt-client-js": "^3.3.8"
+```
+</Callout>
+
+ここでは、「投稿モデル」と「著者モデル」があり、「投稿モデル」の「著者フィールド」を「参照」にし、「著者モデル」を参照するようにしていると仮定する。
+
+関連リンクに画像を設定している場合、デフォルトでは次のように `image` には ID のみが含まれる。
+
+```js
+author: [
+    {
+      _id: '610b77253adec80018727d57',
+      _sys: {
+        // ...
+      },
+      name: 'John Smith',
+      image: '610b77253adec80018727d58',
+    }
+  ],
+```
+
+画像の `src` などを取得したい場合は、 `getContents()` の `query.depth` を使う。 例えば Astro なら次のようになる。
+
+```ts {5-7} title="src/pages/posts/[slug].astro"
+export const getStaticPaths = async () => {
+  const { items: posts } = await newtClient.getContents<Post>({
+    appUid: 'blog',
+    modelUid: 'article',
+    query: {
+      depth: 2,
+    },
+  });
+
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+};
+
+const { post } = Astro.props;
+```
+
+これで、次のように `src` なども取得できる。
+
+```js
+author: [
+    {
+      _id: '610b77253adec80018727d57',
+      _sys: {
+        // ...
+      },
+      name: 'John Smith',
+      image: {
+        _id: '610b77253adec80018727d58',
+        altText: '',
+        description: '',
+        fileName: 'author.jpg',
+        fileSize: 48876,
+        fileType: 'image/jpeg',
+        height: 600,
+        metadata: {},
+        src: 'https://osgsm-demo.assets.newt.so/v1/e5f345c-4136-41dd-9be8-4dba160657d6/author.jpg',
+        title: '',
+        width: 400
+      },
+    }
+  ],
+```
+
+---
+
+参考
+
+- [利用可能なクエリ | ガイド: CDN API・Newt API | ヘッドレスCMS「Newt」](https://www.newt.so/docs/cdn-api-newt-api-queries#1-7.%20Depth)
