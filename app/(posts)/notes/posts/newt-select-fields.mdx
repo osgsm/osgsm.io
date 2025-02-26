@@ -6,6 +6,12 @@ time:
 tags: ["newt", "select"]
 ---
 
+<Callout title="dependency">
+```json
+"newt-client-js": "^3.3.8"
+```
+</Callout>
+
 投稿一覧ページでは必要なデータは限られる。例えば、投稿のスラッグとタイトルのみとか。
 
 Newt を使っている場合、 `getContents(){:ts}` に渡すパラメータの中の `query.select` を使って取得するフィールドを選択できる。 `string[]` を渡せる。
