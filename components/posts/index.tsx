@@ -1,5 +1,7 @@
 import { getPosts } from "@/lib/mdx";
 
+import { Suspense } from "react";
+
 import { PostsList } from "./PostsList";
 
 interface PostProps {
@@ -24,7 +26,7 @@ export const Posts = ({
   }
 
   return (
-    <>
+    <Suspense>
       <div className="mt-4 grid items-start gap-8 pb-8 lg:grid-cols-12">
         <div className="top-14 col-span-full flex justify-between no-underline lg:sticky lg:col-span-4">
           <hgroup className="grid content-start gap-2">
@@ -51,6 +53,6 @@ export const Posts = ({
           />
         </div>
       </div>
-    </>
+    </Suspense>
   );
 };
