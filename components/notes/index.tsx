@@ -1,15 +1,18 @@
 import { getPosts } from "@/lib/mdx";
 
-import { ArrowRightIcon } from "@radix-ui/react-icons";
-import * as motion from "motion/react-client";
-import { Link as NextViewTransition } from "next-view-transitions";
+import { PostsList } from "./PostsList";
 
 interface PostProps {
   category: string;
   numberOfPosts?: number;
+  showMoreButton?: boolean;
 }
 
-export const Notes = ({ category, numberOfPosts }: PostProps) => {
+export const Notes = ({
+  category,
+  numberOfPosts,
+  showMoreButton = true,
+}: PostProps) => {
   const posts = getPosts(category).sort((a, b) => {
     return (
       new Date(b.time.created).getTime() - new Date(a.time.created).getTime()
@@ -41,24 +44,13 @@ export const Notes = ({ category, numberOfPosts }: PostProps) => {
           </hgroup>
         </div>
         <div className="col-span-full grid lg:col-span-8">
-          {posts.slice(0, numberOfPosts).map((post) => {
-            return (
-              <motion.div
-                whileHover={{ filter: "brightness(1.25)" }}
-                key={post.slug}
-              >
-                <NextViewTransition
-                  href={`/${category}/${post.slug}`}
-                  className="trainsition-all relative flex w-full items-center justify-between gap-3 border-iris-4 border-b py-4 leading-normal no-underline hover:border-iris-8 hover:opacity-100 dark:hover:border-iris-5"
-                >
-                  <p className="~text-base/lg text-foreground">{post.title}</p>
-                  <div className="grid size-8 shrink-0 place-items-center rounded-full border border-iris-4">
-                    <ArrowRightIcon className="text-muted" />
-                  </div>
-                </NextViewTransition>
-              </motion.div>
-            );
-          })}
+          <PostsList
+            posts={posts}
+            numberOfPosts={numberOfPosts}
+            category={category}
+            initialVisibleCount={12}
+            showMoreButton={showMoreButton}
+          />
         </div>
       </div>
     </>
