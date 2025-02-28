@@ -8,8 +8,6 @@ import * as motion from "motion/react-client";
 import { Link } from "next-view-transitions";
 import { FaBluesky, FaGithub, FaXTwitter } from "react-icons/fa6";
 
-const Spacer = () => <div style={{ marginTop: "48px" }} />;
-
 export default function Home() {
   const variants = {
     initial: { opacity: 0, y: 8 },
@@ -179,7 +177,7 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <Posts category="blog" numberOfPosts={5} />
+            <Posts category="blog" numberOfPosts={4} showMoreButton={false} />
             <Link
               href="/blog"
               className="ml-auto flex w-fit items-center gap-1 rounded-sm p-1 text-muted"
@@ -194,7 +192,7 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <Notes category="notes" numberOfPosts={10} />
+            <Notes category="notes" numberOfPosts={8} showMoreButton={false} />
             <Link
               href="/notes"
               className="ml-auto flex w-fit items-center gap-1 rounded-sm p-1 text-muted"
