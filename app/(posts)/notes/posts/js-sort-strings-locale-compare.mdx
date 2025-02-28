@@ -1,0 +1,32 @@
+---
+title: "JavaScript で大文字と小文字が混ざった文字列の配列をいい感じにソートする"
+time:
+  created: "2025-02-28T03:10:40.879Z"
+  updated: "2025-02-28T03:10:40.879Z"
+tags: ["js", "sort"]
+---
+
+JavaScript で大文字と小文字が混ざった文字列の配列をソートするために、 `sort(){:ts}` を使った場合、次のような結果になる。
+
+```js
+['apple', 'Banana', 'Apple', 'banana'].sort()
+// Array(4) [ "Apple", "Banana", "apple", "banana" ]
+```
+
+デフォルトのソートでは、 UTF-16 code unit の値をもとに並び替えられるため大文字が先に来てしまう。
+
+慣習的には、 `[ "apple", "Apple", "banana", "Banana" ]{:ts}` のように、同じ内容の文字列を小文字 → 大文字の順で並び替えたい。
+
+このようなケースでは `sort(){:ts}` の比較関数に `localeCompare(){:ts}` を使う。これにより言語慣習に基づく順番で並び替えることができる。
+
+```js
+['apple', 'Banana', 'Apple', 'banana'].sort((a, b) => a.localeCompare(b));
+// Array(4) [ "apple", "Apple", "banana", "Banana" ]
+```
+
+---
+
+参考
+
+- [Array.prototype.sort() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+- [String.prototype.localeCompare() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare)
