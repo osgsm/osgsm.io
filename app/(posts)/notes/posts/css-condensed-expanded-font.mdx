@@ -1,0 +1,46 @@
+---
+title: "CSS で文字を長体（もしくは平体）にする"
+time:
+  created: "2025-03-01T14:24:40.411Z"
+  updated: "2025-03-01T14:24:40.411Z"
+tags: ["css", "condensed", "expanded"]
+---
+
+CSS で文字を長体（もしくは平体）にするには `scale` と `width` を組み合わせ、文字を含むコンテナーのスケールを縮小（拡大）した分だけ幅を伸縮させる。
+
+<Preview codeblock>
+<div className="text-xl leading-snug font-serif" style={{scale: '0.8 1', width: '125%'}}>
+石段を登り切ると、朱塗りの本堂が姿を現す。境内には落葉が敷き詰められ、足音を吸い込む静寂が広がる。風鈴の音色が微風に乗り、遠方山々の色彩が目に染みる。古来より変わらぬ風景に身を置き、俗世の雑念が消え去る感覚。深呼吸一つで心が澄み渡る瞬間だった。
+</div>
+</Preview>
+
+
+```css
+p {
+  scale: 0.8 1;
+  width: 125%;
+}
+```
+
+<Preview codeblock>
+<div className="leading-normal font-serif" style={{scale: '1.25 1', width: '80%'}}>
+石段を登り切ると、朱塗りの本堂が姿を現す。境内には落葉が敷き詰められ、足音を吸い込む静寂が広がる。風鈴の音色が微風に乗り、遠方山々の色彩が目に染みる。古来より変わらぬ風景に身を置き、俗世の雑念が消え去る感覚。深呼吸一つで心が澄み渡る瞬間だった。
+</div>
+</Preview>
+
+
+```css
+p {
+  scale: 1.25 1;
+  width: 80%;
+}
+```
+
+ちなみに文章は AI が生成。
+
+---
+
+参考
+
+- [The Graphic Design Review](https://gdr.jagda.or.jp/)
+
