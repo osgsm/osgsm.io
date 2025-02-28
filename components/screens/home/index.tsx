@@ -39,7 +39,7 @@ export default function Home() {
               Work at KITERETZ inc.
             </motion.div>
             <motion.div
-              className="lg:-translate-x-0.5 lg:~lg:~text-[4rem]/[5.5rem] font-semibold text-5xl leading-[1.1] tracking-[-0.08em] *:m-0"
+              className="lg:-translate-x-0.5 lg:~lg:~text-[4rem]/[5rem] font-semibold text-5xl leading-[1.1] tracking-[-0.08em] *:m-0"
               variants={fadeInVariants}
             >
               <p>
@@ -57,7 +57,7 @@ export default function Home() {
               </p>
             </motion.div>
             <motion.div
-              className="~text-[0.9375rem]/2xl font-semibold text-iris-12 leading-normal *:m-0 md:~md:pr-6/12"
+              className="~text-[0.9375rem]/xl font-semibold text-iris-12 leading-normal *:m-0 md:~md:pr-6/12"
               variants={fadeInVariants}
             >
               <p>フロントエンドデベロッパーです。</p>
