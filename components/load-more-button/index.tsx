@@ -14,7 +14,7 @@ export const LoadMoreButton = ({
     <motion.button
       type="button"
       onClick={onClick}
-      className="flex items-center gap-2 rounded-md border border-iris-4 px-4 py-2 font-medium text-iris-7 text-sm transition-colors hover:border-iris-6 hover:text-iris-9"
+      className="flex items-center gap-2 rounded-md border border-iris-4 px-4 py-3 font-medium text-iris-7 transition-colors hover:border-iris-6 hover:text-iris-9"
       whileHover="hover"
     >
       {label}
