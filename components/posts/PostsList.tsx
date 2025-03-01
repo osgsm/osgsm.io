@@ -57,7 +57,7 @@ export const PostsList = ({
                 {formatter.date(new Date(post.time.created))}
               </p>
               <div className="absolute right-4 bottom-4 grid size-8 place-items-center rounded-full border border-iris-4">
-                <ArrowRightIcon className="text-muted" />
+                <ArrowRightIcon className="size-4 text-muted" />
               </div>
             </NextViewTransition>
           </motion.div>
