@@ -10,7 +10,7 @@ export const Comments = () => {
     <div className="mt-12">
       <Giscus
         id="comments"
-        repo="osgsm/osgsm.io-v2"
+        repo="osgsm/osgsm.io"
         repoId="R_kgDONdFYBw"
         categoryId="DIC_kwDONdFYB84CnNrT"
         mapping="pathname"
