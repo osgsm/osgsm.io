@@ -37,9 +37,7 @@ export const Notes = ({
               </span>
             </h2>
             <p className="~text-sm/base m-0 font-semibold text-iris-7">
-              {category === "blog"
-                ? "試したことや学んだこと"
-                : "ブログに満たないもの"}
+              ブログに満たない自分用メモ
             </p>
           </hgroup>
         </div>
