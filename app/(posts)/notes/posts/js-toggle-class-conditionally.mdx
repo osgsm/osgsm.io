@@ -1,0 +1,28 @@
+---
+title: "toggle() の force パラメーターを使って条件に合わせてクラス名をトグルする"
+time:
+  created: "2025-03-03T06:58:16.197Z"
+  updated: "2025-03-03T06:58:16.197Z"
+tags: ["js", "class"]
+---
+
+`DOMTokenList.toggle(){:ts}` は、`token` と `force` の2つの引数を受け取れる。 第2引数の `force` を使うことで、単純にトグルするのではなく、条件にあわせたトグルを簡潔に書ける。
+
+例えば次のように、初回読み込み時にローカルストレージの値に応じてクラス名をトグルしたい場合に使う。
+
+```ts
+if ('theme' in localStorage) {
+  const isDark = localStorage.getItem('theme') === 'dark';
+  document.documentElement.classList.toggle('dark', isDark);
+}
+```
+
+`toggle(){:ts}` の第2引数が `false` の場合にはクラス名は削除され、 `true` の場合にはクラス名の付与が行われる。
+
+ここではローカルストレージの値に応じて `isDark` が切り替わるので、それに合わせて初回読み込み時に `.dark` クラスを付与するか削除するかが決まる。
+
+---
+
+参考
+
+- [DOMTokenList: toggle() method - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/toggle)
