@@ -1,0 +1,68 @@
+---
+title: "JavaScript で投稿の URL をコピーするボタンを実装する"
+time:
+  created: "2025-03-04T06:18:28.967Z"
+  updated: "2025-03-04T06:18:28.967Z"
+tags: ["js", "copy", "clipboard"]
+---
+
+Clipboard API を使うことで、システムのクリップボードの読み書きを行える。クリップボードに書き込むには `Clipboard` インターフェースの `writeText(){:ts}` メソッドを使う。
+
+```ts
+navigator.clipboard.writeText(url);
+```
+
+`writeText(){:ts}` は Promise を返すので、次のようにコピーが正常に機能したときに "Copied" というテキストを表示したりできる。
+
+```ts {18-24}
+export const initCopyUrl = () => {
+  const copyUrlButtons =
+    document.querySelectorAll<HTMLButtonElement>('.js-copy-url');
+
+  const handleTransitionEnd = ({ currentTarget }: TransitionEvent) => {
+    if (!(currentTarget instanceof HTMLElement)) return;
+    currentTarget?.classList.remove('is-active');
+  };
+
+  const handleClick = async ({ currentTarget }: MouseEvent) => {
+    if (!(currentTarget instanceof HTMLButtonElement)) return;
+
+    const url = currentTarget.dataset.url;
+    const copyStatus = currentTarget.nextElementSibling;
+
+    if (!url) return;
+
+    try {
+      await navigator.clipboard.writeText(url);
+      copyStatus?.classList.add('is-active');
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  copyUrlButtons.forEach((button) => {
+    button.addEventListener('click', handleClick);
+
+    const copyStatus = button.nextElementSibling;
+    if (copyStatus instanceof HTMLElement) {
+      copyStatus.addEventListener('transitionend', handleTransitionEnd);
+    }
+  });
+};
+```
+
+今回の例では、次のようなマークアップを用意し、`<button>{:html}` のデータ属性にコピーしたい URL を挿入している。※ここでは Astro を使用。
+
+```astro
+<button type="button" class="js-copy-url" data-url={Astro.url.href}>
+  Copy url
+</button>
+<span>Copied</span>
+```
+
+---
+
+参考
+
+- [Clipboard API - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API)
+- [Clipboard: writeText() method - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText)
