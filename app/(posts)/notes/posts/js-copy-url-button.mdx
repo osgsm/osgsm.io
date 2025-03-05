@@ -54,7 +54,7 @@ export const initCopyUrl = () => {
 今回の例では、次のようなマークアップを用意し、`<button>{:html}` のデータ属性にコピーしたい URL を挿入している。※ここでは Astro を使用。
 
 ```astro
-<button type="button" class="js-copy-url" data-url={Astro.url.href}>
+<button type="button" class="js-copy-url" data-url={Astro.url}>
   Copy url
 </button>
 <span>Copied</span>
