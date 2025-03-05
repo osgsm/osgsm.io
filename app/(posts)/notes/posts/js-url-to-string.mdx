@@ -1,0 +1,47 @@
+---
+title: "URL オブジェクトは文字列コンテキストにおいて href プロパティの値になる"
+time:
+  created: "2025-03-05T01:14:37.410Z"
+  updated: "2025-03-05T01:14:37.410Z"
+tags: ["js", "url", "string"]
+---
+
+URL オブジェクトを作成するには次のように `URL(){:js}` constructor を使う。
+
+```js
+new URL('https://example.com'); 
+```
+
+オブジェクトの中身は次のようになる。
+
+```js
+{
+  href: 'https://example.com/',
+  origin: 'https://example.com',
+  protocol: 'https:',
+  username: '',
+  password: '',
+  host: 'example.com',
+  hostname: 'example.com',
+  port: '',
+  pathname: '/',
+  search: '',
+  searchParams: URLSearchParams {},
+}
+```
+
+次のように文字列コンテキスト上で URL オブジェクトを参照すると `"https://example.com/" {:js}` が返ってくる。これは URL オブジェクトの `href` プロパティの値に相当する。
+
+```js
+`${new URL('https://example.com')}`
+// "https://example.com/"
+```
+
+文字列コンテキストにおいては `URL.toString(){:js}`メソッドが使われるため、 `URL.href{:js}` が返される。
+
+---
+
+参考
+
+- [Object.prototype.toString() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString)
+- [URL: toString() method - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/URL/toString)
