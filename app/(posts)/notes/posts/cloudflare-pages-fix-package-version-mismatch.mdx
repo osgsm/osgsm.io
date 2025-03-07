@@ -1,0 +1,54 @@
+---
+title: "Cloudflare Pages のビルド時にロックファイルとは異なるバージョンのパッケージが使われるときの対処法"
+time:
+  created: "2025-03-07T00:18:39.183Z"
+  updated: "2025-03-07T00:18:39.183Z"
+tags: ["cloudflare-pages", "cloudflare", "pnpm"]
+---
+
+Cloudflare Pages を使ったプロジェクトで開発をしているときに、開発時とデプロイ後のアプリケーションの挙動が異なることがあり、ビルドログを確認してみると、Git リポジトリ内にあるロックファイルとは異なるバージョンのパッケージが使われていた。
+
+ビルドログの警告文は次の通りで、互換性がないロックファイルなので無視しているとのこと。
+
+```
+WARN  Ignoring not compatible lockfile at /opt/buildhome/repo/pnpm-lock.yaml
+```
+
+Cloudflare では、執筆時点でデフォルトで `pnpm@8.7.1` が使われるが、開発中のプロジェクトでは新しい pnpm を使っていた。
+
+なので、Cloudflare 側で使用する pnpm のバージョンを変更する。 Wrangler の設定ファイル（ここでは `wrangler.json`）に次の内容を追加する。
+
+```json title="wrangler.json"
+{
+  // ...
+  "vars": {
+    "PNPM_VERSION": "10.5.2"
+  }
+}
+```
+
+これでビルド時にこの環境変数が読まれ、`pnpm@10.5.2` が使われる。例えば、次のようなビルドログになる。
+
+```shell
+10:00:00.000	Build environment variables: 
+10:00:00.000	  - PNPM_VERSION: 10.5.2
+
+# ...
+
+10:00:00.000	Preparing pnpm@10.5.2 for immediate activation...
+```
+
+ビルドログで WARN が表示されていた箇所は、次のような内容に変わる。
+
+```
+Lockfile is up to date, resolution step is skipped
+```
+
+以上で、開発時の環境とビルド時の環境を揃えられる。
+
+---
+
+参考
+
+- [Build image · Cloudflare Pages docs](https://developers.cloudflare.com/pages/configuration/build-image/#tools)
+- [Configuration - Wrangler · Cloudflare Workers docs](https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables)
