@@ -1,0 +1,42 @@
+---
+title: "JavaScript で配列をシャッフルする"
+time:
+  created: "2025-03-11T04:03:27.421Z"
+  updated: "2025-03-11T04:03:27.421Z"
+tags: ["js", "array", "shuffle"]
+---
+
+配列をシャッフルするときに使われる偏りのないアルゴリズムとして Fisher–Yates Shuffle というものがある。
+
+JavaScript でこれを使って配列の値をシャッフルするには次のように書く。
+
+```js
+// Function to shuffle an array
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+```
+
+もとの配列を変更せずに、シャッフルした新しい配列を返すには次のように書く。
+
+```js
+// Function to shuffle an array
+const getShuffledArray = (array) => {
+  const newArray = array.slice()
+  for (let i = newArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+  }
+  return newArray;
+}
+```
+
+---
+
+参考
+
+- [Fisher–Yates shuffle - Wikipedia](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#JavaScript_implementation)
+- [How to randomize (shuffle) a JavaScript array? - Stack Overflow](https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)
