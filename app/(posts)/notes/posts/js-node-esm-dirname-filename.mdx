@@ -1,0 +1,41 @@
+---
+title: "Node.js の ES modules で __dirname や __filename を使う"
+time:
+  created: "2025-03-12T05:14:13.326Z"
+  updated: "2025-03-12T05:14:13.326Z"
+tags: ["nodejs", "esm"]
+---
+
+CommonJS では、`__filename` や `__dirname` 変数をよく使う。それぞれ現在のファイルのフルパス、現在のファイルがあるディレクトリを表す。
+
+しかし、ES modules ではそれらが使えない。
+
+Node.js v21.2.0 からはそれらの代わりとして `import.meta.dirname{:js}`, `import.meta.filename{:js}` が使える。
+
+```js title="21.2.0 or later"
+const __dirname = import.meta.dirname;
+const __filename = import.meta.filename;
+```
+
+それより前の Node.js では `node:url` モジュールの `fileURLToPath(){:js}` に `import.meta.url{:js}` を渡して `__filename` を取得する。
+
+その `__filename` を `node:path` モジュールの `dirname(){:js}` に渡すことで `__dirname` を取得できる。
+
+```js title="earlier than 21.2.0"
+import { fileURLToPath } from "node:url";
+import path from "node:path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+```
+
+`import.meta.url{:js}` は、該当のモジュールの `file:` URL を表す。これを `fileURLToPath(){:js}` に渡してパスに変換している。
+
+`path.dirname(){:js}` はパス文字列を受け取り、そのパスのディレクトリ名を返す。
+
+---
+
+参考
+
+- [Mimicking \_\_dirname and \_\_filename in ESM modules in Node.js - Human Who Codes](https://humanwhocodes.com/snippets/2023/01/mimicking-dirname-filename-nodejs-esm/)
+- [Modules: ECMAScript modules | Node.js v23.9.0 Documentation](https://nodejs.org/api/esm.html#importmetadirname)
