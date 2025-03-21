@@ -1,0 +1,27 @@
+---
+title: "JavaScript で URL のハッシュ部分を取得する"
+time:
+  created: "2025-03-21T03:35:31.554Z"
+  updated: "2025-03-21T03:35:31.554Z"
+tags: ["js", "hash", "#"]
+---
+
+JavaScript で URL のハッシュ部分を取得するには `Location` インターフェースの `hash` プロパティを使う。値は文字列になる。
+
+```js title="https://osgsm.io/notes#2 の場合"
+window.location.hash
+// "#2"
+```
+
+`#` よりあとの文字列を取得したい場合は `substring(1){:js}` を使う。数値として扱う場合はそれを `Number(){:js}` に渡す。
+
+```js
+Number(window.location.hash.substring(1));
+// 2
+```
+
+---
+
+参考
+
+- [Location: hash property - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Location/hash#specifications)
