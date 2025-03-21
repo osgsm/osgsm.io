@@ -12,7 +12,7 @@ CommonJS では、`__filename` や `__dirname` 変数をよく使う。それぞ
 
 Node.js v21.2.0 からはそれらの代わりとして `import.meta.dirname{:js}`, `import.meta.filename{:js}` が使える。
 
-```js title="21.2.0 or later"
+```js title="v21.2.0 or later"
 const __dirname = import.meta.dirname;
 const __filename = import.meta.filename;
 ```
@@ -21,7 +21,7 @@ const __filename = import.meta.filename;
 
 その `__filename` を `node:path` モジュールの `dirname(){:js}` に渡すことで `__dirname` を取得できる。
 
-```js title="earlier than 21.2.0"
+```js title="earlier than v21.2.0"
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 

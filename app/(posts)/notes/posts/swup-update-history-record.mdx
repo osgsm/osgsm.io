@@ -20,9 +20,9 @@ newUrl.searchParams.set('show', currentCount.toString());
 updateHistoryRecord(newUrl.toString());
 ```
 
-`swup/src/helpers/updateHistoryRecord.ts` は次のようになっている。
+ちなみに、`updateHistoryRecord.ts` の実装は次のようになっている。
 
-```ts
+```ts title="swup/src/helpers/updateHistoryRecord.ts"
 /** Update the current history record with a custom swup identifier. */
 export const updateHistoryRecord = (url: string | null = null, data: HistoryData = {}): void => {
 	url = url || getCurrentUrl({ hash: true });
@@ -37,9 +37,6 @@ export const updateHistoryRecord = (url: string | null = null, data: HistoryData
 	window.history.replaceState(state, '', url);
 };
 ```
-
----
-
 
 ---
 
