@@ -1,0 +1,40 @@
+---
+title: "JavaScript でメディアクエリの状態変化を検知する"
+time:
+  created: "2025-03-22T09:10:02.658Z"
+  updated: "2025-03-22T09:10:02.658Z"
+tags: ["js", "media query", "レスポンシブ"]
+---
+
+JavaScript でメディアクエリの状態変化を検知するには、まず `window` インターフェースの `matchMedia(){:js}` にメディアクエリ文字列を渡し、 `MediaQueryList` オブジェクトを作成する。
+
+その `MediaQueryList` オブジェクトの `change` イベントを `addEventListener(){:js}` メソッドで監視する。
+
+```js
+const mediaQueryList = window.matchMedia('(min-width: 1024px)');
+
+mediaQueryList.addEventListener('change', (event) => {
+  if (event.matches) {
+    console.log('This is wide screen');
+  } else {
+    console.log('This is narrow screen');
+  }
+});
+```
+
+上記のようにすることで、ビューポートをリサイズしたときに 1024px を境に処理を分けることができる。
+
+---
+
+関連
+
+- [JavaScript でビューポート幅に応じて処理を分ける](/notes/js-matchmedia-matches)
+
+
+---
+
+参考
+
+- [MediaQueryList - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList)
+- [Window: matchMedia() method - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia)
+
