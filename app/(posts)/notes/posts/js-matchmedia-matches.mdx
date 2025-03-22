@@ -6,7 +6,7 @@ time:
 tags: ['js', 'matchmedia', 'matches', 'レスポンシブ']
 ---
 
-JavaScript でビューポート幅に応じて処理を分けるには、 `window` インターフェースの `matchMedia` にメディアクエリ文字列を渡し、返された `MediaQueryList` オブジェクトの `matches` プロパティを使用する。
+JavaScript でビューポート幅に応じて処理を分けるには、 `window` インターフェースの `matchMedia(){:js}` にメディアクエリ文字列を渡し、返された `MediaQueryList` オブジェクトの `matches` プロパティを使用する。
 
 
 ```js
@@ -18,6 +18,12 @@ if (window.matchMedia('(min-width: 1024px)').matches) {
 ```
 
 `matchMedia()` はメディアクエリ文字列を受けとるので、 `window.matchMedia('(orientation:landscape)'){:js}` のように書けば、ビューポートの向きに応じて処理を分けることもできる。
+
+---
+
+関連
+
+- [JavaScript でメディアクエリの状態変化を検知する](/notes/js-detect-media-query-status-change)
 
 ---
 
