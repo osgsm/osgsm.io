@@ -1,0 +1,41 @@
+---
+title: "Nullish coalescing operator の優先順位は低いため計算に使うときなどは注意が必要"
+time:
+  created: "2025-03-26T05:08:41.612Z"
+  updated: "2025-03-26T05:08:41.612Z"
+tags: ["js", "operator-precedence"]
+---
+
+JavaScript の nullish coalescing operator (`??{:js}`) の優先順位は低いため、計算とあわせて使うときに意図せぬ結果になることがある。ちなみに、operator の優先順位は [Operator precedence - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_precedence) で確認できる。
+
+例えば、次のコードでは、`user.age{:js}` が設定されていない場合のデフォルト値として `18{:js}` を設定しているつもりだが、 `2 + user.age{:js}` が優先されて `NaN{:js}` になる。
+
+```js
+const user = {
+  id: 1
+}
+
+const result = 2 + user.age ?? 18;
+console.log(result); // NaN
+```
+
+意図した通りの結果を得るためには、次のように grouping operator `()` を使う。
+
+```js {5}
+const user = {
+  id: 1
+}
+
+const result = 2 + (user.age ?? 18);
+console.log(result); // 20
+```
+
+---
+
+参考
+
+- [Operator precedence - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_precedence)
+- [Nullish coalescing operator (??) - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing)
+- [Grouping operator ( ) - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Grouping)
+
+
