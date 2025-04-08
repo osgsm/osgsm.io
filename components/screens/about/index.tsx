@@ -159,8 +159,14 @@ export default function About() {
         <div className="~gap-4/6 grid">
           <TimelineList year="2025">
             <TimelineItem
+              date="Apr."
+              title="Created 10 commits in 2 repositories"
+              icon={GitHubLogoIcon}
+            />
+            {/* <TimelineItemPostList date="Apr." year={2025} month={4} /> */}
+            <TimelineItem
               date="Mar."
-              title="Created 28 commits in 3 repositories"
+              title="Created 185 commits in 7 repositories"
               icon={GitHubLogoIcon}
             />
             <TimelineItemPostList date="Mar." year={2025} month={3} />
