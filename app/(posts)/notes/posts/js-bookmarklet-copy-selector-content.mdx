@@ -1,0 +1,54 @@
+---
+title: "特定のセレクタの textContent をコピーしてリスト化するブックマークレットを作成する"
+time:
+  created: "2025-04-10T01:26:22.750Z"
+  updated: "2025-04-10T01:26:22.750Z"
+tags: ["bookmarklet", "js"]
+---
+
+ブックマークレットを作成するには、ブラウザのブックマークの URL の欄に JavaScript  URL（JavaScript コードに `javascript:` prefix を付与したもの）を登録する。
+
+特定のセレクタの textContent をコピーして、マークダウンのリストとしてクリップボードにコピーするブックマークレットを作成したい場合、まずはその処理を行う JavaScript を用意する。
+
+```js
+(() => {
+  const selector = prompt('Enter a CSS selector (e.g., h2, .title, #heading):', 'h2');
+  if (!selector) return;
+
+  const elements = document.querySelectorAll(selector);
+
+  if (elements.length === 0) {
+    alert('No elements found matching this selector');
+    return;
+  }
+
+  const contents = Array.from(elements)
+    .map(el => `- ${el.textContent.trim()}`)
+    .join('\n');
+
+  navigator.clipboard.writeText(contents)
+    .then(() => alert(`Copied ${elements.length} items to clipboard`))
+    .catch(err => alert(`Failed to copy: ${err}`));
+})();
+```
+
+そして、この JavaScript の前に `javascript:` を追加して、ブラウザのブックマーク登録時の URL 欄にコピペする。
+
+```none title="Content to register in the URL field"
+javascript:(() => {   const selector = prompt('Enter a CSS selector (e.g., h2, .title, #heading):', 'h2');   if (!selector) return;    const elements = document.querySelectorAll(selector);      if (elements.length === 0) {     alert('No elements found matching this selector');     return;   }      const contents = Array.from(elements)     .map(el => `- ${el.textContent.trim()}`)     .join('\n');      navigator.clipboard.writeText(contents)     .then(() => alert(`Copied ${elements.length} items to clipboard`))     .catch(err => alert(`Failed to copy: ${err}`)); })();
+```
+
+以上で、ブックマークレットを実行すると、セレクタを指定して内容をコピーできるようになる。
+
+上述のようにコピペするだけだと余分な空白が入って気持ち悪いので minify したほうがいいかも。
+
+```none title="Minified content"
+javascript:(()=>{const t=prompt("Enter a CSS selector (e.g., h2, .title, #heading):","h2");if(!t)return;const e=document.querySelectorAll(t);if(0===e.length)return void alert("No elements found matching this selector");const o=Array.from(e).map((t=>`- ${t.textContent.trim()}`)).join("\n");navigator.clipboard.writeText(o).then((()=>alert(`Copied ${e.length} items to clipboard`))).catch((t=>alert(`Failed to copy: ${t}`)))})();
+```
+
+---
+
+参考
+
+- [Making Bookmarklets](https://gist.github.com/caseywatts/c0cec1f89ccdb8b469b1)
+- [javascript: URLs - URIs | MDN](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Schemes/javascript)
