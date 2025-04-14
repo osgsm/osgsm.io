@@ -1,0 +1,25 @@
+---
+title: "package.json に記録されるパッケージのバージョンを固定の値にする"
+time:
+  created: "2025-04-14T09:01:57.191Z"
+  updated: "2025-04-14T09:01:57.191Z"
+tags: ["npm", "pnpm"]
+---
+
+`npm` などでパッケージをインストールすると、 `package.json` には semver を使ったパッケージのバージョン範囲が記録される。例えば `^3.4.17` のような。
+
+この場合、インストールされるパッケージのバージョンが範囲内で異なるケースが生じる。これを避けたい場合は、パッケージインストール時に `--save-exact` (`-E`) フラグを使う。 ※yarn は `--exact`
+
+```shell
+npm install --save-exact tailwindcss
+```
+
+これで `package.json` には、範囲ではなく、 `3.4.17` のような固定のバージョンが記録される。
+
+---
+
+参考
+
+- [npm-install | npm Docs](https://docs.npmjs.com/cli/v8/commands/npm-install#save-exact)
+- [yarn add | Yarn](https://yarnpkg.com/cli/add#details)
+- [pnpm add `<pkg>` | pnpm](https://pnpm.io/cli/add#--save-exact--e)
