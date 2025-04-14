@@ -147,7 +147,7 @@
 
   article {
     h1 {
-      @apply text-2xl leading-snug lg:text-3xl;
+      @apply text-2xl leading-snug lg:text-3xl/snug;
     }
 
     h2 {
