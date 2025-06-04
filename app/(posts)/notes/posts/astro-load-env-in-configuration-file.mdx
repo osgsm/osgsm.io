@@ -1,0 +1,32 @@
+---
+title: "Astro の設定ファイルで環境変数を読み込む"
+time:
+  created: "2025-06-04T06:50:10.513Z"
+  updated: "2025-06-04T06:50:10.513Z"
+tags: ["astro", "vite", "env"]
+---
+
+Astro は、他のファイルが読み込まれる前に configuration files を評価する。つまり、`.env` ファイルにセットされている環境変数にアクセスするときに `import.meta.env{:ts}` を使っても、`astro.config.mjs` 内ではアクセスできない。
+
+この場合、CLI から環境変数をセットして `process.env{:ts}` を設定ファイル内で使うか、もしくは Vite's `loadEnv(){:ts}` ヘルパーを使って manually に `.env` file を読み込む。
+
+```js
+import { loadEnv } from "vite";
+
+const { SECRET_PASSWORD } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
+```
+
+この関数のシグネチャは次の通り。
+
+```ts
+function loadEnv(mode: string, envDir: string | false, prefixes?: string | string[]): Record<string, string>
+```
+
+`mode`, `envDir` `prefixes` を受け取って、オブジェクトを返す。
+
+---
+
+参考
+
+- [Using environment variables | Docs](https://docs.astro.build/en/guides/environment-variables/#in-the-astro-config-file)
+- [Configuring Vite | Vite (main branch)](https://main.vite.dev/config/#using-environment-variables-in-config)
