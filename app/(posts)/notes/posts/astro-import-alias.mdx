@@ -1,0 +1,30 @@
+---
+title: "Astro の import statement で alias を使ってパス指定を簡単にする"
+time:
+  created: "2025-10-23T13:15:34.356Z"
+  updated: "2025-10-23T13:15:34.356Z"
+tags: ["astro"]
+---
+
+Astro では、alias を使って import statements でのパス指定を簡単にすることができる。 `import Button from '../../components/Button.astro';{:tsx}` のように相対パスで書いた場合、ファイルの移動があった場合にこの import statement も書き換える必要があるが、alias を使うことで `import Button from '@components/Button.astro';{:tsx}` のような書き方が使えるので逐一パスを書き換える必要がなくなる。
+
+この機能を使うには `tsconfig.json` の `compilerOptions.paths` を次のようにする。
+
+```json title="tsconfig.json"
+{
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
+  "compilerOptions": {
+    "paths": {
+      "@components/*": ["./src/components/*"],
+    }
+  }
+}
+```
+
+---
+
+参考
+
+- [Imports reference | Docs](https://docs.astro.build/en/guides/imports/#aliases)
