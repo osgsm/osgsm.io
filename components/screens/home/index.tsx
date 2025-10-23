@@ -69,9 +69,9 @@ export default function Home() {
             >
               {[
                 {
-                  label: "Bluesky",
-                  icon: <FaBluesky />,
-                  href: "https://bsky.app/profile/osgsm.io",
+                  label: "X",
+                  icon: <FaXTwitter />,
+                  href: "https://x.com/osgsm_",
                 },
                 {
                   label: "Github",
@@ -79,9 +79,9 @@ export default function Home() {
                   href: "https://github.com/osgsm",
                 },
                 {
-                  label: "X",
-                  icon: <FaXTwitter />,
-                  href: "https://x.com/osgsm_",
+                  label: "Bluesky",
+                  icon: <FaBluesky />,
+                  href: "https://bsky.app/profile/osgsm.io",
                 },
               ].map(({ label, icon, href }) => (
                 <a

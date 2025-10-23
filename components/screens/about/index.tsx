@@ -81,8 +81,7 @@ export default function About() {
             </motion.div>
             <motion.div variants={variants}>
               <p>
-                お問い合わせは{" "}
-                <Link href="https://bsky.app/profile/osgsm.io">Bluesky</Link>{" "}
+                お問い合わせは <Link href="https://x.com/osgsm_">Twitter</Link>{" "}
                 からどうぞ。
               </p>
             </motion.div>
@@ -93,9 +92,9 @@ export default function About() {
           >
             {[
               {
-                label: "Bluesky",
-                icon: <FaBluesky />,
-                href: "https://bsky.app/profile/osgsm.io",
+                label: "X",
+                icon: <FaXTwitter />,
+                href: "https://x.com/osgsm_",
               },
               {
                 label: "Github",
@@ -103,9 +102,9 @@ export default function About() {
                 href: "https://github.com/osgsm",
               },
               {
-                label: "X",
-                icon: <FaXTwitter />,
-                href: "https://x.com/osgsm_",
+                label: "Bluesky",
+                icon: <FaBluesky />,
+                href: "https://bsky.app/profile/osgsm.io",
               },
             ].map(({ label, icon, href }) => (
               <a
