@@ -93,7 +93,9 @@
       "@types/react-dom": "19.2.2"
     },
     "onlyBuiltDependencies": [
-      "sharp"
+      "@biomejs/biome",
+      "sharp",
+      "unrs-resolver"
     ]
   }
 }
