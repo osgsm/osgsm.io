@@ -1,8 +1,9 @@
-"use client";
-
+"use client";;
 import { CornerDownLeftIcon } from "lucide-react";
 
 import styles from "../styles.module.css";
+
+import type { JSX } from "react";
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   href: string;

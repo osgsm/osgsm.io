@@ -1,6 +1,7 @@
-"use client";
-
+"use client";;
 import styles from "../styles.module.css";
+
+import type { JSX } from "react";
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   href: string;

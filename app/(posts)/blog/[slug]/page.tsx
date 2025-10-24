@@ -11,7 +11,7 @@ const route = "blog";
 const Posts = getPosts(route);
 
 interface PageProps {
-  params: Post;
+  params: Promise<Post>;
 }
 
 export async function generateStaticParams() {
@@ -20,7 +20,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({ params }: PageProps) {
+export async function generateMetadata(props: PageProps) {
+  const params = await props.params;
   const post = Posts.find(
     (post: { slug: string }) => post.slug === params.slug,
   );
@@ -40,7 +41,8 @@ export function generateMetadata({ params }: PageProps) {
   };
 }
 
-export default function Page({ params }: PageProps) {
+export default async function Page(props: PageProps) {
+  const params = await props.params;
   const post = Posts.find(
     (post: { slug: string }) => post.slug === params.slug,
   );
