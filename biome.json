@@ -10,7 +10,7 @@
     "ignore": []
   },
   "formatter": {
-    "ignore": [".next"],
+    "ignore": [".next", ".pnpm-store"],
     "enabled": true,
     "indentStyle": "space",
     "indentWidth": 2,
@@ -25,7 +25,7 @@
     }
   },
   "linter": {
-    "ignore": [".next"],
+    "ignore": [".next", ".pnpm-store"],
     "enabled": true,
     "rules": {
       "recommended": true,
