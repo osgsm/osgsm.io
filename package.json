@@ -15,6 +15,9 @@
     "lint": "npm run lint:style && npm run lint:prettier && npm run lint:biome"
   },
   "packageManager": "pnpm@10.13.1",
+  "engines": {
+    "node": "23.x"
+  },
   "dependencies": {
     "@giscus/react": "^3.1.0",
     "@mdx-js/loader": "^3.0.1",
