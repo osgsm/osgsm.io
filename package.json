@@ -11,8 +11,7 @@
     "mdx:create": "node ./scripts/create-post",
     "lint:style": "npx stylelint \"**/*.css\" --fix",
     "lint:biome": "npx biome check --fix --unsafe .",
-    "lint:prettier": "npx prettier . --write --log-level warn",
-    "lint": "npm run lint:style && npm run lint:prettier && npm run lint:biome"
+    "lint": "npm run lint:style && npm run lint:biome"
   },
   "packageManager": "pnpm@9.15.3",
   "dependencies": {
