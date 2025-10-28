@@ -34,7 +34,7 @@ export default function RootLayout({
           <Script src="https://platform.twitter.com/widgets.js" />
           <Header />
           <main className="mx-auto w-full max-w-7xl">
-            <article className="article">{children}</article>
+            <div>{children}</div>
           </main>
           <Footer />
         </Providers>

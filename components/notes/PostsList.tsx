@@ -55,7 +55,7 @@ export const PostsList = ({
               className="trainsition-all relative flex w-full items-center justify-between gap-3 border-iris-4 border-b py-4 leading-normal no-underline hover:border-iris-8 hover:opacity-100 dark:hover:border-iris-5"
             >
               <p className="~text-base/lg text-foreground">{post.title}</p>
-              <div className="grid size-8 shrink-0 place-items-center rounded-full border border-iris-4">
+              <div className="grid size-8 shrink-0 place-items-center rounded-full">
                 <ArrowRightIcon className="size-4 text-muted" />
               </div>
             </NextViewTransition>

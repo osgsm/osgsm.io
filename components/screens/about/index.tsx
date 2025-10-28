@@ -60,31 +60,10 @@ export default function About() {
                   Shogo <span className="-ml-0.5 inline-block">Oshima</span>
                 </span>
               </h1>
-              <p className="-translate-y-1.5 ~/md:~text-sm/[0.9375rem] m-0 self-end text-mauve-9 leading-none">
-                Frontend developer
-              </p>
             </motion.hgroup>
           </div>
-          <div className="~text-[0.9375rem]/xl grid gap-4 font-semibold leading-normal [&_p]:m-0">
-            <motion.div variants={variants}>
-              <p>大島翔吾と申します。</p>
-              <p>フロントエンドデベロッパーです。</p>
-            </motion.div>
-            <motion.div variants={variants}>
-              <p>HTML / CSS / TypeScript が主軸。</p>
-              <p>フレームワークは Astro や Next.js、</p>
-              <p>CMS は WordPress をよく使います。</p>
-            </motion.div>
-            <motion.div variants={variants}>
-              <p>技術だけでなくデザインにも関心あり。</p>
-              <p>近頃は 3D とか WebGL に惹かれてます。</p>
-            </motion.div>
-            <motion.div variants={variants}>
-              <p>
-                お問い合わせは <Link href="https://x.com/osgsm_">Twitter</Link>{" "}
-                からどうぞ。
-              </p>
-            </motion.div>
+          <div className="grid gap-2 font-semibold leading-normal text-iris-11 ~text-[0.9375rem]/xl [&_p]:m-0">
+            <p>I'm a frontend developer in Osaka, Japan.</p>
           </div>
           <motion.div
             className="*:~text-xl/2xl flex items-center gap-3 text-mauve-10"
